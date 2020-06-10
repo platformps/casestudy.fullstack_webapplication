@@ -15,6 +15,6 @@
 * In an effort to not plagiarize, credit for this content goes to:
 * [Plagiarism.org](plagiarism.org), specifically the “plagiarism 101” section. The content was adapted for the code. For more information, please see:
   * [What is Plagiarism](http://www.plagiarism.org/plagiarism-101/what-is-plagiarism)
-  * [Types of Plagiarism](http://www.plagiarism.org/plagiarism-101/types-of-plagiarism
-  * [How do I safely write code in my own 'words' and not plagiarize?](http://programmers.stackexchange.com/questions/80167/how-do-i-safely-write-code-in-my-own-words-and-not-plagiarize
+  * [Types of Plagiarism](http://www.plagiarism.org/plagiarism-101/types-of-plagiarism)
+  * [How do I safely write code in my own 'words' and not plagiarize?](http://programmers.stackexchange.com/questions/80167/how-do-i-safely-write-code-in-my-own-words-and-not-plagiarize)
   * [Avoiding Plagiarism: Writing Computer Code](http://www.upenn.edu/academicintegrity/ai_computercode.html)
