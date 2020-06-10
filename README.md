@@ -7,6 +7,10 @@
 
 ### Tech Stack Selection
 * Select at least 1 technology from each of the following categories:
+  * **Version Control System**
+    1. Github
+    2. Bitbucket
+    
   * **Wireframe**
     1. Mockflow
     2. Balsamiq
@@ -50,8 +54,8 @@
 
 
 ## Minimum Features
-* `RESTful` web service which consumes requests from a front-end application and caches each request and the respective response to a database.
-
+* `RESTful` web service which consumes requests from a front-end web application and caches each request and the respective response to a database.
+* The application must support a login functionality.
 
 
 <hr><hr>
