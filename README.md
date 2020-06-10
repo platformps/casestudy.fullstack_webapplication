@@ -7,7 +7,7 @@
 	* This is exciting! It's a lot, but we've given you the tools to be able to build what you need, and you get to decide what you do with it. You also get to be creative in choosing what sort of application you want to build!
 	* You will be working individually to design your app. We hope you'll exercise creativity on this project, sketch some wireframes before you start, make sure you have time to run these ideas by your instructors to get their feedback before you dive too deep into coding! Remember to keep things small and focus on mastering the fundamentals.
 * **Additional Resources**
-	* [The Original Case Study Document](./case-study.docx)
+	* [The Original Case Study Document](./case-study.pdf)
 	* [Case Study Outline](./case-study-outline.pdf)
 	* [Case Study Deliverables](./README_deliverables.md)
 	* [Identifying Plagiarism](./README_plagiarism.md)
