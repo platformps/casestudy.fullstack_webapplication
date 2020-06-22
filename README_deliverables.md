@@ -1,5 +1,7 @@
 ## Deliverables
 * Trello Board - To begin your case study, create a Trello board with at least 5 columns accounting for each of the following
+* this board will be used by the instructor to evaluate progress.
+* Please ensure the instructor has access to this Trello board
 	* `Ideation`
 		* This column will first contain cards describing a potential application to be built.
 		* Upon concept approval, this column will be re-purposed to describe potential features of the approved application.
