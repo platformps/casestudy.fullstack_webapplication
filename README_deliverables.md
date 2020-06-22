@@ -1,4 +1,19 @@
-### Deliverables
+## Deliverables
+* Trello Board - To begin your case study, create a Trello board with at least 5 columns accounting for each of the following
+	* `Ideation`
+		* This column will first contain cards describing a potential application to be built.
+		* Upon concept approval, this column will be re-purposed to describe potential features of the approved application.
+	* `Backlog`
+		* This column will contain cards describing work that **will not be** done in a near-future, but **must be done** eventually for the product to be considered completed
+	* `Upcoming`
+		* This column will contain cards describing work that **will not be** done in the current-sprint commitment, but **will be committed to** in the upcoming-sprint commitment.
+	* `Current`
+		* This column will contain cards describing work that **will be** done in the current-sprint commitment.
+	* `In Review
+		* This column will contain cards describing work that **need to be reviewed** to be considered **done**.
+	* `Completed`
+		* This column will contain cards describing work that has been reviewed and is considered completed
+
 1. Database (MariaDB) – This deliverable includes creating a database that reflects the website you have decided to create
 	* Schema diagram: a visual representation of your database 
 	* Database file creation (.sql): Queries used to create the database 
