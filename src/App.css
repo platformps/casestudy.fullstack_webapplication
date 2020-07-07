@@ -1,13 +1,16 @@
 .App {
  background-color: #37465b;
-  text-align: center;
+ text-align: center;
 }
-
+#root{
+  background-color: #37465b;
+}
 
 a{
   color: white;
 }
 div{
+  color: white;
   padding-bottom: 15px;
 }
 button{
@@ -29,8 +32,10 @@ input{
   font-size: calc(5px + 1vmin);
 }
 
+
+
 .App-header {
-  /* background-color: #282c34; */
+  /* background-color: #282c34;  */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,6 +43,7 @@ input{
   justify-content: center;
   font-size: calc(5px + 1vmin);
   color: white;
+  background-color: #37465b;
 }
 
 img{
@@ -59,9 +65,6 @@ img{
  
 }
 
-/* #topSearch{
-
-} */
 
 hr{
   border: 2px solid red;
@@ -106,6 +109,20 @@ hr{
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+
+
+.menuContainer{
+  
+  left: 0;
+  background-color: #212b38;
+  width: 10%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
 }
 
 

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { render } from '@testing-library/react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SignUp from "./signup";
+import Dashboard from './dashboard';
 export default class Login extends Component {
     render() {
         return (
@@ -18,7 +19,9 @@ export default class Login extends Component {
                     <input type="password" name="password" placeholder="Enter Password"></input>
                 </div>
                 <div>
-                    <button type="submit" > Sign in</button>
+                    <Link className = "nav-link" to = {"/dashboard"}>
+                    <button type="submit"> Sign in</button>
+                    </Link>
 
                     <p>Forgot your password? <a href="" > Reset</a></p>
                     <div >
