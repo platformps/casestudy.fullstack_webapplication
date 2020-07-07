@@ -36,9 +36,7 @@
     3. Lucidcharts
 
   * **Frontend**
-    1. Angular
-    2. React
-    3. Vue.JS
+    1. Java Server Pages
     
   * **Business Logic**
     1. Java
