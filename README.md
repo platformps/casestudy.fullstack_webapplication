@@ -36,14 +36,16 @@
     3. Lucidcharts
 
   * **Frontend**
-    1. Angular
-    2. React
-    3. Vue.JS
+    1. Java Server Pages
     
   * **Business Logic**
     1. Java
     2. TypeScript
-    3. 
+
+  * **WebServer Implementation**
+    1. Spring Boot
+    2. At least 1 [backing service](https://12factor.net/backing-services) API
+
   * **Data Layer**
     1. MySQL
     2. PostgreSQL
