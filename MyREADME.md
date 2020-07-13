@@ -1,26 +1,26 @@
-# Product Name
-> Short blurb about what your product does.
+# Fired Chat Web APplication
+> A web  TCP full stack application that clients can send and recieve messages.
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-One to two paragraph statement about your product and what it does.
+Fired is a small full stack web application that enables it's users to chat with other clients. The application allows users to post on board without signing up.
 
 ![](header.png)
 
-## Installation
+## How to Access Fired
 
-OS X & Linux:
+Safari, Chrome, Firfox:
 
 ```sh
-npm install my-crazy-module --save
+Andriod, Install from Android app store
 ```
 
-Windows:
+iOs:
 
 ```sh
-edit autoexec.bat
+install from appstore
 ```
 
 ## Usage example
@@ -55,11 +55,11 @@ npm test
 
 ## Meta
 
-Your Name – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
+Emmanuel Orubele – [@YourTwitter](https://twitter.com/####) – emmanuel.orubele@gmail.com
 
-Distributed under the XYZ license. See ``LICENSE`` for more information.
+Distributed under the Orubele.Inc license. See ``LICENSE`` for more information.
 
-[https://github.com/yourname/github-link](https://github.com/dbader/)
+[https://github.com/da7tysixers/](https://github.com/dbader/)
 
 ## Contributing
 
