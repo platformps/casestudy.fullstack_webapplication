@@ -1,0 +1,68 @@
+.Dashboard-Button{
+  width: 100%;
+  height: 100px;
+  font-size: large;
+  border: none;
+  background-color: transparent;
+  color: white;
+}
+ .Dashboard-Header{
+    position: absolute;
+    background-color: #576a85;
+    left: 0;
+    width: 100%;
+    top:  0;
+     
+     height: 2%;
+ }
+.topBarComp{
+  background-color: transparent;
+  position: absolute;
+  overflow: hidden;
+  height: 50px;
+  width: 50px;
+
+}
+
+.popover .show-menu{display: block}
+
+.popover .popover-content{
+  position: absolute;
+  z-index: 1;
+  top: 50px;
+  right: 0;
+  display: none;
+  overflow: visible;
+  width: 200px;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid #e3e9ed;
+  border-radius: 3px;
+  box-shadow: 0 0 60px rgba(14,42,71,.25);
+  
+}
+
+ .menuContainer{
+  
+    left: 0;
+    background-color: #212b38;
+    width: 15%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    border-radius: 5px;
+  }
+
+  .infoContainer{
+    left: 0;
+    background-color: #576a85;
+    width: 15%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    border-radius: 5px;
+  }
