@@ -16,3 +16,20 @@ create unique index employee_email_uindex
 create unique index employee_id_uindex
     on employee (id);
 
+create table department
+(
+    id int NOT NULL auto_increment PRIMARY KEY ,
+    manager VARCHAR(50) null,
+    name VARCHAR(50) not null,
+    budget DOUBLE(7,2) null
+);
+
+create unique index department_id_uindex
+    on department (id);
+
+
+
+
+
+
+

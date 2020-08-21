@@ -1,57 +1,68 @@
 package io.fulchr3356.upkeepassistant.models;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
+import javax.persistence.*;
+import java.util.Objects;
+@Entity
+@Table(name = "department", schema = "upkeep_assistant")
 public class Department {
-    private HashMap<String,Employee> Employees;
-    private Employee departmentManager;
-    private String departmentName;
-    private Budget departmentBudget;
-    private ArrayList<Sale> sales;
+    private Integer id;
+    private String manager;
+    private String name;
+    private Double budget;
 
-    public HashMap<String, Employee> getEmployees() {
-        return Employees;
+    @Id
+    @Column(name = "id", nullable = false)
+    public Integer getId() {
+        return id;
     }
 
-    public void setEmployees(HashMap<String, Employee> employees) {
-        Employees = employees;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Employee getDepartmentManager() {
-        return departmentManager;
+    @Basic
+    @Column(name = "manager", length = 50)
+    public String getManager() {
+        return manager;
     }
 
-    public void setDepartmentManager(Employee departmentManager) {
-        this.departmentManager = departmentManager;
+    public void setManager(String manager) {
+        this.manager = manager;
     }
 
+    @Basic
+    @Column(name = "name", nullable = false, length = 50)
     public String getName() {
-        return departmentName;
+        return name;
     }
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Budget getDepartmentBudget() {
-        return departmentBudget;
+    @Basic
+    @Column(name = "budget", precision = 2)
+    public Double getBudget() {
+        return budget;
     }
 
-    public void setDepartmentBudget(Budget departmentBudget) {
-        this.departmentBudget = departmentBudget;
+    public void setBudget(Double budget) {
+        this.budget = budget;
     }
 
-    public ArrayList<Sale> getSales() {
-        return sales;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Department that = (Department) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(manager, that.manager) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(budget, that.budget);
     }
 
-    public void setSales(ArrayList<Sale> sales) {
-        this.sales = sales;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, manager, name, budget);
     }
-
-
-
-
-
 }

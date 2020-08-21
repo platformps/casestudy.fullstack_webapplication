@@ -2,6 +2,8 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
     <persistence-unit name = "production">
         <class>package io.fulchr3356.upkeepassistant.models.Employee</class>
+        <class>package io.fulchr3356.upkeepassistant.models.Department</class>
+
 
         <properties>
             <!-- Configuring The Database Connection Details -->
@@ -29,6 +31,7 @@
     </persistence-unit>
     <persistence-unit name = "testing">
         <class>package io.fulchr3356.upkeepassistant.models.Employee</class>
+        <class>package io.fulchr3356.upkeepassistant.models.Department</class>
 
         <properties>
             <!-- Configuring The Database Connection Details -->

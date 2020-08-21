@@ -5,12 +5,21 @@ import java.util.HashMap;
 
 public final class DepartmentBuilder {
     private HashMap<String, Employee> Employees;
-    private Employee departmentManager;
+    Integer id;
+    private String departmentManager;
     private String departmentName;
-    private Budget departmentBudget;
+    private Double budget;
     private ArrayList<Sale> sales;
 
-    private DepartmentBuilder() {
+    private DepartmentBuilder(Department dataToBeUpdated) {
+        this.id = dataToBeUpdated.getId();
+        this.departmentManager = dataToBeUpdated.getManager();
+        this.departmentName = dataToBeUpdated.getName();
+        this.budget = dataToBeUpdated.getBudget();
+    }
+
+    public DepartmentBuilder() {
+
     }
 
     public static DepartmentBuilder aDepartment() {
@@ -22,7 +31,12 @@ public final class DepartmentBuilder {
         return this;
     }
 
-    public DepartmentBuilder withDepartmentManager(Employee departmentManager) {
+    public DepartmentBuilder withId(Integer id){
+        this.id = id;
+        return this;
+    }
+
+    public DepartmentBuilder withDepartmentManager(String departmentManager) {
         this.departmentManager = departmentManager;
         return this;
     }
@@ -32,8 +46,8 @@ public final class DepartmentBuilder {
         return this;
     }
 
-    public DepartmentBuilder withDepartmentBudget(Budget departmentBudget) {
-        this.departmentBudget = departmentBudget;
+    public DepartmentBuilder withDepartmentBudget(Double departmentBudget) {
+        this.budget = departmentBudget;
         return this;
     }
 
@@ -44,11 +58,10 @@ public final class DepartmentBuilder {
 
     public Department build() {
         Department department = new Department();
-        department.setEmployees(Employees);
-        department.setDepartmentManager(departmentManager);
-        department.setDepartmentName(departmentName);
-        department.setDepartmentBudget(departmentBudget);
-        department.setSales(sales);
+        department.setId(id);
+        department.setManager(departmentManager);
+        department.setName(departmentName);
+        department.setBudget(budget);
         return department;
     }
 }

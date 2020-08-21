@@ -10,7 +10,7 @@ public final class EmployeeBuilder {
     private Double salary;
     private String password;
 
-    private EmployeeBuilder() {
+    public EmployeeBuilder() {
     }
 
     public EmployeeBuilder(Employee dataToBeUpdated){

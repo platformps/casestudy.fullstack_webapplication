@@ -81,7 +81,7 @@ public class Employee implements EntityInterface<Integer> {
     }
 
     @Basic
-    @Column(name = "salary", nullable = false, precision = 0)
+    @Column(name = "salary", nullable = false)
     public Double getSalary() {
         return salary;
     }
