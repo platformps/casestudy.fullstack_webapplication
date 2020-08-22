@@ -1,51 +1,90 @@
 package io.fulchr3356.upkeepassistant.models;
 
-import java.util.Date;
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Objects;
+@Entity
+@Table(name = "budget", schema = "upkeep_assistant")
+public class Budget  implements EntityInterface<Integer>{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String manager;
+    private String name;
+    private Double amount;
+    private Timestamp renewDate;
 
-public class Budget {
-    private Integer totalBudgetAmount;
-    private Integer actualBudgetAmount;
-    private String departmentName;
-    private Date renewDate;
-    private Employee budgetManager;
-
-    public Integer getTotalBudgetAmount() {
-        return totalBudgetAmount;
+    public Budget(String name) {
+        this.name = name;
+        this.amount = 0.00;
     }
 
-    public void setTotalBudgetAmount(Integer totalBudgetAmount) {
-        this.totalBudgetAmount = totalBudgetAmount;
+    public Budget() {
+        this.amount = 0.00;
     }
 
-    public Integer getActualBudgetAmount() {
-        return actualBudgetAmount;
+    public Integer getId() {
+        return id;
     }
 
-    public void setActualBudgetAmount(Integer actualBudgetAmount) {
-        this.actualBudgetAmount = actualBudgetAmount;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getDepartmentName() {
-        return departmentName;
+    @Basic
+    @Column(name = "manager", nullable = true, length = 50)
+    public String getManager() {
+        return manager;
     }
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+    public void setManager(String manager) {
+        this.manager = manager;
     }
 
-    public Date getRenewDate() {
+    @Basic
+    @Column(name = "name", nullable = false, length = 50)
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Basic
+    @Column(name = "amount", nullable = false, precision = 2)
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    @Basic
+    @Column(name = "renew_date", nullable = false)
+    public Timestamp getRenewDate() {
         return renewDate;
     }
 
-    public void setRenewDate(Date renewDate) {
+    public void setRenewDate(Timestamp renewDate) {
         this.renewDate = renewDate;
     }
 
-    public Employee getBudgetManager() {
-        return budgetManager;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Budget that = (Budget) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(manager, that.manager) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(amount, that.amount) &&
+                Objects.equals(renewDate, that.renewDate);
     }
 
-    public void setBudgetManager(Employee budgetManager) {
-        this.budgetManager = budgetManager;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, manager, name, amount, renewDate);
     }
 }

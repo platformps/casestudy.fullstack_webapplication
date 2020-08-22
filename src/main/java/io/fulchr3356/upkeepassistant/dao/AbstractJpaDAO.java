@@ -5,9 +5,9 @@ import javax.persistence.PersistenceContext;
 
 public abstract class AbstractJpaDAO <TypeOfEntity> {
 
-    private Class< TypeOfEntity > entity;
+    private Class<TypeOfEntity> entity;
 
-    public final void setClazz( Class< TypeOfEntity > entityToSet ){
+    public final void setClass(Class<TypeOfEntity> entityToSet){
         this.entity = entityToSet;
     }
 
@@ -18,12 +18,12 @@ public abstract class AbstractJpaDAO <TypeOfEntity> {
     return entityManager.find(entity,id);
     }
 
-    public void create( TypeOfEntity entity ){
+    public void create(TypeOfEntity entity){
         entityManager.persist( entity );
     }
 
 
-    public TypeOfEntity update( TypeOfEntity entity ){
+    public TypeOfEntity update(TypeOfEntity entity ){
         return entityManager.merge( entity );
     }
 

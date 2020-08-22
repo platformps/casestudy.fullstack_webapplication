@@ -1,13 +1,13 @@
 package io.fulchr3356.upkeepassistant.models;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public final class BudgetBuilder {
-    private Integer totalBudgetAmount;
-    private Integer actualBudgetAmount;
-    private String departmentName;
-    private Date renewDate;
-    private Employee budgetManager;
+    private Integer id;
+    private String manager;
+    private String name;
+    private Double amount;
+    private Timestamp renewDate;
 
     private BudgetBuilder() {
     }
@@ -16,38 +16,38 @@ public final class BudgetBuilder {
         return new BudgetBuilder();
     }
 
-    public BudgetBuilder withTotalBudgetAmount(Integer totalBudgetAmount) {
-        this.totalBudgetAmount = totalBudgetAmount;
+    public BudgetBuilder withId(Integer id) {
+        this.id = id;
         return this;
     }
 
-    public BudgetBuilder withActualBudgetAmount(Integer actualBudgetAmount) {
-        this.actualBudgetAmount = actualBudgetAmount;
+    public BudgetBuilder withManager(String manager) {
+        this.manager = manager;
         return this;
     }
 
-    public BudgetBuilder withDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+    public BudgetBuilder withName(String name) {
+        this.name = name;
         return this;
     }
 
-    public BudgetBuilder withRenewDate(Date renewDate) {
+    public BudgetBuilder withAmount(Double amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    public BudgetBuilder withRenewDate(Timestamp renewDate) {
         this.renewDate = renewDate;
-        return this;
-    }
-
-    public BudgetBuilder withBudgetManager(Employee budgetManager) {
-        this.budgetManager = budgetManager;
         return this;
     }
 
     public Budget build() {
         Budget budget = new Budget();
-        budget.setTotalBudgetAmount(totalBudgetAmount);
-        budget.setActualBudgetAmount(actualBudgetAmount);
-        budget.setDepartmentName(departmentName);
+        budget.setId(id);
+        budget.setManager(manager);
+        budget.setName(name);
+        budget.setAmount(amount);
         budget.setRenewDate(renewDate);
-        budget.setBudgetManager(budgetManager);
         return budget;
     }
 }

@@ -4,14 +4,23 @@ import javax.persistence.*;
 import java.util.Objects;
 @Entity
 @Table(name = "department", schema = "upkeep_assistant")
-public class Department {
+public class Department implements EntityInterface<Integer>{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String manager;
     private String name;
     private Double budget;
 
-    @Id
-    @Column(name = "id", nullable = false)
+    public Department(String name) {
+        this.name = name;
+    }
+
+    public Department() {
+
+    }
+
+
     public Integer getId() {
         return id;
     }

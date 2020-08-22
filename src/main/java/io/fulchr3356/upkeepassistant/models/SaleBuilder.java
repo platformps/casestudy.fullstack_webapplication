@@ -1,13 +1,14 @@
 package io.fulchr3356.upkeepassistant.models;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public final class SaleBuilder {
-    private int id;
+    private Integer id;
+    private String employeeFirstName;
+    private String employeeLastName;
     private String productName;
-    private String saleDepartment;
-    private Date saleDate;
-    private Employee employee;
+    private Double amount;
+    private Timestamp saleDate;
 
     private SaleBuilder() {
     }
@@ -16,8 +17,18 @@ public final class SaleBuilder {
         return new SaleBuilder();
     }
 
-    public SaleBuilder withId(int id) {
+    public SaleBuilder withId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public SaleBuilder withEmployeeFirstName(String employeeFirstName) {
+        this.employeeFirstName = employeeFirstName;
+        return this;
+    }
+
+    public SaleBuilder withEmployeeLastName(String employeeLastName) {
+        this.employeeLastName = employeeLastName;
         return this;
     }
 
@@ -26,28 +37,24 @@ public final class SaleBuilder {
         return this;
     }
 
-    public SaleBuilder withSaleDepartment(String saleDepartment) {
-        this.saleDepartment = saleDepartment;
+    public SaleBuilder withAmount(Double amount) {
+        this.amount = amount;
         return this;
     }
 
-    public SaleBuilder withSaleDate(Date saleDate) {
+    public SaleBuilder withSaleDate(Timestamp saleDate) {
         this.saleDate = saleDate;
-        return this;
-    }
-
-    public SaleBuilder withEmployee(Employee employee) {
-        this.employee = employee;
         return this;
     }
 
     public Sale build() {
         Sale sale = new Sale();
         sale.setId(id);
+        sale.setEmployeeFirstName(employeeFirstName);
+        sale.setEmployeeLastName(employeeLastName);
         sale.setProductName(productName);
-        sale.setSaleDepartment(saleDepartment);
+        sale.setAmount(amount);
         sale.setSaleDate(saleDate);
-        sale.setEmployee(employee);
         return sale;
     }
 }

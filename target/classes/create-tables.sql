@@ -27,6 +27,35 @@ create table department
 create unique index department_id_uindex
     on department (id);
 
+create table budget
+(
+    id int NOT NULL auto_increment PRIMARY KEY ,
+    manager VARCHAR(50) null,
+    name VARCHAR(50) not null,
+    amount DOUBLE(7,2) not null,
+    renew_date TIMESTAMP  not null DEFAULT CURRENT_TIMESTAMP
+);
+
+create unique index budget_id_uindex
+    on budget (id);
+
+create table sale
+(
+    id int NOT NULL auto_increment PRIMARY KEY ,
+    employee_first_name VARCHAR(50)  not null,
+    employee_last_name VARCHAR(50)  not null,
+    product_name VARCHAR(50) not null,
+    amount DOUBLE(7,2) not null,
+    sale_date TIMESTAMP  not null DEFAULT CURRENT_TIMESTAMP
+);
+
+create unique index sale_id_uindex
+    on sale (id);
+
+
+
+
+
 
 
 
