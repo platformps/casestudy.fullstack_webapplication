@@ -116,6 +116,19 @@ public class Employee implements EntityInterface<Integer> {
     }
 
     @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", department='" + department + '\'' +
+                ", position='" + position + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, email, department, position, salary, password);
     }

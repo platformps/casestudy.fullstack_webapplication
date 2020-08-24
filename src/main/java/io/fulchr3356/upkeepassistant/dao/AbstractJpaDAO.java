@@ -19,7 +19,7 @@ public abstract class AbstractJpaDAO <TypeOfEntity> {
     }
 
     public void create(TypeOfEntity entity){
-        entityManager.persist( entity );
+        entityManager.persist(entity);
     }
 
 

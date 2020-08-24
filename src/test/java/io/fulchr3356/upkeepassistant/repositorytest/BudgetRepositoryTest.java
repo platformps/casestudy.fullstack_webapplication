@@ -1,4 +1,4 @@
-package io.fulchr3356.upkeepassistant;
+package io.fulchr3356.upkeepassistant.repositorytest;
 
 import io.fulchr3356.upkeepassistant.models.Budget;
 import io.fulchr3356.upkeepassistant.models.Department;
