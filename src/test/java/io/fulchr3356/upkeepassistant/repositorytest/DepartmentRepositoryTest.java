@@ -39,8 +39,10 @@ public class DepartmentRepositoryTest {
         Iterable<Department> departments = departmentRepository.findAll();
         int count = 0;
         for(Department d : departments){
+
             count++;
         }
         assertEquals(count, 2);
+
     }
 }

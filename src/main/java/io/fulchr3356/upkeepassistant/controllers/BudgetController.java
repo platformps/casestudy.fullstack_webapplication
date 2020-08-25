@@ -2,38 +2,57 @@ package io.fulchr3356.upkeepassistant.controllers;
 
 import io.fulchr3356.upkeepassistant.models.Budget;
 import io.fulchr3356.upkeepassistant.repositories.BudgetRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import javax.validation.Valid;
+import org.springframework.http.ResponseEntity;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Collection;
 import java.util.Optional;
 
-public class BudgetController implements ControllerInterface<Budget>{
+@RestController
+@RequestMapping(value = "/api")
+public class BudgetController  {
     private final BudgetRepository budgetRepository;
+    private final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
-    public BudgetController(BudgetRepository budgetRepository){
+    public BudgetController(BudgetRepository budgetRepository) {
         this.budgetRepository = budgetRepository;
     }
-    @Override
-    public Optional<Budget> findById(Integer id) {
-        return budgetRepository.findById(id);
-    }
-
-    @Override
-    public Iterable<Budget> findAll() {
+    @GetMapping(value = "/budget")
+    public Collection<Budget> findAll() {
         return budgetRepository.findAll();
     }
 
-    @Override
-    public void update(Budget budget) {
-        //TODO add build budget
-        budgetRepository.save(budget);
-    }
 
-    @Override
-    public void add(Budget budget) {
-        budgetRepository.save(budget);
-    }
+    ResponseEntity<?> add(@Valid @RequestBody Budget budget) throws URISyntaxException {
+        Budget result = this.budgetRepository.save(budget);
+        return ResponseEntity.created(new URI("/api/budget/" + budget.getId()))
+                .body(result); }
 
-    @Override
-    public void delete(Integer id) {
+    @GetMapping(value = "/budget/{id}")
+    ResponseEntity<?> findById(@PathVariable Integer id){
+        Optional<Budget>  budget = budgetRepository.findById(id);
+        return budget.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+    @PutMapping(value = "/budget/{id}")
+    ResponseEntity<?> update(@Valid @RequestBody Budget budget)  {
+        log.info("Request to update budget: {}", budget);
+        Budget result = budgetRepository.save(budget);
+        return  ResponseEntity.ok().build();
+    }
+    @DeleteMapping(value = "/budget/{id}")
+    public ResponseEntity<?> delete(@PathVariable Integer id){
+        log.info("Request to delete budget: {}", id);
         budgetRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
+
+
+
 }

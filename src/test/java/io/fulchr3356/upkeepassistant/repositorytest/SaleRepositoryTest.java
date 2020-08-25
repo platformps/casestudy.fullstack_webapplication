@@ -44,5 +44,7 @@ public class SaleRepositoryTest {
             count++;
         }
         assertEquals(count, 2);
+        saleRepository.deleteById(1);
+        saleRepository.deleteById(2);
     }
 }

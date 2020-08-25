@@ -44,5 +44,7 @@ public class BudgetRepositoryTest {
             count++;
         }
         assertEquals(count, 2);
+        budgetRepository.deleteById(1);
+        budgetRepository.deleteById(2);
     }
 }
