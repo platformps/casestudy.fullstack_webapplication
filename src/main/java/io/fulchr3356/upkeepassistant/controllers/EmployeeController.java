@@ -35,7 +35,7 @@ public class EmployeeController  {
                .body(result); }
 
     @GetMapping(value = "/employee/{id}")
-     ResponseEntity<?> findById(@PathVariable Integer id){
+     public ResponseEntity<?> findById(@PathVariable Integer id){
         Optional<Employee>  employee = employeeRepository.findById(id);
         return employee.map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
