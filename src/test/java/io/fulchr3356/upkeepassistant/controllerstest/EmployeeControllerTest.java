@@ -2,6 +2,7 @@ package io.fulchr3356.upkeepassistant.controllerstest;
 
 
 import io.fulchr3356.upkeepassistant.controllers.EmployeeController;
+import io.fulchr3356.upkeepassistant.models.Employee;
 import io.fulchr3356.upkeepassistant.models.EmployeeBuilder;
 import io.fulchr3356.upkeepassistant.repositories.EmployeeRepository;
 import org.junit.Before;

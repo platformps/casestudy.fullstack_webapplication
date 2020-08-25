@@ -3,7 +3,8 @@
     <persistence-unit name = "production">
         <class>package io.fulchr3356.upkeepassistant.models.Employee</class>
         <class>package io.fulchr3356.upkeepassistant.models.Department</class>
-
+        <class>package io.fulchr3356.upkeepassistant.models.Sale</class>
+        <class>package io.fulchr3356.upkeepassistant.models.Budget</class>
 
         <properties>
             <!-- Configuring The Database Connection Details -->
@@ -32,6 +33,8 @@
     <persistence-unit name = "testing">
         <class>package io.fulchr3356.upkeepassistant.models.Employee</class>
         <class>package io.fulchr3356.upkeepassistant.models.Department</class>
+        <class>package io.fulchr3356.upkeepassistant.models.Sale</class>
+        <class>package io.fulchr3356.upkeepassistant.models.Budget</class>
 
         <properties>
             <!-- Configuring The Database Connection Details -->

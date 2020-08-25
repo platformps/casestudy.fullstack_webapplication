@@ -6,5 +6,4 @@ import java.util.Optional;
 
 public interface DepartmentRepository extends CrudRepository<Department,Integer> {
     Optional<Department> findById(Integer id);
-
 }

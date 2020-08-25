@@ -1,10 +1,11 @@
 package io.fulchr3356.upkeepassistant.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 @Entity
 @Table(name = "employee", schema = "upkeep_assistant")
-public class Employee implements EntityInterface<Integer> {
+public class Employee implements EntityInterface<Integer>, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
