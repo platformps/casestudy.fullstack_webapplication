@@ -15,6 +15,7 @@ app/**/*.js.map
 
 # IDEs and editors
 .idea/
+node_modules/
 
 /shelf/
 /.idea/workspace.xml
