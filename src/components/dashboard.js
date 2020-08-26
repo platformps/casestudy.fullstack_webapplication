@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 import { render } from '@testing-library/react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, NavLink,useRouteMatch } from "react-router-dom";
 import Login from "./login";
 import logo from './logobw.png';
 import userLogo from '../img/user-3.png';
 import '../Dashboard.css';
 import EmployeeList from  './EmployeeList';
 import { Button, Container } from 'reactstrap';
+import EditEmployee from  './EditEmployee';
 
-export default class Dashboard extends Component{
+
+class Dashboard extends Component{
     
-    
-      
+     
+    constructor(props) {
+        super(props);
+        let match = props.match
+        
+    }
     
     render() {
         
@@ -32,18 +38,22 @@ export default class Dashboard extends Component{
 
                     <button className = "Dashboard-Button" > Dashboard</button>
                 
-                    <button className = "Dashboard-Button"> Emplyees</button>
+                    <Link to = {this.props.match.path+"/employees"}><button className = "Dashboard-Button"> Employees</button></Link>
             
                     <button className = "Dashboard-Button">Expenses</button>
                 
-                    <button className = "Dashboard-Button">Expenses</button>
+                    <button className = "Dashboard-Button">Sales</button>
                 
                     <button className = "Dashboard-Button">Payroll</button>
+
                </div>
             
           </div>
           <div>
-          <Route path="/" component={EmployeeList}/>
+       
+          <Route path={this.props.match.path+"/employees"} component={EmployeeList}/>
+          <Route path={this.props.match.path+"/employees/:id"}  component={EditEmployee}/>
+          
           </div>
           
           </div>
@@ -55,3 +65,5 @@ export default class Dashboard extends Component{
         );
     }
 }
+
+export default Dashboard;

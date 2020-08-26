@@ -3,12 +3,14 @@ import { Button, ButtonGroup, Container, Table, ListGroup, ListGroupItem } from 
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../viewlist.css';
+import EditEmployee from  './EditEmployee';
 
 
 class EmployeeList extends Component {
 
   constructor(props) {
     super(props);
+    
     this.state = {employee: [], isLoading: true};
     this.remove = this.remove.bind(this);
   }
@@ -17,13 +19,14 @@ class EmployeeList extends Component {
   componentDidMount() {
     this.setState({isLoading: true});
 
-    fetch('api/employee')
+    fetch('../api/employee')
       .then(response => response.json())
       .then(data => this.setState({employee: data, isLoading: false}));
+      // console.log(employee);
   }
 
   async remove(id) {
-    await fetch(`/api/employee/${id}`, {
+    await fetch(`../api/employee/${id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
@@ -61,7 +64,7 @@ class EmployeeList extends Component {
             {employee.map(employee =>
              <li className="list-group-item" key={employee.id}> 
                 {employee.firstName} {employee.lastName} {employee.position}
-                <Button className="float-right" size="sm" color="primary"   tag={Link} to={"/employee/" + employee.id}>Edit</Button>
+                <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/employees" + employee.id}>Edit</Button>
                 <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(employee.id)}>Delete</Button>
               </li>
               
