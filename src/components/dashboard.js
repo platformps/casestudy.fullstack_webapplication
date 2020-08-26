@@ -5,15 +5,22 @@ import Login from "./login";
 import logo from './logobw.png';
 import userLogo from '../img/user-3.png';
 import '../Dashboard.css';
+import EmployeeList from  './EmployeeList';
+import { Button, Container } from 'reactstrap';
 
 export default class Dashboard extends Component{
+    
+    
+      
+    
     render() {
+        
         return(
             <div>
                 <div className = "Dashboard-Header">
                 <button className = "topBarComp"  onClick ={() => this.props.history.goBack()}> <img   src = {userLogo} /></button>
               </div>
-
+            
            
             
           <div className = "menuContainer">
@@ -34,6 +41,9 @@ export default class Dashboard extends Component{
                     <button className = "Dashboard-Button">Payroll</button>
                </div>
             
+          </div>
+          <div>
+          <Route path="/" component={EmployeeList}/>
           </div>
           
           </div>

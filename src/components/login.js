@@ -4,6 +4,9 @@ import { render } from '@testing-library/react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SignUp from "./signup";
 import Dashboard from './dashboard';
+import { Button, ButtonGroup, Container, Table } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+
 export default class Login extends Component {
     render() {
         return (
@@ -20,13 +23,13 @@ export default class Login extends Component {
                 </div>
                 <div>
                     <Link className = "nav-link" to = {"/dashboard"}>
-                    <button type="submit"> Sign in</button>
+                    <Button style = {{backgroundColor: "#2196f3"}} type="submit"> Sign in</Button>
                     </Link>
 
                     <p>Forgot your password? <a href="" > Reset</a></p>
                     <div >
                     <Link className = "nav-link" to = {"/registration"}>
-                    <button style = {{backgroundColor: "#2196f3"}} > Create an account</button>
+                    <Button style = {{backgroundColor: "#2196f3"}} > Create an account</Button>
                     </Link>
                      </div>
                 </div>

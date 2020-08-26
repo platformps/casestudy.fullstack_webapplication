@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { render } from '@testing-library/react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./login";
+import { Button, ButtonGroup, Container, Table } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 export default class Registration extends Component {
     render() {
@@ -18,7 +21,7 @@ export default class Registration extends Component {
                         <div><input type="email" name="email" placeholder="Enter Email"></input></div>
                         <div><input type="password" name="password" placeholder="Enter Password"></input></div>
                         <div><input type="password" name="Cpassword" placeholder="Confirm Password"></input></div>
-                        <div style = {{paddingTop: 75 +'px'}}><button type="submit"> Register</button></div>
+                        <div style = {{paddingTop: 75 +'px'}}><Button style = {{backgroundColor: "#2196f3"}} type="submit"> Register</Button></div>
                         <p>
                             Once you click Register you agree with our Terms and Condtions
                         </p>
@@ -31,9 +34,9 @@ export default class Registration extends Component {
                             Already have an account?
                     </h1>
                         <Link className="nav-link" to={"/"}>
-                            <button>
+                            <Button style = {{backgroundColor: "#2196f3"}}>
                                 Login
-                    </button>
+                    </Button>
                         </Link>
                     </div>
                 </div>
