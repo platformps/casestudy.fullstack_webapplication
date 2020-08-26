@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup, Container, Table } from 'reactstrap';
+import { Button, ButtonGroup, Container, Table, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
+import '../viewlist.css';
+
 
 class EmployeeList extends Component {
 
@@ -10,6 +12,7 @@ class EmployeeList extends Component {
     this.state = {employee: [], isLoading: true};
     this.remove = this.remove.bind(this);
   }
+  
 
   componentDidMount() {
     this.setState({isLoading: true});
@@ -39,20 +42,33 @@ class EmployeeList extends Component {
       return <p>Loading...</p>;
     }
     return (
-     
-          <div className="App-intro">
-            <h2>Employee List</h2>
+      <div className = "container  no-gutters mx-auto">
+        <div className = "row no-gutters pb-5 pt-5">
+          <div className = "col-4">
+           
+          </div>
+          <div className = "col-4">
+            <h5>Employees</h5>
+            <hr id="hr2" />
+          </div>
+          <div className = "col-4">
+            <button className="btn btn-primary">+</button>
+          </div>
+        </div>
+        <div className = "row no-gutters">
+          <div className ="col-12 no-gutters pb-5">
+             <ul className="list-group">
             {employee.map(employee =>
-              <div key={employee.id}>
-                <td>
-                <ButtonGroup>
-                {employee.firstName} {employee.lastName }
-                <Button size="sm" color="primary" tag={Link} to={"/employee/" + employee.id}>Edit</Button>
-                <Button size="sm" color="danger" onClick={() => this.remove(employee.id)}>Delete</Button>
-                </ButtonGroup>
-                </td>
-              </div>
+             <li className="list-group-item" key={employee.id}> 
+                {employee.firstName} {employee.lastName} {employee.position}
+                <Button className="float-right" size="sm" color="primary"   tag={Link} to={"/employee/" + employee.id}>Edit</Button>
+                <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(employee.id)}>Delete</Button>
+              </li>
+              
             )}
+            </ul>
+          </div>
+          </div>
           </div>
     );
   }

@@ -1,0 +1,23 @@
+
+  
+  .container{/*white;*/
+  border-radius:8px;
+  background-color: #212b38;
+  width: 400px;
+  }
+
+  .list-group{color:white;}
+
+  .list-group-item{
+      background:transparent;
+      border:none;}
+
+  hr{
+    border: 2px solid red;
+    width: 400px;
+    
+  }
+  #hr2{
+    width: 130px;
+  
+  }
