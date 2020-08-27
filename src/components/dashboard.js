@@ -8,6 +8,7 @@ import '../Dashboard.css';
 import EmployeeList from  './EmployeeList';
 import { Button, Container } from 'reactstrap';
 import EditEmployee from  './EditEmployee';
+import  DepartmentList from  './DepartmentList';
 
 
 class Dashboard extends Component{
@@ -39,6 +40,8 @@ class Dashboard extends Component{
                     <button className = "Dashboard-Button" > Dashboard</button>
                 
                     <Link to = {this.props.match.path+"/employees"}><button className = "Dashboard-Button"> Employees</button></Link>
+
+                    <Link to = {this.props.match.path+"/department"}><button className = "Dashboard-Button"> Departments</button></Link>
             
                     <button className = "Dashboard-Button">Expenses</button>
                 
@@ -50,9 +53,11 @@ class Dashboard extends Component{
             
           </div>
           <div>
-       
+          <Switch>
           <Route path={this.props.match.path+"/employees"} component={EmployeeList}/>
           <Route path={this.props.match.path+"/employees/:id"}  component={EditEmployee}/>
+          <Route path={this.props.match.path+"/department"} component={DepartmentList}/>
+          </Switch>
           
           </div>
           

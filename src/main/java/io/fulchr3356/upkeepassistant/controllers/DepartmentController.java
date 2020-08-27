@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping("/api")
 public class DepartmentController  {
     private final DepartmentRepository departmentRepository;
     private final Logger log = LoggerFactory.getLogger(DepartmentController.class);
