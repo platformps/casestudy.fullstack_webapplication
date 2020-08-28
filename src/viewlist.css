@@ -1,16 +1,26 @@
 
   
   .container{/*white;*/
+    width: 400px;
   border-radius:8px;
-  background-color: #212b38;
-  width: 400px;
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+  background-color: #27293d;
   }
 
-  .list-group{color:white;}
+  .listG{
+    width:200px;
+  }
+
+  .list-group{
+    background: white;
+    color:white;}
 
   .list-group-item{
-      background:transparent;
-      border:none;}
+      background:white;
+      border:1px solid;
+      border-color: darkgray;
+      font-size: medium;
+    }
 
   hr{
     border: 2px solid red;

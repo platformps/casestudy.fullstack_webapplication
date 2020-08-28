@@ -1,19 +1,19 @@
 .Dashboard-Button{
   width: 100%;
   height: 100px;
-  font-size: large;
+  font-size: medium;
   border: none;
   background-color: transparent;
   color: white;
 }
  .Dashboard-Header{
     position: absolute;
-    background-color: #576a85;
+    
     left: 0;
     width: 100%;
     top:  0;
-     
-     height: 2%;
+    border-radius: 15px;
+    height: 4%;
  }
 .topBarComp{
   background-color: transparent;
@@ -43,21 +43,22 @@
 }
 
  .menuContainer{
-  
+    border-radius:8px;
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+    background-color: #27293d;
     left: 0;
-    background-color: #212b38;
-    width: 15%;
+    width: 10%;
     height: 100%;
     position: fixed;
     z-index: 1;
-    top: 0;
+    top: 7%;
     overflow-x: hidden;
     border-radius: 5px;
   }
 
   .infoContainer{
     left: 0;
-    background-color: #576a85;
+    background: transparent;
     width: 15%;
     height: 100%;
     position: fixed;
@@ -67,9 +68,7 @@
     border-radius: 5px;
   }
 
-  .container, .container-fluid {
-    margin-top: 20px;
-  }  
+  
 
   
 

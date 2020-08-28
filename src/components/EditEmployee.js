@@ -10,6 +10,9 @@ class EmployeeEdit extends Component {
     position: '',
     salary: '',
     department: '',
+    email: '',
+    password: ''
+
   };
 
   constructor(props) {
@@ -23,7 +26,7 @@ class EmployeeEdit extends Component {
 
   async componentDidMount() {
     if (this.props.match.params.id !== 'new') {
-      const employee = await (await fetch(`/api/employee/${this.props.match.params.id}`)).json();
+      const employee = await (await fetch(`../../api/employee/${this.props.match.params.id}`)).json();
       this.setState({item: employee});
     }
   }
@@ -41,7 +44,7 @@ class EmployeeEdit extends Component {
     event.preventDefault();
     const {item} = this.state;
 
-    await fetch('../api/employee', {
+    await fetch('../../api/employee', {
       method: (item.id) ? 'PUT' : 'POST',
       headers: {
         'Accept': 'application/json',
@@ -71,25 +74,35 @@ class EmployeeEdit extends Component {
                    onChange={this.handleChange} autoComplete="lastName"/>
           </FormGroup>
           <FormGroup>
-            <Label for="address">Position</Label>
-            <Input type="text" name="postion" id="postion" value={item.positon || ''}
-                   onChange={this.handleChange} autoComplete="address-level1"/>
+            <Label for="email">Email</Label>
+            <Input type="email" name="email" id="email" value={item.email || ''}
+                   onChange={this.handleChange} autoComplete="email"/>
+          </FormGroup>
+          <FormGroup>
+            <Label for="password">Password</Label>
+            <Input type="password" name="password" id="password" value={item.password || ''}
+                   onChange={this.handleChange} autoComplete="password"/>
+          </FormGroup>
+          <FormGroup>
+            <Label for="position">Position</Label>
+            <Input type="text" name="position" id="position" value={item.position || ''}
+                   onChange={this.handleChange} autoComplete="position"/>
           </FormGroup>
           <FormGroup>
             <Label for="city">Department</Label>
             <Input type="text" name="department" id="department" value={item.department || ''}
-                   onChange={this.handleChange} autoComplete="address-level1"/>
+                   onChange={this.handleChange} autoComplete="department"/>
           </FormGroup>
           <div className="row">
             <FormGroup className="col-md-4 mb-3">
               <Label for="stateOrProvince">Salary</Label>
               <Input type="text" name="salary" id="salary" value={item.salary || ''}
-                     onChange={this.handleChange} autoComplete="address-level1"/>
+                     onChange={this.handleChange} autoComplete="salary"/>
             </FormGroup>
           </div>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="secondary" tag={Link} to="/employee">Cancel</Button>
+            <Button color="secondary" tag={Link} to ={"../employees"}>Cancel</Button>
           </FormGroup>
         </Form>
       </Container>

@@ -28,8 +28,8 @@ public class EmployeeController  {
         return employeeRepository.findAll();
     }
 
-
-    public ResponseEntity<?> add(@Valid @RequestBody Employee employee) throws URISyntaxException {
+    @PostMapping(value = "/employee")
+    public ResponseEntity<Employee> add(@Valid @RequestBody Employee employee) throws URISyntaxException {
        Employee result = this.employeeRepository.save(employee);
        return ResponseEntity.created(new URI("/api/employee/" + employee.getId()))
                .body(result); }
@@ -40,8 +40,8 @@ public class EmployeeController  {
         return employee.map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    @PutMapping(value = "/employee/{id}")
-    ResponseEntity<?> update(@Valid @RequestBody Employee employee)  {
+    @PutMapping("/employee/{id}")
+    public ResponseEntity<Employee> update(@Valid @RequestBody Employee employee)  {
         log.info("Request to update employee: {}", employee);
         Employee result = employeeRepository.save(employee);
         return  ResponseEntity.ok().build();

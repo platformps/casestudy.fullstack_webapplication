@@ -9,6 +9,11 @@ import EmployeeList from  './EmployeeList';
 import { Button, Container } from 'reactstrap';
 import EditEmployee from  './EditEmployee';
 import  DepartmentList from  './DepartmentList';
+import EditDepartment from './EditDepartment';
+import  SaleList from  './SaleList';
+import  BudgetList from  './BudgetList';
+import Avatar from 'react-avatar';
+import PrimarySearchAppBar from './PrimarySearchAppBar';
 
 
 class Dashboard extends Component{
@@ -24,28 +29,28 @@ class Dashboard extends Component{
         
         return(
             <div>
-                <div className = "Dashboard-Header">
-                <button className = "topBarComp"  onClick ={() => this.props.history.goBack()}> <img   src = {userLogo} /></button>
+                {/* <header className = "Dashboard-Header">  
+                <Avatar   src = {userLogo} size="48"  onClick ={() => this.props.history.goBack()}> </Avatar>
+              </header> */}
+            <div className = "Dashboard-Header">
+              <PrimarySearchAppBar/>
               </div>
-            
            
             
           <div className = "menuContainer">
             
-              <h2>UpKeep Assistant
-               <img src={logo} className="App-logo" alt="logo" style = {{height: 100 +'px', width: 100 +'px'}} />
-               </h2>
+             
                <div style = {{textAlign: "left", left: 0}}>
 
-                    <button className = "Dashboard-Button" > Dashboard</button>
+
                 
                     <Link to = {this.props.match.path+"/employees"}><button className = "Dashboard-Button"> Employees</button></Link>
 
                     <Link to = {this.props.match.path+"/department"}><button className = "Dashboard-Button"> Departments</button></Link>
             
-                    <button className = "Dashboard-Button">Expenses</button>
+                    <Link to = {this.props.match.path+"/budget"}><button className = "Dashboard-Button">Expenses</button></Link>
                 
-                    <button className = "Dashboard-Button">Sales</button>
+                    <Link to = {this.props.match.path+"/sale"}><button className = "Dashboard-Button">Sales</button></Link>
                 
                     <button className = "Dashboard-Button">Payroll</button>
 
@@ -53,11 +58,14 @@ class Dashboard extends Component{
             
           </div>
           <div>
-          <Switch>
+          
           <Route path={this.props.match.path+"/employees"} component={EmployeeList}/>
           <Route path={this.props.match.path+"/employees/:id"}  component={EditEmployee}/>
           <Route path={this.props.match.path+"/department"} component={DepartmentList}/>
-          </Switch>
+          <Route path={this.props.match.path+"/department/:id"}  component={EditDepartment}/>
+          <Route path={this.props.match.path+"/budget"} component={BudgetList}/>
+          <Route path={this.props.match.path+"/sale"} component={SaleList}/>
+
           
           </div>
           

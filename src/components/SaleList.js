@@ -3,15 +3,15 @@ import { Button, ButtonGroup, Container, Table, ListGroup, ListGroupItem } from 
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../viewlist.css';
-import EditEmployee from  './EditEmployee';
+//import EditSale from  './EditSale';
 
 
-class EmployeeList extends Component {
+class SaleList extends Component {
 
   constructor(props) {
     super(props);
     
-    this.state = {employee: [], isLoading: true};
+    this.state = {sale: [], isLoading: true};
     this.remove = this.remove.bind(this);
   }
   
@@ -19,39 +19,39 @@ class EmployeeList extends Component {
   componentDidMount() {
     this.setState({isLoading: true});
 
-    fetch('../api/employee')
+    fetch('../api/sale')
       .then(response => response.json())
-      .then(data => this.setState({employee: data, isLoading: false}));
-      // console.log(employee);
+      .then(data => this.setState({sale: data, isLoading: false}));
+      // console.log(sale);
   }
 
   async remove(id) {
-    await fetch(`../api/employee/${id}`, {
+    await fetch(`../api/sale/${id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
     }).then(() => {
-      let updatedEmployees = [...this.state.employee].filter(i => i.id !== id);
-      this.setState({employee: updatedEmployees});
+      let updatedSales = [...this.state.sale].filter(i => i.id !== id);
+      this.setState({sale: updatedSales});
     });
   }
 
   render() {
-    const {employee, isLoading} = this.state;
+    const {sale, isLoading} = this.state;
 
     if (isLoading) {
       return <p>Loading...</p>;
     }
     return (
-      <div className = "container no-gutters mx-auto">
+      <div className = "container  no-gutters mx-auto">
         <div className = "row no-gutters pb-5 pt-5">
           <div className = "col-4">
            
           </div>
           <div className = "col-4">
-            <h5>Employees</h5>
+            <h5>Sales</h5>
             <hr id="hr2" />
           </div>
           <div className = "col-4">
@@ -61,11 +61,11 @@ class EmployeeList extends Component {
         <div className = "row no-gutters">
           <div className ="col-12 no-gutters pb-5">
              <ul className="list-group">
-            {employee.map(employee =>
-             <li className="list-group-item" key={employee.id}> 
-                {employee.firstName} {employee.lastName} {employee.position}
-                <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + employee.id}>Edit</Button>
-                <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(employee.id)}>Delete</Button>
+            {sale.map(sale =>
+             <li className="list-group-item" key={sale.id}> 
+                {sale.id} {sale.product_name} {sale.amount} 
+                <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + sale.id}>Edit</Button>
+                <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(sale.id)}>Delete</Button>
               </li>
               
             )}
@@ -77,4 +77,4 @@ class EmployeeList extends Component {
   }
 }
 
-export default EmployeeList;
+export default SaleList;
