@@ -28,8 +28,8 @@ public class SaleController  {
         return saleRepository.findAll();
     }
 
-
-    ResponseEntity<?> add(@Valid @RequestBody Sale sale) throws URISyntaxException {
+    @PostMapping(value = "/sale")
+    public ResponseEntity<?> add(@Valid @RequestBody Sale sale) throws URISyntaxException {
         Sale result = this.saleRepository.save(sale);
         return ResponseEntity.created(new URI("/api/sale/" + sale.getId()))
                 .body(result); }

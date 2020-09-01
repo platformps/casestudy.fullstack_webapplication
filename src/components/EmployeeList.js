@@ -55,7 +55,7 @@ class EmployeeList extends Component {
             <hr id="hr2" />
           </div>
           <div className = "col-4">
-            <button className="btn btn-primary">+</button>
+            <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/" + employee.id}>+</Button>
           </div>
         </div>
         <div className = "row no-gutters">

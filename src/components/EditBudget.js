@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 
-class DepartmentEdit extends Component {
+class BudgetEdit extends Component {
 
   emptyItem = {
     name: '',
-    budget:'',
+    amount:'',
     manager: '',
+    renew_date: '',
   
   };
 
@@ -22,7 +23,7 @@ class DepartmentEdit extends Component {
 
   async componentDidMount() {
     if (this.props.match.params.id !== 'new') {
-      const department = await (await fetch(`../../api/department/${this.props.match.params.id}`)).json();
+      const department = await (await fetch(`../../api/budget/${this.props.match.params.id}`)).json();
       this.setState({item: department});
     }
   }
@@ -40,7 +41,7 @@ class DepartmentEdit extends Component {
     event.preventDefault();
     const {item} = this.state;
 
-    await fetch('../../api/department', {
+    await fetch('../../api/budget', {
       method: (item.id) ? 'PUT' : 'POST',
       headers: {
         'Accept': 'application/json',
@@ -48,31 +49,36 @@ class DepartmentEdit extends Component {
       },
       body: JSON.stringify(item),
     });
-    this.props.history.push('../department');
+    this.props.history.push('../budget');
   }
 
   render() {
     const {item} = this.state;
-    const title = <h2>{item.id ? 'Edit Department' : 'Add Department'}</h2>;
+    const title = <h2>{item.id ? 'Edit Budget' : 'Add Budget'}</h2>;
 
     return <div>
       <Container>
         {title}
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
-            <Label for="name">Department Name</Label>
+            <Label for="name">Departemnt Name</Label>
             <Input type="text" name="name" id="name" value={item.name || ''}
                    onChange={this.handleChange} autoComplete="name"/>
           </FormGroup>
           <FormGroup>
-            <Label for="lastName">Department Manager</Label>
+            <Label for="lastName">Budget Manager</Label>
             <Input type="text" name="manager" id="manager" value={item.manager || ''}
                    onChange={this.handleChange} autoComplete="manager"/>
           </FormGroup>
           <FormGroup>
-            <Label for="address">Budget</Label>
-            <Input type="text" name="budget" id="budget" value={item.budget || ''}
-                   onChange={this.handleChange} autoComplete="budget"/>
+            <Label for="address">Amount</Label>
+            <Input type="text" name="amount" id="amount" value={item.amount || ''}
+                   onChange={this.handleChange} autoComplete="amount"/>
+          </FormGroup>
+          <FormGroup>
+            <Label for="address">Renew Date</Label>
+            <Input type="date" name="renew_date" id="renew_date" value={item.renew_date || ''}
+                   onChange={this.handleChange} autoComplete="renew_date"/>
           </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
@@ -84,4 +90,4 @@ class DepartmentEdit extends Component {
   }
 }
 
-export default withRouter(DepartmentEdit);
+export default withRouter(BudgetEdit);

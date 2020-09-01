@@ -14,6 +14,8 @@ import  SaleList from  './SaleList';
 import  BudgetList from  './BudgetList';
 import Avatar from 'react-avatar';
 import PrimarySearchAppBar from './PrimarySearchAppBar';
+import DashboardGraphs from './DashboardGraphs';
+import EditBudget from './EditBudget';
 
 
 class Dashboard extends Component{
@@ -43,12 +45,13 @@ class Dashboard extends Component{
                <div style = {{textAlign: "left", left: 0}}>
 
 
-                
+               <Link to = {this.props.match.path}><button className = "Dashboard-Button">Dashboard</button></Link>
+                    
                     <Link to = {this.props.match.path+"/employees"}><button className = "Dashboard-Button"> Employees</button></Link>
 
                     <Link to = {this.props.match.path+"/department"}><button className = "Dashboard-Button"> Departments</button></Link>
             
-                    <Link to = {this.props.match.path+"/budget"}><button className = "Dashboard-Button">Expenses</button></Link>
+                    <Link to = {this.props.match.path+"/budget"}><button className = "Dashboard-Button">Budgets</button></Link>
                 
                     <Link to = {this.props.match.path+"/sale"}><button className = "Dashboard-Button">Sales</button></Link>
                 
@@ -58,15 +61,16 @@ class Dashboard extends Component{
             
           </div>
           <div>
-          
-          <Route path={this.props.match.path+"/employees"} component={EmployeeList}/>
+          <Switch>
+          <Route exact path = {this.props.match.path} component = {DashboardGraphs} />
+          <Route exact path={this.props.match.path+"/employees"} component={EmployeeList}/>
           <Route path={this.props.match.path+"/employees/:id"}  component={EditEmployee}/>
-          <Route path={this.props.match.path+"/department"} component={DepartmentList}/>
+          <Route exact path={this.props.match.path+"/department"} component={DepartmentList}/>
           <Route path={this.props.match.path+"/department/:id"}  component={EditDepartment}/>
-          <Route path={this.props.match.path+"/budget"} component={BudgetList}/>
+          <Route  exact path={this.props.match.path+"/budget"} component={BudgetList}/>
+          <Route path={this.props.match.path+"/budget/:id"}  component={EditBudget}/>
           <Route path={this.props.match.path+"/sale"} component={SaleList}/>
-
-          
+          </Switch>
           </div>
           
           </div>

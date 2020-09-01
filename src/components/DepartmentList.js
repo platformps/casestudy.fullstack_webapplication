@@ -53,7 +53,7 @@ class DepartmentList extends Component {
             <hr id="hr2" />
           </div>
           <div className = "col-4">
-            <button className="btn btn-primary">+</button>
+            <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/" + department.id}>+</Button>
           </div>
         </div>
         <div className = "row no-gutters">
@@ -62,7 +62,7 @@ class DepartmentList extends Component {
             {department.map(department =>
              <li className="list-group-item" key={department.id}> 
                 {department.name} 
-                <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/department/" + department.id}>Edit</Button>
+                <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + department.id}>Edit</Button>
                 <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(department.id)}>Delete</Button>
               </li>
               

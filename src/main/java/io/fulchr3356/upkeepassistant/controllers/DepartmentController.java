@@ -28,9 +28,9 @@ public class DepartmentController  {
         return departmentRepository.findAll();
     }
 
-
-    ResponseEntity<?> add(@Valid @RequestBody Department department) throws URISyntaxException {
-        @Valid Department result = this.departmentRepository.save(department);
+    @PostMapping(value = "/department")
+    public ResponseEntity<?> add(@Valid @RequestBody Department department) throws URISyntaxException {
+        Department result = this.departmentRepository.save(department);
         return ResponseEntity.created(new URI("/api/department/" + department.getId()))
                 .body(result); }
 

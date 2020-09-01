@@ -12,11 +12,11 @@
   }
 
   .list-group{
-    background: white;
+    background:transparent;
     color:white;}
 
   .list-group-item{
-      background:white;
+      background:transparent;
       border:1px solid;
       border-color: darkgray;
       font-size: medium;

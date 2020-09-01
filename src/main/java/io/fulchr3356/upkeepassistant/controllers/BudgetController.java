@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping("/api")
 public class BudgetController  {
     private final BudgetRepository budgetRepository;
     private final Logger log = LoggerFactory.getLogger(EmployeeController.class);
@@ -28,8 +28,8 @@ public class BudgetController  {
         return budgetRepository.findAll();
     }
 
-
-    ResponseEntity<?> add(@Valid @RequestBody Budget budget) throws URISyntaxException {
+    @PostMapping(value = "/budget")
+    public ResponseEntity<?> add(@Valid @RequestBody Budget budget) throws URISyntaxException {
         Budget result = this.budgetRepository.save(budget);
         return ResponseEntity.created(new URI("/api/budget/" + budget.getId()))
                 .body(result); }

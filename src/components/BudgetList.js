@@ -19,14 +19,14 @@ class BudgetList extends Component {
   componentDidMount() {
     this.setState({isLoading: true});
 
-    fetch('../api/budget')
+    fetch('../../api/budget')
       .then(response => response.json())
       .then(data => this.setState({budget: data, isLoading: false}));
       // console.log(budget);
   }
 
   async remove(id) {
-    await fetch(`../api/budget/${id}`, {
+    await fetch(`../../api/budget/${id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
@@ -55,7 +55,7 @@ class BudgetList extends Component {
             <hr id="hr2" />
           </div>
           <div className = "col-4">
-            <button className="btn btn-primary">+</button>
+            <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/" + budget.id}>+</Button>
           </div>
         </div>
         <div className = "row no-gutters">
@@ -63,7 +63,7 @@ class BudgetList extends Component {
              <ul className="list-group">
             {budget.map(budget =>
              <li className="list-group-item" key={budget.id}> 
-                {budget.id} {budget.name} {budget.amount}
+                {budget.id} {budget.name} {budget.amount} 
                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + budget.id}>Edit</Button>
                 <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(budget.id)}>Delete</Button>
               </li>
