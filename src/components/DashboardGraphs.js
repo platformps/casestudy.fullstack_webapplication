@@ -36,16 +36,19 @@ export default class Example extends PureComponent {
   render() {
     return (
       <div  >
-        <div className = "split left"  >
-        <div className = "centered">
+       <div>
+        <div className = "splitDash leftDash"  >
+        <h5>Employee Payroll</h5>
+        <hr id="hr2" />
       <LineChart
         width={500}
-        height={300}
+        height={500}
         data={data}
         margin={{
           top: 5, right: 30, left: 20, bottom: 5,
         }}
       >
+       
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
@@ -54,10 +57,12 @@ export default class Example extends PureComponent {
         <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
         <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
       </LineChart>
-      <div>
+     
+      <h5>Employee Payroll</h5>
+      <hr id="hr2" />
       <LineChart
       width={500}
-      height={300}
+      height={500}
       data={data}
       margin={{
         top: 5, right: 30, left: 20, bottom: 5,
@@ -72,13 +77,12 @@ export default class Example extends PureComponent {
       <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
     </LineChart>
     </div>
-    </div>
-    </div>
-    <div className = "split right">
-    <div className = "centered">
+    <div className = "splitDash rightDash">
+    <h5>Employee Payroll</h5>
+    <hr id="hr2" />
     <LineChart
     width={500}
-    height={300}
+    height={500}
     data={data}
     margin={{
       top: 5, right: 30, left: 20, bottom: 5,
@@ -93,10 +97,11 @@ export default class Example extends PureComponent {
     <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
   </LineChart>
   
-  
+  <h5>Employee Payroll</h5>
+  <hr id="hr2" />
   <LineChart
   width={500}
-  height={300}
+  height={500}
   data={data}
   margin={{
     top: 5, right: 30, left: 20, bottom: 5,

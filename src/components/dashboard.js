@@ -60,7 +60,7 @@ class Dashboard extends Component{
                </div>
             
           </div>
-          <div>
+          <Container className= "Dash" >
           <Switch>
           <Route exact path = {this.props.match.path} component = {DashboardGraphs} />
           <Route exact path={this.props.match.path+"/employees"} component={EmployeeList}/>
@@ -71,7 +71,7 @@ class Dashboard extends Component{
           <Route path={this.props.match.path+"/budget/:id"}  component={EditBudget}/>
           <Route path={this.props.match.path+"/sale"} component={SaleList}/>
           </Switch>
-          </div>
+          </Container>
           
           </div>
             

@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SignUp from "./signup";
 import Dashboard from './dashboard';
-import { Button, ButtonGroup, Container, Table } from 'reactstrap';
+import { Button, ButtonGroup, Container, Table,Form, FormGroup, Input, Label } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export default class Login extends Component {
@@ -15,11 +15,18 @@ export default class Login extends Component {
                 <img src={logo} className="App-logo" alt="logo" />
                 <hr />
                 <div>
-                    <input type="email" name="email" placeholder="Enter Email"></input>
-                </div>
-
-                <div>
-                    <input type="password" name="password" placeholder="Enter Password"></input>
+                <Form onSubmit={this.handleSubmit}>
+          <FormGroup>
+            <Label for="email">Enter Email</Label>
+            <Input type="email" name="email" id="email" value= "email"
+                   autoComplete="email"/>
+          </FormGroup>
+          <FormGroup>
+            <Label for="password">Password</Label>
+            <Input type="password" name="password" id="password" value="password"
+                   autoComplete="password"/>
+          </FormGroup>
+          </Form>
                 </div>
                 <div>
                     <Link className = "nav-link" to = {"/dashboard"}>
