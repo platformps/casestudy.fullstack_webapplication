@@ -14,7 +14,7 @@ public class Sale implements  EntityInterface<Integer>, Serializable {
     private String employeeLastName;
     private String productName;
     private Double amount;
-    private Timestamp saleDate;
+    private String saleDate;
 
     public Sale(){
         this.amount = 0.00;
@@ -76,11 +76,11 @@ public class Sale implements  EntityInterface<Integer>, Serializable {
 
     @Basic
     @Column(name = "sale_date", nullable = false)
-    public Timestamp getSaleDate() {
+    public String getSaleDate() {
         return saleDate;
     }
 
-    public void setSaleDate(Timestamp saleDate) {
+    public void setSaleDate(String saleDate) {
         this.saleDate = saleDate;
     }
 

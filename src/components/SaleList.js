@@ -55,7 +55,7 @@ class SaleList extends Component {
             <hr id="hr2" />
           </div>
           <div className = "col-4">
-            <button className="btn btn-primary">+</button>
+            <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/" + sale.id}>+</Button>
           </div>
         </div>
         <div className = "row no-gutters">
@@ -63,7 +63,7 @@ class SaleList extends Component {
              <ul className="list-group">
             {sale.map(sale =>
              <li className="list-group-item" key={sale.id}> 
-                {sale.id} {sale.product_name} {sale.amount} 
+                {sale.productName} {sale.amount}$ {sale.saleDate}
                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + sale.id}>Edit</Button>
                 <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(sale.id)}>Delete</Button>
               </li>

@@ -1,13 +1,14 @@
 package io.fulchr3356.upkeepassistant.models;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public final class BudgetBuilder {
     private Integer id;
     private String manager;
     private String name;
     private Double amount;
-    private Timestamp renewDate;
+    private String renewDate;
 
     private BudgetBuilder() {
     }
@@ -36,7 +37,7 @@ public final class BudgetBuilder {
         return this;
     }
 
-    public BudgetBuilder withRenewDate(Timestamp renewDate) {
+    public BudgetBuilder withRenewDate(String renewDate) {
         this.renewDate = renewDate;
         return this;
     }

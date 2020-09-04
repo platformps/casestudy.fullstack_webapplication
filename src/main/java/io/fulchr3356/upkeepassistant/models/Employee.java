@@ -13,10 +13,22 @@ public class Employee implements EntityInterface<Integer>, Serializable {
     private String lastName;
     private String email;
     private String department;
+
+
     private String position;
     private Double salary;
     private String password;
 
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
     public Employee(){ }
 
     public Employee(String firstName) {

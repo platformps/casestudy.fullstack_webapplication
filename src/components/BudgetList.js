@@ -63,7 +63,7 @@ class BudgetList extends Component {
              <ul className="list-group">
             {budget.map(budget =>
              <li className="list-group-item" key={budget.id}> 
-                {budget.id} {budget.name} {budget.amount} 
+                {budget.name} {budget.amount}$ {budget.renewDate}
                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + budget.id}>Edit</Button>
                 <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(budget.id)}>Delete</Button>
               </li>

@@ -33,7 +33,7 @@ create table budget
     manager VARCHAR(50) null,
     name VARCHAR(50) not null,
     amount DOUBLE(7,2) not null,
-    renew_date TIMESTAMP  not null DEFAULT CURRENT_TIMESTAMP
+    renew_date DATE  not null
 );
 
 create unique index budget_id_uindex
@@ -46,11 +46,18 @@ create table sale
     employee_last_name VARCHAR(50)  not null,
     product_name VARCHAR(50) not null,
     amount DOUBLE(7,2) not null,
-    sale_date TIMESTAMP  not null DEFAULT CURRENT_TIMESTAMP
+    sale_date DATE  not null
 );
 
 create unique index sale_id_uindex
     on sale (id);
+
+create table user (
+    id int NOT NULL auto_increment PRIMARY KEY,
+    name VARCHAR(50) not null ,
+    email VARCHAR(50) not null
+
+)
 
 
 

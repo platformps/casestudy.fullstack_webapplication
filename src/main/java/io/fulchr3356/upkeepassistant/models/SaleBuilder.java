@@ -8,7 +8,7 @@ public final class SaleBuilder {
     private String employeeLastName;
     private String productName;
     private Double amount;
-    private Timestamp saleDate;
+    private String saleDate;
 
     private SaleBuilder() {
     }
@@ -42,7 +42,7 @@ public final class SaleBuilder {
         return this;
     }
 
-    public SaleBuilder withSaleDate(Timestamp saleDate) {
+    public SaleBuilder withSaleDate(String saleDate) {
         this.saleDate = saleDate;
         return this;
     }

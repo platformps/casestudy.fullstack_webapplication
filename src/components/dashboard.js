@@ -16,6 +16,7 @@ import Avatar from 'react-avatar';
 import PrimarySearchAppBar from './PrimarySearchAppBar';
 import DashboardGraphs from './DashboardGraphs';
 import EditBudget from './EditBudget';
+import EditSale from './EditSale';
 
 
 class Dashboard extends Component{
@@ -60,7 +61,7 @@ class Dashboard extends Component{
                </div>
             
           </div>
-          <Container className= "Dash" >
+          
           <Switch>
           <Route exact path = {this.props.match.path} component = {DashboardGraphs} />
           <Route exact path={this.props.match.path+"/employees"} component={EmployeeList}/>
@@ -69,9 +70,10 @@ class Dashboard extends Component{
           <Route path={this.props.match.path+"/department/:id"}  component={EditDepartment}/>
           <Route  exact path={this.props.match.path+"/budget"} component={BudgetList}/>
           <Route path={this.props.match.path+"/budget/:id"}  component={EditBudget}/>
-          <Route path={this.props.match.path+"/sale"} component={SaleList}/>
+          <Route exact path={this.props.match.path+"/sale"} component={SaleList}/>
+          <Route path={this.props.match.path+"/sale/:id"}  component={EditSale}/>
           </Switch>
-          </Container>
+          
           
           </div>
             

@@ -8,7 +8,7 @@ class BudgetEdit extends Component {
     name: '',
     amount:'',
     manager: '',
-    renew_date: '',
+    renewDate: '',
   
   };
 
@@ -66,19 +66,19 @@ class BudgetEdit extends Component {
                    onChange={this.handleChange} autoComplete="name"/>
           </FormGroup>
           <FormGroup>
-            <Label for="lastName">Budget Manager</Label>
+            <Label for="manager">Budget Manager</Label>
             <Input type="text" name="manager" id="manager" value={item.manager || ''}
                    onChange={this.handleChange} autoComplete="manager"/>
           </FormGroup>
           <FormGroup>
-            <Label for="address">Amount</Label>
+            <Label for="amount">Amount</Label>
             <Input type="text" name="amount" id="amount" value={item.amount || ''}
                    onChange={this.handleChange} autoComplete="amount"/>
           </FormGroup>
           <FormGroup>
-            <Label for="address">Renew Date</Label>
-            <Input type="date" name="renew_date" id="renew_date" value={item.renew_date || ''}
-                   onChange={this.handleChange} autoComplete="renew_date"/>
+            <Label for="renewDate">Renew Date</Label>
+            <Input type="date" name="renewDate" id="renewDate" value={item.renewDate || ''}
+                   onChange={this.handleChange} autoComplete="renewDate"/>
           </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}

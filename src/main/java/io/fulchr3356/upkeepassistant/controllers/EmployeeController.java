@@ -1,36 +1,51 @@
 package io.fulchr3356.upkeepassistant.controllers;
 
 import io.fulchr3356.upkeepassistant.models.Employee;
+import io.fulchr3356.upkeepassistant.models.User;
+import io.fulchr3356.upkeepassistant.models.UserBuilder;
 import io.fulchr3356.upkeepassistant.repositories.EmployeeRepository;
+import io.fulchr3356.upkeepassistant.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/api")
 public class EmployeeController  {
     private final EmployeeRepository employeeRepository;
+    private UserRepository userRepository;
     private final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
-    public EmployeeController(EmployeeRepository employeeRepository) {
+    public EmployeeController(EmployeeRepository employeeRepository, UserRepository userRepository) {
         this.employeeRepository = employeeRepository;
+        this.userRepository = userRepository;
     }
     @GetMapping(value = "/employee")
-    public Collection<Employee> findAll() {
-        return employeeRepository.findAll();
+    public Collection<Employee> findAll(Principal principal) {
+        return employeeRepository.findAllByUserId(principal.getName());
     }
 
     @PostMapping(value = "/employee")
-    public ResponseEntity<Employee> add(@Valid @RequestBody Employee employee) throws URISyntaxException {
-       Employee result = this.employeeRepository.save(employee);
+    public ResponseEntity<Employee> add(@Valid @RequestBody Employee employee, @AuthenticationPrincipal OAuth2User principal) throws URISyntaxException {
+       Map<String,Object> details = principal.getAttributes();
+       String userId = details.get("sub").toString();
+        // check to see if user already exists
+        Optional<User> user = userRepository.findById(userId);
+        employee.setUser(user.orElse(new UserBuilder().withId(userId)
+                                                      .withName(details.get("name").toString())
+                                                      .withEmail(details.get("email").toString()).build()));
+        Employee result = employeeRepository.save(employee);
        return ResponseEntity.created(new URI("/api/employee/" + employee.getId()))
                .body(result); }
 

@@ -3,6 +3,7 @@ package io.fulchr3356.upkeepassistant.models;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 @Entity
 @Table(name = "budget", schema = "upkeep_assistant")
@@ -13,7 +14,7 @@ public class Budget  implements EntityInterface<Integer>, Serializable {
     private String manager;
     private String name;
     private Double amount;
-    private Timestamp renewDate;
+    private String renewDate;
 
     public Budget(String name) {
         this.name = name;
@@ -64,11 +65,11 @@ public class Budget  implements EntityInterface<Integer>, Serializable {
 
     @Basic
     @Column(name = "renew_date", nullable = false)
-    public Timestamp getRenewDate() {
+    public String getRenewDate() {
         return renewDate;
     }
 
-    public void setRenewDate(Timestamp renewDate) {
+    public void setRenewDate(String renewDate) {
         this.renewDate = renewDate;
     }
 
