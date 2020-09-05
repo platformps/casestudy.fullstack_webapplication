@@ -6,8 +6,43 @@ import SignUp from "./signup";
 import Dashboard from './dashboard';
 import { Button, ButtonGroup, Container, Table,Form, FormGroup, Input, Label } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
 
-export default class Login extends Component {
+
+
+ class Login extends Component {
+
+    state = {
+        isLoading: true,
+        isAuthenticated: false,
+        user: undefined
+      };
+
+      constructor(props) {
+        super(props);
+        const {cookies} = props;
+        this.state.csrfToken = cookies.get('XSRF-TOKEN');
+        this.login = this.login.bind(this);
+      }
+
+      async componentDidMount() {
+        const response = await fetch('../api/user', {credentials: 'include'});
+        const body = await response.text();
+        if (body === '') {
+          this.setState(({isAuthenticated: false}))
+        } else {
+          this.setState({isAuthenticated: true, user: JSON.parse(body)})
+        }
+      }
+
+      login() {
+        let port = (window.location.port ? ':' + window.location.port : '');
+        if (port === ':3000') {
+          port = ':8080';
+        }
+        window.location.href = '//' + window.location.hostname + port + '../private';
+      }
     render() {
         return (
             <form>
@@ -30,7 +65,7 @@ export default class Login extends Component {
                 </div>
                 <div>
                     <Link className = "nav-link" to = {"/dashboard"}>
-                    <Button style = {{backgroundColor: "#2196f3"}} type="submit"> Sign in</Button>
+                    <Button style = {{backgroundColor: "#2196f3"}} onClick = {this.login} type="submit"> Sign in</Button>
                     </Link>
 
                     <p>Forgot your password? <a href="" > Reset</a></p>
@@ -45,3 +80,4 @@ export default class Login extends Component {
         );
     }
 }
+export default withCookies(Login);

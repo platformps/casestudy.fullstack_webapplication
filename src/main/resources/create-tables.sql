@@ -53,7 +53,7 @@ create unique index sale_id_uindex
     on sale (id);
 
 create table user (
-    id int NOT NULL auto_increment PRIMARY KEY,
+    id VARCHAR(50) NOT NULL  PRIMARY KEY,
     name VARCHAR(50) not null ,
     email VARCHAR(50) not null
 

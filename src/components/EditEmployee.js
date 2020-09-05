@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Cookies, withCookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
 
 class EmployeeEdit extends Component {
+
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
 
   emptyItem = {
     firstName: '',
@@ -17,8 +23,10 @@ class EmployeeEdit extends Component {
 
   constructor(props) {
     super(props);
+    const {cookies} = props;
     this.state = {
-      item: this.emptyItem
+      item: this.emptyItem,
+      csrfToken: cookies.get('XSRF-TOKEN')
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,8 +34,12 @@ class EmployeeEdit extends Component {
 
   async componentDidMount() {
     if (this.props.match.params.id !== 'new') {
-      const employee = await (await fetch(`../../api/employee/${this.props.match.params.id}`)).json();
+      try{
+      const employee = await (await fetch(`../../api/employee/${this.props.match.params.id}`,{credentials: 'include'})).json();
       this.setState({item: employee});
+      } catch(error){
+        this.props.history.push('../');
+      }
     }
   }
 
@@ -42,15 +54,17 @@ class EmployeeEdit extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const {item} = this.state;
+    const {item,csrfToken} = this.state;
 
     await fetch('../../api/employee', {
       method: (item.id) ? 'PUT' : 'POST',
       headers: {
+        'X-XSRF-TOKEN': csrfToken,
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(item),
+      credentials: 'include'
     });
     this.props.history.push('../employees');
   }
@@ -110,4 +124,4 @@ class EmployeeEdit extends Component {
   }
 }
 
-export default withRouter(EmployeeEdit);
+export default withCookies(withRouter(EmployeeEdit));

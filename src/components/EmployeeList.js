@@ -4,34 +4,44 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../viewlist.css';
 import EditEmployee from  './EditEmployee';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
+import {withRouter} from 'react-router-dom'
 
 
 class EmployeeList extends Component {
+  
+  
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
 
   constructor(props) {
     super(props);
-    
-    this.state = {employee: [], isLoading: true};
+    const {cookies} = props;
+    this.state = {employee: [],csrfToken: cookies.get('XSRF-TOKEN') ,isLoading: true};
     this.remove = this.remove.bind(this);
+
   }
   
 
   componentDidMount() {
     this.setState({isLoading: true});
-
-    fetch('../api/employee')
+    fetch('../api/employee',{credentials: 'include'})
       .then(response => response.json())
-      .then(data => this.setState({employee: data, isLoading: false}));
-      // console.log(employee);
+      .then(data => this.setState({employee: data, isLoading: false}))
+      .catch(() => this.props.history.push('../'));
   }
 
   async remove(id) {
     await fetch(`../api/employee/${id}`, {
       method: 'DELETE',
       headers: {
+        'X-XSRF-TOKEN': this.state.csrfToken,
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     }).then(() => {
       let updatedEmployees = [...this.state.employee].filter(i => i.id !== id);
       this.setState({employee: updatedEmployees});
@@ -77,4 +87,4 @@ class EmployeeList extends Component {
   }
 }
 
-export default EmployeeList;
+export default withCookies(withRouter(EmployeeList));
