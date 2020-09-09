@@ -16,6 +16,9 @@ public class Budget  implements EntityInterface<Integer>, Serializable {
     private Double amount;
     private String renewDate;
 
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    private User user;
+
     public Budget(String name) {
         this.name = name;
         this.amount = 0.00;
@@ -88,5 +91,9 @@ public class Budget  implements EntityInterface<Integer>, Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, manager, name, amount, renewDate);
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

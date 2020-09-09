@@ -46,6 +46,7 @@ create table sale
     employee_last_name VARCHAR(50)  not null,
     product_name VARCHAR(50) not null,
     amount DOUBLE(7,2) not null,
+    quantity int not null,
     sale_date DATE  not null
 );
 
@@ -57,6 +58,13 @@ create table user (
     name VARCHAR(50) not null ,
     email VARCHAR(50) not null
 
+);
+
+create table payroll (
+    id int not null  primary key auto_increment ,
+    employee_id int not null ,
+    amount DOUBLE(7,2) not null ,
+    pay_date DATE not null
 )
 
 

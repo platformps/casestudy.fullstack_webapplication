@@ -17,16 +17,49 @@ import PrimarySearchAppBar from './PrimarySearchAppBar';
 import DashboardGraphs from './DashboardGraphs';
 import EditBudget from './EditBudget';
 import EditSale from './EditSale';
+import { withCookies } from 'react-cookie';
+import PayrollList from './PayrollList';
+import EditPayroll from './EditPayroll';
 
 
 class Dashboard extends Component{
+
+    state = {
+        isLoading: true,
+        isAuthenticated: false,
+        user: undefined
+      };
+    
     
      
     constructor(props) {
         super(props);
         let match = props.match
+        const {cookies} = props;
+        this.state.csrfToken = cookies.get('XSRF-TOKEN');
+        this.logout = this.logout.bind(this);
+        this.wrapper = React.createRef();
         
     }
+
+    async componentDidMount() {
+        const response = await fetch('/api/user', {credentials: 'include'});
+        const body = await response.text();
+        if (body === '') {
+          this.setState(({isAuthenticated: false}))
+        } else {
+          this.setState({isAuthenticated: true, user: JSON.parse(body)})
+        }
+      }
+
+      logout() {
+        fetch('/api/logout', {method: 'POST', credentials: 'include',
+          headers: {'X-XSRF-TOKEN': this.state.csrfToken}}).then(res => res.json())
+          .then(response => {
+            window.location.href = response.logoutUrl + "?id_token_hint=" +
+              response.idToken + "&post_logout_redirect_uri=" + window.location.origin;
+          });
+      }
     
     render() {
         
@@ -35,8 +68,8 @@ class Dashboard extends Component{
                 {/* <header className = "Dashboard-Header">  
                 <Avatar   src = {userLogo} size="48"  onClick ={() => this.props.history.goBack()}> </Avatar>
               </header> */}
-            <div className = "Dashboard-Header">
-              <PrimarySearchAppBar/>
+            <div className = "Dashboard-Header" ref={this.wrapper}>
+              <PrimarySearchAppBar  />
               </div>
            
             
@@ -45,7 +78,7 @@ class Dashboard extends Component{
              
                <div style = {{textAlign: "left", left: 0}}>
 
-
+<Button onClick = {this.logout}>  logout</Button>
                <Link to = {this.props.match.path}><button className = "Dashboard-Button">Dashboard</button></Link>
                     
                     <Link to = {this.props.match.path+"/employees"}><button className = "Dashboard-Button"> Employees</button></Link>
@@ -56,7 +89,7 @@ class Dashboard extends Component{
                 
                     <Link to = {this.props.match.path+"/sale"}><button className = "Dashboard-Button">Sales</button></Link>
                 
-                    <button className = "Dashboard-Button">Payroll</button>
+                    <Link to = {this.props.match.path+"/payroll"}><button className = "Dashboard-Button">Payroll</button></Link>
 
                </div>
             
@@ -72,6 +105,8 @@ class Dashboard extends Component{
           <Route path={this.props.match.path+"/budget/:id"}  component={EditBudget}/>
           <Route exact path={this.props.match.path+"/sale"} component={SaleList}/>
           <Route path={this.props.match.path+"/sale/:id"}  component={EditSale}/>
+          <Route exact path={this.props.match.path+"/payroll"} component={PayrollList}/>
+          <Route path={this.props.match.path+"/payroll/:id"}  component={EditPayroll}/>
           </Switch>
           
           
@@ -85,4 +120,4 @@ class Dashboard extends Component{
     }
 }
 
-export default Dashboard;
+export default withCookies(Dashboard);

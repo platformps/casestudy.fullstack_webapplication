@@ -13,6 +13,9 @@ public class Department implements EntityInterface<Integer>, Serializable {
     private String name;
     private Double budget;
 
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    private User user;
+
     public Department(String name) {
         this.name = name;
     }
@@ -74,5 +77,9 @@ public class Department implements EntityInterface<Integer>, Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, manager, name, budget);
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -4,8 +4,7 @@ import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Cookies, withCookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
-
-class EditSale extends Component {
+class EditPayroll extends Component {
 
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
@@ -13,11 +12,7 @@ class EditSale extends Component {
 
   emptyItem = {
     amount: '',
-    employeeFirstName: '',
-    employeeLastName: '',
-    productName: '',
-    saleDate: '',
-  
+    employeeId: '',
   };
 
   constructor(props) {
@@ -34,9 +29,9 @@ class EditSale extends Component {
   async componentDidMount() {
     if (this.props.match.params.id !== 'new') {
       try{
-      const sale = await (await fetch(`../../api/sale/${this.props.match.params.id}`,{credentials: 'include'})).json();
-      this.setState({item: sale});
-      }catch(error){
+      const payroll = await (await fetch(`../../api/payroll/${this.props.match.params.id}`,{credentials: 'include'})).json();
+      this.setState({item: payroll});
+      } catch(error){
         this.props.history.push('../');
       }
     }
@@ -55,7 +50,7 @@ class EditSale extends Component {
     event.preventDefault();
     const {item,csrfToken} = this.state;
 
-    await fetch('../../api/sale'+ (item.id ? '/' + item.id : ''), {
+    await fetch('../../api/payroll' + (item.id ? '/' + item.id : ''), {
       method: (item.id) ? 'PUT' : 'POST',
       headers: {
         'X-XSRF-TOKEN': csrfToken,
@@ -65,45 +60,30 @@ class EditSale extends Component {
       body: JSON.stringify(item),
       credentials: 'include'
     });
-    this.props.history.push('../sale');
+    this.props.history.push('../payroll');
   }
 
   render() {
     const {item} = this.state;
-    const title = <h2>{item.id ? 'Edit Sale' : 'Add Sale'}</h2>;
+    const title = <h2>{item.id ? 'Edit Payroll' : 'Add Payroll'}</h2>;
 
     return <div>
       <Container>
         {title}
         <Form onSubmit={this.handleSubmit}>
-        <FormGroup>
-            <Label for="employeeFirstName">Employee First Name</Label>
-            <Input type="text" name="employeeFirstName" id="employeeFirstName" value={item.employeeFirstName || ''}
-                   onChange={this.handleChange} autoComplete="employeeFirstName"/>
+          <FormGroup>
+            <Label for="employeeId">Employee Id </Label>
+            <Input type="text" name="employeeId" id="employeeId" value={item.employeeId || ''}
+                   onChange={this.handleChange} autoComplete="employeeId"/>
           </FormGroup>
           <FormGroup>
-            <Label for="employeeLastName">Employee Last Name</Label>
-            <Input type="text" name="employeeLastName" id="employeeLastName" value={item.employeeLastName || ''}
-                   onChange={this.handleChange} autoComplete="employeeLastName"/>
-          </FormGroup>
-          <FormGroup>
-            <Label for="amount">Ammount of Sale</Label>
+            <Label for="amount">Amount</Label>
             <Input type="text" name="amount" id="amount" value={item.amount || ''}
                    onChange={this.handleChange} autoComplete="amount"/>
           </FormGroup>
           <FormGroup>
-            <Label for="productName">Product Name</Label>
-            <Input type="text" name="productName" id="productName" value={item.productName || ''}
-                   onChange={this.handleChange} autoComplete="productName"/>
-          </FormGroup>
-          <FormGroup>
-            <Label for="saleDate">Sale Date</Label>
-            <Input type="date" name="saleDate" id="saleDate" value={item.saleDate || ''}
-                   onChange={this.handleChange} autoComplete="saleDate"/>
-          </FormGroup>
-          <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="secondary" tag={Link} to="../sale">Cancel</Button>
+            <Button color="secondary" tag={Link} to ={"../payroll"}>Cancel</Button>
           </FormGroup>
         </Form>
       </Container>
@@ -111,4 +91,4 @@ class EditSale extends Component {
   }
 }
 
-export default withCookies(withRouter(EditSale));
+export default withCookies(withRouter(EditPayroll));

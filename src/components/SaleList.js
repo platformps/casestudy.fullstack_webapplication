@@ -3,25 +3,32 @@ import { Button, ButtonGroup, Container, Table, ListGroup, ListGroupItem } from 
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../viewlist.css';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
+import {withRouter} from 'react-router-dom'
 //import EditSale from  './EditSale';
 
 
 class SaleList extends Component {
 
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
   constructor(props) {
     super(props);
-    
-    this.state = {sale: [], isLoading: true};
+    const {cookies} = props;
+    this.state = {sale: [],csrfToken: cookies.get('XSRF-TOKEN') , isLoading: true};
     this.remove = this.remove.bind(this);
   }
   
 
   componentDidMount() {
     this.setState({isLoading: true});
-
-    fetch('../api/sale')
+    fetch('../api/sale',{credentials: 'include'})
       .then(response => response.json())
-      .then(data => this.setState({sale: data, isLoading: false}));
+      .then(data => this.setState({sale: data, isLoading: false}))
+      .catch(() => this.props.history.push('../'));
       // console.log(sale);
   }
 
@@ -29,9 +36,11 @@ class SaleList extends Component {
     await fetch(`../api/sale/${id}`, {
       method: 'DELETE',
       headers: {
+        'X-XSRF-TOKEN': this.state.csrfToken,
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     }).then(() => {
       let updatedSales = [...this.state.sale].filter(i => i.id !== id);
       this.setState({sale: updatedSales});
@@ -77,4 +86,4 @@ class SaleList extends Component {
   }
 }
 
-export default SaleList;
+export default withCookies(withRouter(SaleList));

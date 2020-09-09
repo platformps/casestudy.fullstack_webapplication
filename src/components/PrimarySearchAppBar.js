@@ -24,7 +24,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuAppBar() {
+export default function MenuAppBar(props) {
+
+
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -80,7 +82,7 @@ export default function MenuAppBar() {
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick ={() => ''}>Logout</MenuItem>
+                <MenuItem onClick ={() => props.logout}>Logout</MenuItem>
               </Menu>
             </div>
           )}

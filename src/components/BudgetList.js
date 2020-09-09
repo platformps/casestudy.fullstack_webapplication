@@ -4,14 +4,22 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../viewlist.css';
 //import EditBudget from  './EditBudget';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
+import {withRouter} from 'react-router-dom'
 
 
 class BudgetList extends Component {
 
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
+
   constructor(props) {
     super(props);
-    
-    this.state = {budget: [], isLoading: true};
+    const {cookies} = props;
+    this.state = {budget: [], csrfToken: cookies.get('XSRF-TOKEN') ,isLoading: true};
     this.remove = this.remove.bind(this);
   }
   
@@ -19,19 +27,22 @@ class BudgetList extends Component {
   componentDidMount() {
     this.setState({isLoading: true});
 
-    fetch('../../api/budget')
+    fetch('../api/budget',{credentials: 'include'})
       .then(response => response.json())
-      .then(data => this.setState({budget: data, isLoading: false}));
+      .then(data => this.setState({budget: data, isLoading: false}))
+      .catch(() => this.props.history.push('../'));
       // console.log(budget);
   }
 
   async remove(id) {
-    await fetch(`../../api/budget/${id}`, {
+    await fetch(`../api/budget/${id}`, {
       method: 'DELETE',
       headers: {
+        'X-XSRF-TOKEN': this.state.csrfToken,
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     }).then(() => {
       let updatedBudgets = [...this.state.budget].filter(i => i.id !== id);
       this.setState({budget: updatedBudgets});
@@ -77,4 +88,4 @@ class BudgetList extends Component {
   }
 }
 
-export default BudgetList;
+export default withCookies(withRouter(BudgetList));

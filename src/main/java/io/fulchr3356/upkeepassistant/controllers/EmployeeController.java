@@ -56,7 +56,7 @@ public class EmployeeController  {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     @PutMapping("/employee/{id}")
-    public ResponseEntity<Employee> update(@Valid @RequestBody Employee employee)  {
+    public ResponseEntity<Employee> update(@Valid @RequestBody Employee employee, @PathVariable Integer id)  {
         log.info("Request to update employee: {}", employee);
         Employee result = employeeRepository.save(employee);
         return  ResponseEntity.ok().build();

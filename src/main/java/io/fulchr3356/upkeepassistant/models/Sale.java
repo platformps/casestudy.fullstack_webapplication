@@ -16,6 +16,9 @@ public class Sale implements  EntityInterface<Integer>, Serializable {
     private Double amount;
     private String saleDate;
 
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    private User user;
+
     public Sale(){
         this.amount = 0.00;
     }
@@ -100,5 +103,9 @@ public class Sale implements  EntityInterface<Integer>, Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, employeeFirstName, employeeLastName, productName, amount, saleDate);
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

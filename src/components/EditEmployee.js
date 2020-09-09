@@ -56,7 +56,7 @@ class EmployeeEdit extends Component {
     event.preventDefault();
     const {item,csrfToken} = this.state;
 
-    await fetch('../../api/employee', {
+    await fetch('../../api/employee'+ (item.id ? '/' + item.id : ''), {
       method: (item.id) ? 'PUT' : 'POST',
       headers: {
         'X-XSRF-TOKEN': csrfToken,

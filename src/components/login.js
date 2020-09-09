@@ -27,7 +27,7 @@ import { instanceOf } from 'prop-types';
       }
 
       async componentDidMount() {
-        const response = await fetch('../api/user', {credentials: 'include'});
+        const response = await fetch('/api/user', {credentials: 'include'});
         const body = await response.text();
         if (body === '') {
           this.setState(({isAuthenticated: false}))
@@ -41,7 +41,7 @@ import { instanceOf } from 'prop-types';
         if (port === ':3000') {
           port = ':8080';
         }
-        window.location.href = '//' + window.location.hostname + port + '../private';
+        window.location.href = '//' + window.location.hostname + port + '/private';
       }
     render() {
         return (
@@ -64,10 +64,9 @@ import { instanceOf } from 'prop-types';
           </Form>
                 </div>
                 <div>
-                    <Link className = "nav-link" to = {"/dashboard"}>
+                   
                     <Button style = {{backgroundColor: "#2196f3"}} onClick = {this.login} type="submit"> Sign in</Button>
-                    </Link>
-
+                    
                     <p>Forgot your password? <a href="" > Reset</a></p>
                     <div >
                     <Link className = "nav-link" to = {"/registration"}>
