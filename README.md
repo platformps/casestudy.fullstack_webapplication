@@ -1,5 +1,11 @@
 # Full Stack Web Application
 
+WireFraming/ Front-end Design
+
+![login](login.png)
+![Album Page Layout](Album_Page.png)
+![Post Page Layout](Post_Page.png)
+
 * **Objective** - to create an implementation of a web service
 * **Purpose** - to demonstrate the construction of a full-stacked web-application
 * **Description**
