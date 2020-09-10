@@ -6,9 +6,9 @@ import java.util.HashMap;
 public final class DepartmentBuilder {
     private HashMap<String, Employee> Employees;
     Integer id;
-    private String departmentManager;
-    private String departmentName;
-    private Double budget;
+    private Employee departmentManager;
+    private String  departmentName;
+    private Budget budget;
     private ArrayList<Sale> sales;
 
     private DepartmentBuilder(Department dataToBeUpdated) {
@@ -36,7 +36,7 @@ public final class DepartmentBuilder {
         return this;
     }
 
-    public DepartmentBuilder withDepartmentManager(String departmentManager) {
+    public DepartmentBuilder withDepartmentManager(Employee departmentManager) {
         this.departmentManager = departmentManager;
         return this;
     }
@@ -46,7 +46,7 @@ public final class DepartmentBuilder {
         return this;
     }
 
-    public DepartmentBuilder withDepartmentBudget(Double departmentBudget) {
+    public DepartmentBuilder withDepartmentBudget(Budget departmentBudget) {
         this.budget = departmentBudget;
         return this;
     }

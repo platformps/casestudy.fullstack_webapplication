@@ -2,147 +2,115 @@ package io.fulchr3356.upkeepassistant.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.List;
+
+import lombok.*;
+
+@Data
 @Entity
-@Table(name = "employee", schema = "upkeep_assistant")
 public class Employee implements EntityInterface<Integer>, Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String firstName;
     private String lastName;
     private String email;
-    private String department;
-
-
     private String position;
     private Double salary;
     private String password;
 
-    @ManyToOne(cascade=CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Sale> sales;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Payroll> payrolls;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Department department;
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-    public Employee(){ }
-
-    public Employee(String firstName) {
-        this.firstName = firstName;
+    public List<Sale> getSales() {
+        return sales;
     }
 
-    public Integer getId() {
-        return id;
+    public Department getDepartment() {
+        return department;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "first_name", nullable = false, length = 50)
-    public String getFirstName() {
-        return firstName;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    @Basic
-    @Column(name = "last_name", nullable = false, length = 50)
-    public String getLastName() {
-        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    @Basic
-    @Column(name = "email", length = 50)
-    public String getEmail() {
-        return email;
-    }
-
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Basic
-    @Column(name = "department", nullable = false, length = 50)
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    @Basic
-    @Column(name = "position", nullable = false, length = 50)
-    public String getPosition() {
-        return position;
     }
 
     public void setPosition(String position) {
         this.position = position;
     }
 
-    @Basic
-    @Column(name = "salary", nullable = false)
-    public Double getSalary() {
-        return salary;
-    }
-
     public void setSalary(Double salary) {
         this.salary = salary;
-    }
-
-    @Basic
-    @Column(name = "password", nullable = false, length = 50)
-    public String getPassword() {
-        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee that = (Employee) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(firstName, that.firstName) &&
-                Objects.equals(lastName, that.lastName) &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(department, that.department) &&
-                Objects.equals(position, that.position) &&
-                Objects.equals(salary, that.salary) &&
-                Objects.equals(password, that.password);
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", department='" + department + '\'' +
-                ", position='" + position + '\'' +
-                ", salary=" + salary +
-                '}';
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, department, position, salary, password);
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }
+
+

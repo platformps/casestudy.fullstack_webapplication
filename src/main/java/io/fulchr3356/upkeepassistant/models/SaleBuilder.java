@@ -4,8 +4,7 @@ import java.sql.Timestamp;
 
 public final class SaleBuilder {
     private Integer id;
-    private String employeeFirstName;
-    private String employeeLastName;
+    private Employee employee;
     private String productName;
     private Double amount;
     private String saleDate;
@@ -22,16 +21,6 @@ public final class SaleBuilder {
         return this;
     }
 
-    public SaleBuilder withEmployeeFirstName(String employeeFirstName) {
-        this.employeeFirstName = employeeFirstName;
-        return this;
-    }
-
-    public SaleBuilder withEmployeeLastName(String employeeLastName) {
-        this.employeeLastName = employeeLastName;
-        return this;
-    }
-
     public SaleBuilder withProductName(String productName) {
         this.productName = productName;
         return this;
@@ -39,6 +28,11 @@ public final class SaleBuilder {
 
     public SaleBuilder withAmount(Double amount) {
         this.amount = amount;
+        return this;
+    }
+
+    public SaleBuilder withEmployee(Employee employee) {
+        this.employee = employee;
         return this;
     }
 
@@ -50,8 +44,7 @@ public final class SaleBuilder {
     public Sale build() {
         Sale sale = new Sale();
         sale.setId(id);
-        sale.setEmployeeFirstName(employeeFirstName);
-        sale.setEmployeeLastName(employeeLastName);
+        sale.setEmployee(employee);
         sale.setProductName(productName);
         sale.setAmount(amount);
         sale.setSaleDate(saleDate);

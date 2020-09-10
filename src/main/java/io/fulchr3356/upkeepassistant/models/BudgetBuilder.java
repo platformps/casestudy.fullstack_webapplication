@@ -5,10 +5,10 @@ import java.util.Date;
 
 public final class BudgetBuilder {
     private Integer id;
-    private String manager;
+    private Employee manager;
     private String name;
     private Double amount;
-    private String renewDate;
+    private Date renewDate;
 
     private BudgetBuilder() {
     }
@@ -22,7 +22,7 @@ public final class BudgetBuilder {
         return this;
     }
 
-    public BudgetBuilder withManager(String manager) {
+    public BudgetBuilder withManager(Employee manager) {
         this.manager = manager;
         return this;
     }
@@ -37,7 +37,7 @@ public final class BudgetBuilder {
         return this;
     }
 
-    public BudgetBuilder withRenewDate(String renewDate) {
+    public BudgetBuilder withRenewDate(Date renewDate) {
         this.renewDate = renewDate;
         return this;
     }

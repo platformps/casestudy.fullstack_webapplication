@@ -1,85 +1,88 @@
 package io.fulchr3356.upkeepassistant.models;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+@Data
 @Entity
-@Table(name = "department", schema = "upkeep_assistant")
 public class Department implements EntityInterface<Integer>, Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String manager;
     private String name;
-    private Double budget;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Budget budget;
 
     @ManyToOne(cascade=CascadeType.PERSIST)
     private User user;
+
+    @ManyToOne (cascade = CascadeType.ALL)
+    private Employee manager;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Sale> sales;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Employee> employees;
 
     public Department(String name) {
         this.name = name;
     }
 
     public Department() {
-
     }
-
 
     public Integer getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Budget getBudget() {
+        return budget;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Employee getManager() {
+        return manager;
+    }
+
+    public List<Sale> getSales() {
+        return sales;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "manager", length = 50)
-    public String getManager() {
-        return manager;
-    }
-
-    public void setManager(String manager) {
-        this.manager = manager;
-    }
-
-    @Basic
-    @Column(name = "name", nullable = false, length = 50)
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "budget", precision = 2)
-    public Double getBudget() {
-        return budget;
-    }
-
-    public void setBudget(Double budget) {
+    public void setBudget(Budget budget) {
         this.budget = budget;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Department that = (Department) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(manager, that.manager) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(budget, that.budget);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, manager, name, budget);
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setManager(Employee manager) {
+        this.manager = manager;
+    }
+
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
     }
 }

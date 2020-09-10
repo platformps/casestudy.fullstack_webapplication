@@ -1,13 +1,9 @@
 import logo from './logobw.png';
 import React, { Component } from "react";
-import { render } from '@testing-library/react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import SignUp from "./signup";
-import Dashboard from './dashboard';
-import { Button, ButtonGroup, Container, Table,Form, FormGroup, Input, Label } from 'reactstrap';
+import {  Link } from "react-router-dom";
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import { withCookies, Cookies } from 'react-cookie';
-import { instanceOf } from 'prop-types';
+import { withCookies } from 'react-cookie';
 
 
 
@@ -33,6 +29,7 @@ import { instanceOf } from 'prop-types';
           this.setState(({isAuthenticated: false}))
         } else {
           this.setState({isAuthenticated: true, user: JSON.parse(body)})
+          
         }
       }
 
@@ -64,9 +61,9 @@ import { instanceOf } from 'prop-types';
           </Form>
                 </div>
                 <div>
-                   
-                    <Button style = {{backgroundColor: "#2196f3"}} onClick = {this.login} type="submit"> Sign in</Button>
-                    
+                    <Link className = "nav-link" to = {"/dashboard"}>
+                    <Button style = {{backgroundColor: "#2196f3"}}  > Sign in</Button>
+                    </Link>
                     <p>Forgot your password? <a href="" > Reset</a></p>
                     <div >
                     <Link className = "nav-link" to = {"/registration"}>
