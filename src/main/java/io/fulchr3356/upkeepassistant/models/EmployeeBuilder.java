@@ -5,7 +5,7 @@ public final class EmployeeBuilder {
     private String firstName;
     private String lastName;
     private String email;
-    private String department;
+    private Department department;
     private String position;
     private Double salary;
     private String password;
@@ -48,7 +48,7 @@ public final class EmployeeBuilder {
         return this;
     }
 
-    public EmployeeBuilder withDepartment(String department) {
+    public EmployeeBuilder withDepartment(Department department) {
         this.department = department;
         return this;
     }
@@ -71,8 +71,6 @@ public final class EmployeeBuilder {
     public Employee build() {
         Employee employee = new Employee();
         employee.setId(id);
-        employee.setFirstName(firstName);
-        employee.setLastName(lastName);
         employee.setEmail(email);
         employee.setDepartment(department);
         employee.setPosition(position);

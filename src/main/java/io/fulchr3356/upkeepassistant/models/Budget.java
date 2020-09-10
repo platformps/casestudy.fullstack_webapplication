@@ -1,23 +1,29 @@
 package io.fulchr3356.upkeepassistant.models;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
+@Data
 @Entity
-@Table(name = "budget", schema = "upkeep_assistant")
 public class Budget  implements EntityInterface<Integer>, Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String manager;
     private String name;
     private Double amount;
-    private String renewDate;
+    private Date renewDate;
 
     @ManyToOne(cascade=CascadeType.PERSIST)
     private User user;
+
+    @ManyToOne (cascade = CascadeType.ALL)
+    private Employee manager;
 
     public Budget(String name) {
         this.name = name;
@@ -36,64 +42,43 @@ public class Budget  implements EntityInterface<Integer>, Serializable {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "manager", nullable = true, length = 50)
-    public String getManager() {
-        return manager;
-    }
-
-    public void setManager(String manager) {
-        this.manager = manager;
-    }
-
-    @Basic
-    @Column(name = "name", nullable = false, length = 50)
     public String getName() {
         return name;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public Date getRenewDate() {
+        return renewDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Employee getManager() {
+        return manager;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "amount", nullable = false, precision = 2)
-    public Double getAmount() {
-        return amount;
-    }
-
     public void setAmount(Double amount) {
         this.amount = amount;
     }
 
-    @Basic
-    @Column(name = "renew_date", nullable = false)
-    public String getRenewDate() {
-        return renewDate;
-    }
-
-    public void setRenewDate(String renewDate) {
+    public void setRenewDate(Date renewDate) {
         this.renewDate = renewDate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Budget that = (Budget) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(manager, that.manager) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(amount, that.amount) &&
-                Objects.equals(renewDate, that.renewDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, manager, name, amount, renewDate);
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setManager(Employee manager) {
+        this.manager = manager;
     }
 }

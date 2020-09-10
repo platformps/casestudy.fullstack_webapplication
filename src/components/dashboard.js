@@ -38,7 +38,6 @@ class Dashboard extends Component{
         const {cookies} = props;
         this.state.csrfToken = cookies.get('XSRF-TOKEN');
         this.logout = this.logout.bind(this);
-        this.wrapper = React.createRef();
         
     }
 
@@ -68,7 +67,7 @@ class Dashboard extends Component{
                 {/* <header className = "Dashboard-Header">  
                 <Avatar   src = {userLogo} size="48"  onClick ={() => this.props.history.goBack()}> </Avatar>
               </header> */}
-            <div className = "Dashboard-Header" ref={this.wrapper}>
+            <div className = "Dashboard-Header">
               <PrimarySearchAppBar  />
               </div>
            
@@ -78,8 +77,8 @@ class Dashboard extends Component{
              
                <div style = {{textAlign: "left", left: 0}}>
 
-<Button onClick = {this.logout}>  logout</Button>
-               <Link to = {this.props.match.path}><button className = "Dashboard-Button">Dashboard</button></Link>
+                   <Button onClick = {this.logout}>  logout</Button>
+                  <Link to = {this.props.match.path}><button className = "Dashboard-Button">Dashboard</button></Link>
                     
                     <Link to = {this.props.match.path+"/employees"}><button className = "Dashboard-Button"> Employees</button></Link>
 

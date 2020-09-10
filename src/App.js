@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./components/login";
 import SignUp from "./components/signup";
 import Dashboard from './components/dashboard';
-import EmployeeList from './components/EmployeeList';
-import EditEmployee from './components/EditEmployee';
 import { CookiesProvider } from 'react-cookie';
 function App() {
   return (
