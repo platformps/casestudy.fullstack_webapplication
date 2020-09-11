@@ -18,17 +18,17 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping(value = "/users/")
     public ResponseEntity<Iterable<User>> readAll() {
         return new ResponseEntity<>(service.readAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/read/{id}")
+    @GetMapping(value = "/users/{id}")
     public ResponseEntity<User> readById(@PathVariable Long id) {
         return new ResponseEntity<>(service.readById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/create/")
     public ResponseEntity<User> create(@RequestBody User user) {
         return new ResponseEntity<>(service.create(user), HttpStatus.CREATED);
     }
