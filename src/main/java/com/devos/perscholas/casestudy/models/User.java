@@ -13,16 +13,20 @@ public class User {
     private String email;
     private String firstName;
     private String lastName;
+    private String password;
+    private Boolean enabled;
 
 
     public User() {
     }
 
-    public User(Long id, String email, String firstName, String lastName) {
+    public User(Long id, String email, String firstName, String lastName, String password, Boolean enabled) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.password = password;
+        this.enabled = enabled;
     }
 
     public Long getId() {
@@ -55,5 +59,21 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
