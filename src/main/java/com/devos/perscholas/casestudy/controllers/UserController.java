@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping
+@RequestMapping(value = "/users")
 public class UserController {
     private UserService service;
 
@@ -18,17 +18,17 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping(value = "/users/")
+    @GetMapping(value = "/")
     public ResponseEntity<Iterable<User>> readAll() {
         return new ResponseEntity<>(service.readAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/users/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<User> readById(@PathVariable Long id) {
         return new ResponseEntity<>(service.readById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/create/")
+    @PostMapping(value = "/")
     public ResponseEntity<User> create(@RequestBody User user) {
         return new ResponseEntity<>(service.create(user), HttpStatus.CREATED);
     }
