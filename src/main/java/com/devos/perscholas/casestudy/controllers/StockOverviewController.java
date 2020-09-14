@@ -12,12 +12,12 @@ import org.springframework.web.client.RestTemplate;
 public class StockOverviewController {
     @GetMapping("/OVERVIEW/{symbol}")
     public StockOverview getCompanyOverview(@PathVariable("symbol") String symbol) {
-        StockOverview stock = new RestTemplate().getForObject(constructApiCall(symbol), StockOverview.class);
+        StockOverview stock = new RestTemplate().getForObject(constructApiRequest(symbol), StockOverview.class);
         return stock;
     }
 
-    private String constructApiCall(String symbol) {
-        String apiCall = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + symbol + "&apikey=7IEE375T5KRNN35W";
-        return apiCall;
+    private String constructApiRequest(String symbol) {
+        String apiRequest = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + symbol + "&apikey=7IEE375T5KRNN35W";
+        return apiRequest;
     }
 }

@@ -3,6 +3,7 @@ package com.devos.perscholas.casestudy.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class StockOverview {
+    //Alpha Vantage
     @JsonProperty("Symbol")
     private String symbol;
     @JsonProperty("AssetType")

@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+/* all pages */
+html {
+    font-family: 'Lato', sans-serif;
+}
+/* end all pages */
+
+.navbar {
+    background-color: rgba(0,0,0,.8)!important;
+}
+
+/* index page */
+#index {
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thebalance.com%2Fthmb%2FUZS2curMfBJpwbb8LrvpxttXhA0%3D%2F2103x1428%2Ffilters%3Afill(auto%2C1)%2FStock-Market-Charts-Are-Useless-56a093595f9b58eba4b1ae5b.jpg&f=1&nofb=1');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+  }
+  .form-signin .checkbox {
+    font-weight: 400;
+    font-size: small;
+  }
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+/* end index page */
+
+/* page 2 */
+
+#page2 .jumbotron {
+    background-image: url('https://cdn.wccftech.com/wp-content/uploads/2019/06/cyberpunk-2077-keyart.jpg');
+    background-size: cover;
+    background-attachment: local;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+  @media (min-width: 768px) {
+    #page2 .jumbotron {
+      padding-top: 25rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  #page2 .jumbotron p:last-child {
+    margin-bottom: 0;
+  }
+
+  #page2 .jumbotron h1 {
+    font-weight: 300;
+  }
+
+  #page2 .jumbotron .container {
+    max-width: 40rem;
+  }
+
+  .album, .table-container {
+    background-color: rgba(0,0,0,.4)!important;
+  }
+
+  .hr-white {
+    border-color: white!important;
+    padding: 0;
+    margin: 0;
+  }
+/* end page 2 */
+
+/* page 3 */
+#page3 {
+    background-color: rgba(194, 197, 194, 0.719);
+}
+
+#cart-form {
+    padding: 2em;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+th {
+    padding-right: 3em;
+  }
+/* end page 3 */
+
+#index .foot {
+    position: absolute;
+}
+
+.foot {
+    color: white;
+    bottom: 5%;
+    text-align: center;
+    width: 100%;
+    height: 3%;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+}
+
+.btn:hover {
+  animation-name: 'grow';
+  animation-timing-function: linear;
+  animation-duration: 100ms;
+}
+
+@keyframes grow {
+  50% {
+    transform: scale(1.1);
+  }
+}
