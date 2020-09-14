@@ -1,14 +1,15 @@
 package io.fulchr3356.upkeepassistant.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Objects;
+
 
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class User implements EntityInterface<String>{
     @Id

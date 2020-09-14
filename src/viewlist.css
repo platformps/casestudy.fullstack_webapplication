@@ -1,10 +1,11 @@
 
   
   .container{/*white;*/
-    width: 400px;
+    width: 600px;
   border-radius:8px;
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
   background-color: #27293d;
+  color: white;
   }
 
   .listG{
@@ -25,9 +26,8 @@
   hr{
     border: 2px solid red;
     width: 400px;
-    
   }
   #hr2{
     width: 130px;
-  
   }
+ 

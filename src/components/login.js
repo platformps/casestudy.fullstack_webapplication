@@ -29,7 +29,7 @@ import { withCookies } from 'react-cookie';
           this.setState(({isAuthenticated: false}))
         } else {
           this.setState({isAuthenticated: true, user: JSON.parse(body)})
-          
+          window.location.pathname = window.location.pathname + 'dashboard';     
         }
       }
 
@@ -61,9 +61,9 @@ import { withCookies } from 'react-cookie';
           </Form>
                 </div>
                 <div>
-                    <Link className = "nav-link" to = {"/dashboard"}>
-                    <Button style = {{backgroundColor: "#2196f3"}}  > Sign in</Button>
-                    </Link>
+                    
+                    <Button style = {{backgroundColor: "#2196f3"}} onClick = {this.login}  > Sign in</Button>
+                    
                     <p>Forgot your password? <a href="" > Reset</a></p>
                     <div >
                     <Link className = "nav-link" to = {"/registration"}>

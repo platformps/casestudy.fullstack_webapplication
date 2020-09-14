@@ -49,11 +49,11 @@ export default class Example extends PureComponent {
     return (
       <div  >
        <div>
-        <div className = "splitDash leftDash"  >
+        <div  >
         <h5>Employee Payroll</h5>
         <hr id="hr2" />
       <LineChart
-        width={500}
+        width={1000}
         height={500}
         data={data}
         margin={{
@@ -72,9 +72,9 @@ export default class Example extends PureComponent {
      
       <h5>Employee Payroll</h5>
       <hr id="hr2" />
-      <PieChart width={400} height={400}>
-        <Pie dataKey="value" isAnimationActive={false} data={data01} cx={200} cy={200} outerRadius={80} fill="#8884d8" label />
-        <Pie dataKey="value" data={data02} cx={500} cy={200} innerRadius={40} outerRadius={80} fill="#82ca9d" />
+      <PieChart width={1000} height={300}>
+        <Pie dataKey="value" isAnimationActive={false} data={data01} cx={300} cy={150} outerRadius={80} fill="#8884d8" label />
+        <Pie dataKey="value" data={data02} cx={700} cy={150} innerRadius={40} outerRadius={80} fill="#82ca9d" />
         <Tooltip />
       </PieChart>
     </div>

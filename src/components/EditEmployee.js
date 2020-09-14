@@ -93,11 +93,6 @@ class EmployeeEdit extends Component {
                    onChange={this.handleChange} autoComplete="email"/>
           </FormGroup>
           <FormGroup>
-            <Label for="password">Password</Label>
-            <Input type="password" name="password" id="password" value={item.password || ''}
-                   onChange={this.handleChange} autoComplete="password"/>
-          </FormGroup>
-          <FormGroup>
             <Label for="position">Position</Label>
             <Input type="text" name="position" id="position" value={item.position || ''}
                    onChange={this.handleChange} autoComplete="position"/>

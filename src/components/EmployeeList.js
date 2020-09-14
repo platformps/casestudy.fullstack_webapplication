@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup, Container, Table, ListGroup, ListGroupItem } from 'reactstrap';
+import { Button, ButtonGroup, Container, Table, ListGroup, ListGroupItem} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../viewlist.css';
@@ -17,7 +17,7 @@ class EmployeeList extends Component {
   };
 
   constructor(props) {
-    super(props);
+    super();
     const {cookies} = props;
     this.state = {employee: [],csrfToken: cookies.get('XSRF-TOKEN') ,isLoading: true};
     this.remove = this.remove.bind(this);
@@ -50,39 +50,48 @@ class EmployeeList extends Component {
 
   render() {
     const {employee, isLoading} = this.state;
-
     if (isLoading) {
       return <p>Loading...</p>;
     }
     return (
-      <div className = "container no-gutters mx-auto">
-        <div className = "row no-gutters pb-5 pt-5">
-          <div className = "col-4">
-           
-          </div>
-          <div className = "col-4">
-            <h5>Employees</h5>
+      <div no-gutters mx-auto>
+      <div >
+            <h2>Employees  </h2>
             <hr id="hr2" />
           </div>
-          <div className = "col-4">
-            <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/" + employee.id}>+</Button>
-          </div>
-        </div>
-        <div className = "row no-gutters">
-          <div className ="col-12 no-gutters pb-5">
-             <ul className="list-group">
-            {employee.map(employee =>
-             <li className="list-group-item" key={employee.id}> 
-                {employee.firstName} {employee.lastName} {employee.position}
-                <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + employee.id}>Edit</Button>
-                <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(employee.id)}>Delete</Button>
-              </li>
-              
+      <Table className = "container  no-gutters mx-auto">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Position</th>
+          <th>Salary</th>
+          <th>Department</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      {employee.map(employee =>
+             <tr key={employee.id}> 
+             <th scope="row">{employee.id}</th>
+               <td>{employee.firstName}</td> 
+               <td>{employee.lastName}</td>  
+               <td>{employee.position}</td> 
+               <td>{employee.salary}$</td>
+               <td>{employee.department.name}</td>
+               <td>
+                 <ButtonGroup>
+                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + employee.id}>Edit</Button>
+                 <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(employee.id)}>Delete</Button>
+                </ButtonGroup>
+                </td>
+              </tr>
             )}
-            </ul>
-          </div>
-          </div>
-          </div>
+      </tbody>
+    </Table>
+    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/" + employee.id}>Add Employee</Button>
+    </div>
     );
   }
 }

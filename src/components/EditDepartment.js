@@ -13,13 +13,19 @@ class DepartmentEdit extends Component {
 
   emptyItem = {
     name: '',
-    budget:'',
-    manager: '',
-  
+    manager: {
+      id: '',
+      name: '',
+    },
+    budget : {
+      id: '',
+      amount: '',
+    } ,
+    
   };
 
   constructor(props) {
-    super(props);
+    super();
     const {cookies} = props;
     this.state = {
       item: this.emptyItem,
@@ -34,6 +40,7 @@ class DepartmentEdit extends Component {
       try{
       const department = await (await fetch(`../../api/department/${this.props.match.params.id}`,{credentials: 'include'})).json();
       this.setState({item: department});
+      console.log(department);
       }catch(error){
         this.props.history.push('../');
       }
@@ -41,12 +48,11 @@ class DepartmentEdit extends Component {
   }
 
   handleChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-    let item = {...this.state.item};
-    item[name] = value;
-    this.setState({item});
+  const {item}  = { ...this.state };
+  const currentState = item;
+  const { name, value } = event.target;
+  currentState[name] = value;
+  this.setState({ item: currentState });
   }
 
   async handleSubmit(event) {
@@ -67,9 +73,8 @@ class DepartmentEdit extends Component {
   }
 
   render() {
-    const {item} = this.state;
+    const {item} =  this.state;
     const title = <h2>{item.id ? 'Edit Department' : 'Add Department'}</h2>;
-
     return <div>
       <Container>
         {title}
@@ -80,14 +85,24 @@ class DepartmentEdit extends Component {
                    onChange={this.handleChange} autoComplete="name"/>
           </FormGroup>
           <FormGroup>
-            <Label for="lastName">Department Manager</Label>
-            <Input type="text" name="manager" id="manager" value={item.manager || ''}
-                   onChange={this.handleChange} autoComplete="manager"/>
+            <Label>Department Manager First Name</Label>
+            <Input type="text" name="managerFirstName" id="managerFirstName" value={item.manager.firstName || ''}
+                   onChange={this.handleChange} autoComplete={item.manager.firstName}/>
           </FormGroup>
           <FormGroup>
-            <Label for="address">Budget</Label>
-            <Input type="text" name="budget" id="budget" value={item.budget || ''}
-                   onChange={this.handleChange} autoComplete="budget"/>
+            <Label>Department Manager Last Name</Label>
+            <Input type="text" name="managerLastName" id="managerLastName" value={item.manager.lastName || ''}
+                   onChange={this.handleChange} autoComplete={item.manager.lastName}/>
+          </FormGroup>
+          <FormGroup>
+            <Label >Budget ID</Label>
+            <Input type="text" name="budgetId" id="budgetId" value={item.budget.id|| ''}
+                   onChange={this.handleChange}  autoComplete={item.budget.id}/>
+          </FormGroup>
+          <FormGroup>
+            <Label>Budget</Label>
+            <Input type="text" id ="budgetAmount" name = "budgetAmount" value={item.budget.amount|| ''}
+                   onChange={this.handleChange} autoComplete={item.budget.amount}/>
           </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}

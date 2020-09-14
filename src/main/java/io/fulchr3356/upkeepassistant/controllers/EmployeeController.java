@@ -38,6 +38,7 @@ public class EmployeeController  {
 
     @PostMapping(value = "/employee")
     public ResponseEntity<Employee> add(@Valid @RequestBody Employee employee, @AuthenticationPrincipal OAuth2User principal) throws URISyntaxException {
+
        Map<String,Object> details = principal.getAttributes();
        String userId = details.get("sub").toString();
         // check to see if user already exists
