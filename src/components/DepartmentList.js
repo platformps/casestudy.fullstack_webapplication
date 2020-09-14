@@ -8,6 +8,7 @@ import { instanceOf } from 'prop-types';
 import {withRouter} from 'react-router-dom'
 
 
+
 class DepartmentList extends Component {
 
   static propTypes = {
@@ -72,8 +73,8 @@ class DepartmentList extends Component {
              <tr key={department.id}> 
              <th scope="row">{department.id}</th>
                <td>{department.name}</td> 
-               <td>{department.manager || 'None'}</td>  
-               <td>{department.budget || 'None'}$</td> 
+               <td>{department.manager.firstName +  ' ' +department.manager.lastName || 'N/A'} </td>  
+               <td>${department.budget || 'N/A'}</td> 
                <td>
                  <ButtonGroup>
                  <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + department.id}>Edit</Button>

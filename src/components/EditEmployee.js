@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Cookies, withCookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
-
+import { Select, MenuItem } from '@material-ui/core';
 class EmployeeEdit extends Component {
 
   static propTypes = {
@@ -15,16 +15,19 @@ class EmployeeEdit extends Component {
     lastName:'',
     position: '',
     salary: '',
-    department: '',
+    department: {
+      id: '',
+      name: '',
+      manager: ''
+    },
     email: '',
-    password: ''
-
   };
 
   constructor(props) {
-    super(props);
+    super();
     const {cookies} = props;
     this.state = {
+      departments: [],
       item: this.emptyItem,
       csrfToken: cookies.get('XSRF-TOKEN')
     };
@@ -33,6 +36,9 @@ class EmployeeEdit extends Component {
   }
 
   async componentDidMount() {
+    fetch('../../api/department',{credentials: 'include'})
+      .then(response => response.json())
+      .then(data => this.setState({departments: data}))
     if (this.props.match.params.id !== 'new') {
       try{
       const employee = await (await fetch(`../../api/employee/${this.props.match.params.id}`,{credentials: 'include'})).json();
@@ -70,12 +76,13 @@ class EmployeeEdit extends Component {
   }
 
   render() {
-    const {item} = this.state;
+    const {item,departments} = this.state;
     const title = <h2>{item.id ? 'Edit Employee' : 'Add Employee'}</h2>;
 
     return <div>
       <Container>
         {title}
+        <hr id="hr2" />
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
             <Label for="firstName">First Name</Label>
@@ -97,10 +104,21 @@ class EmployeeEdit extends Component {
             <Input type="text" name="position" id="position" value={item.position || ''}
                    onChange={this.handleChange} autoComplete="position"/>
           </FormGroup>
-          <FormGroup>
-            <Label for="city">Department</Label>
-            <Input type="text" name="department" id="department" value={item.department || ''}
-                   onChange={this.handleChange} autoComplete="department"/>
+          <Label>Department</Label>
+          <FormGroup style = {{backgroundColor: 'white'}}>
+            <Select
+          color = "secondary"  
+          labelId="department"
+          id="department"
+          name="department"
+          value={item.department}
+          onChange={this.handleChange}
+        >
+          {departments.map(department =>
+          <MenuItem onChange={this.handleChange} key={department.id} value={department}>{department.name}</MenuItem>
+          )}
+          <MenuItem onChange={this.handleChange}  value={''}>None</MenuItem>
+        </Select>
           </FormGroup>
           <div className="row">
             <FormGroup className="col-md-4 mb-3">

@@ -27,13 +27,11 @@ public class EmployeeRepositoryTest {
                 .withFirstName("Christopher")
                 .withLastName("Fulton")
                 .withEmail("fulchr3356@gmail.com")
-                .withPassword("password")
                 .withSalary(100000.00).build();
         Employee employee2=  new EmployeeBuilder()
                 .withFirstName("Greg")
                 .withLastName("Fulton")
                 .withEmail("fulchr3356@gmail3.com")
-                .withPassword("password")
                 .withSalary(100000.00).build();
         assertNull(employee.getId());
         assertNull(employee2.getId());

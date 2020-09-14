@@ -8,7 +8,6 @@ public final class EmployeeBuilder {
     private Department department;
     private String position;
     private Double salary;
-    private String password;
 
     public EmployeeBuilder() {
     }
@@ -21,7 +20,6 @@ public final class EmployeeBuilder {
         this.department = dataToBeUpdated.getDepartment();
         this.position = dataToBeUpdated.getPosition();
         this.salary = dataToBeUpdated.getSalary();
-        this.password = dataToBeUpdated.getPassword();
     }
 
     public static EmployeeBuilder anEmployee() {
@@ -63,10 +61,7 @@ public final class EmployeeBuilder {
         return this;
     }
 
-    public EmployeeBuilder withPassword(String password) {
-        this.password = password;
-        return this;
-    }
+
 
     public Employee build() {
         Employee employee = new Employee();
@@ -75,7 +70,6 @@ public final class EmployeeBuilder {
         employee.setDepartment(department);
         employee.setPosition(position);
         employee.setSalary(salary);
-        employee.setPassword(password);
         return employee;
     }
 }

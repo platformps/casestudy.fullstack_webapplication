@@ -8,7 +8,7 @@ public final class DepartmentBuilder {
     Integer id;
     private Employee departmentManager;
     private String  departmentName;
-    private Budget budget;
+    private Double budget;
     private ArrayList<Sale> sales;
 
     private DepartmentBuilder(Department dataToBeUpdated) {
@@ -46,7 +46,7 @@ public final class DepartmentBuilder {
         return this;
     }
 
-    public DepartmentBuilder withDepartmentBudget(Budget departmentBudget) {
+    public DepartmentBuilder withDepartmentBudget(Double  departmentBudget) {
         this.budget = departmentBudget;
         return this;
     }

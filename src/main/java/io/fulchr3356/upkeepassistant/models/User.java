@@ -5,13 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User implements EntityInterface<String>{
+public class User implements EntityInterface<String>, Serializable {
     @Id
     private String id;
     private String name;

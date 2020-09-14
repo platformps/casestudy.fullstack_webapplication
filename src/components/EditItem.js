@@ -3,8 +3,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Cookies, withCookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
-
-class BudgetEdit extends Component {
+import { Select, MenuItem } from '@material-ui/core';
+class EditItem extends Component {
 
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
@@ -12,14 +12,12 @@ class BudgetEdit extends Component {
 
   emptyItem = {
     name: '',
-    amount:'',
-    manager: '',
-    renewDate: '',
-  
+    price:'',
+    quantity: ''
   };
 
   constructor(props) {
-    super(props);
+    super();
     const {cookies} = props;
     this.state = {
       item: this.emptyItem,
@@ -32,10 +30,9 @@ class BudgetEdit extends Component {
   async componentDidMount() {
     if (this.props.match.params.id !== 'new') {
       try{
-      const department = await (await fetch(`../../api/budget/${this.props.match.params.id}`,{credentials: 'include'})).json();
-      this.setState({item: department});
-      }
-      catch(error){
+      const item = await (await fetch(`../../api/item/${this.props.match.params.id}`,{credentials: 'include'})).json();
+      this.setState({item: item});
+      } catch(error){
         this.props.history.push('../');
       }
     }
@@ -54,7 +51,7 @@ class BudgetEdit extends Component {
     event.preventDefault();
     const {item,csrfToken} = this.state;
 
-    await fetch('../../api/budget'+ (item.id ? '/' + item.id : ''), {
+    await fetch('../../api/item'+ (item.id ? '/' + item.id : ''), {
       method: (item.id) ? 'PUT' : 'POST',
       headers: {
         'X-XSRF-TOKEN': csrfToken,
@@ -64,40 +61,38 @@ class BudgetEdit extends Component {
       body: JSON.stringify(item),
       credentials: 'include'
     });
-    this.props.history.push('../budget');
+    this.props.history.push('../inventory');
   }
 
   render() {
-    const {item} = this.state;
-    const title = <h2>{item.id ? 'Edit Budget' : 'Add Budget'}</h2>;
+    const {item,departments} = this.state;
+    const title = <h2>{item.id ? 'Edit Item' : 'Add Item'}</h2>;
 
     return <div>
       <Container>
         {title}
+        <hr id="hr2" />
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
-            <Label for="name">Departemnt Name</Label>
+            <Label for="name">Name</Label>
             <Input type="text" name="name" id="name" value={item.name || ''}
                    onChange={this.handleChange} autoComplete="name"/>
           </FormGroup>
           <FormGroup>
-            <Label for="manager">Budget Manager</Label>
-            <Input type="text" name="manager" id="manager" value={item.manager || ''}
-                   onChange={this.handleChange} autoComplete="manager"/>
+            <Label for="price">Price</Label>
+            <Input type="number" name="price" id="price" value={item.price || ''}
+                   onChange={this.handleChange} autoComplete="price"/>
           </FormGroup>
           <FormGroup>
-            <Label for="amount">Amount</Label>
-            <Input type="text" name="amount" id="amount" value={item.amount || ''}
-                   onChange={this.handleChange} autoComplete="amount"/>
+            <Label for="quantity">Quantity</Label>
+            <Input type="quantity" name="quantity" id="quantity" value={item.quantity || ''}
+                   onChange={this.handleChange} autoComplete="quantity"/>
           </FormGroup>
-          <FormGroup>
-            <Label for="renewDate">Renew Date</Label>
-            <Input type="date" name="renewDate" id="renewDate" value={item.renewDate || ''}
-                   onChange={this.handleChange} autoComplete="renewDate"/>
-          </FormGroup>
+          <div className="row">
+          </div>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="secondary" tag={Link} to="../department">Cancel</Button>
+            <Button color="secondary" tag={Link} to ={"../inventory"}>Cancel</Button>
           </FormGroup>
         </Form>
       </Container>
@@ -105,4 +100,4 @@ class BudgetEdit extends Component {
   }
 }
 
-export default withCookies(withRouter(BudgetEdit));
+export default withCookies(withRouter(EditItem));

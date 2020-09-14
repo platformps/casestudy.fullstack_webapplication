@@ -1,28 +1,27 @@
 package io.fulchr3356.upkeepassistant.models;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
-import java.util.Objects;
+
 @Data
 @Entity
-public class Department implements EntityInterface<Integer>, Serializable {
+public class Department implements EntityInterface<Integer>, Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Budget budget;
+    private Double  budget;
+    private Date budgetRenewDate;
 
     @ManyToOne(cascade=CascadeType.PERSIST)
     private User user;
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @OneToOne
     private Employee manager;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -31,11 +30,15 @@ public class Department implements EntityInterface<Integer>, Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Employee> employees;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Item> items;
+
     public Department(String name) {
         this.name = name;
     }
 
     public Department() {
+        this.budget = 0.0;
     }
 
     public Integer getId() {
@@ -46,9 +49,7 @@ public class Department implements EntityInterface<Integer>, Serializable {
         return name;
     }
 
-    public Budget getBudget() {
-        return budget;
-    }
+    public Double getBudget() {return budget; }
 
     public User getUser() {
         return user;
@@ -70,7 +71,7 @@ public class Department implements EntityInterface<Integer>, Serializable {
         this.name = name;
     }
 
-    public void setBudget(Budget budget) {
+    public void setBudget(Double budget) {
         this.budget = budget;
     }
 

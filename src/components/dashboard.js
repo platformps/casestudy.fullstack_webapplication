@@ -11,11 +11,11 @@ import EditEmployee from  './EditEmployee';
 import  DepartmentList from  './DepartmentList';
 import EditDepartment from './EditDepartment';
 import  SaleList from  './SaleList';
-import  BudgetList from  './BudgetList';
+import  ItemList from  './ItemList';
 import Avatar from 'react-avatar';
 import PrimarySearchAppBar from './PrimarySearchAppBar';
 import DashboardGraphs from './DashboardGraphs';
-import EditBudget from './EditBudget';
+import EditItem from './EditItem';
 import EditSale from './EditSale';
 import { withCookies } from 'react-cookie';
 import PayrollList from './PayrollList';
@@ -33,7 +33,7 @@ class Dashboard extends Component{
     
      
     constructor(props) {
-        super(props);
+        super();
         let match = props.match
         const {cookies} = props;
         this.state.csrfToken = cookies.get('XSRF-TOKEN');
@@ -84,7 +84,7 @@ class Dashboard extends Component{
 
                     <Link to = {this.props.match.path+"/department"}><button className = "Dashboard-Button"> Departments</button></Link>
             
-                    <Link to = {this.props.match.path+"/budget"}><button className = "Dashboard-Button">Budgets</button></Link>
+                    <Link to = {this.props.match.path+"/inventory"}><button className = "Dashboard-Button">Inventory</button></Link>
                 
                     <Link to = {this.props.match.path+"/sale"}><button className = "Dashboard-Button">Sales</button></Link>
                 
@@ -100,8 +100,8 @@ class Dashboard extends Component{
           <Route path={this.props.match.path+"/employees/:id"}  component={EditEmployee}/>
           <Route exact path={this.props.match.path+"/department"} component={DepartmentList}/>
           <Route path={this.props.match.path+"/department/:id"}  component={EditDepartment}/>
-          <Route  exact path={this.props.match.path+"/budget"} component={BudgetList}/>
-          <Route path={this.props.match.path+"/budget/:id"}  component={EditBudget}/>
+          <Route  exact path={this.props.match.path+"/inventory"} component={ItemList}/>
+          <Route path={this.props.match.path+"/inventory/:id"}  component={EditItem}/>
           <Route exact path={this.props.match.path+"/sale"} component={SaleList}/>
           <Route path={this.props.match.path+"/sale/:id"}  component={EditSale}/>
           <Route exact path={this.props.match.path+"/payroll"} component={PayrollList}/>

@@ -1,11 +1,10 @@
 package io.fulchr3356.upkeepassistant.models;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Data
@@ -50,6 +49,9 @@ public class Sale implements  EntityInterface<Integer>, Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Department department;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    List<Item> items;
 
     public Sale(){
         this.amount = 0.00;

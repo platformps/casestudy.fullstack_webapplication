@@ -17,7 +17,9 @@ public class Employee implements EntityInterface<Integer>, Serializable {
     private String email;
     private String position;
     private Double salary;
-    private String password;
+
+    public Employee(){
+    }
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     private User user;
@@ -28,7 +30,7 @@ public class Employee implements EntityInterface<Integer>, Serializable {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Payroll> payrolls;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.ALL)
     private Department department;
 
     @Override
@@ -56,9 +58,6 @@ public class Employee implements EntityInterface<Integer>, Serializable {
         return salary;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     public User getUser() {
         return user;
@@ -96,9 +95,6 @@ public class Employee implements EntityInterface<Integer>, Serializable {
         this.salary = salary;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public void setUser(User user) {
         this.user = user;

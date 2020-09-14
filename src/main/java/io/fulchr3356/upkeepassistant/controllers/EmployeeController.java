@@ -3,6 +3,7 @@ package io.fulchr3356.upkeepassistant.controllers;
 import io.fulchr3356.upkeepassistant.models.Employee;
 import io.fulchr3356.upkeepassistant.models.User;
 import io.fulchr3356.upkeepassistant.models.UserBuilder;
+import io.fulchr3356.upkeepassistant.repositories.DepartmentRepository;
 import io.fulchr3356.upkeepassistant.repositories.EmployeeRepository;
 import io.fulchr3356.upkeepassistant.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
@@ -25,11 +26,13 @@ import java.security.Principal;
 public class EmployeeController  {
     private final EmployeeRepository employeeRepository;
     private UserRepository userRepository;
+    private DepartmentRepository departmentRepository;
     private final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
-    public EmployeeController(EmployeeRepository employeeRepository, UserRepository userRepository) {
+    public EmployeeController(EmployeeRepository employeeRepository, UserRepository userRepository, DepartmentRepository departmentRepository) {
         this.employeeRepository = employeeRepository;
         this.userRepository = userRepository;
+        this.departmentRepository = departmentRepository;
     }
     @GetMapping(value = "/employee")
     public Collection<Employee> findAll(Principal principal) {
@@ -47,6 +50,7 @@ public class EmployeeController  {
                                                       .withName(details.get("name").toString())
                                                       .withEmail(details.get("email").toString()).build()));
         Employee result = employeeRepository.save(employee);
+        departmentRepository.save(employee.getDepartment());
        return ResponseEntity.created(new URI("/api/employee/" + employee.getId()))
                .body(result); }
 
