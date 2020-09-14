@@ -19,6 +19,18 @@ html {
     background-size: cover;
 }
 
+#index .jumbotron {
+    background-color: rgba(0, 0, 0, .6);
+    color: white;
+    text-shadow: 2px 2px 3px black;
+    font-size: 3em;
+    font-weight: 700;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 0;
+    }
+
 .form-signin {
     width: 100%;
     max-width: 330px;
@@ -48,6 +60,11 @@ html {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+  }
+
+  .register-link {
+      font-size: medium;
+      padding: 1rem;
   }
 /* end index page */
 
@@ -122,16 +139,4 @@ th {
     height: 3%;
     bottom: 0;
     background-color: rgba(0,0,0,.5);
-}
-
-.btn:hover {
-  animation-name: 'grow';
-  animation-timing-function: linear;
-  animation-duration: 100ms;
-}
-
-@keyframes grow {
-  50% {
-    transform: scale(1.1);
-  }
 }
