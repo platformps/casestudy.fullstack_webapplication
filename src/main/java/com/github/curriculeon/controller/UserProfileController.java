@@ -5,6 +5,7 @@ import com.github.curriculeon.service.SecurityServiceImpl;
 import com.github.curriculeon.service.UserProfileService;
 import com.github.curriculeon.validator.UserProfileValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,6 +39,12 @@ public class UserProfileController {
         userService.save(userForm);
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
         return "redirect:/welcome";
+    }
+
+    @GetMapping(value ="/home")
+    String getView(Model model) {
+        model.addAttribute("msg", "Hello there, This message has been injected from the controller method");
+        return "home";
     }
 
     @GetMapping(value = "/login")
