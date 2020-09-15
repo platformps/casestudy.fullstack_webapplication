@@ -12,7 +12,7 @@ export default class Home extends Component {
   
 
     componentDidMount() {
-            fetch("http://localhost:4000/album")
+            fetch("http://localhost:8080/albums")
             .then(res => res.json())
             .then(
               (result) => {

@@ -8,6 +8,7 @@ import history from "./utils/history";
 import PrivateRoute from "./components/PrivateRoute";
 import MenuAppBar from './components/Navigation';
 import AlbumHome from "./components/AlbumHome";
+import SpringTest from "./components/SpringTest";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <PrivateRoute path="/" exact component={Home} />
           <PrivateRoute path="/profile" component={Profile} />
           <PrivateRoute path="/albumhome" component={AlbumHome} />
+          <PrivateRoute path="/test" component={SpringTest} />
         </Switch>
       </Router>
     </div>
