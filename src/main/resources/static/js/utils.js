@@ -6,3 +6,12 @@ function validateEmail() {
     }
     return;
 }
+
+function showPassword() {
+    var pass = document.getElementById("inputPassword");
+    if (pass.type === "password") {
+      pass.type = "text";
+    } else {
+      pass.type = "password";
+    }
+}

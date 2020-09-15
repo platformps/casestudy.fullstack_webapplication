@@ -12,7 +12,7 @@ html {
 
 /* index page */
 #index {
-    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thebalance.com%2Fthmb%2FUZS2curMfBJpwbb8LrvpxttXhA0%3D%2F2103x1428%2Ffilters%3Afill(auto%2C1)%2FStock-Market-Charts-Are-Useless-56a093595f9b58eba4b1ae5b.jpg&f=1&nofb=1');
+    background-image: url('/img/stock-chart.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
