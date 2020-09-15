@@ -41,8 +41,9 @@ public class UserProfileController {
         return "redirect:/welcome";
     }
 
-    @GetMapping(value ="/home")
-    String getView(Model model) {
+    // recently added
+    @GetMapping("/home")
+    public String getView(Model model) {
         model.addAttribute("msg", "Hello there, This message has been injected from the controller method");
         return "home";
     }
