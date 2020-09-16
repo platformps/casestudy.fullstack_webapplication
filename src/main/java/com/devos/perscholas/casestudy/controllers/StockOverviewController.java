@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/stocks")
+@RequestMapping("/company")
 public class StockOverviewController {
-    @GetMapping("/OVERVIEW/{symbol}")
+    @GetMapping("/{symbol}")
     public StockOverview getCompanyOverview(@PathVariable("symbol") String symbol) {
         StockOverview stock = new RestTemplate().getForObject(constructApiRequest(symbol), StockOverview.class);
         return stock;

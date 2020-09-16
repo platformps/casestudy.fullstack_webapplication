@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class RegisterController {
     @GetMapping
     public String getView(Model model) {
-        model.addAttribute("log-btn", "Login");
+
         return "register";
     }
 }

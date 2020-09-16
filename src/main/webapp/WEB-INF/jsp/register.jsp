@@ -19,7 +19,7 @@
 
 
 
-<body id="page3">
+<body id="register">
 <header>
   <!----------------- BEGIN NAV ----------------->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-family: 'Lato', sans-serif;">
@@ -27,12 +27,12 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <!-- <span class="navbar-toggler-icon"></span> -->
     </button>
-    <button class="btn btn-primary btn-sm ml-auto" type="button">${log-btn}</button>
+    <button class="btn btn-primary btn-sm ml-auto" onclick="window.location.href='/'" type="button">Login</button>
   </nav>
   <!----------------- END NAV ----------------->
 </header>
 
-<main id="cart-form">
+<main id="register-form">
 <div class="row">
     <div class="col-md-8 order-md-1 mx-auto">
       <h4 class="mb-3">New User</h4>
@@ -56,7 +56,7 @@
 
         <div class="mb-3">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" onblur="validateEmail()" placeholder="you@example.com" required>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
           </div>

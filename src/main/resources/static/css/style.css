@@ -10,8 +10,8 @@ html {
     background-color: rgba(0,0,0,.8)!important;
 }
 
-/* index page */
-#index {
+/* login page */
+#login {
     background-image: url('/img/stock-chart.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -19,7 +19,7 @@ html {
     background-size: cover;
 }
 
-#index .jumbotron {
+#login .jumbotron {
     background-color: rgba(0, 0, 0, .6);
     color: white;
     text-shadow: 2px 2px 3px black;
@@ -56,7 +56,7 @@ html {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
-  .form-signin input[type="password"] {
+  .form-signin #inputPassword {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -109,12 +109,12 @@ html {
   }
 /* end page 2 */
 
-/* page 3 */
-#page3 {
+/* registration page */
+#register {
     background-color: rgba(194, 197, 194, 0.719);
 }
 
-#cart-form {
+#register-form {
     padding: 2em;
 }
 
@@ -125,7 +125,7 @@ tr:nth-child(even) {
 th {
     padding-right: 3em;
   }
-/* end page 3 */
+/* end registration page */
 
 #index .foot {
     position: absolute;
