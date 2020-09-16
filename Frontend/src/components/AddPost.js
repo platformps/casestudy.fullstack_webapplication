@@ -52,28 +52,19 @@ export default function AddPost(props) {
   };
 
 
-  let albumPosts = props.currentPosts
-
-   console.log(albumPosts[0])
-   let newAlbumPosts = `${albumPosts}{ImageURL:${postImg},postDate:${postDate},postDesc:${postDesc}},` 
-   let trythis = [...albumPosts]
-   console.log(trythis)
-   console.log(newAlbumPosts)
-
   const handleSubmit = (event) => { 
 
     event.preventDefault();
     const requestOptions = {
-      method: 'PUT',
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
-        Posts: newAlbumPosts})
+        Posts: ""})
   };
-  fetch('http://localhost:4000/album/' + props.currentId, requestOptions)
+  fetch('http://localhost:4000/posts', requestOptions)
   .then(async response => {
       const data = await response.json();
 
-      
       // check for error response
       if (!response.ok) {
           // get error message from body or default to response status
@@ -91,34 +82,6 @@ export default function AddPost(props) {
 
   return (
     <div>
-      {albumPosts}
-    {/* {albumPosts && albumPosts.map((smoke) => {
-      return (
-          <Card className={classes.root}>
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image={smoke.ImageURL}
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {smoke.postDesc}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button onClick={handleClickOpen} size="large" color="primary">
-              Add New Post
-            </Button>
-          </CardActions>
-        </Card>
-      )
-
-    })} */}
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia

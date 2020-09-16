@@ -40,7 +40,7 @@ export default class AlbumHome extends Component {
     const allAlbums =  this.state.Albums === null ? <div>nothing</div> :
     this.state.Albums.map(function(Albums)   
     {
-      return  <div key={Albums._id}>
+      return  <div key={Albums.id}>
               <MediaCard postView={loadPosts} albumPosts={Albums.Posts} albumId={Albums.id} AlbumImage={Albums.imgurl} Title={Albums.albumtitle} Description={Albums.albumdesc} Names={Albums.name}
               />
               </div> 
