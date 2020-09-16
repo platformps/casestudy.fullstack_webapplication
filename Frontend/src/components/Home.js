@@ -20,13 +20,14 @@ export default class Home extends Component {
                     Albums: result
                   })
               },
-              // Note: it's important to handle errors here
-              // instead of a catch() block so that we don't swallow
-              // exceptions from actual bugs in components.
               (error) => {
                   return error
               }
             )
+      }
+
+      updateAlbums = () => {
+        this.componentDidMount();
       }
 
 
@@ -38,7 +39,7 @@ export default class Home extends Component {
         this.state.Albums == null ? 
         <div>You Have No Albums! Lets get started</div>
         :
-        <AlbumHome Albums={this.state.Albums} />
+        <AlbumHome Albums={this.state.Albums} passedFunction={this.updateAlbums} />
         }
          </div>
     );

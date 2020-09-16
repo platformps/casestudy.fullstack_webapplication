@@ -81,14 +81,13 @@ export default function FabIntegrationSnackbar() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
-        Name: user.name,
-        AlbumTitle: albumName,
-        AlbumDesc: albumDesc,
-        DateStarted: albumStart,
-        AlbumImage: albumImg })
-
+        name: user.name,
+        albumtitle: albumName,
+        albumdesc: albumDesc,
+        datestarted: albumStart,
+        imgurl: albumImg })
   };
-  fetch('http://localhost:4000/album', requestOptions)
+  fetch('http://localhost:8080/albums', requestOptions)
   .then(async response => {
       const data = await response.json();
       setOpen(false);
