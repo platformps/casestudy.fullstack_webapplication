@@ -1,5 +1,14 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="webjars/bootstrap-datepicker/1.0.1/js/bootstrap-datepicker.js"></script>
+<script>
+    $('#targetDate').datepicker({
+        format: 'dd/mm/yyyy'
+    });
+</script>
+
 
 <!-- Footer -->
 <footer class="page-footer font-small blue pt-4">
@@ -14,8 +23,8 @@
       <div class="col-md-6 mt-md-0 mt-3">
 
         <!-- Content -->
-        <h5 class="text-uppercase">Footer Content</h5>
-        <p>Here you can use rows and columns to organize your footer content.</p>
+        <h5 class="text-uppercase">Todowey List</h5>
+        <p>Emmanuel platform to organize your lists of ideas.</p>
 
       </div>
       <!-- Grid column -->

@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/resources/**", "/registration").permitAll()
                     .anyRequest().authenticated()
                     .and()
-                    .formLogin()
+                    .formLogin().defaultSuccessUrl("/resources/**")
                     .loginPage("/login")
                     .permitAll()
                     .and()

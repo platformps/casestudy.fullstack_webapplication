@@ -1,13 +1,3 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-
-<jsp:include page="head_common.jsp"/>
-
-    <title>Create an account</title>
-
-<jsp:include page="head_files.jsp"/>
 
 <!--Navigation starts here-->
  <nav class="navbar navbar-expand-lg navbar-light bg-light container shadow">
@@ -48,31 +38,3 @@
                  </ul>
              </div>
          </nav>
-
-<!-- Page Content -->
- <div class= "container shadow">
-   <div>
-     <div>
-       <h1 class="font-weight-light">Fixed Full Page Background Image</h1>
-       <p class="lead">In this snippet, the background image is fixed to the body element. Content on the page will scroll, but the image will remain in a fixed position!</p>
-        <form:form method = "GET" action = "list-todos.jsp">
-                <table>
-                   <tr>
-                      <td>
-                      <a href="list-todos.jsp">List</a>
-                         <input type = "submit" value = "Redirect Page"/>
-                      </td>
-                   </tr>
-                </table>
-             </form:form>
-       <p class="lead">Scroll down...</p>
-       <div style="height: 700px"></div>
-       <p class="lead mb-0">You've reached the end!</p>
-     </div>
-   </div>
- </div>
-
-</div>
-</div>
-</div><!-- /container -->
-<jsp:include page="footer.jsp"/>

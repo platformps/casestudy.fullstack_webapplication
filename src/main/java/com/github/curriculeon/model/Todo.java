@@ -10,8 +10,7 @@ import java.util.Date;
 public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    private long id;
 
     private String userName;
 
