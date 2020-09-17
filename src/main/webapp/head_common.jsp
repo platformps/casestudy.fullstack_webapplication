@@ -9,3 +9,4 @@
     <link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">

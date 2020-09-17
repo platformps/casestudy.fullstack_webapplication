@@ -3,7 +3,6 @@ package com.github.curriculeon.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import javax.xml.stream.events.Characters;
 import java.util.Date;
 
 @Entity
@@ -21,7 +20,11 @@ public class Todo {
 
     private Date targetDate;
 
-    public Todo(String userName,String description, Date targetDate) {
+    public Todo(){
+        super();
+    }
+
+    public Todo(String userName,String description, Date targetDate, boolean isDone) {
         super();
         this.userName = userName;
         this.description = description;
