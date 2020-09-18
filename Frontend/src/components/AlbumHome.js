@@ -15,7 +15,7 @@ export default class AlbumHome extends Component {
     {
       Albums: props.Albums,
       View: 'album',
-      Posts: null,
+      Posts: props.Posts,
       currentAlbum: 'Please Select an Album'
     };
   }
@@ -33,7 +33,7 @@ export default class AlbumHome extends Component {
         View: 'post',
         currentAlbum: selectedAlbum,
         currentAlbumId: selectedId,
-        Posts: selectedPosts
+        // Posts: selectedPosts
       })
     }
 
@@ -41,12 +41,20 @@ export default class AlbumHome extends Component {
     this.state.Albums.map(function(Albums)   
     {
       return  <div key={Albums.id}>
-              <MediaCard postView={loadPosts} albumPosts={Albums.Posts} albumId={Albums.id} AlbumImage={Albums.imgurl} Title={Albums.albumtitle} Description={Albums.albumdesc} Names={Albums.name}
+              <MediaCard postView={loadPosts} albumId={Albums.id} AlbumImage={Albums.imgurl} Title={Albums.albumtitle} Description={Albums.albumdesc} Names={Albums.name}
               />
               </div> 
     })
 
-    const AddNewPost = this.state.Posts === null ? <div>No Posts</div> : <AddPost currentAlbum={this.state.currentAlbum} />
+    const allPosts =  this.state.Posts === null ? <div>nothing</div> :
+    this.state.Posts.map(function(Posts)   
+    {
+      console.log(Posts)
+      return  <div key={Posts.id}>
+              <MediaCard albumId={Posts.id} AlbumImage={Posts.postimgurl} Title={Posts.posttitle} Description={Posts.postdesc} Names={Posts.albumname}
+              />
+              </div> 
+    })
 
     let backButton = () => {
       this.setState({
@@ -61,13 +69,15 @@ export default class AlbumHome extends Component {
       <div>
         <Container maxWidth="lg">
 
-        {this.state.View === 'post' ? <h2 onClick={backButton}><ArrowBackIcon /> Go Back to Albums</h2> : null }
+        {this.state.View === 'post' && <h2 onClick={backButton}><ArrowBackIcon /> Go Back to Albums</h2> }
         <h1 color="primary">{this.state.currentAlbum}</h1>
         <Grid container justify="center" spacing={1} >
         <CustomizedSnackbars />
-        { this.state.View ==='album' ?  <FabIntegrationSnackbar /> : null }
-        { this.state.View === 'album' ? allAlbums : null}
-        { this.state.View === 'post' ? <AddPost currentPosts={this.state.Posts} currentId={this.state.currentAlbumId} /> : null}
+        { this.state.View ==='album' &&  <FabIntegrationSnackbar /> }
+        { this.state.View === 'album' && allAlbums }
+        { this.state.View === 'post' && allPosts }
+        { this.state.View === 'post' && <AddPost currentAlbum={this.state.currentAlbum} currentId={this.state.currentAlbumId} />}
+        
         </Grid>
          </Container>
 

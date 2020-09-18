@@ -13,7 +13,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 // import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-// import { useAuth0 } from "../react-auth0-spa";
+import { useAuth0 } from "../react-auth0-spa";
 
 const useStyles = makeStyles({
   root: {
@@ -26,12 +26,14 @@ const useStyles = makeStyles({
 });
 
 export default function AddPost(props) {
+  const { user } = useAuth0();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
-  const [postDesc, setpostDesc] = React.useState('');
-  const [postImg, setpostImg] = React.useState('');
-  const postDate = new Date();
+  const [postdesc, setpostdesc] = React.useState('');
+  const [postimgurl, setpostimgurl] = React.useState('');
+  const [posttitle, setposttitle] = React.useState('');
+  // const postDate = new Date();
 
 
   const handleClickOpen = () => {
@@ -43,40 +45,45 @@ export default function AddPost(props) {
   };
 
   const handleDescChange = event => {
-    setpostDesc(event.target.value);
+    setpostdesc(event.target.value);
     
   };
 
   const handleImgChange = event => {
-    setpostImg(event.target.value);
+    setpostimgurl(event.target.value);
   };
 
 
   const handleSubmit = (event) => { 
-
+    console.log('tacos')
     event.preventDefault();
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
-        Posts: ""})
+        username: user.name,
+        albumname: props.currentAlbum,
+        posttitle : posttitle,
+        postdesc: postdesc,
+        postdate: new Date(),
+        postimgurl: postimgurl })
   };
-  fetch('http://localhost:4000/posts', requestOptions)
+  fetch('http://localhost:8080/posts', requestOptions)
   .then(async response => {
       const data = await response.json();
-
+      setOpen(false);
+      
       // check for error response
       if (!response.ok) {
           // get error message from body or default to response status
           const error = (data && data.message) || response.status;
           return Promise.reject(error);    
       }
-      setOpen(false)
   })
   .catch(error => {
-    setOpen(false)
+      
       console.error('There was an error!', error);
-
+      setOpen(false);
   });
 };
 
@@ -114,7 +121,7 @@ export default function AddPost(props) {
             id="postDesc"
             label="Post Description"
             type="text"
-            value={postDesc}
+            value={postdesc}
             fullWidth
             onChange={handleDescChange}
           />
@@ -124,7 +131,7 @@ export default function AddPost(props) {
             id="postImg"
             label="Image Url"
             type="text"
-            value={postImg}
+            value={postimgurl}
             fullWidth
             onChange={handleImgChange}
           />
