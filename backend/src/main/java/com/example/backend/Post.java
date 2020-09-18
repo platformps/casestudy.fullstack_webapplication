@@ -8,25 +8,73 @@ import javax.persistence.Id;
 public class Post {
 
     private Integer id;
-    private String userName;
-    private String albumName;
-    private String postTitle;
-    private String postDesc;
-    private String postDate;
-    private String postimgURL;
+    private String username;
+    private String albumname;
+    private String posttitle;
+    private String postdesc;
+    private String postdate;
+    private String postimgurl;
 
 
-    public Post(Integer id, String userName, String albumName, String postTitle, String postDesc, String postDate, String postimgURL) {
-        this.id = id;
-        this.userName = userName;
-        this.albumName = albumName;
-        this.postTitle = postTitle;
-        this.postDesc = postDesc;
-        this.postDate = postDate;
-        this.postimgURL = postimgURL;
+    public String getusername() {
+        return username;
+    }
+
+    public void setusername(String username) {
+        this.username = username;
+    }
+
+    public String getalbumname() {
+        return albumname;
+    }
+
+    public void setalbumname(String albumname) {
+        this.albumname = albumname;
+    }
+
+    public String getposttitle() {
+        return posttitle;
+    }
+
+    public void setposttitle(String posttitle) {
+        this.posttitle = posttitle;
+    }
+
+    public String getpostdesc() {
+        return postdesc;
+    }
+
+    public void setpostdesc(String postdesc) {
+        this.postdesc = postdesc;
+    }
+
+    public String getpostdate() {
+        return postdate;
+    }
+
+    public void setpostdate(String postdate) {
+        this.postdate = postdate;
+    }
+
+    public String getpostimgurl() {
+        return postimgurl;
+    }
+
+    public void setpostimgurl(String postimgurl) {
+        this.postimgurl = postimgurl;
     }
 
     public Post () {}
+
+    public Post(Integer id, String username, String albumname, String posttitle, String postdesc, String postdate, String postimgurl) {
+        this.id = id;
+        this.username = username;
+        this.albumname = albumname;
+        this.posttitle = posttitle;
+        this.postdesc = postdesc;
+        this.postdate = postdate;
+        this.postimgurl = postimgurl;
+    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -36,53 +84,5 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getAlbumName() {
-        return albumName;
-    }
-
-    public void setAlbumName(String albumName) {
-        this.albumName = albumName;
-    }
-
-    public String getPostTitle() {
-        return postTitle;
-    }
-
-    public void setPostTitle(String postTitle) {
-        this.postTitle = postTitle;
-    }
-
-    public String getPostDesc() {
-        return postDesc;
-    }
-
-    public void setPostDedc(String postDedc) {
-        this.postDesc = postDesc;
-    }
-
-    public String getPostDate() {
-        return postDate;
-    }
-
-    public void setPostDate(String postDate) {
-        this.postDate = postDate;
-    }
-
-    public String getPostimgURL() {
-        return postimgURL;
-    }
-
-    public void setPostimgURL(String postimgURL) {
-        this.postimgURL = postimgURL;
     }
 }
