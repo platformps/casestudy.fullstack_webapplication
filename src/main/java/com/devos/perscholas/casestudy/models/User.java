@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -14,6 +16,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String password;
+    private Set<String> watchSet;
 
 
     public User() {
@@ -25,6 +28,15 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
+        this.watchSet = new HashSet<>();
+    }
+
+    public Set<String> getWatchList() {
+        return watchSet;
+    }
+
+    public void setWatchList(Set<String> watchList) {
+        this.watchSet = watchList;
     }
 
     public Long getId() {

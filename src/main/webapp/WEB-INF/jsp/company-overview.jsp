@@ -1,45 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Company</title>
-
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link href="style.css" rel="stylesheet">
-  <script type="text/javascript" src="utils.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
-
-</head>
-
-
-
-<body id="company">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script></head>
+<body id="company" onload=getCompanyData()>
 <header>
   <!----------------- BEGIN NAV ----------------->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-family: 'Lato', sans-serif;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" style="font-weight: 700;" href="#">Stock Market Casestudy</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <!-- <span class="navbar-toggler-icon"></span> -->
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
     </button>
-    <button class="btn btn-primary btn-sm ml-auto" type="button">Logout</button>
-  </nav>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+            <a href="#" class="nav-item nav-link">Dashboard</a>
+            <a href="#" class="nav-item nav-link">Profile</a>
+        </div>
+        <form class="form-inline">
+            <div class="input-group">
+                <input id="companyInput" type="text" class="form-control" placeholder="Symbol (Ex. FB, AMZN)">
+                <div class="input-group-append">
+                    <button type="button" onclick="changeCompanyData()" class="btn btn-sm btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="navbar-nav">
+            <a href="#" class="nav-item nav-link">Logout</a>
+        </div>
+    </div>
+</nav>
   <!----------------- END NAV ----------------->
 </header>
+<div class="logo col-12"></div>
+<div class="col-12" id="output">
+</div>
+<div class="col-12">
+</div>
+<div class="chart col-8">
 
-
-
-
-  <footer>
-
-  </footer>
-
+</div>
+<div id="companyData" class="company-info col-12" >
+</div>
+<div class="news col-8">
+</div>
+<footer>
+    <script>getCompanyData();</script>
+</footer>
+<script type="text/javascript" src="utils.js"></script>
 </body>
-
 </html>

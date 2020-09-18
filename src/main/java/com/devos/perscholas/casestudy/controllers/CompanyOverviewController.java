@@ -11,20 +11,21 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 @RequestMapping("/company-overview")
 public class CompanyOverviewController {
+//    @GetMapping("/{symbol}")
+//    public StockOverview getCompanyOverview(@PathVariable("symbol") String symbol) {
+//        StockOverview stock = new RestTemplate().getForObject(constructApiRequest(symbol), StockOverview.class);
+//        return stock;
+//    }
+//
+//    private String constructApiRequest(String symbol) {
+//        String apiRequest = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + symbol + "&apikey=7IEE375T5KRNN35W";
+//        return apiRequest;
+//    }
+
     @GetMapping("/{symbol}")
-    public StockOverview getCompanyOverview(@PathVariable("symbol") String symbol) {
-        StockOverview stock = new RestTemplate().getForObject(constructApiRequest(symbol), StockOverview.class);
-        return stock;
-    }
-
-    private String constructApiRequest(String symbol) {
-        String apiRequest = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + symbol + "&apikey=7IEE375T5KRNN35W";
-        return apiRequest;
-    }
-
-    @GetMapping
     public String getView(Model model, @PathVariable("symbol") String symbol) {
+        String ticker = symbol.toUpperCase();
 
-        return "company-overview";
+        return "company-overview/{symbol}";
     }
 }
