@@ -68,46 +68,15 @@ html {
   }
 /* end index page */
 
-/* page 2 */
-
-#page2 .jumbotron {
-    background-image: url('https://cdn.wccftech.com/wp-content/uploads/2019/06/cyberpunk-2077-keyart.jpg');
-    background-size: cover;
-    background-attachment: local;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-bottom: 0;
-    border-radius: 0;
-  }
-  @media (min-width: 768px) {
-    #page2 .jumbotron {
-      padding-top: 25rem;
-      padding-bottom: 6rem;
-    }
-  }
-
-  #page2 .jumbotron p:last-child {
-    margin-bottom: 0;
-  }
-
-  #page2 .jumbotron h1 {
-    font-weight: 300;
-  }
-
-  #page2 .jumbotron .container {
-    max-width: 40rem;
-  }
-
-  .album, .table-container {
-    background-color: rgba(0,0,0,.4)!important;
-  }
-
-  .hr-white {
-    border-color: white!important;
-    padding: 0;
-    margin: 0;
-  }
-/* end page 2 */
+/* market news */
+.card {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 80%;
+  margin-top: 1em;
+}
+/* end market news */
 
 /* registration page */
 #register {

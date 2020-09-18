@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Dashboard</title>
+  <title>Market News</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link href="./css/style.css" rel="stylesheet">
@@ -43,13 +43,12 @@
 </nav>
   <!----------------- END NAV ----------------->
 </header>
+<div id="insert"></div>
 
+<footer>
+    <script>getNews();</script>
+</footer>
 
-
-
-  <footer>
-
-  </footer>
 
 </body>
 

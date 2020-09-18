@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/dashboard/{id}")
-public class DashboardController {
+@RequestMapping("/market-news")
+public class MarketNewsController {
     @GetMapping
     public String getView(Model model, @PathVariable Long id) {
-        return "user-dashboard";
+        return "market-news";
     }
 }
