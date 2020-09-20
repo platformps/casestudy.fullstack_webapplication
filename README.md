@@ -44,6 +44,7 @@
     
   * **Web Link**
     1. On your web browser type localhost:8080/home or click this link [Access Site](localhost:8080/home)
+    <img src="https://github.com/pics2.PNG" "width= 48">
     2. The home page will open.
     3. From the home page click signup to get access to the todo-list web application
     4. On your home page you can create a todo-list.
