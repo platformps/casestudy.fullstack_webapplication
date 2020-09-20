@@ -4,42 +4,76 @@ import {  Link } from "react-router-dom";
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { withCookies } from 'react-cookie';
+import AuthService from "./auth.service";
 
-
+const required = value => {
+  if (!value) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        This field is required!
+      </div>
+    );
+  }
+};
 
  class Login extends Component {
-
-    state = {
-        isLoading: true,
-        isAuthenticated: false,
-        user: undefined
-      };
-
       constructor(props) {
-        super(props);
-        const {cookies} = props;
-        this.state.csrfToken = cookies.get('XSRF-TOKEN');
-        this.login = this.login.bind(this);
-      }
-
-      async componentDidMount() {
-        const response = await fetch('/api/user', {credentials: 'include'});
-        const body = await response.text();
-        if (body === '') {
-          this.setState(({isAuthenticated: false}))
-        } else {
-          this.setState({isAuthenticated: true, user: JSON.parse(body)})
-          window.location.pathname = window.location.pathname + 'dashboard';     
+        
+          super();
+          this.handleLogin = this.handleLogin.bind(this);
+          this.onChangeUsername = this.onChangeUsername.bind(this);
+          this.onChangePassword = this.onChangePassword.bind(this);
+      
+          this.state = {
+            username: "",
+            password: "",
+            loading: false,
+            message: ""
+          };
         }
-      }
 
-      login() {
-        let port = (window.location.port ? ':' + window.location.port : '');
-        if (port === ':3000') {
-          port = ':8080';
+        onChangeUsername(e) {
+          this.setState({
+            username: e.target.value
+          });
         }
-        window.location.href = '//' + window.location.hostname + port + '/private';
-      }
+      
+        onChangePassword(e) {
+          this.setState({
+            password: e.target.value
+          });
+        }
+      
+        handleLogin(e) {
+          e.preventDefault();
+      
+          this.setState({
+            message: "",
+            loading: true
+          });
+        
+            AuthService.login(this.state.username, this.state.password).then(
+              () => {
+                this.props.history.push("/dashboard");
+              },
+              error => {
+                const resMessage =
+                  (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                  error.message ||
+                  error.toString();
+      
+                this.setState({
+                  loading: false,
+                  message: resMessage
+                });
+              }
+            );
+         
+          
+        }
+
     render() {
         return (
             <form>
@@ -47,22 +81,33 @@ import { withCookies } from 'react-cookie';
                 <img src={logo} className="App-logo" alt="logo" />
                 <hr />
                 <div>
-                <Form onSubmit={this.handleSubmit}>
+                <Form>
           <FormGroup>
-            <Label for="email">Enter Email</Label>
-            <Input type="email" name="email" id="email" value= "email"
-                   autoComplete="email"/>
+          <Label for="username">Username</Label>
+          <Input
+                type="text"
+                className="form-control"
+                name="username"
+                value={this.state.username}
+                onChange={this.onChangeUsername}
+                validations={[required]}
+              />
           </FormGroup>
           <FormGroup>
             <Label for="password">Password</Label>
-            <Input type="password" name="password" id="password" value="password"
-                   autoComplete="password"/>
+            <Input type="password"
+                className="form-control"
+                name="password"
+                value={this.state.password}
+                onChange={this.onChangePassword}
+                validations={[required]}/>
           </FormGroup>
+
           </Form>
                 </div>
                 <div>
                     
-                    <Button style = {{backgroundColor: "#2196f3"}} onClick = {this.login}  > Sign in</Button>
+                    <Button style = {{backgroundColor: "#2196f3"}} onClick = {this.handleLogin}  > Sign in</Button>
                     
                     <p>Forgot your password? <a href="" > Reset</a></p>
                     <div >

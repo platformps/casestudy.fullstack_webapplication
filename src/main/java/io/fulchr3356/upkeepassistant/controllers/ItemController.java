@@ -3,12 +3,10 @@ package io.fulchr3356.upkeepassistant.controllers;
 
 import io.fulchr3356.upkeepassistant.models.Item;
 import io.fulchr3356.upkeepassistant.models.User;
-import io.fulchr3356.upkeepassistant.models.UserBuilder;
 import io.fulchr3356.upkeepassistant.repositories.ItemRepository;
 import io.fulchr3356.upkeepassistant.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,19 +32,14 @@ public class ItemController  {
     }
     @GetMapping(value = "/item")
     public Collection<Item> findAll(Principal principal) {
-        return itemRepository.findAllByUserId(principal.getName());
+        return itemRepository.findAllByUserUsername(principal.getName());
     }
 
     @PostMapping(value = "/item")
-    public ResponseEntity<Item> add(@Valid @RequestBody Item item, @AuthenticationPrincipal OAuth2User principal) throws URISyntaxException {
-
-        Map<String,Object> details = principal.getAttributes();
-        String userId = details.get("sub").toString();
-        // check to see if user already exists
-        Optional<User> user = userRepository.findById(userId);
-        item.setUser(user.orElse(new UserBuilder().withId(userId)
-                .withName(details.get("name").toString())
-                .withEmail(details.get("email").toString()).build()));
+    public ResponseEntity<Item> add(@Valid @RequestBody Item item,Principal principal) throws URISyntaxException {
+        User user = userRepository.findByUsername(principal.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + principal.getName()));
+        item.setUser(user);
         Item result = itemRepository.save(item);
         return ResponseEntity.created(new URI("/api/item/" + item.getId()))
                 .body(result); }

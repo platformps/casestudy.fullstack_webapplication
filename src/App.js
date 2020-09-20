@@ -4,10 +4,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./components/login";
 import SignUp from "./components/signup";
 import Dashboard from './components/dashboard';
-import { CookiesProvider } from 'react-cookie';
 function App() {
   return (
-    <CookiesProvider>
+
   <Router>
     <div className="App" >
       
@@ -22,7 +21,7 @@ function App() {
     
     </header>
     </div> </Router>
-    </CookiesProvider>
+
 
   );
 }

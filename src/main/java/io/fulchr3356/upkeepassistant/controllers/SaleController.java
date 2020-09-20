@@ -2,23 +2,21 @@ package io.fulchr3356.upkeepassistant.controllers;
 
 import io.fulchr3356.upkeepassistant.models.Sale;
 import io.fulchr3356.upkeepassistant.models.User;
-import io.fulchr3356.upkeepassistant.models.UserBuilder;
+import io.fulchr3356.upkeepassistant.repositories.ItemRepository;
 import io.fulchr3356.upkeepassistant.repositories.SaleRepository;
 import io.fulchr3356.upkeepassistant.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -26,26 +24,28 @@ import java.util.Optional;
 public class SaleController  {
     private final SaleRepository saleRepository;
     private final UserRepository userRepository;
+    private final ItemRepository itemRepository;
     private final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
-    public SaleController(SaleRepository saleRepository,UserRepository userRepository) {
+    public SaleController(SaleRepository saleRepository, UserRepository userRepository, ItemRepository itemRepository) {
         this.saleRepository = saleRepository;
         this.userRepository = userRepository;
+        this.itemRepository = itemRepository;
     }
     @GetMapping(value = "/sale")
     public Collection<Sale> findAll(Principal principal) {
-        return saleRepository.findAllByUserId(principal.getName());
+        return saleRepository.findAllByUserUsername(principal.getName());
     }
 
     @PostMapping(value = "/sale")
-    public ResponseEntity<?> add(@Valid @RequestBody Sale sale,@AuthenticationPrincipal OAuth2User principal) throws URISyntaxException {
-        Map<String,Object> details = principal.getAttributes();
-        String userId = details.get("sub").toString();
-        // check to see if user already exists
-        Optional<User> user = userRepository.findById(userId);
-        sale.setUser(user.orElse(new UserBuilder().withId(userId)
-                .withName(details.get("name").toString())
-                .withEmail(details.get("email").toString()).build()));
+    public ResponseEntity<?> add(@Valid @RequestBody Sale sale,Principal principal) throws URISyntaxException {
+        User user = userRepository.findByUsername(principal.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + principal.getName()));
+        sale.setUser(user);
+        sale.setItems(new ArrayList<>());
+        this.saleRepository.save(sale);
+        sale.addItem(sale.getItem());
+        sale.setAmount(sale.getItem().getPrice() * sale.getItem().getQuantity());
         Sale result = this.saleRepository.save(sale);
         return ResponseEntity.created(new URI("/api/sale/" + sale.getId()))
                 .body(result); }
@@ -59,7 +59,14 @@ public class SaleController  {
     @PutMapping(value = "/sale/{id}")
     ResponseEntity<?> update(@Valid @RequestBody Sale sale)  {
         log.info("Request to update sale: {}", sale);
-        Sale result = saleRepository.save(sale);
+        saleRepository.save(sale);
+        sale.addItem(sale.getItem());
+        saleRepository.save(sale);
+        sale.setAmount(sale.getAmount() + sale.getItems()
+                .stream()
+                .mapToDouble(item -> item.getPrice() *item.getQuantity())
+                .sum());
+        saleRepository.save(sale);
         return  ResponseEntity.ok().build();
     }
     @DeleteMapping(value = "/sale/{id}")

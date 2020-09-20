@@ -4,15 +4,13 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Data
 @Entity
 public class Sale implements  EntityInterface<Integer>, Serializable {
-    public String getProductName() {
-        return productName;
-    }
 
     public Double getAmount() {
         return amount;
@@ -37,27 +35,49 @@ public class Sale implements  EntityInterface<Integer>, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String productName;
     private Double amount;
     private String saleDate;
 
     @ManyToOne(cascade=CascadeType.PERSIST)
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Employee employee;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Department department;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    List<Item> items;
+    @OneToOne
+    private Item item;
+
+    @OneToMany
+    private List<Item> items;
 
     public Sale(){
         this.amount = 0.00;
     }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public void addItem(Item item){
+        items.add(item);
+    }
+
     public Sale(String name ) {
-        this.productName = name;
         this.amount = 0.00;
     }
 
@@ -70,9 +90,6 @@ public class Sale implements  EntityInterface<Integer>, Serializable {
         this.id = id;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
 
     public void setAmount(Double amount) {
         this.amount = amount;

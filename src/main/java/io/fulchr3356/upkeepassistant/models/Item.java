@@ -20,7 +20,18 @@ public class Item implements EntityInterface<Integer>, Serializable {
     List<Department> departments;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    List<Sale> sales;
+    private List<Sale> sales;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Sale sale;
+
+    public Sale getSale() {
+        return sale;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
+    }
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     User user;

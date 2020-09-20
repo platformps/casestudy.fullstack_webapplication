@@ -45,7 +45,6 @@ public final class SaleBuilder {
         Sale sale = new Sale();
         sale.setId(id);
         sale.setEmployee(employee);
-        sale.setProductName(productName);
         sale.setAmount(amount);
         sale.setSaleDate(saleDate);
         return sale;

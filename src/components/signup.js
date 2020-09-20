@@ -4,12 +4,107 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./login";
 import { Button, ButtonGroup, Container, Table ,Form, FormGroup, Input, Label } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import AuthService from "./auth.service";
+import { isEmail } from "validator";
+
+
 
 
 export default class Registration extends Component {
+    constructor(props) {
+        super();
+        this.handleRegister = this.handleRegister.bind(this);
+        this.onChangeUsername = this.onChangeUsername.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);
+        this.onChangeCPassword = this.onChangeCPassword.bind(this);
+    
+        this.state = {
+          username: "",
+          email: "",
+          password: "",
+          cpassword: "",
+          successful: false,
+          message: ""
+        };
+      }
+      validate(email, username, password,cpassword){
+        if(!isEmail(email) || (username.length < 3 || username.length > 20) || (password.length < 6 || password.length > 40) || password != cpassword){
+          return false;
+        }
+       
+        return true;
+      }
+
+      onChangeUsername(e) {
+        this.setState({
+          username: e.target.value
+        });
+      }
+    
+      onChangeEmail(e) {
+        this.setState({
+          email: e.target.value
+        });
+      }
+    
+      onChangePassword(e) {
+        this.setState({
+          password: e.target.value
+        });
+      }
+      onChangeCPassword(e) {
+        this.setState({
+          cpassword: e.target.value
+        });
+      }
+    
+      handleRegister(e) {
+        e.preventDefault();
+        
+        this.setState({
+          message: "",
+          successful: false
+        });
+        
+
+       if(!this.validate(this.state.email,this.state.username,this.state.password,this.state.cpassword)){
+         return;
+       }
+
+        
+          AuthService.register(
+            this.state.username,
+            this.state.email,
+            this.state.password
+          ).then(
+            response => {
+              this.setState({
+                message: response.data.message,
+                successful: true
+              });
+              
+            },
+            error => {
+              const resMessage =
+                (error.response &&
+                  error.response.data &&
+                  error.response.data.message) ||
+                error.message ||
+                error.toString();
+                  
+              this.setState({
+                successful: false,
+                message: resMessage
+              });
+            }
+          );
+          this.props.history.push('../');
+        }
+      
+
     render() {
         return (
-            <form method="post" action="/form" autoComplete = "off">
             <div>
                 <div className="split left">
                     <div className="centered">
@@ -17,30 +112,50 @@ export default class Registration extends Component {
                             Sign up
                 </h1>
                         <hr id="hr2" />
-                        <Form >
+                        <Form
+                        
+                        
+                        >
           <FormGroup>
-            <Label for="name">Enter Full Name</Label>
-            <Input type="text" name="name" id="name" value="name"
-                    autoComplete="name"/>
+            <Label for="name">Username</Label>
+            <Input type="text"
+                    className="form-control"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.onChangeUsername}
+                    />
           </FormGroup>
           <FormGroup>
             <Label for="email">Email</Label>
-            <Input type="email" name="email" id="email" value="email"
-                    autoComplete="email"/>
+            <Input type="text"
+                    className="form-control"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.onChangeEmail}
+                    />
           </FormGroup>
           <FormGroup>
-            <Label for="lastName">Enter Password</Label>
-            <Input type="password" name="password" id="password" value="password"
-                    autoComplete="password"/>
+            <Label for="password">Enter Password</Label>
+            <Input type="password"
+                    className="form-control"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.onChangePassword}
+                    />
           </FormGroup>
           <FormGroup>
-            <Label for="cpassword">Confirm password</Label>
-            <Input type="passowrd" name="cpassword" id="cpassword" value="cpassword"
-                   autoComplete="cpassword"/>
+            <Label for="password">Confirm Password</Label>
+            <Input type="password"
+                    className="form-control"
+                    name="cpassword"
+                    value={this.state.cpassword}
+                    onChange={this.onChangeCPassword}
+                    />
           </FormGroup>
           <FormGroup>
-            <Button color="primary" tag={Link} to="../">Register</Button>
+            <Button color="primary" onClick= {this.handleRegister}>Register</Button>
           </FormGroup>
+          
         </Form>
                         <p>
                             Once you click Register you agree with our Terms and Condtions
@@ -61,7 +176,6 @@ export default class Registration extends Component {
                     </div>
                 </div>
             </div>
-            </form>
         );
     }
 }

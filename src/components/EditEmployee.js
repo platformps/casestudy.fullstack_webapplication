@@ -4,6 +4,7 @@ import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Cookies, withCookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { Select, MenuItem } from '@material-ui/core';
+import authHeader from './auth-header';
 class EmployeeEdit extends Component {
 
   static propTypes = {
@@ -25,23 +26,21 @@ class EmployeeEdit extends Component {
 
   constructor(props) {
     super();
-    const {cookies} = props;
     this.state = {
       departments: [],
       item: this.emptyItem,
-      csrfToken: cookies.get('XSRF-TOKEN')
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async componentDidMount() {
-    fetch('../../api/department',{credentials: 'include'})
+    fetch('../../api/department',{headers: authHeader()})
       .then(response => response.json())
       .then(data => this.setState({departments: data}))
     if (this.props.match.params.id !== 'new') {
       try{
-      const employee = await (await fetch(`../../api/employee/${this.props.match.params.id}`,{credentials: 'include'})).json();
+      const employee = await (await fetch(`../../api/employee/${this.props.match.params.id}`,{headers: authHeader()})).json();
       this.setState({item: employee});
       } catch(error){
         this.props.history.push('../');
@@ -60,19 +59,16 @@ class EmployeeEdit extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const {item,csrfToken} = this.state;
-
+    const {item} = this.state;
+    const header = new Headers(authHeader());
+    header.set('Accept', 'application/json');
+    header.set('Content-Type', 'application/json');
     await fetch('../../api/employee'+ (item.id ? '/' + item.id : ''), {
       method: (item.id) ? 'PUT' : 'POST',
-      headers: {
-        'X-XSRF-TOKEN': csrfToken,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+      headers: header,
       body: JSON.stringify(item),
-      credentials: 'include'
     });
-    this.props.history.push('../employees');
+    this.props.history.push('../../dashboard');
   }
 
   render() {
@@ -129,7 +125,7 @@ class EmployeeEdit extends Component {
           </div>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="secondary" tag={Link} to ={"../employees"}>Cancel</Button>
+            <Button color="secondary" tag={Link} to ={"../../dashboard"}>Cancel</Button>
           </FormGroup>
         </Form>
       </Container>

@@ -11,6 +11,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import { withCookies } from 'react-cookie';
+import authService from './auth.service';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,9 +27,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuAppBar(props) {
+ function MenuAppBar(props) {
 
-
+  const history = useHistory();
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -43,6 +46,10 @@ export default function MenuAppBar(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleLogout = () =>{
+    authService.logout();
+    history.push('../');
+  }
 
   return (
     <div className={classes.root}>
@@ -80,9 +87,9 @@ export default function MenuAppBar(props) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick ={() => props.logout}>Logout</MenuItem>
+                {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem> */}
+                <MenuItem onClick ={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
           )}
@@ -91,3 +98,4 @@ export default function MenuAppBar(props) {
     </div>
   );
 }
+export default withCookies(MenuAppBar);

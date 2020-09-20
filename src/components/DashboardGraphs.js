@@ -1,34 +1,15 @@
-import React, { PureComponent } from 'react';
+import React, {Component } from 'react';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Sector,
+  LineChart, Area,AreaChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Sector,ResponsiveContainer
 } from 'recharts';
 import '../Dashboard.css';
 import '../App.css';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import authHeader from './auth-header';
+import AuthService from "./auth.service";
 
-
-const data = [
-  {
-    name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
-  },
-  {
-    name: 'Page B', uv: 3000, pv: 1398, amt: 2210,
-  },
-  {
-    name: 'Page C', uv: 2000, pv: 9800, amt: 2290,
-  },
-  {
-    name: 'Page D', uv: 2780, pv: 3908, amt: 2000,
-  },
-  {
-    name: 'Page E', uv: 1890, pv: 4800, amt: 2181,
-  },
-  {
-    name: 'Page F', uv: 2390, pv: 3800, amt: 2500,
-  },
-  {
-    name: 'Page G', uv: 3490, pv: 4300, amt: 2100,
-  },
-];
 
 const data01 = [
   { name: 'Group A', value: 400 }, { name: 'Group B', value: 300 },
@@ -42,44 +23,136 @@ const data02 = [
   { name: 'Group E', value: 3908 }, { name: 'Group F', value: 4800 },
 ];
 
-export default class Example extends PureComponent {
-  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/xqjtetw0/';
+ class Example extends Component {
+  
+
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
+  constructor(props) {
+    super();
+    const {cookies} = props;
+    this.state = {payroll: [],employees: [],sales: [],inventory: [],departments: [],csrfToken: cookies.get('XSRF-TOKEN')};
+  }
+  
+
+   componentDidMount() {
+    fetch('../api/payroll',{headers:  authHeader()})
+      .then(response => response.json())
+      .then(data => this.setState({payroll: data}));
+      fetch('../api/employee',{headers: authHeader()})
+      .then(response => response.json())
+      .then(data => this.setState({employees: data}))
+      fetch('../api/sale',{headers: authHeader()})
+      .then(response => response.json())
+      .then(data => this.setState({sales: data}))
+      fetch('../api/item',{headers: authHeader()})
+      .then(response => response.json())
+      .then(data => this.setState({inventory: data}))
+      fetch('../api/department',{headers: authHeader()})
+      .then(response => response.json())
+      .then(data => this.setState({departments: data, isLoading: false}))
+     
+  }
+
+   calcTotalSales(saleList){
+    let total = 0.0;
+      saleList.forEach(sale => {
+        total+= sale.amount;
+      });
+      return total;
+  }
+
+  calcTotalAssets(inventory){
+    let total = 0.0;
+    inventory.forEach(item =>{
+      total+= item.quantity*item.price;
+    })
+    return total;
+  }
+
+  
 
   render() {
+    const {payroll,employees,sales,inventory,departments} = this.state;
     return (
-      <div  >
-       <div>
-        <div  >
-        <h5>Employee Payroll</h5>
+      <div className = "graphs"  >
+       <div >
+        <div className = "parent">
+        <div className ="column chart" >
+        <h5>Payroll</h5>
         <hr id="hr2" />
-      <LineChart
+      <AreaChart
         width={1000}
-        height={500}
-        data={data}
+        height={300}
+        data={payroll}
         margin={{
-          top: 5, right: 30, left: 20, bottom: 5,
+          top: 5, right: 30, left: 0, bottom: 5,
         }}
       >
-       
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
+        <XAxis dataKey= "payDate"/>
+        <YAxis dataKey = "amount" />
+        <Tooltip/>
         <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-      </LineChart>
-     
-      <h5>Employee Payroll</h5>
+        <Area type="monotone" dataKey="amount" stroke="#8884d8" fill = "#8884d8" activeDot={{ r: 8 }} />
+      </AreaChart>
+      </div>
+      </div>
+      <br></br>
+      <br></br>
+      <div className = "parent">
+      <div className = "dataContainer column">
+      <h6 >Total Profits</h6>
+        <hr id="hr2" />
+      <h4 >${this.calcTotalSales(sales)}</h4>
+        </div>
+        <div className = "dataContainer column">
+      <h6 >Total employees</h6>
+        <hr id="hr2" />
+      <h4  >{employees.length}</h4>
+        </div>
+        <div className = "dataContainer column">
+      <h6 >Assets</h6>
+        <hr id="hr2" />
+      <h4  >${this.calcTotalAssets(inventory).toFixed(2)}</h4>
+        </div>
+        <div className = "dataContainer column">
+      <h6 >Total Sales</h6>
+        <hr id="hr2" />
+      <h4  >{sales.length}</h4>
+        </div>
+      </div>
+      <br></br>
+      <br></br>
+      <h6>Statistics</h6>
       <hr id="hr2" />
-      <PieChart width={1000} height={300}>
-        <Pie dataKey="value" isAnimationActive={false} data={data01} cx={300} cy={150} outerRadius={80} fill="#8884d8" label />
-        <Pie dataKey="value" data={data02} cx={700} cy={150} innerRadius={40} outerRadius={80} fill="#82ca9d" />
+      <div className = "parent">
+     <div className ="column chart">
+      <PieChart width={333} height={250}>
+        <Pie dataKey= "budget" isAnimationActive={false} data={departments} cx={150} cy={125} outerRadius={80} fill="#5e72e4" label />
         <Tooltip />
       </PieChart>
+      </div>
+      <div className ="column chart">
+      <PieChart   width={333} height={250}>
+        <Pie dataKey="salary" isAnimationActive={false} data={employees} cx={150} cy={125} outerRadius={80} fill="#e14eca" label />
+        <Tooltip />
+      </PieChart>
+      </div>
+      <div className = "column chart">
+      <PieChart width={333} height={250}>
+      <Pie dataKey="price" data={inventory} cx={150} cy={125} innerRadius={40} outerRadius={80} fill="#2dce89" />
+      <Tooltip /> 
+      </PieChart>
+      
+      </div>
     </div>
+    
 </div>
 </div>
     );
   }
 }
+export default withCookies(Example)

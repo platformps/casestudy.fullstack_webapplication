@@ -17,23 +17,21 @@ public class Payroll implements EntityInterface<Integer>, Serializable  {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Double amount;
+    @OrderBy
     private Date payDate;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     private User user;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    List<Employee> employees;
+    @OneToOne
+    private Employee employee;
 
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
-
-
     public void setAmount(Double amount) {
         this.amount = amount;
     }
@@ -50,8 +48,8 @@ public class Payroll implements EntityInterface<Integer>, Serializable  {
         return user;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
+    public Employee getEmployees() {
+        return employee;
     }
 
     public void setPayDate(Date payDate) {
@@ -62,7 +60,7 @@ public class Payroll implements EntityInterface<Integer>, Serializable  {
         this.user = user;
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    public void setEmployees(Employee employee) {
+        this.employee = employee;
     }
 }

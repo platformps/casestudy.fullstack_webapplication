@@ -7,7 +7,8 @@ import EditPayroll from  './EditPayroll';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import {withRouter} from 'react-router-dom'
-
+import authHeader from './auth-header';
+import AuthService from "./auth.service";
 
 class PayrollList extends Component {
   
@@ -27,10 +28,10 @@ class PayrollList extends Component {
 
   componentDidMount() {
     this.setState({isLoading: true});
-    fetch('../api/payroll',{credentials: 'include'})
+    fetch('../api/payroll',{headers: authHeader()})
       .then(response => response.json())
       .then(data => this.setState({payroll: data, isLoading: false}))
-      .catch(() => this.props.history.push('../'));
+     
   }
 
   async remove(id) {
@@ -55,34 +56,38 @@ class PayrollList extends Component {
       return <p>Loading...</p>;
     }
     return (
-      <div className = "container no-gutters mx-auto">
-        <div className = "row no-gutters pb-5 pt-5">
-          <div className = "col-4">
-           
-          </div>
-          <div className = "col-4">
-            <h5>Payroll</h5>
+      <div >
+      <div >
+            <h2>Payroll</h2>
             <hr id="hr2" />
           </div>
-          <div className = "col-4">
-            <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/" + payroll.id}>+</Button>
-          </div>
-        </div>
-        <div className = "row no-gutters">
-          <div className ="col-12 no-gutters pb-5">
-             <ul className="list-group">
-            {payroll.map(payroll =>
-             <li className="list-group-item" key={payroll.id}> 
-                {payroll.id} {payroll.amount}$
-                <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + payroll.id}>Edit</Button>
-                <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(payroll.id)}>Delete</Button>
-              </li>
-              
+      <Table className = "container ">
+      <thead>
+        <tr>
+          <th>Employee</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      {payroll.map(payroll =>
+             <tr key={payroll.id}> 
+               <td>{payroll.employee.firstName + ' ' + payroll.employee.lastName} </td>  
+               <td>${payroll.amount}</td>  
+               <td>{payroll.payDate}</td> 
+               <td>
+                 <ButtonGroup>
+                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/payroll/" + payroll.id}>Edit</Button>
+                 <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(payroll.id)}>Delete</Button>
+                </ButtonGroup>
+                </td>
+              </tr>
             )}
-            </ul>
-          </div>
-          </div>
-          </div>
+      </tbody>
+    </Table>
+    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/payroll/new"}>Add Payroll</Button>
+    </div>
     );
   }
 }

@@ -6,8 +6,8 @@ import '../viewlist.css';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import {withRouter} from 'react-router-dom'
-
-
+import authHeader from './auth-header';
+import AuthService from "./auth.service";
 
 class DepartmentList extends Component {
 
@@ -25,10 +25,10 @@ class DepartmentList extends Component {
 
   componentDidMount() {
     this.setState({isLoading: true});
-    fetch('../api/department',{credentials: 'include'})
+    fetch('../api/department',{headers: authHeader()})
       .then(response => response.json())
       .then(data => this.setState({department: data, isLoading: false}))
-      .catch(() => this.props.history.push('../'));
+     
   }
 
   async remove(id) {
@@ -61,7 +61,6 @@ class DepartmentList extends Component {
       <Table className = "container  ">
       <thead>
         <tr>
-          <th>#</th>
           <th>Department Name</th>
           <th>Manger</th>
           <th>Budget</th>
@@ -71,13 +70,12 @@ class DepartmentList extends Component {
       <tbody>
       {department.map(department =>
              <tr key={department.id}> 
-             <th scope="row">{department.id}</th>
                <td>{department.name}</td> 
                <td>{department.manager.firstName +  ' ' +department.manager.lastName || 'N/A'} </td>  
                <td>${department.budget || 'N/A'}</td> 
                <td>
                  <ButtonGroup>
-                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + department.id}>Edit</Button>
+                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/departments/" + department.id}>Edit</Button>
                  <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(department.id)}>Delete</Button>
                 </ButtonGroup>
                 </td>
@@ -85,7 +83,7 @@ class DepartmentList extends Component {
             )}
       </tbody>
     </Table>
-    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/new"}>Add Department</Button>
+    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/departments/new"}>Add Department</Button>
     </div>
     );
   }

@@ -2,12 +2,10 @@ package io.fulchr3356.upkeepassistant.controllers;
 
 import io.fulchr3356.upkeepassistant.models.Department;
 import io.fulchr3356.upkeepassistant.models.User;
-import io.fulchr3356.upkeepassistant.models.UserBuilder;
 import io.fulchr3356.upkeepassistant.repositories.DepartmentRepository;
 import io.fulchr3356.upkeepassistant.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,18 +32,14 @@ public class DepartmentController  {
     }
     @GetMapping(value = "/department")
     public Collection<Department> findAll(Principal principal) {
-        return departmentRepository.findAllByUserId(principal.getName());
+        return departmentRepository.findAllByUserUsername(principal.getName());
     }
 
     @PostMapping(value = "/department")
-    public ResponseEntity<?> add(@Valid @RequestBody Department department, @AuthenticationPrincipal OAuth2User principal) throws URISyntaxException {
-        Map<String,Object> details = principal.getAttributes();
-        String userId = details.get("sub").toString();
-        // check to see if user already exists
-        Optional<User> user = userRepository.findById(userId);
-        department.setUser(user.orElse(new UserBuilder().withId(userId)
-                .withName(details.get("name").toString())
-                .withEmail(details.get("email").toString()).build()));
+    public ResponseEntity<?> add(@Valid @RequestBody Department department, Principal principal) throws URISyntaxException {
+        User user = userRepository.findByUsername(principal.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + principal.getName()));
+        department.setUser(user);
         Department result = this.departmentRepository.save(department);
         return ResponseEntity.created(new URI("/api/department/" + department.getId()))
                 .body(result); }

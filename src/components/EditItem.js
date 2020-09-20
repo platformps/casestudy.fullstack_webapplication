@@ -4,6 +4,7 @@ import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Cookies, withCookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { Select, MenuItem } from '@material-ui/core';
+import authHeader from './auth-header';
 class EditItem extends Component {
 
   static propTypes = {
@@ -21,7 +22,6 @@ class EditItem extends Component {
     const {cookies} = props;
     this.state = {
       item: this.emptyItem,
-      csrfToken: cookies.get('XSRF-TOKEN')
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,7 +30,7 @@ class EditItem extends Component {
   async componentDidMount() {
     if (this.props.match.params.id !== 'new') {
       try{
-      const item = await (await fetch(`../../api/item/${this.props.match.params.id}`,{credentials: 'include'})).json();
+      const item = await (await fetch(`../../api/item/${this.props.match.params.id}`,{headers: authHeader()})).json();
       this.setState({item: item});
       } catch(error){
         this.props.history.push('../');
@@ -49,19 +49,16 @@ class EditItem extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const {item,csrfToken} = this.state;
-
+    const {item} = this.state;
+    const header = new Headers(authHeader());
+    header.set('Accept', 'application/json');
+    header.set('Content-Type', 'application/json');
     await fetch('../../api/item'+ (item.id ? '/' + item.id : ''), {
       method: (item.id) ? 'PUT' : 'POST',
-      headers: {
-        'X-XSRF-TOKEN': csrfToken,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+      headers: header,
       body: JSON.stringify(item),
-      credentials: 'include'
     });
-    this.props.history.push('../inventory');
+    this.props.history.push('../../dashboard');
   }
 
   render() {
@@ -92,7 +89,7 @@ class EditItem extends Component {
           </div>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="secondary" tag={Link} to ={"../inventory"}>Cancel</Button>
+            <Button color="secondary" tag={Link} to ={"../../dashboard"}>Cancel</Button>
           </FormGroup>
         </Form>
       </Container>

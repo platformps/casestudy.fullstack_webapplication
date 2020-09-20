@@ -1,14 +1,14 @@
 package io.fulchr3356.upkeepassistant.controllers;
 
+import io.fulchr3356.upkeepassistant.auth.UserDetailsServiceImpl;
 import io.fulchr3356.upkeepassistant.models.Employee;
 import io.fulchr3356.upkeepassistant.models.User;
-import io.fulchr3356.upkeepassistant.models.UserBuilder;
 import io.fulchr3356.upkeepassistant.repositories.DepartmentRepository;
 import io.fulchr3356.upkeepassistant.repositories.EmployeeRepository;
 import io.fulchr3356.upkeepassistant.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +27,8 @@ public class EmployeeController  {
     private final EmployeeRepository employeeRepository;
     private UserRepository userRepository;
     private DepartmentRepository departmentRepository;
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
     private final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
     public EmployeeController(EmployeeRepository employeeRepository, UserRepository userRepository, DepartmentRepository departmentRepository) {
@@ -35,20 +37,15 @@ public class EmployeeController  {
         this.departmentRepository = departmentRepository;
     }
     @GetMapping(value = "/employee")
-    public Collection<Employee> findAll(Principal principal) {
-        return employeeRepository.findAllByUserId(principal.getName());
+    public Collection<Employee> findAll( Principal principal) {
+        return employeeRepository.findAllByUserUsername(principal.getName());
     }
 
     @PostMapping(value = "/employee")
-    public ResponseEntity<Employee> add(@Valid @RequestBody Employee employee, @AuthenticationPrincipal OAuth2User principal) throws URISyntaxException {
-
-       Map<String,Object> details = principal.getAttributes();
-       String userId = details.get("sub").toString();
-        // check to see if user already exists
-        Optional<User> user = userRepository.findById(userId);
-        employee.setUser(user.orElse(new UserBuilder().withId(userId)
-                                                      .withName(details.get("name").toString())
-                                                      .withEmail(details.get("email").toString()).build()));
+    public ResponseEntity<Employee> add(@Valid @RequestBody Employee employee,Principal principal) throws URISyntaxException {
+        User user = userRepository.findByUsername(principal.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + principal.getName()));
+        employee.setUser(user);
         Employee result = employeeRepository.save(employee);
         departmentRepository.save(employee.getDepartment());
        return ResponseEntity.created(new URI("/api/employee/" + employee.getId()))

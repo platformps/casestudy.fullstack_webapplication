@@ -5,6 +5,7 @@ import { Cookies, withCookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { Select, MenuItem } from '@material-ui/core';
 import CurrencyInput from 'react-currency-input';
+import authHeader from './auth-header';
 
 class DepartmentEdit extends Component {
 
@@ -37,12 +38,12 @@ class DepartmentEdit extends Component {
   }
 
   async componentDidMount() {
-    fetch('../../api/employee',{credentials: 'include'})
+    fetch('../../api/employee',{headers: authHeader()})
       .then(response => response.json())
       .then(data => this.setState({employees: data}))
     if (this.props.match.params.id !== 'new') {
       try{
-      const department = await (await fetch(`../../api/department/${this.props.match.params.id}`,{credentials: 'include'})).json();
+      const department = await (await fetch(`../../api/department/${this.props.match.params.id}`,{headers: authHeader()})).json();
       this.setState({item: department});
       console.log(department);
       }catch(error){
@@ -61,19 +62,16 @@ class DepartmentEdit extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const {item,csrfToken} = this.state;
-
+    const {item} = this.state;
+    const header = new Headers(authHeader());
+    header.set('Accept', 'application/json');
+    header.set('Content-Type', 'application/json');
     await fetch('../../api/department'+ (item.id ? '/' + item.id : ''), {
       method: (item.id) ? 'PUT' : 'POST',
-      headers: {
-        'X-XSRF-TOKEN': csrfToken,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+      headers: header,
       body: JSON.stringify(item),
-      credentials: 'include'
     });
-    this.props.history.push('../department');
+    this.props.history.push('../../dashboard');
   }
 
   render() {
@@ -115,7 +113,7 @@ class DepartmentEdit extends Component {
           </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="secondary" tag={Link} to="../department">Cancel</Button>
+            <Button color="secondary" tag={Link} to="../../dashboard">Cancel</Button>
           </FormGroup>
         </Form>
       </Container>

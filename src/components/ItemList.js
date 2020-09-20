@@ -7,7 +7,8 @@ import EditItem from  './EditItem';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import {withRouter} from 'react-router-dom'
-
+import AuthService from "./auth.service";
+import authHeader from './auth-header';
 
 class ItemList extends Component {
   
@@ -19,7 +20,7 @@ class ItemList extends Component {
   constructor(props) {
     super();
     const {cookies} = props;
-    this.state = {items: [],csrfToken: cookies.get('XSRF-TOKEN') ,isLoading: true};
+    this.state = {items: [], currentUser: AuthService.currentUser ,isLoading: true};
     this.remove = this.remove.bind(this);
 
   }
@@ -27,17 +28,16 @@ class ItemList extends Component {
 
   componentDidMount() {
     this.setState({isLoading: true});
-    fetch('../api/item',{credentials: 'include'})
+    fetch('../api/item',{headers: authHeader()})
       .then(response => response.json())
       .then(data => this.setState({item: data, isLoading: false}))
-      .catch(() => this.props.history.push('../'));
   }
 
   async remove(id) {
     await fetch(`../api/item/${id}`, {
       method: 'DELETE',
       headers: {
-        'X-XSRF-TOKEN': this.state.csrfToken,
+        'X-XSRF-TOKEN': ' ',
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
@@ -54,16 +54,15 @@ class ItemList extends Component {
       return <p>Loading...</p>;
     }
     return (
-      <div no-gutters mx-auto>
+      <div  >
       <div >
-            <h2>Items  </h2>
+            <h2>Inventory</h2>
             <hr id="hr2" />
           </div>
-      <Table className = "container  no-gutters mx-auto">
+      <Table className = "container  ">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Name</th>
+          <th>Product Name</th>
           <th>Price</th>
           <th>Quantity</th>
           <th></th>
@@ -72,13 +71,12 @@ class ItemList extends Component {
       <tbody>
       {item.map(item =>
              <tr key={item.id}> 
-             <th scope="row">{item.id}</th>
                <td>{item.name}</td> 
                <td>{item.price}</td>  
                <td>{item.quantity}</td> 
                <td>
                  <ButtonGroup>
-                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + item.id}>Edit</Button>
+                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/item/" + item.id}>Edit</Button>
                  <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(item.id)}>Delete</Button>
                 </ButtonGroup>
                 </td>
@@ -86,7 +84,7 @@ class ItemList extends Component {
             )}
       </tbody>
     </Table>
-    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/new"}>Add Item</Button>
+    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/item/new"}>Add Item</Button>
     </div>
     );
   }

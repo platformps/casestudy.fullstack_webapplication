@@ -7,6 +7,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PayrollRepository extends JpaRepository<Payroll,Integer> {
-    Optional<Payroll> findById(Integer id);
-    List<Payroll> findAllByUserId(String name);
+    List<Payroll> findAllByUserUsername(String name);
 }

@@ -7,6 +7,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SaleRepository extends JpaRepository<Sale,Integer> {
-    Optional<Sale> findById(Integer id);
-    List<Sale> findAllByUserId(String name);
+    List<Sale> findAllByUserUsername(String name);
 }

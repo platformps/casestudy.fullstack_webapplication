@@ -2,12 +2,10 @@ package io.fulchr3356.upkeepassistant.controllers;
 
 import io.fulchr3356.upkeepassistant.models.Payroll;
 import io.fulchr3356.upkeepassistant.models.User;
-import io.fulchr3356.upkeepassistant.models.UserBuilder;
 import io.fulchr3356.upkeepassistant.repositories.PayrollRepository;
 import io.fulchr3356.upkeepassistant.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,18 +31,14 @@ public class PayrollController  {
     }
     @GetMapping(value = "/payroll")
     public Collection<Payroll> findAll(Principal principal) {
-        return payrollRepository.findAllByUserId(principal.getName());
+        return payrollRepository.findAllByUserUsername(principal.getName());
     }
 
     @PostMapping(value = "/payroll")
-    public ResponseEntity<Payroll> add(@Valid @RequestBody Payroll payroll, @AuthenticationPrincipal OAuth2User principal) throws URISyntaxException {
-        Map<String,Object> details = principal.getAttributes();
-        String userId = details.get("sub").toString();
-        // check to see if user already exists
-        Optional<User> user = userRepository.findById(userId);
-        payroll.setUser(user.orElse(new UserBuilder().withId(userId)
-                .withName(details.get("name").toString())
-                .withEmail(details.get("email").toString()).build()));
+    public ResponseEntity<Payroll> add(@Valid @RequestBody Payroll payroll, Principal principal) throws URISyntaxException {
+        User user = userRepository.findByUsername(principal.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + principal.getName()));
+        payroll.setUser(user);
         Payroll result = payrollRepository.save(payroll);
         return ResponseEntity.created(new URI("/api/payroll/" + payroll.getId()))
                 .body(result); }

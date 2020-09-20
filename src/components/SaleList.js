@@ -6,8 +6,8 @@ import '../viewlist.css';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import {withRouter} from 'react-router-dom'
-//import EditSale from  './EditSale';
-
+import authHeader from './auth-header';
+import AuthService from "./auth.service";
 
 class SaleList extends Component {
 
@@ -25,11 +25,9 @@ class SaleList extends Component {
 
   componentDidMount() {
     this.setState({isLoading: true});
-    fetch('../api/sale',{credentials: 'include'})
+    fetch('../api/sale',{headers: authHeader()})
       .then(response => response.json())
       .then(data => this.setState({sale: data, isLoading: false}))
-      .catch(() => this.props.history.push('../'));
-      // console.log(sale);
   }
 
   async remove(id) {
@@ -54,34 +52,40 @@ class SaleList extends Component {
       return <p>Loading...</p>;
     }
     return (
-      <div className = "container  no-gutters mx-auto">
-        <div className = "row no-gutters pb-5 pt-5">
-          <div className = "col-4">
-           
-          </div>
-          <div className = "col-4">
-            <h5>Sales</h5>
+      <div >
+      <div >
+            <h2>Sales</h2>
             <hr id="hr2" />
           </div>
-          <div className = "col-4">
-            <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/" + sale.id}>+</Button>
-          </div>
-        </div>
-        <div className = "row no-gutters">
-          <div className ="col-12 no-gutters pb-5">
-             <ul className="list-group">
-            {sale.map(sale =>
-             <li className="list-group-item" key={sale.id}> 
-                {sale.productName} {sale.amount}$ {sale.saleDate}
-                <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + sale.id}>Edit</Button>
-                <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(sale.id)}>Delete</Button>
-              </li>
-              
+      <Table className = "container  ">
+      <thead>
+        <tr>
+          <th>Amount</th>
+          <th>Sale Date</th>
+          <th>Employee</th>
+          <th>Department</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      {sale.map(sale =>
+             <tr key={sale.id}> 
+               <td>${sale.amount}</td>  
+               <td>{sale.saleDate}</td> 
+               <td>{sale.employee.firstName + ' ' + sale.employee.lastName}</td> 
+               <td>{sale.department.name}</td> 
+               <td>
+                 <ButtonGroup>
+                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/sale/" + sale.id}>Edit</Button>
+                 <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(sale.id)}>Delete</Button>
+                </ButtonGroup>
+                </td>
+              </tr>
             )}
-            </ul>
-          </div>
-          </div>
-          </div>
+      </tbody>
+    </Table>
+    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/sale/new"}>Add Sale</Button>
+    </div>
     );
   }
 }
