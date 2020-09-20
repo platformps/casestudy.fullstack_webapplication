@@ -49,7 +49,7 @@
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Create Ideas</h1>
-          <p>Welcome to Todowey a place to create and save your ideas.Todowey is a special place where your can put down your ideas or list of thing in writing> to learn more click below.</p>
+          <p>Welcome to Todowey a place to create and save your ideas.Todowey is a special place where your can put down your ideas or list of thing in writing to learn more click below.</p>
           <p><a class="btn btn-primary btn-lg" href="/registration" role="button">Learn more &raquo;</a></p>
         </div>
       </div>

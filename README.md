@@ -51,8 +51,8 @@
     4. On your home page you can create a todo-list.
         ![](./pic/pics5.png)
     5. You can add as many list as you want and manage it.
-    6. The web application is also mobile compatible.
-        ![](./pic/mobile.png)
+    6. The web application is also mobile responsive. Please try it on chrome to get the best experience.
+      ![](./pic/mobile.png)
 
   
 
