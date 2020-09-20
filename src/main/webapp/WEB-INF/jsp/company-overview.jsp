@@ -22,8 +22,8 @@
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div class="navbar-nav">
-            <a href="#" class="nav-item nav-link">News</a>
             <a href="#" class="nav-item nav-link">Profile</a>
+            <a href="/market-news" class="nav-item nav-link">News</a>
         </div>
         <form class="form-inline">
             <div class="input-group">

@@ -43,6 +43,7 @@ html {
   }
   .form-signin .form-control {
     position: relative;
+    position: relative;
     box-sizing: border-box;
     height: auto;
     padding: 10px;
@@ -76,6 +77,14 @@ html {
   width: 80%;
   margin-top: 1em;
 }
+
+.card .img-fluid {
+  min-height: 250px;
+}
+
+.card .text-muted {
+  padding-left: 1em;
+}
 /* end market news */
 
 /* registration page */
@@ -108,4 +117,9 @@ th {
     height: 3%;
     bottom: 0;
     background-color: rgba(0,0,0,.5);
+}
+
+.img-thumbnail {
+  width: 180px;
+  height: 180px;
 }

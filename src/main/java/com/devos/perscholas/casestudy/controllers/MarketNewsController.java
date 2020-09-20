@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/market-news")
 public class MarketNewsController {
     @GetMapping
-    public String getView(Model model, @PathVariable Long id) {
+    public String getView(Model model) {
         return "market-news";
     }
 }

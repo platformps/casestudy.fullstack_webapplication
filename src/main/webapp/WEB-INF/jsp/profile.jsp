@@ -31,7 +31,7 @@
 
     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div class="navbar-nav">
-            <a href="/dashboard/{id}" class="nav-item nav-link">News</a>
+            <a href="/market-news" class="nav-item nav-link">News</a>
             <a href="/company-overview/{symbol}" class="nav-item nav-link">Company Overview</a>
 
         </div>

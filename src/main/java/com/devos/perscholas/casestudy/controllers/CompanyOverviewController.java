@@ -22,10 +22,9 @@ public class CompanyOverviewController {
 //        return apiRequest;
 //    }
 
-    @GetMapping("/{symbol}")
-    public String getView(Model model, @PathVariable("symbol") String symbol) {
-        String ticker = symbol.toUpperCase();
+    @GetMapping
+    public String getView(Model model) {
 
-        return "company-overview/{symbol}";
+        return "company-overview";
     }
 }
