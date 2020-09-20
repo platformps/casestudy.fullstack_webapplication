@@ -5,7 +5,7 @@
 	* This Case Study is my first foray into building a full-stack application. I was able to demonstrate how to use Spring MVC to develop a simple todo-list web application.
 	* This project was exciting! Thanks to my classmates, my instructor (Leon Hunter), for all the learning and applying what I've learned into building something amazing.
 
-**Additional Resources**
+* **Additional Resources**
 	* [Case Study Outline](./case-study-outline.pdf)
 	* [Identifying Plagiarism](./README_plagiarism.md)
 	* [Reference and Credits](./README_Reference.md)
@@ -35,7 +35,7 @@
     3. Lucidcharts
     4. Java Server Pages
     5. Spring MVC
-    6  HTML5, CSS, JavaScript, BootStrap
+    6.  HTML5, CSS, JavaScript, BootStrap
 
   * **How To Run The Application**
     1. Fork the project and download the file as zip.
