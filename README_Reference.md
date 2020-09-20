@@ -22,6 +22,6 @@
 	     * Todo Management Tutorial: Author: Ramesh Fadatare , 2018
 	     * Java-Guide Spring MVC(javaguide.net/2018/09/mini-todo-management-project-using-spring-boot)
 	     
-	     #I want to send all my gratitude to all my classmate 
-	     #that made it possible for me to be better at software development
+	     # I want to send all my gratitude to all my classmate 
+	     # that made it possible for me to be better at software development
 	     # You guys are the best. I learned a lot from each and everyone of you.
