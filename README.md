@@ -49,9 +49,10 @@
     3. From the home page click signup to get access to the todo-list web application
         ![](./pic/pics2.png)
     4. On your home page you can create a todo-list.
+        ![](./pic/pics5.png)
     5. You can add as many list as you want and manage it.
     6. The web application is also mobile compatible.
-        ![](./pic/pics5.png)
+        ![](./pic/mobile.png)
 
   
 
