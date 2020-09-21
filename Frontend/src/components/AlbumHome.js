@@ -45,15 +45,17 @@ export default class AlbumHome extends Component {
               />
               </div> 
     })
-
+    let currentAlbum = this.state.currentAlbum
     const allPosts =  this.state.Posts === null ? <div>nothing</div> :
     this.state.Posts.map(function(Posts)   
     {
+      if (Posts.albumname === currentAlbum) {
       console.log(Posts)
       return  <div key={Posts.id}>
               <MediaCard albumId={Posts.id} AlbumImage={Posts.postimgurl} Title={Posts.posttitle} Description={Posts.postdesc} Names={Posts.albumname}
               />
               </div> 
+      } else return null
     })
 
     let backButton = () => {

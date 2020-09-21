@@ -75,6 +75,7 @@ export default function AddPost(props) {
   fetch('http://localhost:8080/posts', requestOptions)
   .then(async response => {
       const data = await response.json();
+      console.log(data)
       setOpen(false);
       
       // check for error response

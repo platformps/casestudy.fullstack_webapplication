@@ -13,18 +13,6 @@ export default class Home extends Component {
   
 
     componentDidMount() {
-            // fetch("http://localhost:8080/albums")
-            // .then(res => res.json())
-            // .then(
-            //   (result) => {
-            //       this.setState({
-            //         Albums: result
-            //       })
-            //   },
-            //   (error) => {
-            //       return error
-            //   }
-            // )
 
             Promise.all([
               fetch('http://localhost:8080/albums'),
