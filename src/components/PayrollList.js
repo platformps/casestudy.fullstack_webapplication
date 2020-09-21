@@ -12,15 +12,10 @@ import AuthService from "./auth.service";
 
 class PayrollList extends Component {
   
-  
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
-  };
 
   constructor(props) {
     super(props);
-    const {cookies} = props;
-    this.state = {payroll: [],csrfToken: cookies.get('XSRF-TOKEN') ,isLoading: true};
+    this.state = {payroll: [],isLoading: true};
     this.remove = this.remove.bind(this);
 
   }
@@ -38,11 +33,10 @@ class PayrollList extends Component {
     await fetch(`../api/payroll/${id}`, {
       method: 'DELETE',
       headers: {
-        'X-XSRF-TOKEN': this.state.csrfToken,
+        'Authorization':authHeader(),
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      credentials: 'include'
     }).then(() => {
       let updatedPayrolls = [...this.state.payroll].filter(i => i.id !== id);
       this.setState({payroll: updatedPayrolls});

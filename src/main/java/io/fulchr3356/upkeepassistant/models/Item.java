@@ -19,10 +19,8 @@ public class Item implements EntityInterface<Integer>, Serializable {
     @ManyToMany(cascade = CascadeType.ALL)
     List<Department> departments;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Sale> sales;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Sale sale;
 
     public Sale getSale() {
@@ -70,17 +68,6 @@ public class Item implements EntityInterface<Integer>, Serializable {
     public void setDepartments(List<Department> departments) {
         this.departments = departments;
     }
-
-    public List<Sale> getSales() {
-        return sales;
-    }
-
-    public void setSales(List<Sale> sales) {
-        this.sales = sales;
-    }
-
-
-
 
     @Override
     public Integer getId() {

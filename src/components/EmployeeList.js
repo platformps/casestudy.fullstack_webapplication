@@ -3,12 +3,10 @@ import { Button, ButtonGroup, Container, Table, ListGroup, ListGroupItem} from '
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../viewlist.css';
-import EditEmployee from  './EditEmployee';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import {withRouter} from 'react-router-dom'
 import authHeader from './auth-header';
-import AuthService from "./auth.service";
 
 class EmployeeList extends Component {
   
@@ -19,7 +17,6 @@ class EmployeeList extends Component {
 
   constructor(props) {
     super();
-    const {cookies} = props;
     this.state = {employee: [],isLoading: true};
     this.remove = this.remove.bind(this);
 

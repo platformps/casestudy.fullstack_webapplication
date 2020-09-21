@@ -37,6 +37,7 @@ public class Sale implements  EntityInterface<Integer>, Serializable {
     private Integer id;
     private Double amount;
     private String saleDate;
+    private Integer quantity;
 
     @ManyToOne(cascade=CascadeType.PERSIST)
     private User user;
@@ -50,9 +51,6 @@ public class Sale implements  EntityInterface<Integer>, Serializable {
     @OneToOne
     private Item item;
 
-    @OneToMany
-    private List<Item> items;
-
     public Sale(){
         this.amount = 0.00;
     }
@@ -63,18 +61,6 @@ public class Sale implements  EntityInterface<Integer>, Serializable {
 
     public void setItem(Item item) {
         this.item = item;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
-    public void addItem(Item item){
-        items.add(item);
     }
 
     public Sale(String name ) {
@@ -109,5 +95,13 @@ public class Sale implements  EntityInterface<Integer>, Serializable {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity){
+        this.quantity  = quantity;
     }
 }

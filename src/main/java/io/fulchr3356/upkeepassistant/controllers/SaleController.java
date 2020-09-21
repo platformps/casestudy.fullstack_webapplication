@@ -1,5 +1,6 @@
 package io.fulchr3356.upkeepassistant.controllers;
 
+import io.fulchr3356.upkeepassistant.models.Item;
 import io.fulchr3356.upkeepassistant.models.Sale;
 import io.fulchr3356.upkeepassistant.models.User;
 import io.fulchr3356.upkeepassistant.repositories.ItemRepository;
@@ -15,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -24,13 +24,11 @@ import java.util.Optional;
 public class SaleController  {
     private final SaleRepository saleRepository;
     private final UserRepository userRepository;
-    private final ItemRepository itemRepository;
     private final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
     public SaleController(SaleRepository saleRepository, UserRepository userRepository, ItemRepository itemRepository) {
         this.saleRepository = saleRepository;
         this.userRepository = userRepository;
-        this.itemRepository = itemRepository;
     }
     @GetMapping(value = "/sale")
     public Collection<Sale> findAll(Principal principal) {
@@ -42,9 +40,10 @@ public class SaleController  {
         User user = userRepository.findByUsername(principal.getName())
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + principal.getName()));
         sale.setUser(user);
-        sale.setItems(new ArrayList<>());
         this.saleRepository.save(sale);
-        sale.addItem(sale.getItem());
+        Item tempItem = sale.getItem();
+        tempItem.setQuantity(tempItem.getQuantity() - sale.getQuantity());
+        sale.setItem(tempItem);
         sale.setAmount(sale.getItem().getPrice() * sale.getItem().getQuantity());
         Sale result = this.saleRepository.save(sale);
         return ResponseEntity.created(new URI("/api/sale/" + sale.getId()))
@@ -59,13 +58,6 @@ public class SaleController  {
     @PutMapping(value = "/sale/{id}")
     ResponseEntity<?> update(@Valid @RequestBody Sale sale)  {
         log.info("Request to update sale: {}", sale);
-        saleRepository.save(sale);
-        sale.addItem(sale.getItem());
-        saleRepository.save(sale);
-        sale.setAmount(sale.getAmount() + sale.getItems()
-                .stream()
-                .mapToDouble(item -> item.getPrice() *item.getQuantity())
-                .sum());
         saleRepository.save(sale);
         return  ResponseEntity.ok().build();
     }

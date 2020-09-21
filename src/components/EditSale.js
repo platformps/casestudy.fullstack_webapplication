@@ -14,7 +14,7 @@ class EditSale extends Component {
   };
 
   emptyItem = {
-    amount: '',
+    quantity: '',
     employee: '',
     department: {
       id: '',
@@ -105,9 +105,9 @@ class EditSale extends Component {
         </Select>
           </FormGroup>
           <FormGroup>
-            <Label for="amount">Ammount of Sale</Label>
-            <Input type="text" name="amount" id="amount" value={item.amount || ''}
-                   onChange={this.handleChange} autoComplete="amount"/>
+            <Label for="quantity">Quantity</Label>
+            <Input type="number" name="quantity" id="quantity" value={item.quantity|| ''}
+                   onChange={this.handleChange} autoComplete="quantity"/>
           </FormGroup>
           <Label>Product</Label>
           <FormGroup style = {{backgroundColor: 'white'}}>

@@ -47,7 +47,6 @@ public final class ItemBuilder {
         item.setQuantity(Quantity);
         item.setPrice(price);
         item.setDepartments(departments);
-        item.setSales(sales);
         return item;
     }
 }

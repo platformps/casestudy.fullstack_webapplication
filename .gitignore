@@ -486,3 +486,9 @@ GitHub.sublime-settings
 
 # End of https://www.toptal.com/developers/gitignore/api/node,reactnative,visualstudiocode,intellij,notepadpp,sublimetext,java,angular
 
+
+src/main/resources/application.properties
+
+src/components/auth.service.js
+
+src/components/user.service.js

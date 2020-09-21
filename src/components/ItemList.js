@@ -1,26 +1,19 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup, Container, Table, ListGroup, ListGroupItem} from 'reactstrap';
+import { Button, ButtonGroup, Table} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../viewlist.css';
-import EditItem from  './EditItem';
-import { withCookies, Cookies } from 'react-cookie';
-import { instanceOf } from 'prop-types';
+import { withCookies} from 'react-cookie';
 import {withRouter} from 'react-router-dom'
-import AuthService from "./auth.service";
 import authHeader from './auth-header';
 
 class ItemList extends Component {
   
-  
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
-  };
+
 
   constructor(props) {
     super();
-    const {cookies} = props;
-    this.state = {items: [], currentUser: AuthService.currentUser ,isLoading: true};
+    this.state = {items: [],isLoading: true};
     this.remove = this.remove.bind(this);
 
   }
@@ -37,11 +30,10 @@ class ItemList extends Component {
     await fetch(`../api/item/${id}`, {
       method: 'DELETE',
       headers: {
-        'X-XSRF-TOKEN': ' ',
+        'Authorization':authHeader(),
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      credentials: 'include'
     }).then(() => {
       let updatedItems = [...this.state.item].filter(i => i.id !== id);
       this.setState({item: updatedItems});

@@ -11,14 +11,9 @@ import AuthService from "./auth.service";
 
 class SaleList extends Component {
 
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
-  };
-
   constructor(props) {
     super(props);
-    const {cookies} = props;
-    this.state = {sale: [],csrfToken: cookies.get('XSRF-TOKEN') , isLoading: true};
+    this.state = {sale: [], isLoading: true};
     this.remove = this.remove.bind(this);
   }
   
@@ -34,11 +29,10 @@ class SaleList extends Component {
     await fetch(`../api/sale/${id}`, {
       method: 'DELETE',
       headers: {
-        'X-XSRF-TOKEN': this.state.csrfToken,
+        'Authorization':authHeader(),
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      credentials: 'include'
     }).then(() => {
       let updatedSales = [...this.state.sale].filter(i => i.id !== id);
       this.setState({sale: updatedSales});

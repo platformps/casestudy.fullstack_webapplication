@@ -56,10 +56,27 @@ const data02 = [
      
   }
 
+  calcTotalSalesDepartment(departmentName,sales){
+    let total = 0.0;
+    sales.forEach(sale =>{
+      if(sale.department == departmentName)
+        total+= sale.amount;
+    })
+    return total;
+  }
+
    calcTotalSales(saleList){
     let total = 0.0;
       saleList.forEach(sale => {
         total+= sale.amount;
+      });
+      return total;
+  }
+
+  calcTotalPayRoll(payroll){
+    let total = 0.0;
+      payroll.forEach(payroll => {
+        total+= payroll.amount;
       });
       return total;
   }
@@ -106,7 +123,7 @@ const data02 = [
       <div className = "dataContainer column">
       <h6 >Total Profits</h6>
         <hr id="hr2" />
-      <h4 >${this.calcTotalSales(sales)}</h4>
+      <h4 >${this.calcTotalSales(sales) - this.calcTotalPayRoll(payroll)}</h4>
         </div>
         <div className = "dataContainer column">
       <h6 >Total employees</h6>
@@ -121,7 +138,7 @@ const data02 = [
         <div className = "dataContainer column">
       <h6 >Total Sales</h6>
         <hr id="hr2" />
-      <h4  >{sales.length}</h4>
+      <h4  >{this.calcTotalSales(sales)}</h4>
         </div>
       </div>
       <br></br>

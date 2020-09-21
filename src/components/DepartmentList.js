@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup, Container, Table, ListGroup, ListGroupItem } from 'reactstrap';
+import { Button, ButtonGroup,Table} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../viewlist.css';
-import { withCookies, Cookies } from 'react-cookie';
-import { instanceOf } from 'prop-types';
+import { withCookies} from 'react-cookie';
 import {withRouter} from 'react-router-dom'
 import authHeader from './auth-header';
-import AuthService from "./auth.service";
 
 class DepartmentList extends Component {
 
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
-  };
+
 
   constructor(props) {
     super();
-    const {cookies} = props;
-    this.state = {department: [],csrfToken: cookies.get('XSRF-TOKEN') , isLoading: true};
+    this.state = {department: [], isLoading: true};
     this.remove = this.remove.bind(this);
   }
   
@@ -35,11 +30,10 @@ class DepartmentList extends Component {
     await fetch(`../api/department/${id}`, {
       method: 'DELETE',
       headers: {
-        'X-XSRF-TOKEN': this.state.csrfToken,
+        'Authorization':authHeader(),
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      credentials: 'include'
     }).then(() => {
       let updatedDepartments  = [...this.state.department].filter(i => i.id !== id);
       this.setState({department: updatedDepartments});

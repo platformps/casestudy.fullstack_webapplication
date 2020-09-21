@@ -31,7 +31,7 @@ const required = value => {
             message: ""
           };
         }
-
+        
         onChangeUsername(e) {
           this.setState({
             username: e.target.value
