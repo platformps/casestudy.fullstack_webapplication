@@ -1,4 +1,4 @@
-# Full Stack Web Application
+# Full Stack Web Application located https://github.com/LauraGodinez/blog
 
 * **Objective** - to create an implementation of a web service
 * **Purpose** - to demonstrate the construction of a full-stacked web-application
