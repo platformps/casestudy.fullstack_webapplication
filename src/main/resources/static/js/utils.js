@@ -70,7 +70,7 @@ function getNews(company) {
           '</div>'
         ].join("\n");
 
-        $("body").append(template);
+        $("#newsContainer").append(template);
 
         if (i == 20) { break };
       }

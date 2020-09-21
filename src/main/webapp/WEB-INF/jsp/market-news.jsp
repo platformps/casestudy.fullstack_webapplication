@@ -22,7 +22,10 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
 
+
 </head>
+
+
 
 <body id="market-news">
   <header>
@@ -47,9 +50,10 @@
     </nav>
     <!----------------- END NAV ----------------->
   </header>
-  <div id="insert"></div>
+  <div id="newsContainer"></div>
 
   <script>getNews('general');</script>
+
 
   <footer>
 

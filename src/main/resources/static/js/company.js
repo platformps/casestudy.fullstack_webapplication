@@ -9,6 +9,7 @@ function getCompanyData() {
   const clone = template.content.cloneNode(true);
   container.appendChild(clone);
 
+  //API call for logo
   fetch("https://cloud.iexapis.com/stable/stock/" + company + "/logo?token=pk_fcd35c5ba2944133af0f4967d619ece3")
     .then(response => response.json())
     .then(data => {
@@ -21,6 +22,7 @@ function getCompanyData() {
       }
     })
 
+  // //API call for company info
   fetch("https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + company + "&apikey=7IEE375T5KRNN35W")
     .then(response => response.json())
     .then(data => {
@@ -57,9 +59,27 @@ function getCompanyData() {
 
     })
 
-  getNews(company);
+  let labelArray = [];
+  let dataArray = [];
+  //API call for chart information
+  fetch("https://cloud.iexapis.com/stable/stock/" + company + "/chart/5d?chartCloseOnly=true&token=pk_fcd35c5ba2944133af0f4967d619ece3")
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      for (i = 0; i < data.length; i++) {
+        dataArray[i] = data[i].close;
+      }
+      for (i = 0; i < data.length; i++) {
+        labelArray[i] = data[i].date;
+      }
+    }).then(
+      setTimeout(() => { //needed to create the template before trying to draw the chart
+        createChart(labelArray, dataArray);
+      }, 200)
+    )
 
-  createChart();
+  //API call for company specific news
+  getNews(company);
 }
 
 async function changeCompanyData() {
@@ -70,20 +90,23 @@ async function changeCompanyData() {
 
 async function deleteData() {
   document.getElementById("container").innerHTML = "";
+  document.getElementById("newsContainer").innerHTML = "";
   let text = document.getElementById("companyInput").value
   company = text
   return company
 }
 
-function createChart() {
+function createChart(labels, dataPoints) {
+  console.log(labels)
+  console.log(dataPoints)
   var ctx = document.getElementById('myChart');
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: labels,
       datasets: [{
-        label: 'Stock Price',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Historical Stock Price',
+        data: dataPoints,
         fill: false,
         lineTension: 0,
         backgroundColor: 'rgba(0, 0, 0, 1)',
@@ -95,7 +118,7 @@ function createChart() {
       scales: {
         yAxes: [{
           ticks: {
-            beginAtZero: true
+            beginAtZero: false
           }
         }]
       }
