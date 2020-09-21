@@ -43,6 +43,10 @@ export default function AddPost(props) {
   const handleClose = () => {
     setOpen(false);
   };
+  const handleTitleChange = event => {
+    setposttitle(event.target.value);
+    
+  };
 
   const handleDescChange = event => {
     setpostdesc(event.target.value);
@@ -71,6 +75,7 @@ export default function AddPost(props) {
   fetch('http://localhost:8080/posts', requestOptions)
   .then(async response => {
       const data = await response.json();
+      console.log(data)
       setOpen(false);
       
       // check for error response
@@ -115,6 +120,16 @@ export default function AddPost(props) {
     <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Add a New Post!</DialogTitle>
         <DialogContent>
+        <TextField
+            autoFocus
+            margin="dense"
+            id="posTitle"
+            label="Post Title"
+            type="text"
+            value={posttitle}
+            fullWidth
+            onChange={handleTitleChange}
+          />
           <TextField
             autoFocus
             margin="dense"

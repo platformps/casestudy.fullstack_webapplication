@@ -37,7 +37,7 @@ export default function MediaCard(props) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={ props.AlbumImage === undefined ? "https://plantwebappbucket.s3.us-east-2.amazonaws.com/garden.jpg": props.AlbumImage}
+          image={ props.AlbumImage === "" ? "https://plantwebappbucket.s3.us-east-2.amazonaws.com/garden.jpg": props.AlbumImage}
           title="Contemplative Reptile"
         />
         <CardContent>

@@ -20,13 +20,18 @@ export default class AlbumHome extends Component {
     };
   }
 
-  componentDidUpdate() {
-    console.log(this.state.View)
-    console.log(this.state.currentAlbumId)
+  componentDidUpdate(prevProps) {
+    if(prevProps.Albums !== this.props.Albums) {
+    this.setState({
+      Albums: this.props.Albums
+    })
+  }
   }
 
 
+
   render() {
+    const updateAlbums = this.props.updateAlbums
 
     let loadPosts = (selectedAlbum, selectedId, selectedPosts) => {
       this.setState({
@@ -45,15 +50,17 @@ export default class AlbumHome extends Component {
               />
               </div> 
     })
-
+    let currentAlbum = this.state.currentAlbum
     const allPosts =  this.state.Posts === null ? <div>nothing</div> :
     this.state.Posts.map(function(Posts)   
     {
+      if (Posts.albumname === currentAlbum) {
       console.log(Posts)
       return  <div key={Posts.id}>
               <MediaCard albumId={Posts.id} AlbumImage={Posts.postimgurl} Title={Posts.posttitle} Description={Posts.postdesc} Names={Posts.albumname}
               />
               </div> 
+      } else return null
     })
 
     let backButton = () => {
@@ -73,7 +80,7 @@ export default class AlbumHome extends Component {
         <h1 color="primary">{this.state.currentAlbum}</h1>
         <Grid container justify="center" spacing={1} >
         <CustomizedSnackbars />
-        { this.state.View ==='album' &&  <FabIntegrationSnackbar /> }
+        { this.state.View ==='album' && <FabIntegrationSnackbar updateAlbums={updateAlbums} /> }
         { this.state.View === 'album' && allAlbums }
         { this.state.View === 'post' && allPosts }
         { this.state.View === 'post' && <AddPost currentAlbum={this.state.currentAlbum} currentId={this.state.currentAlbumId} />}

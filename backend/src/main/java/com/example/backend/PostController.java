@@ -1,6 +1,7 @@
 package com.example.backend;
 import java.util.*;
 
+import org.apache.coyote.Response;
 import org.springframework.beans.NotReadablePropertyException;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
@@ -33,22 +34,22 @@ public class PostController {
 
     // RESTful API method for Create operation
     @PostMapping("/posts")
-    public ResponseEntity<?> add(@RequestBody Post post) {
+    public ResponseEntity<Post> add(@RequestBody Post post) {
         try {
             service.save(post);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<Post>(post, HttpStatus.OK);
         } catch (NotReadablePropertyException e){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
         }
 
     }
     // RESTful API method for Update operation
     @PutMapping("/posts/{id}")
-    public ResponseEntity<?> update(@RequestBody Post post, @PathVariable Integer id) {
+    public ResponseEntity<Post> update(@RequestBody Post post, @PathVariable Integer id) {
         try {
             Post existPost = service.get(id);
             service.save(post);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<Post>(post, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
