@@ -1,0 +1,157 @@
+html {
+    font-family: Cambria, serif;
+    color: midnightblue;
+    font-size: 20px;
+    width:100%;
+    height:100%;
+}
+header {
+    background-color: plum;
+}
+body {
+    background-color: plum;
+    background-position: center;
+    background-size: cover;
+    max-width:100%;
+    margin: 40px;
+    padding: 10px;
+    padding-top: 0px;
+}
+.topNavBar {
+    background-color: grey;
+    overflow: hidden;
+}
+
+.topNavBar a {
+    float: left;
+    display: block;
+    color: midnightblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    max-width:100%;
+}
+
+.topNavBar a:hover {
+    background-color:whitesmoke;
+    color: blue;
+}
+
+.topNavBar a.active {
+    background-color:darkslategray;
+    color: white;
+}
+
+.topNavBar .icon {
+    display: none;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4, [col] 170px ) ;
+    grid-template-rows: repeat(3, [row] auto  );
+    background-color: plum;
+    color: grey;
+}
+.wrapper img {
+    float: center;
+}
+.container > div {
+    display: inline;
+    max-width: 100%;
+    position:relative;
+}
+.container img {
+    max-width: 100%;
+    vertical-align: right;
+}
+.box {
+    color: white;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 120%;
+}
+
+.box:hover {
+    animation: shake 1s;
+}
+
+@keyframes shake {
+    0%{transform: translate(1px,1px) rotate(0deg);}
+    25%{transform: translate(-2px,0px)rotate(1deg) ;}
+    50%{transform: translate(-1px,2px) rotate(-1deg);}
+    75%{transform: translate(-1px,-1px) rotate(0deg);}
+    100%{transform: translate(1px,-2px) rotate(-1deg);}
+}
+
+.a {
+    grid-column: col / span 2;
+    grid-row: row ;
+    background-color: grey;
+}
+.b {
+    grid-column: col 3 / span 2 ;
+    grid-row: row ;
+    background-color: purple;
+}
+.c {
+    grid-column: col ;
+    grid-row: row 2 ;
+    background-color: teal;
+}
+.d {
+    grid-column: col 2 / span 3 ;
+    grid-row: row 2 ;
+    background-color: tomato;
+}
+
+.e {
+    grid-column: col / span 4;
+    grid-row: row 3;
+    background-color: turquoise;
+}
+/* Dropdown Button */
+.dropbtn {
+    background-color: grey;
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: grey;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: grey;
+    min-width: 130px;
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 5px 5px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: grey}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
