@@ -1,0 +1,9 @@
+kill-8080.bat and kill-8080.sh would not stop the process on port 8080
+
+instead I had to use these commands in cmd while running as an administrator ->
+
+`netstat -ano | findstr  :8080`  -> to find the pid
+`taskkill /f /pid {pid#}`  -> use the pid number to kill the task on port 8080
+
+if successful, the following response will be returned ->
+SUCCESS: The process with PID 3920 has been terminated.

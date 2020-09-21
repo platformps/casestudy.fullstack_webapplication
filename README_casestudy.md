@@ -18,10 +18,11 @@ database
 * The application must support a login functionality
 
 ## Tech Stack
+* Trello
+* Balsamiq
 * Spring Boot
 * Java
 * Github
-* Balsamiq
 * MySQL
 * Heroku
-* Angular
+* JSP

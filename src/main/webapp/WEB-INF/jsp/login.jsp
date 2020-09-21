@@ -10,8 +10,8 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link href="style.css" rel="stylesheet">
-  <script type="text/javascript" src="utils.js"></script>
+  <link href="css/style.css" rel="stylesheet">
+  <script type="text/javascript" src="js/utils.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <!-- <span class="navbar-toggler-icon"></span> -->
       </button>
-      <button class="btn btn-primary btn-sm ml-auto" type="button">Register</button>
+      <button class="btn btn-primary btn-sm ml-auto" onclick=location.href="/user-register" type="button">Register</button>
     </nav>
     <!----------------- END NAV ----------------->
   </header>
@@ -57,7 +57,7 @@
           </label>
         </div>
         <div class="register-link">
-          <a href="register.html">Need an Account?</a>
+          <a href="/user-register">Need an Account?</a>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
@@ -66,7 +66,7 @@
 
 
   <footer>
-    <!-- <script type="text/javascript" src="./js/footer-functions.js"></script> -->
+
   </footer>
 
 </body>

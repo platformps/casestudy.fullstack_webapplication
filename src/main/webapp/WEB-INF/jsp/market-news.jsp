@@ -10,8 +10,8 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link href="style.css" rel="stylesheet">
-  <script type="text/javascript" src="utils.js"></script>
+  <link href="css/style.css" rel="stylesheet">
+  <script type="text/javascript" src="js/utils.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
@@ -39,7 +39,7 @@
       <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div class="navbar-nav">
           <a href="/user/{id}" class="nav-item nav-link">Profile</a>
-          <a href="/company-overview/{symbol}" class="nav-item nav-link">Company Overview</a>
+          <a href="/company-overview" class="nav-item nav-link">Company Overview</a>
 
         </div>
 
