@@ -33,12 +33,12 @@ public class AlbumController {
 
     // RESTful API method for Create operation
     @PostMapping("/albums")
-    public ResponseEntity<?> add(@RequestBody Album album) {
+    public ResponseEntity<Album> add(@RequestBody Album album) {
         try {
             service.save(album);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<Album>(album, HttpStatus.OK);
         } catch (NotReadablePropertyException e){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Album>(HttpStatus.NOT_FOUND);
         }
 
     }

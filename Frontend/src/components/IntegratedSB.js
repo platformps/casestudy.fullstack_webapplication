@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function FabIntegrationSnackbar() {
+export default function FabIntegrationSnackbar(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const { isAuthenticated } = useAuth0();
@@ -48,7 +48,6 @@ export default function FabIntegrationSnackbar() {
 
   const handleChange = event => {
     setalbumName(event.target.value);
-    
   };
 
   const handleDescChange = event => {
@@ -90,7 +89,9 @@ export default function FabIntegrationSnackbar() {
   fetch('http://localhost:8080/albums', requestOptions)
   .then(async response => {
       const data = await response.json();
+      console.log(data)
       setOpen(false);
+      props.updateAlbums(data);
       
       // check for error response
       if (!response.ok) {

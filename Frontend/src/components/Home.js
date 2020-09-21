@@ -25,7 +25,6 @@ export default class Home extends Component {
             }).then((data) => {
               // Log the data to the console
               // You would do something with both sets of data here
-              console.log(data[0]);
               this.setState({
                 Albums: data[0],
                 Posts: data[1]
@@ -36,8 +35,13 @@ export default class Home extends Component {
             });
       }
 
-      updateAlbums = () => {
-        this.componentDidMount();
+      updateAlbums = (newAlbum) => {
+        console.log("hello good morning")
+        this.setState({
+          Albums: [...this.state.Albums, newAlbum]
+        }, () => {
+          console.log(this.state.Albums)
+        })
       }
 
 
@@ -49,7 +53,7 @@ export default class Home extends Component {
         this.state.Albums == null ? 
         <div>You Have No Albums! Lets get started</div>
         :
-        <AlbumHome Albums={this.state.Albums} Posts={this.state.Posts} passedFunction={this.updateAlbums} />
+        <AlbumHome Albums={this.state.Albums} Posts={this.state.Posts} updateAlbums={this.updateAlbums} />
         }
          </div>
     );
