@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://upkeep-assistant.herokuapp.com/api/auth/";
+const API_URL = "https://upkeep-assistant.herokuapp.com/api/auth/";
 
 class AuthService {
   login(username, password) {
