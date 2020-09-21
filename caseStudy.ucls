@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.github.curriculeon.controller.UserProfileController" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/controller/UserProfileController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="178" width="491" x="1036" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.github.curriculeon.model.UserProfileRole" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/model/UserProfileRole.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="232" width="212" x="2173" y="464"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.github.curriculeon.controller.TodoController" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/controller/TodoController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="232" width="313" x="1820" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.github.curriculeon.service.TodoService" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/service/TodoService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="260" x="1820" y="464"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="5" language="java" name="com.github.curriculeon.repository.UserProfileRoleRepository" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/repository/UserProfileRoleRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="215" x="1063" y="954"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="com.github.curriculeon.model.UserProfile" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/model/UserProfile.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="340" width="264" x="2173" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="7" language="java" name="com.github.curriculeon.repository.TodoRepository" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/repository/TodoRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="88" width="233" x="1797" y="736"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="8" language="java" name="com.github.curriculeon.validator.UserProfileValidator" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/validator/UserProfileValidator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="189" x="981" y="464"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.github.curriculeon.service.SecurityServiceImpl" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/service/SecurityServiceImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="178" width="393" x="548" y="464"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.github.curriculeon.service.UserProfileService" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/service/UserProfileService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="160" width="566" x="1191" y="736"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="11" language="java" name="com.github.curriculeon.repository.UserProfileRepository" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/repository/UserProfileRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="88" width="230" x="1318" y="954"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="12" language="java" name="com.github.curriculeon.config.WebSecurityConfig" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/config/WebSecurityConfig.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="178" width="332" x="231" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.github.curriculeon.controller.ErrorController" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/controller/ErrorController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="393" x="603" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="com.github.curriculeon.model.Todo" project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/model/Todo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="322" width="213" x="1567" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="15" language="java" name="com.github.curriculeon.service.ITodoService" 
+    project="casestudy.fullstack_webapplication" 
+    file="/casestudy.fullstack_webapplication/src/main/java/com/github/curriculeon/service/ITodoService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="178" width="260" x="2070" y="736"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <association id="16">    
+    <bendpoint x="1200" y="464"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="17" name="userService"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="19">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <association id="21">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="22" name="userService"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <association id="25">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="26" name="users"/>      
+      <multiplicity id="27" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="28">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <association id="29">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="30" name="userRoles"/>      
+      <multiplicity id="31" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="32">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="33" name="repository"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="35">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="36" name="userValidator"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="39" name="todoService"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="41">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="42" name="userRepository"/>      
+      <multiplicity id="43" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="44">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <realization id="45">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <association id="46">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="47" name="securityService"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="50" name="roleRepository"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
