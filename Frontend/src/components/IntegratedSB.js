@@ -74,7 +74,6 @@ export default function FabIntegrationSnackbar(props) {
   };
 
   const handleSubmit = (event) => { 
-    console.log('tacos')
     event.preventDefault();
     const requestOptions = {
       method: 'POST',

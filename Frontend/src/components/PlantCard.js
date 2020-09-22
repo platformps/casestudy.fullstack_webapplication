@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import AlbumDialog from './AlbumDialog';
 // import { useAuth0 } from "../react-auth0-spa";
 
 const useStyles = makeStyles({
@@ -27,7 +28,7 @@ export default function MediaCard(props) {
   // }
 
   const handleTab = () => {
-    props.postView(props.Title, props.albumId, props.albumPosts)
+    props.postView(props.Title, props.albumId)
   }
 
   return (
@@ -55,9 +56,9 @@ export default function MediaCard(props) {
           View Album
         </Button>
       {/* </Link> */}
-        <Button size="small" color="primary">
-          Edit Album
-        </Button>
+        
+          <AlbumDialog albumDate={props.albumDate} albumId={props.albumId} albumTitle={props.Title} albumDesc={props.Description} albumImg={props.AlbumImage} DeleteAlbum={props.DeleteAlbum} />
+        
       </CardActions>
     </Card>
     {/* : 

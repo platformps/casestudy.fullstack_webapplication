@@ -1,6 +1,9 @@
-package com.example.backend;
+package com.example.backend.Services;
 import java.util.List;
 import javax.transaction.Transactional;
+
+import com.example.backend.dao.AlbumRepository;
+import com.example.backend.models.Album;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

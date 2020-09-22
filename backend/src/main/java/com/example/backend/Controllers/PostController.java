@@ -1,7 +1,8 @@
-package com.example.backend;
+package com.example.backend.Controllers;
 import java.util.*;
 
-import org.apache.coyote.Response;
+import com.example.backend.Services.PostService;
+import com.example.backend.models.Post;
 import org.springframework.beans.NotReadablePropertyException;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
