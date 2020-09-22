@@ -61,7 +61,7 @@ class DepartmentList extends Component {
           <th></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
       {department.map(department =>
              <tr key={department.id}> 
                <td>{department.name}</td> 
