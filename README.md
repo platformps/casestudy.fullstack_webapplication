@@ -2,6 +2,6 @@
 
 # Demo Video recorded with iSpring Cam
 
-# See full details on running project, Username and Password, etc. in Todo Readme once accessing Github Link
+# See full details on running project, Username and Password, etc. in Project Readme once accessing Github Link
 
 
