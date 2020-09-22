@@ -23,9 +23,6 @@ public class User {
         this.active = active;
     }
 
-    public User() {
-    }
-
     public Long getId() {
         return id;
     }

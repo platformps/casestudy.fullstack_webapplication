@@ -23,14 +23,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/market-news").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/company-overview").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/profile").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/user").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/market-news").hasRole("USER")
+                .antMatchers("/company-overview").hasRole("USER")
+                .antMatchers("/profile").hasRole("USER")
                 .antMatchers("/user-register").permitAll()
-                .antMatchers("/").permitAll()
-                .and().formLogin();
+                .and()
+                .formLogin()
+                .loginPage("/").permitAll()
+                .loginProcessingUrl("/")
+                .defaultSuccessUrl("/market-news", true);
     }
 
     @Bean
