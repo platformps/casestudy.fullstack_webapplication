@@ -46,18 +46,21 @@ public class AlbumController {
     }
     // RESTful API method for Update operation
     @PutMapping("/albums/{id}")
-    public ResponseEntity<?> update(@RequestBody Album album, @PathVariable Integer id) {
+    public ResponseEntity<Album> update(@RequestBody Album album, @PathVariable Integer id) {
         try {
             Album existAlbum = service.get(id);
             service.save(album);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<Album>(album,HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     // RESTful API method for Delete operation
     @DeleteMapping("/albums/{id}")
-    public void delete(@PathVariable Integer id) {
+    public ResponseEntity<Album> delete(@PathVariable Integer id) {
+        Album album = service.get(id);
         service.delete(id);
+        return new ResponseEntity<Album>(album, HttpStatus.OK
+        );
     }
 }

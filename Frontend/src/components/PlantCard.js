@@ -28,7 +28,7 @@ export default function MediaCard(props) {
   // }
 
   const handleTab = () => {
-    props.postView(props.Title, props.albumId, props.albumPosts)
+    props.postView(props.Title, props.albumId)
   }
 
   return (
@@ -57,7 +57,7 @@ export default function MediaCard(props) {
         </Button>
       {/* </Link> */}
         
-          <AlbumDialog albumId={props.albumId} albumTitle={props.Title} albumDesc={props.albumDesc} albumImg={props.AlbumImage} />
+          <AlbumDialog albumDate={props.albumDate} albumId={props.albumId} albumTitle={props.Title} albumDesc={props.Description} albumImg={props.AlbumImage} DeleteAlbum={props.DeleteAlbum} />
         
       </CardActions>
     </Card>

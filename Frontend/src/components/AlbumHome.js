@@ -38,6 +38,7 @@ export default class AlbumHome extends Component {
   render() {
     const updateAlbums = this.props.updateAlbums
     const updatePosts = this.props.updatePosts
+    const DeleteAlbum = this.props.DeleteAlbum
 
     let loadPosts = (selectedAlbum, selectedId) => {
       this.setState({
@@ -52,7 +53,8 @@ export default class AlbumHome extends Component {
     this.state.Albums.map(function(Albums)   
     {
       return  <div key={Albums.id}>
-              <MediaCard postView={loadPosts} albumId={Albums.id} AlbumImage={Albums.imgurl} Title={Albums.albumtitle} Description={Albums.albumdesc} Names={Albums.name}
+              <MediaCard postView={loadPosts} albumId={Albums.id} AlbumImage={Albums.imgurl} Title={Albums.albumtitle} 
+              Description={Albums.albumdesc} Names={Albums.name} DeleteAlbum={DeleteAlbum} albumDate ={Albums.datestarted}
               />
               </div> 
     })

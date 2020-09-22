@@ -43,6 +43,20 @@ export default class Home extends Component {
         })
       }
 
+      DeleteAlbum = (albumId) => {
+        let newAlbumArr = []
+        console.log(this.state.Albums)
+        this.state.Albums.map((album) => {
+          if (album.id !== albumId) {
+            newAlbumArr.push(album)
+          }
+          return null
+        })
+        this.setState({
+          Albums: newAlbumArr
+        }, () => console.log(this.state.Albums))
+      }
+
       updatePosts = (newPost) => {
         console.log(newPost)
         this.setState({
@@ -61,7 +75,7 @@ export default class Home extends Component {
         this.state.Albums == null ? 
         <div>You Have No Albums! Lets get started</div>
         :
-        <AlbumHome Albums={this.state.Albums} Posts={this.state.Posts} updatePosts={this.updatePosts} updateAlbums={this.updateAlbums} />
+        <AlbumHome Albums={this.state.Albums} Posts={this.state.Posts} updatePosts={this.updatePosts} updateAlbums={this.updateAlbums} DeleteAlbum={this.DeleteAlbum} />
         }
          </div>
     );
