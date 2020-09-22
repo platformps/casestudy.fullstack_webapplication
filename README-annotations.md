@@ -110,7 +110,7 @@
 	
 <hr>
 
-#### `@Controller`
+#### `@com.github.perscholas.Controller`
 * Annotates class signature
 * **Description**
 	* specialized form of `@Component`
@@ -134,7 +134,7 @@
 * **Description**
 	* annotation maps HTTP requests to handler methods of MVC and REST controllers.
 * **Pre-requesites for use**
-	* class must be a annotated with `@Controller`
+	* class must be a annotated with `@com.github.perscholas.Controller`
 
 	
 	
@@ -150,7 +150,7 @@
 * **Description**
 	* indicates that a method parameter should be bound to a URI template variable
 * **Pre-requesites for use**
-	* class must be a annotated with `@Controller`
+	* class must be a annotated with `@com.github.perscholas.Controller`
 
 
 
@@ -166,6 +166,6 @@
 	* indicates that a method parameter should be bound to a web request parameter
 	* used to extract query parameters, form parameters 
 * **Pre-requesites for use**
-	* class must be a annotated with `@Controller`
+	* class must be a annotated with `@com.github.perscholas.Controller`
  
  

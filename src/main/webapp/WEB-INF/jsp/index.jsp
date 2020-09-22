@@ -74,18 +74,16 @@
 
     <form action="process.jsp">
         <h3>New User Registration Form</h3>
-        <br/><label for="firstname">First Name</label>
-        <input id="FirstName" type="text" name="fname" onclick="this.value=''"/>
-        <br/><label for="lastname">Last Name</label>
-        <input id="LastName" type="text" name="lname" onclick="this.value=''"/>
+        <br/><label for="name">Full Name</label>
+        <input id="name" type="text" name="name" onclick="this.value=''"/>
         <br/><label for="email">Email</label>
         <input id="email" type="email" name="email" onclick="this.value=''"/>
         <br/><label for="address">Address</label>
         <input id="address" type="text" name="address" onclick="this.value=''"/>
-        <br/><label for="phnumber">Phone Number</label>
-        <input id="phnumber" type="number" name="phnumber" onclick="this.value=''"/>
+        <br/><label for="phone_number">Phone Number</label>
+        <input id="phone_number" type="number" name="phone_number" onclick="this.value=''"/>
         <br/><label for="pass">Password</label>
-        <input id="pass" type="password" name="p" onclick="this.value=''"/>
+        <input id="pass" type="password" name="user_password" onclick="this.value=''"/>
         <br/><input type="submit" value="Register"/>
     </form>
 </aside>
