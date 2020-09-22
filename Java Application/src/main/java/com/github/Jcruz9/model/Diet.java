@@ -1,7 +1,7 @@
 package com.github.Jcruz9.model;
 
 public class Diet {
-
+    private Long foodId;
     private String foodName;
     private Integer calories;
     private Integer carbs;
@@ -70,4 +70,11 @@ public class Diet {
         this.sugar = sugar;
     }
 
+    public Long getFoodId() {
+        return foodId;
+    }
+
+    public void setFoodId(Long foodId) {
+        this.foodId = foodId;
+    }
 }

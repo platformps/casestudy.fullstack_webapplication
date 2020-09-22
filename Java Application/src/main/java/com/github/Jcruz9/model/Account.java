@@ -14,6 +14,8 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String email;
     private String Password;    // Look at spring security later for better verification.
+    private Long accountId;
+
 
     public String getEmail() {
         return email;
@@ -29,5 +31,13 @@ public class Account {
 
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public Long getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 }
