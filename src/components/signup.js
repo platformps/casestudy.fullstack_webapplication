@@ -69,6 +69,7 @@ export default class Registration extends Component {
         
 
        if(!this.validate(this.state.email,this.state.username,this.state.password,this.state.cpassword)){
+        alert('Invalid parameters');
          return;
        }
 
@@ -99,6 +100,7 @@ export default class Registration extends Component {
               });
             }
           );
+          alert('Registered successfully');
           this.props.history.push('../');
         }
       

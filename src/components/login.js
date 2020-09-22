@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import {  Link } from "react-router-dom";
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import { withCookies } from 'react-cookie';
 import AuthService from "./auth.service";
 
 const required = value => {
@@ -16,9 +15,10 @@ const required = value => {
   }
 };
 
+
+
  class Login extends Component {
       constructor(props) {
-        
           super();
           this.handleLogin = this.handleLogin.bind(this);
           this.onChangeUsername = this.onChangeUsername.bind(this);
@@ -57,20 +57,21 @@ const required = value => {
                 this.props.history.push("/dashboard");
               },
               error => {
+                alert('Invalid creditials');
                 const resMessage =
                   (error.response &&
                     error.response.data &&
                     error.response.data.message) ||
                   error.message ||
                   error.toString();
-      
                 this.setState({
                   loading: false,
                   message: resMessage
                 });
               }
+              
             );
-         
+            
           
         }
 
@@ -108,7 +109,6 @@ const required = value => {
                 <div>
                     
                     <Button style = {{backgroundColor: "#2196f3"}} onClick = {this.handleLogin}  > Sign in</Button>
-                    
                     <p>Forgot your password? <a href="" > Reset</a></p>
                     <div >
                     <Link className = "nav-link" to = {"/registration"}>
@@ -121,4 +121,4 @@ const required = value => {
         );
     }
 }
-export default withCookies(Login);
+export default Login;
