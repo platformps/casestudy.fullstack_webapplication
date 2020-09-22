@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Register</title>
+  <title>Login</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -22,11 +22,12 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
 
+
 </head>
 
 
 
-<body id="page3">
+<body class="userForm">
   <header>
     <!----------------- BEGIN NAV ----------------->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-family: 'Lato', sans-serif;">
@@ -35,66 +36,37 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <!-- <span class="navbar-toggler-icon"></span> -->
       </button>
-      <button class="btn btn-primary btn-sm ml-auto" onclick=location.href="/" type="button">Login</button>
+      <button class="btn btn-primary btn-sm ml-auto" onclick=location.href="/" type="button">Sign In</button>
     </nav>
     <!----------------- END NAV ----------------->
   </header>
 
-  <main id="cart-form">
-    <div class="row">
-      <div class="col-md-8 order-md-1 mx-auto">
-        <h4 class="mb-3">New User</h4>
-        <form class="needs-validation" novalidate>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="firstName">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="First" value="" required>
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="lastName">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="Last" value="" required>
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </div>
-          </div>
+  <main>
+    <div class="jumbotron col-12 text-center">
+      New User Registration
+      <form class="form-user" style="padding-top: 1em;">
 
-          <div class="mb-3">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" onblur="validateEmail()" placeholder="you@example.com"
-              required>
-            <div class="invalid-feedback">
-              Please enter a valid email address for shipping updates.
-            </div>
-          </div>
+        <h1 class="h3 mb-3 font-weight-normal">Create a username and password</h1>
+        <label for="inputUsername" class="sr-only"></label>
+        <input type="text" class="form-control inputUsername" placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only"></label>
+        <input type="password" class="form-control inputPassword" placeholder="Password" required>
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="show-pass" onchange=showPassword()> Show password
+          </label>
+        </div>
 
-          <div class="mb-3">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" onblur="validatePassword()" placeholder="password"
-              required>
-            <div class="invalid-feedback">
-              Please enter a valid password.
-            </div>
-          </div>
-
-          <div class="row">
-
-          </div>
-          <hr class="mb-4">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
-        </form>
-      </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+      </form>
     </div>
   </main>
 
+
   <footer>
+
   </footer>
 
-
 </body>
-
 
 </html>

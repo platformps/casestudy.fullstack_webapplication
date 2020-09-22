@@ -28,9 +28,10 @@ public class UserService {
 
     public User update(Long id, User newUserData) {
         User originalUserData = repository.findById(id).get();
-        originalUserData.setFirstName(newUserData.getFirstName());
-        originalUserData.setLastName(newUserData.getLastName());
-        originalUserData.setEmail(newUserData.getEmail());
+        originalUserData.setUserName(newUserData.getUserName());
+        originalUserData.setPassword(newUserData.getPassword());
+        originalUserData.setRoles(newUserData.getRoles());
+        originalUserData.setActive(newUserData.getActive());
         return repository.save(originalUserData);
     }
 

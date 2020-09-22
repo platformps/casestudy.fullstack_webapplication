@@ -27,7 +27,7 @@
 
 
 
-<body id="index">
+<body class="userForm">
   <header>
     <!----------------- BEGIN NAV ----------------->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-family: 'Lato', sans-serif;">
@@ -44,13 +44,13 @@
   <main>
     <div class="jumbotron col-12 text-center">
       Welcome!
-      <form class="form-signin" style="padding-top: 1em;">
+      <form class="form-user" style="padding-top: 1em;">
 
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputUsername" class="sr-only">Email address</label>
+        <input type="text" class="form-control inputUsername" placeholder="Username" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" class="form-control inputPassword" placeholder="Password" required>
         <div class="checkbox mb-3">
           <label>
             <input type="checkbox" value="show-pass" onchange=showPassword()> Show password

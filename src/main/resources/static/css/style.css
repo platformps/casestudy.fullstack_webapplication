@@ -8,7 +8,7 @@ html {
     background-color: rgba(0,0,0,.8)!important;
 }
 
-#index {
+.userForm {
     background-image: url('../img/stock-chart.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -16,7 +16,7 @@ html {
     background-size: cover;
 }
 
-#index .jumbotron {
+.userForm .jumbotron {
     background-color: rgba(0, 0, 0, .6);
     color: white;
     text-shadow: 2px 2px 3px black;
@@ -28,19 +28,19 @@ html {
     border-radius: 0;
     }
 
-.form-signin {
+.form-user {
     width: 100%;
-    max-width: 330px;
+    max-width: 400px;
     padding: 15px;
     margin: auto;
   }
 
-  .form-signin .checkbox {
+  .form-user .checkbox {
     font-weight: 400;
     font-size: small;
   }
 
-  .form-signin .form-control {
+  .form-user .form-control {
     position: relative;
     box-sizing: border-box;
     height: auto;
@@ -48,17 +48,17 @@ html {
     font-size: 16px;
   }
 
-  .form-signin .form-control:focus {
+  .form-user .form-control:focus {
     z-index: 2;
   }
 
-  .form-signin input[type="email"] {
+  .inputUsername {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  .form-signin input[type="password"] {
+  .inputPassword {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
