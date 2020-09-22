@@ -26,14 +26,20 @@ export default class AlbumHome extends Component {
       Albums: this.props.Albums
     })
   }
+  if(prevProps.Posts !== this.props.Posts) {
+    this.setState({
+      Posts: this.props.Posts
+    })
+  }
   }
 
 
 
   render() {
     const updateAlbums = this.props.updateAlbums
+    const updatePosts = this.props.updatePosts
 
-    let loadPosts = (selectedAlbum, selectedId, selectedPosts) => {
+    let loadPosts = (selectedAlbum, selectedId) => {
       this.setState({
         View: 'post',
         currentAlbum: selectedAlbum,
@@ -67,9 +73,7 @@ export default class AlbumHome extends Component {
       this.setState({
         View: 'album',
         currentAlbum: 'Please Select an Album'
-      }, () => {console.log(this.state.View)
-                console.log(this.state.Albums)
-              })
+      })
     }
 
     return (
@@ -83,7 +87,7 @@ export default class AlbumHome extends Component {
         { this.state.View ==='album' && <FabIntegrationSnackbar updateAlbums={updateAlbums} /> }
         { this.state.View === 'album' && allAlbums }
         { this.state.View === 'post' && allPosts }
-        { this.state.View === 'post' && <AddPost currentAlbum={this.state.currentAlbum} currentId={this.state.currentAlbumId} />}
+        { this.state.View === 'post' && <AddPost updatePosts={updatePosts} currentAlbum={this.state.currentAlbum} currentId={this.state.currentAlbumId} />}
         
         </Grid>
          </Container>

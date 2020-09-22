@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import AlbumDialog from './AlbumDialog';
 // import { useAuth0 } from "../react-auth0-spa";
 
 const useStyles = makeStyles({
@@ -55,9 +56,9 @@ export default function MediaCard(props) {
           View Album
         </Button>
       {/* </Link> */}
-        <Button size="small" color="primary">
-          Edit Album
-        </Button>
+        
+          <AlbumDialog albumId={props.albumId} albumTitle={props.Title} albumDesc={props.albumDesc} albumImg={props.AlbumImage} />
+        
       </CardActions>
     </Card>
     {/* : 

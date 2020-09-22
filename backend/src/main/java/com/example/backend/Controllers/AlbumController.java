@@ -1,6 +1,8 @@
-package com.example.backend;
+package com.example.backend.Controllers;
 import java.util.*;
 
+import com.example.backend.Services.AlbumService;
+import com.example.backend.models.Album;
 import org.springframework.beans.NotReadablePropertyException;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;

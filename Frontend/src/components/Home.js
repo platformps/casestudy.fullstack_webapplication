@@ -36,11 +36,19 @@ export default class Home extends Component {
       }
 
       updateAlbums = (newAlbum) => {
-        console.log("hello good morning")
         this.setState({
           Albums: [...this.state.Albums, newAlbum]
         }, () => {
           console.log(this.state.Albums)
+        })
+      }
+
+      updatePosts = (newPost) => {
+        console.log(newPost)
+        this.setState({
+          Posts: [...this.state.Posts, newPost]
+        }, () => {
+          console.log(this.state.Posts)
         })
       }
 
@@ -53,7 +61,7 @@ export default class Home extends Component {
         this.state.Albums == null ? 
         <div>You Have No Albums! Lets get started</div>
         :
-        <AlbumHome Albums={this.state.Albums} Posts={this.state.Posts} updateAlbums={this.updateAlbums} />
+        <AlbumHome Albums={this.state.Albums} Posts={this.state.Posts} updatePosts={this.updatePosts} updateAlbums={this.updateAlbums} />
         }
          </div>
     );

@@ -77,6 +77,7 @@ export default function AddPost(props) {
       const data = await response.json();
       console.log(data)
       setOpen(false);
+      props.updatePosts(data);
       
       // check for error response
       if (!response.ok) {
