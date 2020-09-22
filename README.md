@@ -1,69 +1,67 @@
 # Full Stack Web Application
-
 * **Objective** - to create an implementation of a web service
 * **Purpose** - to demonstrate the construction of a full-stacked web-application
 * **Description**
-	* This Case Study is your first foray into building a full-stack application. You'll be building a Spring MVC based application, which means you'll learn about what it takes to build a functional application from the ground up yourself.
-	* This is exciting! It's a lot, but we've given you the tools to be able to build what you need, and you get to decide what you do with it. You also get to be creative in choosing what sort of application you want to build!
-	* You will be working individually to design your app. We hope you'll exercise creativity on this project, sketch some wireframes before you start, make sure you have time to run these ideas by your instructors to get their feedback before you dive too deep into coding! Remember to keep things small and focus on mastering the fundamentals.
+	* This Case Study is my first foray into building a full-stack application. I was able to demonstrate how to use Spring MVC to develop a simple todo-list web application.
+	* This project was exciting! Thanks to my classmates, my instructor (Leon Hunter), for all the learning and applying what I've learned into building something amazing.
+	* UML Diagram of my classes:
+	      ![](./pic/caseStudyUML.png)
+
+
 * **Additional Resources**
-	* [The Original Case Study Document](./case-study.pdf)
 	* [Case Study Outline](./case-study-outline.pdf)
-	* [Case Study Deliverables](./README_deliverables.md)
 	* [Identifying Plagiarism](./README_plagiarism.md)
-	* [Suggested Project Topics](./README_suggested-project-topics.md)
+	* [Reference and Credits](./README_Reference.md)
 
 
 
-## Minimum Features
-* `RESTful` web service which consumes requests from a front-end web application and caches each request and the respective response to a database.
+## User Requirement to run this web Application 
+* This web application is not deployed yet. Please check back from time to time to see updates and deployment to AWS (Amazon Web Services).
 * The application must support a login functionality.
 
 
 
 
-## Developmental Notes
+## Software Specifications Notes
 
-### Tech Stack Selection
-* Select at least 1 technology from each of the following categories:
+### Required
+* I advise that you make install each of the following technologies to ensure that the program works smoothly:
   * **Version Control System**
-    1. Github
-    2. Bitbucket
+    1.Must have a Java SDK, JRE installed
+    2. Must have Maven installed on PC.
+    3. Optional to install Spring Boot CLI (Command Line Tool)
+    4. Optional have an IDE (Integrated Development Environment) or go with option 3.
     
-  * **Wireframe**
-    1. Mockflow
-    2. Balsamiq
-    3. Lucidcharts
-
-  * **Frontend**
-    1. Java Server Pages
-    
-  * **Business Logic**
+  * **Languages and Tools Used To Develop This Program**
     1. Java
-    2. TypeScript
+    2. SQL (H2 Database)
+    3. Lucidcharts
+    4. Java Server Pages
+    5. Spring MVC
+    6.  HTML5, CSS, JavaScript, BootStrap
+    7.  Trello Board [a link](https://trello.com/invite/b/pwHfeBUk/9a907e606482ebb03b85ff3d62005e69/todo-list-web-application)
 
-  * **WebServer Implementation**
-    1. Spring Boot
-    2. At least 1 [backing service](https://12factor.net/backing-services) API
+  * **How To Run The Application**
+    1. Fork the project and download the file as zip.
+    2. Open with Intellij or using any other IDE.
+    3. Run as springboot application.
+    
+  * **Web Link**
+    1. On your web browser type localhost:8080/home or click this link [Access Site](localhost:8080/home)
+    2. The home page will open.
+        ![](./pic/pics1.png)
+    3. From the home page click signup to get access to the todo-list web application
+        ![](./pic/pics2.png)
+    4. On your home page you can create a todo-list.
+        ![](./pic/pics5.png)
+    5. You can add as many list as you want and manage it.
+    6. The web application is also mobile responsive. Please try it on chrome to get the best experience.
+      ![](./pic/mobile.png)
 
-  * **Data Layer**
-    1. MySQL
-    2. PostgreSQL
-    3. MariaDB
-
-  * **Web Server Cloud Deployment**
-    1. Heroku
-    2. AWS EC2 Instance
   
-  * **Web Application Cloud Deployment**
-    1. Netlify
-    2. AWS EC2 Instance
 
 
 
-
-### Installation
-* It is advised that you make install each of the following technologies to ensure that are at least accessible
-  * Install [NodeJs](https://nodejs.org/en/).
-  * Install [Angular](http://angular.io/).
-  * Install [AngularCli](https://cli.angular.io/).
+### Note
+* It is advised that you please report any issues you encounter with the application so I can rectify the issue.
+* Thank you for using my application. It means so much to me for developing my first ever application.
