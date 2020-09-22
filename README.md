@@ -25,7 +25,7 @@
 ## Developmental Notes
 
 ### Tech Stack Selection
-* Select at least 1 technology from each of the following categories:
+* Select at least 1 technology from each of the following categorie:
   * **Version Control System**
     1. Github
     2. Bitbucket
