@@ -1,8 +1,8 @@
 package com.devos.perscholas.casestudy.service;
 
-import com.github.curriculeon.model.UserProfile;
-import com.github.curriculeon.repository.UserProfileRepository;
-import com.github.curriculeon.repository.UserProfileRoleRepository;
+import com.devos.perscholas.casestudy.model.UserProfile;
+import com.devos.perscholas.casestudy.repository.UserProfileRepository;
+import com.devos.perscholas.casestudy.repository.UserProfileRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

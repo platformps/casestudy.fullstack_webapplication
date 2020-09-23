@@ -24,7 +24,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <title>Login</title>
+    <title>Register</title>
 </head>
 <body>
 
@@ -32,20 +32,31 @@
 <div class="row">
 <div class="col-xs-12">
 
-    <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h2 class="form-heading">Sign-in page</h2>
+    <form:form method="POST" modelAttribute="userForm" class="form-signin">
+        <h2 class="form-signin-heading">Create your account</h2>
+        <spring:bind path="username">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="username" class="form-control" placeholder="Username" autofocus="true"></form:input>
+                <form:errors path="username"></form:errors>
+            </div>
+        </spring:bind>
 
-        <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
-            <input name="username" type="text" class="form-control" placeholder="Username" autofocus="true"/>
-            <input name="password" type="password" class="form-control" placeholder="Password"/>
-            <span>${error}</span>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <spring:bind path="password">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="password" path="password" class="form-control" placeholder="Password"></form:input>
+                <form:errors path="password"></form:errors>
+            </div>
+        </spring:bind>
 
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
-        </div>
-    </form>
+        <spring:bind path="passwordConfirm">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="password" path="passwordConfirm" class="form-control" placeholder="Confirm your password"></form:input>
+                <form:errors path="passwordConfirm"></form:errors>
+            </div>
+        </spring:bind>
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+    </form:form>
 
 </div>
 </div>
