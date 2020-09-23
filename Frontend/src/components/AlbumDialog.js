@@ -62,12 +62,14 @@ export default function AlbumDialog(props) {
     });
   }
 
-  const handleSubmit = (event) => { 
+  const handleUpdate = (event) => { 
+      console.log("Updated Album " + props.albumId)
     event.preventDefault();
     const requestOptions = {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
+        id: props.albumId,
         name: user.name,
         albumtitle: albumTitle,
         albumdesc: albumDesc,
@@ -79,6 +81,7 @@ export default function AlbumDialog(props) {
       const data = await response.json();
       console.log(data)
       setOpen(false);
+      props.putAlbums(data)
       
       // check for error response
       if (!response.ok) {
@@ -144,7 +147,7 @@ export default function AlbumDialog(props) {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleSubmit} color="primary">
+          <Button onClick={handleUpdate} color="primary">
             Save Changes
           </Button>
         </DialogActions>
