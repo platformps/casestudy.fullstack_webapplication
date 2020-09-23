@@ -2,10 +2,7 @@ package com.github.Jcruz9.model;
 
 import sun.security.util.Password;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Account {
@@ -15,6 +12,9 @@ public class Account {
     private String email;
     private String Password;    // Look at spring security later for better verification.
     private Long accountId;
+
+    @Transient
+    private String passwordConfirm;
 
 
     public String getEmail() {
@@ -39,5 +39,13 @@ public class Account {
 
     public void setAccountId(Long accountId) {
         this.accountId = accountId;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
     }
 }
