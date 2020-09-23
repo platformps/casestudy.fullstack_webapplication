@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import CustomizedSnackbars from './SimpleSnackbar';
+import CustomizedSnackbars from '../SimpleSnackbar';
 import FabIntegrationSnackbar from './IntegratedSB';
 import Container from '@material-ui/core/Container';
 import MediaCard from './PlantCard';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Grid from '@material-ui/core/Grid';
-import AddPost from './AddPost'
+import AddPost from '../Post/AddPost'
+import PostCard from '../Post/PostCard';
 
 
 export default class AlbumHome extends Component {
@@ -40,13 +41,14 @@ export default class AlbumHome extends Component {
     const updatePosts = this.props.updatePosts
     const DeleteAlbum = this.props.DeleteAlbum
     const putAlbums = this.props.putAlbums
+    const DeletePost = this.props.DeletePost
+    const putPosts = this.props.putPosts
 
     let loadPosts = (selectedAlbum, selectedId) => {
       this.setState({
         View: 'post',
         currentAlbum: selectedAlbum,
         currentAlbumId: selectedId,
-        // Posts: selectedPosts
       })
     }
 
@@ -68,8 +70,9 @@ export default class AlbumHome extends Component {
       if (Posts.albumname === currentAlbum) {
       console.log(Posts)
       return  <div key={Posts.id}>
-              <MediaCard albumId={Posts.id} AlbumImage={Posts.postimgurl} Title={Posts.posttitle} 
-              Description={Posts.postdesc} Names={Posts.albumname}
+              <PostCard postId={Posts.id} postImage={Posts.postimgurl} postTitle={Posts.posttitle} 
+              postDesc={Posts.postdesc} postName={Posts.albumname} putPosts={putPosts}
+              DeletePost={DeletePost} postDate={Posts.postdate}
               />
               </div> 
       } else return null

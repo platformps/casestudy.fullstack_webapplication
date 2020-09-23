@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AlbumHome from './AlbumHome';
+import AlbumHome from './Album/AlbumHome';
 
 export default class Home extends Component {
   constructor(props) {
@@ -85,6 +85,39 @@ export default class Home extends Component {
         })
       }
 
+      putPosts = (postObj) => {
+        let newPostarr =[];
+
+        this.state.Posts.map((post) => {
+          if (post.id === postObj.id) {
+            newPostarr.push(postObj)
+            return null
+          } else {
+            newPostarr.push(post)
+            return null
+          }
+        })
+        this.setState({
+          Posts: newPostarr
+        })
+      }
+
+
+
+      DeletePost = (postId) => {
+        let newPostArr = []
+        console.log(this.state.Posts)
+        this.state.Posts.map((post) => {
+          if (post.id !== postId) {
+            newPostArr.push(post)
+          }
+          return null
+        })
+        this.setState({
+          Posts: newPostArr
+        }, () => console.log(this.state.Posts))
+      }
+
 
 
   render() {
@@ -94,7 +127,10 @@ export default class Home extends Component {
         this.state.Albums == null ? 
         <div>You Have No Albums! Lets get started</div>
         :
-        <AlbumHome Albums={this.state.Albums} Posts={this.state.Posts} updatePosts={this.updatePosts} updateAlbums={this.updateAlbums} DeleteAlbum={this.DeleteAlbum} putAlbums={this.putAlbums} />
+        <AlbumHome Albums={this.state.Albums} Posts={this.state.Posts} updatePosts={this.updatePosts} 
+        updateAlbums={this.updateAlbums} DeleteAlbum={this.DeleteAlbum} putAlbums={this.putAlbums} 
+        putPosts={this.putPosts} DeletePost={this.DeletePost}
+        />
         }
          </div>
     );

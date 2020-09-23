@@ -7,7 +7,7 @@ import Home from './components/Home'
 import history from "./utils/history";
 import PrivateRoute from "./components/PrivateRoute";
 import MenuAppBar from './components/Navigation';
-import AlbumHome from "./components/AlbumHome";
+import AlbumHome from "./components/Album/AlbumHome";
 
 
 function App() {
