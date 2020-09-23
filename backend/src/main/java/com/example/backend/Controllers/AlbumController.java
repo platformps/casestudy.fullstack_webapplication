@@ -50,9 +50,9 @@ public class AlbumController {
         try {
             Album existAlbum = service.get(id);
             service.save(album);
-            return new ResponseEntity<Album>(album,HttpStatus.OK);
+            return new ResponseEntity<Album>(album, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Album>(album, HttpStatus.NOT_FOUND);
         }
     }
     // RESTful API method for Delete operation

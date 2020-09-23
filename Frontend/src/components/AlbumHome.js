@@ -39,6 +39,7 @@ export default class AlbumHome extends Component {
     const updateAlbums = this.props.updateAlbums
     const updatePosts = this.props.updatePosts
     const DeleteAlbum = this.props.DeleteAlbum
+    const putAlbums = this.props.putAlbums
 
     let loadPosts = (selectedAlbum, selectedId) => {
       this.setState({
@@ -53,8 +54,10 @@ export default class AlbumHome extends Component {
     this.state.Albums.map(function(Albums)   
     {
       return  <div key={Albums.id}>
-              <MediaCard postView={loadPosts} albumId={Albums.id} AlbumImage={Albums.imgurl} Title={Albums.albumtitle} 
-              Description={Albums.albumdesc} Names={Albums.name} DeleteAlbum={DeleteAlbum} albumDate ={Albums.datestarted}
+              <MediaCard postView={loadPosts} albumId={Albums.id} AlbumImage={Albums.imgurl} 
+              Title={Albums.albumtitle} Description={Albums.albumdesc} Names={Albums.name} 
+              DeleteAlbum={DeleteAlbum} albumDate ={Albums.datestarted}
+              putAlbums={putAlbums}
               />
               </div> 
     })
@@ -65,7 +68,8 @@ export default class AlbumHome extends Component {
       if (Posts.albumname === currentAlbum) {
       console.log(Posts)
       return  <div key={Posts.id}>
-              <MediaCard albumId={Posts.id} AlbumImage={Posts.postimgurl} Title={Posts.posttitle} Description={Posts.postdesc} Names={Posts.albumname}
+              <MediaCard albumId={Posts.id} AlbumImage={Posts.postimgurl} Title={Posts.posttitle} 
+              Description={Posts.postdesc} Names={Posts.albumname}
               />
               </div> 
       } else return null

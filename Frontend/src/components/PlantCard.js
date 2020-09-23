@@ -57,7 +57,9 @@ export default function MediaCard(props) {
         </Button>
       {/* </Link> */}
         
-          <AlbumDialog albumDate={props.albumDate} albumId={props.albumId} albumTitle={props.Title} albumDesc={props.Description} albumImg={props.AlbumImage} DeleteAlbum={props.DeleteAlbum} />
+          <AlbumDialog putAlbums={props.putAlbums} albumDate={props.albumDate} 
+          albumId={props.albumId} albumTitle={props.Title} albumDesc={props.Description} 
+          albumImg={props.AlbumImage} DeleteAlbum={props.DeleteAlbum} />
         
       </CardActions>
     </Card>
