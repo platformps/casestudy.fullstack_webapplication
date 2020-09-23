@@ -27,7 +27,7 @@
                 <form:errors path="address"></form:errors>
             </div>
         </spring:bind>
-        <spring:bind path="phnumber">
+        <spring:bind path="phNumber">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="phNumber" class="form-control" placeholder="Phone Number"
                             autofocus="true"></form:input>

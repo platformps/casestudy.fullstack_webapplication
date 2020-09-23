@@ -43,7 +43,7 @@ public class UserAccountService implements UserDetailsService {
 
     public void save(UserAccount user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setUserRoles((Set<UserRole>) userRoleRepository.findAll());
+        user.setUserRoles(userRoleRepository.findAll());
         userRepository.save(user);
     }
 

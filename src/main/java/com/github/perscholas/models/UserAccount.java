@@ -2,6 +2,7 @@ package com.github.perscholas.models;
 
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ public class UserAccount {
 
     @ManyToMany
     @ElementCollection
-    private Set<UserRole> userRoles;
+    private List<UserRole> userRoles;
 
     @ManyToOne
     private ServiceCategory serviceCategory;
@@ -92,11 +93,11 @@ public class UserAccount {
         this.passwordConfirm = passwordConfirm;
     }
 
-    public Set<UserRole> getUserRoles() {
+    public List<UserRole> getUserRoles() {
         return userRoles;
     }
 
-    public void setUserRoles(Set<UserRole> userRoles) {
+    public void setUserRoles(List<UserRole> userRoles) {
         this.userRoles = userRoles;
     }
 
