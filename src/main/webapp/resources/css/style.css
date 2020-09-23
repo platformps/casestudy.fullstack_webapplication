@@ -41,3 +41,7 @@ body {
     line-height: 1;
     font-size: 14px;
 }
+
+.paragraph {
+    border: solid black 2.5px
+}
