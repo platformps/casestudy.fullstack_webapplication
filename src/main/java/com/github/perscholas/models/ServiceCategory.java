@@ -2,7 +2,7 @@ package com.github.perscholas.models;
 
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ServiceCategory {
@@ -12,8 +12,11 @@ public class ServiceCategory {
 
     private String categoryName;
 
-    @OneToMany
-    private List<UserAccount> userAccountList;
+    @OneToMany(mappedBy = "userAccounts")
+    private Set<UserAccount> userAccounts;
+
+    @OneToMany(mappedBy = "cartItems")
+    private Set<CartItem> cartItems;
 
     public Integer getId() {
         return id;
@@ -31,11 +34,18 @@ public class ServiceCategory {
         this.categoryName = categoryName;
     }
 
-    public List<UserAccount> getUserList() {
-        return userAccountList;
+    public Set<UserAccount> getUser() {
+        return userAccounts;
     }
 
-    public void setUserList(List<UserAccount> userAccountList) {
-        this.userAccountList = userAccountList;
+    public void setUser(Set <UserAccount> userAccounts) {
+        this.userAccounts = userAccounts;
+    }
+
+    public void setCartItems(Set<CartItem> cartItems) {
+        this.cartItems = cartItems;
+    }
+    public Set<CartItem> getCartItems() {
+        return cartItems;
     }
 }

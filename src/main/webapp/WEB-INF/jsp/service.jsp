@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <html lang="en">
 <!-- ----------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------- -->
@@ -13,8 +16,7 @@
     <meta name="description" content="Service">
     <meta name="author" content="Julia Waclawek">
 
-    <c:url value="/css/service.css" var="jstlCss" />
-    <link href="${jstlCss}" rel="stylesheet" />
+    <link href="${contextPath}/resources/css/service.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/js/utils.js"></script>
     <script type="text/javascript" src="/js/contact_us.js"></script>
     <script type="text/javascript" src="/js/header-functions.js"></script>
@@ -121,7 +123,7 @@
         </form>
     </td>
         <td>
-        <form name="ES Item "2 method="POST" action="servlet/CartController">
+        <form name="ES Item 2" method="POST" action="servlet/CartController">
             <strong>Event Setting:</strong>
             Garden Party<input type="hidden" name="id" value="garden party">
             <p>

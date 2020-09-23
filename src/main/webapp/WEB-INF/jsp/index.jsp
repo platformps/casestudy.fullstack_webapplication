@@ -46,10 +46,10 @@
 
 <aside>
     <jsp:include page="login.jsp"/> <br/>
-    <jsp:include page="login.jsp"/> <br/>
+    <jsp:include page="registration.jsp"/> <br/>
 </aside>
 
-    <jsp:include page="login.jsp"/> <br/>
+    <jsp:include page="welcome.jsp"/> <br/>
 <h1>About Us</h1>
 <img src="/img/myparty.jpeg" width="380" height="250" >
 <%--Message: ${message}--%>
