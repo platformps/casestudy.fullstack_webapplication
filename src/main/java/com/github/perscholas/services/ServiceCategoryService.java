@@ -1,7 +1,6 @@
 package com.github.perscholas.services;
 
 import com.github.perscholas.models.ServiceCategory;
-import com.github.perscholas.models.User;
 import com.github.perscholas.repositories.ServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

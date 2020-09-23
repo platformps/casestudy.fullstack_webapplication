@@ -1,45 +1,61 @@
 package com.github.perscholas.models;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
-@Table //(name = "user_account")
-public class User {
+//@Table (name = "user_account")
+public class UserAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-   @Column //(name = "name")
+    //@Column (name = "name")
     private String name;
 
-    @Column //(name = "email")
+    //@Column (name = "email")
     private String email;
 
-    @Column //(name = "address")
+    //@Column (name = "address")
     private String address;
 
-    @Column //(name = "phone_number")
+    //@Column (name = "phone_number")
     private String phNumber;
 
-    @Column //(name = "password")
+    private String username;
+
+    //@Column (name = "password")
     private String password;
+
+    @Transient // don't persist; not a column
+    private String passwordConfirm;
+
+    @ManyToMany
+    //@ElementCollection
+    private List<UserRole> userRoles;
 
     @ManyToOne
     private ServiceCategory serviceCategory;
 
 
-    public User() {
+    public UserAccount() {
 
     }
 
-    public User(Long id, String name, String email, String address, String phoneNumber, String password) {
+    public UserAccount(Long id, String name, String email, String address, String phoneNumber, String username, String password, String passwordConfirm) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
         this.phNumber = phoneNumber;
+        this.username = username;
         this.password = password;
+        this.passwordConfirm = passwordConfirm;
+
     }
 
 
@@ -83,12 +99,36 @@ public class User {
         this.phNumber = phNumber;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
+    public List<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 
     public ServiceCategory getServiceCategory() {
@@ -103,13 +143,15 @@ public class User {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        User user = (User) obj;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(name, user.name) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(address, user.address) &&
-                Objects.equals(phNumber, user.phNumber) &&
-                Objects.equals(password, user.password);
+        UserAccount userAccount = (UserAccount) obj;
+        return Objects.equals(id, userAccount.id) &&
+                Objects.equals(name, userAccount.name) &&
+                Objects.equals(email, userAccount.email) &&
+                Objects.equals(address, userAccount.address) &&
+                Objects.equals(phNumber, userAccount.phNumber) &&
+                Objects.equals(username, userAccount.username) &&
+                Objects.equals(password, userAccount.password) &&
+                Objects.equals(passwordConfirm, userAccount.passwordConfirm);
     }
 
     @Override

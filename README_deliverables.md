@@ -44,7 +44,7 @@
 
 ### Spring MVC
 * This deliverable includes connecting no. 1, 2 and 3 deliverables to function together
-	* Spring MVC: Responsible for responding to a request made by the user. This can be login, registration, etc. When using Spring MVC make sure to use at least the following functionalities: different type of session management, annotation-based controller, exception handling, models, model attributes.
+	* Spring MVC: Responsible for responding to a request made by the userAccount. This can be login, registration, etc. When using Spring MVC make sure to use at least the following functionalities: different type of session management, annotation-based controller, exception handling, models, model attributes.
 
 
 ### Junit (Test all DAO classes)

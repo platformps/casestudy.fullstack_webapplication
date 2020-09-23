@@ -1,6 +1,6 @@
 package com.github.perscholas.services;
 
-import com.github.perscholas.models.User;
+import com.github.perscholas.models.UserAccount;
 import com.github.perscholas.repositories.UserRegistrationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,22 +15,22 @@ public class UserService {
         this.userRegistrationRepo = userRegistrationRepo;
     }
 
-    public Iterable<User> index() {
+    public Iterable<UserAccount> index() {
         return userRegistrationRepo.findAll();
     }
 
-    public User show(Long id) {
+    public UserAccount show(Long id) {
         return userRegistrationRepo.findById(id).get();
     }
 
-    public User create(User user) {
-        return userRegistrationRepo.save(user);
+    public UserAccount create(UserAccount userAccount) {
+        return userRegistrationRepo.save(userAccount);
     }
 
-    public User update(Long id, User newUserData) {
-        User entryUser = userRegistrationRepo.findById(id).get();
-        entryUser.setName(newUserData.getName());
-        return userRegistrationRepo.save(entryUser);
+    public UserAccount update(Long id, UserAccount newUserAccountData) {
+        UserAccount entryUserAccount = userRegistrationRepo.findById(id).get();
+        entryUserAccount.setName(newUserAccountData.getName());
+        return userRegistrationRepo.save(entryUserAccount);
     }
 
     public Boolean delete(Long id) {

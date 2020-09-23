@@ -183,7 +183,7 @@ nbdist/
 *.tmPreferences.cache
 *.stTheme.cache
 
-# Workspace files are user-specific
+# Workspace files are userAccount-specific
 *.sublime-workspace
 
 # Project files should be checked into the repository, unless a significant
@@ -201,7 +201,7 @@ Package Control.system-ca-bundle
 Package Control.cache/
 Package Control.ca-certs/
 Package Control.merged-ca-bundle
-Package Control.user-ca-bundle
+Package Control.userAccount-ca-bundle
 oscrypto-ca-bundle.crt
 bh_unicode_properties.cache
 
@@ -218,7 +218,7 @@ GitHub.sublime-settings
 # User-specific files
 *.rsuser
 *.suo
-*.user
+*.userAccount
 *.userosscache
 *.sln.docstates
 
@@ -335,7 +335,7 @@ $tf/
 # ReSharper is a .NET coding add-in
 _ReSharper*/
 *.[Rr]e[Ss]harper
-*.DotSettings.user
+*.DotSettings.userAccount
 
 # JustCode is a .NET coding add-in
 .JustCode

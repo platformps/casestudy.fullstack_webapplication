@@ -13,7 +13,7 @@ public class ServiceCategory {
     private String categoryName;
 
     @OneToMany
-    private List<User> userList;
+    private List<UserAccount> userAccountList;
 
     public Integer getId() {
         return id;
@@ -31,11 +31,11 @@ public class ServiceCategory {
         this.categoryName = categoryName;
     }
 
-    public List<User> getUserList() {
-        return userList;
+    public List<UserAccount> getUserList() {
+        return userAccountList;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setUserList(List<UserAccount> userAccountList) {
+        this.userAccountList = userAccountList;
     }
 }
