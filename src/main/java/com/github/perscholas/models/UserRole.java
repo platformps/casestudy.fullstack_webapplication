@@ -14,8 +14,8 @@ public class UserRole {
     private String name;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "userAccountSet")
-    //@ElementCollection
+    @ManyToMany
+    @ElementCollection
     private Set<UserAccount> userAccounts;
 
     public Long getId() {

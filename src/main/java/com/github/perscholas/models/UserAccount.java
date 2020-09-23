@@ -6,54 +6,27 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-//@Table (name = "user_account")
 public class UserAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    //@Column (name = "name")
     private String name;
-
-    //@Column (name = "email")
     private String email;
-
-    //@Column (name = "address")
     private String address;
-
-    //@Column (name = "phone_number")
     private String phNumber;
-
     private String username;
-
-    //@Column (name = "password")
     private String password;
 
     @Transient // don't persist; not a column
     private String passwordConfirm;
 
-    @ManyToMany(mappedBy = "userRoles")
-    // @ElementCollection
+    @ManyToMany
+    @ElementCollection
     private Set<UserRole> userRoles;
 
     @ManyToOne
     private ServiceCategory serviceCategory;
 
-    public UserAccount() {
-
-    }
-
-    public UserAccount(Long id, String name, String email, String address, String phoneNumber, String username, String password, String passwordConfirm) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.address = address;
-        this.phNumber = phoneNumber;
-        this.username = username;
-        this.password = password;
-        this.passwordConfirm = passwordConfirm;
-
-    }
 
     public Long getId() {
         return id;

@@ -12,10 +12,12 @@ public class ServiceCategory {
 
     private String categoryName;
 
-    @OneToMany(mappedBy = "userAccounts")
+    @OneToMany
+    @ElementCollection
     private Set<UserAccount> userAccounts;
 
-    @OneToMany(mappedBy = "cartItems")
+    @OneToMany
+    @ElementCollection
     private Set<CartItem> cartItems;
 
     public Integer getId() {
