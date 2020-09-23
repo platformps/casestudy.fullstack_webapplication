@@ -2,6 +2,7 @@ package com.github.perscholas.services;
 
 
 import com.github.perscholas.models.UserAccount;
+import com.github.perscholas.models.UserRole;
 import com.github.perscholas.repositories.UserRepository;
 import com.github.perscholas.repositories.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,13 @@ import java.util.Set;
 @Service
 public class UserAccountService implements UserDetailsService {
     private UserRepository userRepository;
-    private UserRoleRepository roleRepository;
+    private UserRoleRepository userRoleRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserAccountService(UserRepository userRepository, UserRoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserAccountService(UserRepository userRepository, UserRoleRepository userRoleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
+        this.userRoleRepository = userRoleRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -42,7 +43,7 @@ public class UserAccountService implements UserDetailsService {
 
     public void save(UserAccount user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setUserRoles(roleRepository.findAll());
+        user.setUserRoles((Set<UserRole>) userRoleRepository.findAll());
         userRepository.save(user);
     }
 

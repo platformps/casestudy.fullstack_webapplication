@@ -3,7 +3,7 @@ package com.github.perscholas.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class UserRole {
@@ -14,9 +14,9 @@ public class UserRole {
     private String name;
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(mappedBy = "userAccounts")
     //@ElementCollection
-    private List<UserAccount> userAccounts;
+    private Set<UserAccount> userAccounts;
 
     public Long getId() {
         return id;
@@ -34,11 +34,11 @@ public class UserRole {
         this.name = name;
     }
 
-    public List<UserAccount> getUsers() {
+    public Set<UserAccount> getUsers() {
         return userAccounts;
     }
 
-    public void setUsers(List<UserAccount> userAccounts) {
+    public void setUsers(Set<UserAccount> userAccounts) {
         this.userAccounts = userAccounts;
     }
 }

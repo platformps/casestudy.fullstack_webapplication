@@ -1,9 +1,7 @@
 package com.github.perscholas.models;
 
-import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -34,13 +32,12 @@ public class UserAccount {
     @Transient // don't persist; not a column
     private String passwordConfirm;
 
-    @ManyToMany
-    //@ElementCollection
-    private List<UserRole> userRoles;
+    @ManyToMany(mappedBy = "userRoles")
+    // @ElementCollection
+    private Set<UserRole> userRoles;
 
     @ManyToOne
     private ServiceCategory serviceCategory;
-
 
     public UserAccount() {
 
@@ -57,7 +54,6 @@ public class UserAccount {
         this.passwordConfirm = passwordConfirm;
 
     }
-
 
     public Long getId() {
         return id;
@@ -123,11 +119,11 @@ public class UserAccount {
         this.passwordConfirm = passwordConfirm;
     }
 
-    public List<UserRole> getUserRoles() {
+    public Set<UserRole> getUserRoles() {
         return userRoles;
     }
 
-    public void setUserRoles(List<UserRole> userRoles) {
+    public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
     }
 
@@ -138,6 +134,7 @@ public class UserAccount {
     public void setServiceCategory(ServiceCategory serviceCategory) {
         this.serviceCategory = serviceCategory;
     }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -153,6 +150,7 @@ public class UserAccount {
                 Objects.equals(password, userAccount.password) &&
                 Objects.equals(passwordConfirm, userAccount.passwordConfirm);
     }
+
 
     @Override
     public int hashCode() {

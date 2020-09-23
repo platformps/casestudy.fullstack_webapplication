@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserAccountController {
-    private UserAccountService userService;
+    private UserAccountService userAccountService;
     private SecurityServiceImpl securityService;
     private UserValidator userValidator;
 
     @Autowired
     public UserAccountController(UserAccountService userService, UserValidator userValidator, SecurityServiceImpl securityService) {
-        this.userService = userService;
+        this.userAccountService = userService;
         this.userValidator = userValidator;
         this.securityService = securityService;
     }
@@ -36,7 +36,7 @@ public class UserAccountController {
         if (bindingResult.hasErrors()) {
             return "registration";
         }
-        userService.save(userAccountForm);
+        userAccountService.save(userAccountForm);
         securityService.autologin(userAccountForm.getUsername(), userAccountForm.getPasswordConfirm());
         return "redirect:/welcome";
     }

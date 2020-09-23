@@ -12,8 +12,11 @@ import org.springframework.validation.Validator;
 @Component
 public class UserValidator implements Validator {
 
-    @Autowired
-    private UserAccountService userAccountService;
+    private final UserAccountService userAccountService;
+
+    public UserValidator(UserAccountService userAccountService) {
+        this.userAccountService = userAccountService;
+    }
 
     @Override
     public boolean supports(Class<?> aClass) {
