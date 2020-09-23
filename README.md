@@ -1,3 +1,9 @@
+# Link to Ezra / L1v1on's case study repo
+https://github.com/L1v1on/case_study_game_arcade
+
+
+
+
 # Full Stack Web Application
 
 * **Objective** - to create an implementation of a web service
