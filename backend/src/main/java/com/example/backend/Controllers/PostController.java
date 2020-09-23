@@ -57,7 +57,9 @@ public class PostController {
     }
     // RESTful API method for Delete operation
     @DeleteMapping("/posts/{id}")
-    public void delete(@PathVariable Integer id) {
+    public ResponseEntity<Post> delete(@PathVariable Integer id) {
+        Post post = service.get(id);
         service.delete(id);
+        return new ResponseEntity<Post>(post, HttpStatus.OK);
     }
 }

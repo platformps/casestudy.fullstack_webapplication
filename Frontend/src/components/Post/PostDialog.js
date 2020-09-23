@@ -6,13 +6,13 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { useAuth0 } from "../react-auth0-spa";
+import { useAuth0 } from "../../react-auth0-spa";
 
-export default function AlbumDialog(props) {
+export default function PostDialog(props) {
   const [open, setOpen] = React.useState(false);
-  const [albumTitle, setalbumTitle] = React.useState(props.albumTitle);
-  const [albumDesc, setalbumDesc] = React.useState(props.albumDesc);
-  const [albumImg, setalbumImg] = React.useState(props.albumImg);
+  const [postTitle, setPostTitle] = React.useState(props.postTitle);
+  const [postDesc, setPostDesc] = React.useState(props.postDesc);
+  const [postImg, setPostImg] = React.useState(props.postImg);
   const { user } = useAuth0();
 
   const handleClickOpen = () => {
@@ -24,29 +24,29 @@ export default function AlbumDialog(props) {
   };
 
   const handleTitleChange = event => {
-    setalbumTitle(event.target.value);
+    setPostTitle(event.target.value);
   };
 
   const handleDescChange = event => {
-    setalbumDesc(event.target.value);
+    setPostDesc(event.target.value);
   };
 
   const handlealbumImgChange = event => {
-    setalbumImg(event.target.value);
+    setPostImg(event.target.value);
   };
 
-  const deleteAlbum = () => {
-      console.log("Deleted album " + props.albumId)
+  const DeletePost = () => {
+      console.log("Deleted Post " + props.postId)
       const requestOptions = {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
     };
-    fetch('http://localhost:8080/albums/' + props.albumId, requestOptions)
+    fetch('http://localhost:8080/posts/' + props.postId, requestOptions)
     .then(async response => {
         const data = await response.json();
         console.log(data)
         setOpen(false);
-        props.DeleteAlbum(data.id);
+        props.DeletePost(data.id);
         
         // check for error response
         if (!response.ok) {
@@ -63,25 +63,26 @@ export default function AlbumDialog(props) {
   }
 
   const handleUpdate = (event) => { 
-      console.log("Updated Album " + props.albumId)
+      console.log("Updated Album " + props.postId)
     event.preventDefault();
     const requestOptions = {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
-        id: props.albumId,
-        name: user.name,
-        albumtitle: albumTitle,
-        albumdesc: albumDesc,
-        datestarted: props.albumDate,
-        imgurl: albumImg })
+        id: props.postId,
+        username: user.name,
+        albumname: props.postAlbumTitle,
+        posttitle: postTitle,
+        postdesc: postDesc,
+        postdate: props.postDate,
+        postimgurl: postImg })
   };
-  fetch('http://localhost:8080/albums/' + props.albumId, requestOptions)
+  fetch('http://localhost:8080/posts/' + props.postId, requestOptions)
   .then(async response => {
       const data = await response.json();
       console.log(data)
       setOpen(false);
-      props.putAlbums(data)
+      props.putPosts(data)
       
       // check for error response
       if (!response.ok) {
@@ -100,7 +101,7 @@ export default function AlbumDialog(props) {
   return (
     <div>
       <Button color="primary" onClick={handleClickOpen}>
-        Edit Album
+        Edit Post
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Edit Album</DialogTitle>
@@ -112,37 +113,37 @@ export default function AlbumDialog(props) {
           <TextField
             autoFocus
             margin="dense"
-            id="albumTitle"
-            label="Album Title"
+            id="postTitle"
+            label="Post Title"
             type="text"
-            value={albumTitle}
+            value={postTitle}
             onChange={handleTitleChange}
             fullWidth
           />
         <TextField
             autoFocus
             margin="dense"
-            id="albumDesc"
-            label="Album Description"
-            type="email"
-            value={albumDesc}
+            id="postDesc"
+            label="Post Description"
+            type="text"
+            value={postDesc}
             onChange={handleDescChange}
             fullWidth
           />
         <TextField
             autoFocus
             margin="dense"
-            id="albumUrl"
-            label="Album Cover Image url"
+            id="postUrl"
+            label="Post Cover Image url"
             type="text"
-            value={albumImg}
+            value={postImg}
             onChange={handlealbumImgChange}
             fullWidth
           />
         </DialogContent>
         <DialogActions>
-        <Button color="secondary" onClick={deleteAlbum}>
-            Delete Album 
+        <Button color="secondary" onClick={DeletePost}>
+            Delete Post 
             </Button>
           <Button onClick={handleClose} color="primary">
             Cancel
