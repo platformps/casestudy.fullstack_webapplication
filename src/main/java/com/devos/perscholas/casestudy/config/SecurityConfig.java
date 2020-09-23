@@ -10,32 +10,32 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    UserDetailsService userDetailsService;
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/market-news").hasRole("USER")
-                .antMatchers("/company-overview").hasRole("USER")
-                .antMatchers("/profile").hasRole("USER")
-                .antMatchers("/user-register").permitAll()
-                .and()
-                .formLogin()
-                .loginPage("/").permitAll()
-                .loginProcessingUrl("/")
-                .defaultSuccessUrl("/market-news", true);
-    }
-
-    @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
-}
+//@EnableWebSecurity
+//public class SecurityConfig extends WebSecurityConfigurerAdapter {
+//    @Autowired
+//    UserDetailsService userDetailsService;
+//
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsService);
+//    }
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//                .antMatchers("/market-news").hasRole("USER")
+//                .antMatchers("/company-overview").hasRole("USER")
+//                .antMatchers("/profile").hasRole("USER")
+//                .antMatchers("/user-register").permitAll()
+//                .and()
+//                .formLogin()
+//                .loginPage("/").permitAll()
+//                .loginProcessingUrl("/")
+//                .defaultSuccessUrl("/market-news", true);
+//    }
+//
+//    @Bean
+//    public PasswordEncoder getPasswordEncoder() {
+//        return NoOpPasswordEncoder.getInstance();
+//    }
+//}

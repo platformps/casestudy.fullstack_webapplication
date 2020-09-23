@@ -1,4 +1,4 @@
-package com.devos.perscholas.casestudy.controllers;
+package com.devos.perscholas.casestudy.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
