@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 @Data
 @Entity
-public class Payroll implements EntityInterface<Integer>, Serializable  {
+public class Payroll implements EntityInterface<Integer>{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

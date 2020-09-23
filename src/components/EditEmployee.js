@@ -7,21 +7,13 @@ import { Select, MenuItem } from '@material-ui/core';
 import authHeader from './auth-header';
 class EmployeeEdit extends Component {
 
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
-  };
-
   emptyItem = {
     firstName: '',
     lastName:'',
     position: '',
     salary: '',
-    department: {
-      id: '',
-      name: '',
-      manager: ''
-    },
     email: '',
+    department: ''
   };
 
   constructor(props) {
@@ -68,7 +60,7 @@ class EmployeeEdit extends Component {
       headers: header,
       body: JSON.stringify(item),
     });
-    this.props.history.push('../../dashboard');
+    this.props.history.push('../employees');
   }
 
   render() {
@@ -111,7 +103,7 @@ class EmployeeEdit extends Component {
           onChange={this.handleChange}
         >
           {departments.map(department =>
-          <MenuItem onChange={this.handleChange} key={department.id} value={department}>{department.name}</MenuItem>
+          <MenuItem onChange={this.handleChange} key={department.id} value={department.name}>{department.name}</MenuItem>
           )}
           <MenuItem onChange={this.handleChange}  value={''}>None</MenuItem>
         </Select>
@@ -125,7 +117,7 @@ class EmployeeEdit extends Component {
           </div>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="secondary" tag={Link} to ={"../../dashboard"}>Cancel</Button>
+            <Button color="secondary" tag={Link} to ={"../employees"}>Cancel</Button>
           </FormGroup>
         </Form>
       </Container>
@@ -133,4 +125,4 @@ class EmployeeEdit extends Component {
   }
 }
 
-export default withCookies(withRouter(EmployeeEdit));
+export default EmployeeEdit;

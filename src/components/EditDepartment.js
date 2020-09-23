@@ -71,7 +71,7 @@ class DepartmentEdit extends Component {
       headers: header,
       body: JSON.stringify(item),
     });
-    this.props.history.push('../../dashboard');
+    this.props.history.push('../departments');
   }
 
   render() {
@@ -113,7 +113,7 @@ class DepartmentEdit extends Component {
           </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="secondary" tag={Link} to="../../dashboard">Cancel</Button>
+            <Button color="secondary" tag={Link} to="../departments">Cancel</Button>
           </FormGroup>
         </Form>
       </Container>

@@ -75,10 +75,10 @@ class EmployeeList extends Component {
                <td>{employee.position}</td> 
                <td>${employee.salary}</td>
                <td> {employee.email}</td>
-               <td>{employee.department.name || 'N/A'}</td>
+               <td>{employee.department || 'N/A'}</td>
                <td>
                  <ButtonGroup>
-                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/employees/" + employee.id}>Edit</Button>
+                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + employee.id}>Edit</Button>
                  <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(employee.id)}>Delete</Button>
                 </ButtonGroup>
                 </td>
@@ -86,7 +86,7 @@ class EmployeeList extends Component {
             )}
       </tbody>
     </Table>
-    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/employees/new"}>Add Employee</Button>
+    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/new"}>Add Employee</Button>
     </div>
     );
   }

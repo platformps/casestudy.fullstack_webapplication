@@ -72,7 +72,7 @@ class PayrollList extends Component {
                <td>{payroll.payDate}</td> 
                <td>
                  <ButtonGroup>
-                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/payroll/" + payroll.id}>Edit</Button>
+                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + payroll.id}>Edit</Button>
                  <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(payroll.id)}>Delete</Button>
                 </ButtonGroup>
                 </td>
@@ -80,7 +80,7 @@ class PayrollList extends Component {
             )}
       </tbody>
     </Table>
-    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/payroll/new"}>Add Payroll</Button>
+    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/new"}>Add Payroll</Button>
     </div>
     );
   }

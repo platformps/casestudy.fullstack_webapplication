@@ -24,11 +24,13 @@ import java.util.Optional;
 public class SaleController  {
     private final SaleRepository saleRepository;
     private final UserRepository userRepository;
+    private final ItemRepository itemRepository;
     private final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
     public SaleController(SaleRepository saleRepository, UserRepository userRepository, ItemRepository itemRepository) {
         this.saleRepository = saleRepository;
         this.userRepository = userRepository;
+        this.itemRepository = itemRepository;
     }
     @GetMapping(value = "/sale")
     public Collection<Sale> findAll(Principal principal) {
@@ -44,6 +46,7 @@ public class SaleController  {
         Item tempItem = sale.getItem();
         tempItem.setQuantity(tempItem.getQuantity() - sale.getQuantity());
         sale.setItem(tempItem);
+        itemRepository.save(tempItem);
         sale.setAmount(sale.getItem().getPrice() * sale.getItem().getQuantity());
         Sale result = this.saleRepository.save(sale);
         return ResponseEntity.created(new URI("/api/sale/" + sale.getId()))

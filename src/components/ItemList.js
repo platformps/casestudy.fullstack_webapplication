@@ -68,7 +68,7 @@ class ItemList extends Component {
                <td>{item.quantity}</td> 
                <td>
                  <ButtonGroup>
-                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/item/" + item.id}>Edit</Button>
+                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + item.id}>Edit</Button>
                  <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(item.id)}>Delete</Button>
                 </ButtonGroup>
                 </td>
@@ -76,7 +76,7 @@ class ItemList extends Component {
             )}
       </tbody>
     </Table>
-    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/item/new"}>Add Item</Button>
+    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/new"}>Add Item</Button>
     </div>
     );
   }

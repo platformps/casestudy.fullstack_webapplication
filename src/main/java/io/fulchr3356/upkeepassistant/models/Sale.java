@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @Entity
-public class Sale implements  EntityInterface<Integer>, Serializable {
+public class Sale implements  EntityInterface<Integer>{
 
     public Double getAmount() {
         return amount;

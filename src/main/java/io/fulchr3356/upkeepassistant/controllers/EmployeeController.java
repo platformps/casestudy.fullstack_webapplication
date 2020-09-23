@@ -47,8 +47,7 @@ public class EmployeeController  {
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + principal.getName()));
         employee.setUser(user);
         Employee result = employeeRepository.save(employee);
-        departmentRepository.save(employee.getDepartment());
-       return ResponseEntity.created(new URI("/api/employee/" + employee.getId()))
+        return ResponseEntity.created(new URI("/api/employee/" + employee.getId()))
                .body(result); }
 
     @GetMapping(value = "/employee/{id}")

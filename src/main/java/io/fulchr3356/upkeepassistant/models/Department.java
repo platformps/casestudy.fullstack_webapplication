@@ -1,6 +1,7 @@
 package io.fulchr3356.upkeepassistant.models;
 
 import lombok.Data;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 
 import javax.persistence.*;
@@ -10,13 +11,17 @@ import java.util.List;
 
 @Data
 @Entity
-public class Department implements EntityInterface<Integer>, Serializable{
+public class Department implements EntityInterface<Integer>{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
     private Double  budget;
     private Date budgetRenewDate;
+
+    public Department(Integer id){
+        this.id = id;
+    }
 
     @ManyToOne(cascade=CascadeType.PERSIST)
     private User user;

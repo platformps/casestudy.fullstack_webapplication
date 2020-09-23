@@ -63,7 +63,7 @@ class EditPayroll extends Component {
       headers: header,
       body: JSON.stringify(item),
     });
-    this.props.history.push('../../dashboard');
+    this.props.history.push('../payroll');
   }
 
   render() {
@@ -100,7 +100,7 @@ class EditPayroll extends Component {
           </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="secondary" tag={Link} to ={"../../dashboard"}>Cancel</Button>
+            <Button color="secondary" tag={Link} to ={"../payroll"}>Cancel</Button>
           </FormGroup>
         </Form>
       </Container>

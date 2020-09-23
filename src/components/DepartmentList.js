@@ -69,7 +69,7 @@ class DepartmentList extends Component {
                <td>${department.budget || 'N/A'}</td> 
                <td>
                  <ButtonGroup>
-                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/departments/" + department.id}>Edit</Button>
+                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + department.id}>Edit</Button>
                  <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(department.id)}>Delete</Button>
                 </ButtonGroup>
                 </td>
@@ -77,7 +77,7 @@ class DepartmentList extends Component {
             )}
       </tbody>
     </Table>
-    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/departments/new"}>Add Department</Button>
+    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/new"}>Add Department</Button>
     </div>
     );
   }

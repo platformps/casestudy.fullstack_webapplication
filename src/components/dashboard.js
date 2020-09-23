@@ -20,10 +20,15 @@ import EditSale from './EditSale';
 import { withCookies } from 'react-cookie';
 import PayrollList from './PayrollList';
 import EditPayroll from './EditPayroll';
-import Menu from '@material-ui/core/Menu';
 import {withRouter} from 'react-router-dom'
 import AuthService from "./auth.service";
-
+import { Icon, Menu, MenuItem } from "@material-ui/core";
+import employeeIcon from '../img/employee.png';
+import departmentIcon from '../img/department.png';
+import inventoryIcon from '../img/inventory.png';
+import salesIcon from '../img/sales.png';
+import payrollIcon from '../img/payroll.png';
+import graphIcon from '../img/graph-bar.png';
 
 
 
@@ -39,7 +44,11 @@ class Dashboard extends Component{
       if (user) {
         this.setState({
           currentUser: user
+          
         });
+      }
+      else{
+        this.props.history.push("../");
       }
       }
     
@@ -51,46 +60,42 @@ class Dashboard extends Component{
                 <Avatar   src = {userLogo} size="48"  onClick ={() => this.props.history.goBack()}> </Avatar>
               </header> */}
             <div className = "Dashboard-Header column">
-              <PrimarySearchAppBar  value = {this.props} />
-              
+              <PrimarySearchAppBar  value = {this.props}/>
+              <div className = "menuContainer">
+                <div>
+                <div className = "icons">
+                <div><Link to = {this.props.match.path}><img src = {graphIcon} className = "menuButton"></img></Link></div>
+                  <div><Link to = {this.props.match.path +"/employees"}><img src = {employeeIcon} className = "menuButton"></img></Link></div>
+                  <div><Link to = {this.props.match.path +"/departments"}><img src = {departmentIcon} className = "menuButton"></img></Link></div>
+                  <div><Link to = {this.props.match.path +"/item"}><img src = {inventoryIcon} className = "menuButton"></img></Link></div>
+                  <div><Link to = {this.props.match.path +"/sale"}><img src = {salesIcon} className = "menuButton"></img></Link></div>
+                  <div><Link to = {this.props.match.path +"/payroll"}><img src = {payrollIcon} className = "menuButton"></img></Link></div>
+                </div>
+                </div>
+            
               </div>
+                
+              </div>
+
+          
+
            
           <div style= {{paddingTop: "10%"}} className = "mainContent column">
-           <DashboardGraphs/>
-           <div>
-           <br></br><br></br>
            <Switch>
-           <Route exact path={this.props.match.path }  component={EmployeeList}/>
+           <Route exact path={this.props.match.path}  component={DashboardGraphs}/>
+           <Route exact path={this.props.match.path +"/employees" }  component={EmployeeList}/>
            <Route path={this.props.match.path+"/employees/:id"}  component={EditEmployee}/>
-           </Switch>
-           <br></br><br></br>
-           <Switch>
-           <Route exact path={this.props.match.path}  component={DepartmentList}/>
+           <Route exact path={this.props.match.path +"/departments"}  component={DepartmentList}/>
            <Route path={this.props.match.path+"/departments/:id"}  component={EditDepartment}/>
-           </Switch>
-           
-           <br></br><br></br>
-           <Switch>
-           <Route exact path={this.props.match.path}  component={ItemList}/>
-           <Route path={this.props.match.path+"/item/:id"}  component={EditItem}/>
-           </Switch>
-           
-           <br></br><br></br>
-           <Switch>
-           <Route  exact path={this.props.match.path}  component={SaleList}/>
+           <Route exact path={this.props.match.path+"/item"}  component={ItemList}/>
+           <Route path={this.props.match.path+"/item/:id"}  component={EditItem}/>  
+           <Route  exact path={this.props.match.path + "/sale"}  component={SaleList}/>
            <Route path={this.props.match.path+"/sale/:id"}  component={EditSale}/>
-           </Switch>
-           
-           <br></br><br></br>
-           <Switch>
-           <Route exact path={this.props.match.path}  component={PayrollList}/>
+           <Route exact path={this.props.match.path + "/payroll"}  component={PayrollList}/>
            <Route path={this.props.match.path+"/payroll/:id"}  component={EditPayroll}/>
            </Switch>
-           
-           <br></br><br></br>
            </div>
            </div>
-          </div>
            
         );
     }

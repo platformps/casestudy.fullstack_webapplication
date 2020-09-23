@@ -3,16 +3,13 @@ import { Button, ButtonGroup, Container, Table, ListGroup, ListGroupItem } from 
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../viewlist.css';
-import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
-import {withRouter} from 'react-router-dom'
 import authHeader from './auth-header';
-import AuthService from "./auth.service";
 
 class SaleList extends Component {
 
   constructor(props) {
-    super(props);
+    super();
     this.state = {sale: [], isLoading: true};
     this.remove = this.remove.bind(this);
   }
@@ -70,7 +67,7 @@ class SaleList extends Component {
                <td>{sale.department.name}</td> 
                <td>
                  <ButtonGroup>
-                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/sale/" + sale.id}>Edit</Button>
+                 <Button className="float-right" size="sm" color="primary"   tag={Link} to={this.props.match.path+"/" + sale.id}>Edit</Button>
                  <Button className="float-right" size="sm" color="danger" onClick={() => this.remove(sale.id)}>Delete</Button>
                 </ButtonGroup>
                 </td>
@@ -78,10 +75,10 @@ class SaleList extends Component {
             )}
       </tbody>
     </Table>
-    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/sale/new"}>Add Sale</Button>
+    <Button className="btn btn-primary" color = "primary" tag={Link} to={this.props.match.path+"/new"}>Add Sale</Button>
     </div>
     );
   }
 }
 
-export default withCookies(withRouter(SaleList));
+export default SaleList;

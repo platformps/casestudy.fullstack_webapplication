@@ -136,7 +136,7 @@ const data02 = [
       <h4  >${this.calcTotalAssets(inventory).toFixed(2)}</h4>
         </div>
         <div className = "dataContainer column">
-        <h7>Departments</h7>
+        <h7>Total Sales</h7>
         <hr id="hr2" />
       <h4  >{this.calcTotalSales(sales)}</h4>
         </div>
@@ -145,10 +145,10 @@ const data02 = [
       <br></br>
       <div className = "parent">
      <div className ="column chart">
-     <h6>Department Sales</h6>
+     <h6>Department Budgets</h6>
      <hr id="hr2" />
       <PieChart width={333} height={250}>
-        <Pie dataKey= "budget" isAnimationActive={false} data={departments} cx={150} cy={125} outerRadius={80} fill="#5e72e4" label />
+        <Pie dataKey= "budget" isAnimationActive={false} data={departments} cx={200} cy={125} outerRadius={80} fill="#5e72e4" label />
         <Tooltip />
       </PieChart>
       </div>

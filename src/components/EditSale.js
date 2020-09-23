@@ -78,7 +78,7 @@ class EditSale extends Component {
       headers: header,
       body: JSON.stringify(item),
     });
-    this.props.history.push('../../dashboard');
+    this.props.history.push('../sale');
   }
 
   render() {
@@ -146,7 +146,7 @@ class EditSale extends Component {
           </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="secondary" tag={Link} to="../../dashboard">Cancel</Button>
+            <Button color="secondary" tag={Link} to="../sale">Cancel</Button>
           </FormGroup>
         </Form>
       </Container>

@@ -5,7 +5,7 @@ public final class EmployeeBuilder {
     private String firstName;
     private String lastName;
     private String email;
-    private Department department;
+    private String department;
     private String position;
     private Double salary;
 
@@ -46,7 +46,7 @@ public final class EmployeeBuilder {
         return this;
     }
 
-    public EmployeeBuilder withDepartment(Department department) {
+    public EmployeeBuilder withDepartment(String  department) {
         this.department = department;
         return this;
     }

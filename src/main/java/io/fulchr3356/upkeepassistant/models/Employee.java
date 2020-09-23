@@ -3,12 +3,14 @@ package io.fulchr3356.upkeepassistant.models;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 @Data
 @Entity
-public class Employee implements EntityInterface<Integer>, Serializable {
+public class Employee implements EntityInterface<Integer>{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -17,6 +19,7 @@ public class Employee implements EntityInterface<Integer>, Serializable {
     private String email;
     private String position;
     private Double salary;
+    private String department;
 
     public Employee(){
     }
@@ -30,8 +33,8 @@ public class Employee implements EntityInterface<Integer>, Serializable {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Payroll> payrolls;
 
-    @ManyToOne(cascade=CascadeType.ALL)
-    private Department department;
+
+
 
     @Override
     public Integer getId() {
@@ -59,6 +62,7 @@ public class Employee implements EntityInterface<Integer>, Serializable {
     }
 
 
+
     public User getUser() {
         return user;
     }
@@ -67,7 +71,7 @@ public class Employee implements EntityInterface<Integer>, Serializable {
         return sales;
     }
 
-    public Department getDepartment() {
+    public String getDepartment() {
         return department;
     }
 
@@ -104,7 +108,7 @@ public class Employee implements EntityInterface<Integer>, Serializable {
         this.sales = sales;
     }
 
-    public void setDepartment(Department department) {
+    public void setDepartment(String department) {
         this.department = department;
     }
 }
