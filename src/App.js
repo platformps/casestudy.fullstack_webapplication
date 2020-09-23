@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import Login from "./components/login";
 import SignUp from "./components/signup";
 import Dashboard from './components/dashboard';
@@ -12,7 +12,7 @@ function App() {
       
       <header className="App-header">
       
-    <Router>
+    <Router >
       <Route exact path = "/" component = {Login}/>
       <Route  path = "/sign-in" component = {Login}/>
       <Route path = "/registration" component = {SignUp}/>
