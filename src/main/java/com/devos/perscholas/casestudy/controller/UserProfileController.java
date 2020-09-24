@@ -40,7 +40,7 @@ public class UserProfileController {
         }
         userService.save(userForm);
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
-        return "redirect:/profile";
+        return "redirect:/welcome";
     }
 
     @GetMapping(value = "/login")
@@ -55,8 +55,8 @@ public class UserProfileController {
         return "login";
     }
 
-    @GetMapping(value = {"/", "/profile"})
-    public String profile(Model model) {
-        return "profile";
+    @GetMapping(value = {"/", "/welcome"})
+    public String welcome(Model model) {
+        return "welcome";
     }
 }

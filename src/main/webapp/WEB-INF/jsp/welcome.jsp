@@ -24,9 +24,14 @@
 
 </head>
 
+<style>
+    p, h2 {
+        color: rgb(248,248,255);
+        font-weight: bold;
+    }
+</style>
 
-
-<body id="profile">
+<body id="profile" class="dark">
 <header>
   <!----------------- BEGIN NAV ----------------->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -60,7 +65,13 @@
         </form>
     </c:if>
 
+    <h2 style="text-align: center; margin-top: 60px; margin-bottom:20px;">Welcome ${pageContext.request.userPrincipal.name}</h2>
 
+    <p>Hello, and welcome to Nick's Stock Market Case Study application.</p>
+    <p>To get started, please select 'Market News' or 'Company Overview' in the navbar at the top.</p>
+    <p>Market News will show you 20 of the most recent news articles about publicly traded companies. Company
+    Overview will allow you to enter a symbol into the search bar see information related to that company.</p>
+    <p>When you are finished exploring company information, click 'Logout' on the far right side of the navbar.</p>
 
 </div>
 </div>

@@ -37,7 +37,6 @@
 
       <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div class="navbar-nav">
-          <a href="/profile" class="nav-item nav-link">Profile</a>
           <a href="/company-overview" class="nav-item nav-link">Company Overview</a>
 
         </div>

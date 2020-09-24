@@ -80,7 +80,7 @@
         <h2 class="form-heading">Please Sign-in</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
+            <span style="font-size: medium;">${message}</span>
             <input name="username" type="text" class="form-control" placeholder="Username" autofocus="true"/>
             <input name="password" type="password" class="form-control" placeholder="Password"/>
             <span>${error}</span>

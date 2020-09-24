@@ -22,7 +22,7 @@ function getCompanyData() {
       }
     })
 
-  // //API call for company info
+  //API call for company info
   fetch("https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + company + "&apikey=7IEE375T5KRNN35W")
     .then(response => response.json())
     .then(data => {
@@ -75,7 +75,7 @@ function getCompanyData() {
     }).then(
       setTimeout(() => { //needed to create the template before trying to draw the chart
         createChart(labelArray, dataArray);
-      }, 500)
+      }, 300)
     )
 
   //API call for company specific news

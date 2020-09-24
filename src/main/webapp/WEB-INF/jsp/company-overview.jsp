@@ -25,7 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 
-<body id="company">
+<body id="company" style="background-color: rgb(191, 191, 191);">
     <header>
         <!----------------- BEGIN NAV ----------------->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -35,7 +35,6 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav">
-                    <a href="/user/{id}" class="nav-item nav-link">Profile</a>
                     <a href="/market-news" class="nav-item nav-link">Market News</a>
                 </div>
                 <form class="form-inline">
