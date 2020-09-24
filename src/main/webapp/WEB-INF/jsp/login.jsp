@@ -26,14 +26,58 @@
 
     <title>Login</title>
 </head>
-<body>
+
+<style>
+.background {
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thebalance.com%2Fthmb%2FUZS2curMfBJpwbb8LrvpxttXhA0%3D%2F2103x1428%2Ffilters%3Afill(auto%2C1)%2FStock-Market-Charts-Are-Useless-56a093595f9b58eba4b1ae5b.jpg&f=1&nofb=1');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.background .jumbotron {
+    background-color: rgba(0, 0, 0, .6);
+    color: white;
+    text-shadow: 2px 2px 3px black;
+    font-size: 3em;
+    font-weight: 700;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0;
+    width: 50%;
+    }
+
+.form-group {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: auto;
+  }
+
+  .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .form-control:focus {
+    z-index: 2;
+  }
+</style>
+
+<body class="background">
 
 <div class="container">
-<div class="row">
+<div class="row jumbotron">
 <div class="col-xs-12">
 
     <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h2 class="form-heading">Sign-in page</h2>
+        <h2 class="form-heading" style="text-align: center;">Sign-in page</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <span>${message}</span>
