@@ -13,7 +13,7 @@
     <meta name="description" content="Our Services">
     <meta name="author" content="Julia Waclawek">
 
-    <c:url value="/css/shopping_cart.css" var="jstlCss" />
+    <c:url value="/resources/css/shopping_cart.css" var="jstlCss" />
     <link href="${jstlCss}" rel="stylesheet" />
     <script type="text/javascript" src="/js/utils.js"></script>
     <script type="text/javascript" src="/js/home_page.js"></script>

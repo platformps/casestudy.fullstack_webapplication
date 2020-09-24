@@ -13,7 +13,7 @@
     <meta name="description" content="Our Services">
     <meta name="author" content="Julia Waclawek">
 
-    <link href="/css/services.css" rel="stylesheet">
+    <link href="/resources/css/services.css" rel="stylesheet">
     <script type="text/javascript" src="/js/utils.js"></script>
     <script type="text/javascript" src="/js/services.js"></script>
     <script type="text/javascript" src="/js/header-functions.js"></script>
