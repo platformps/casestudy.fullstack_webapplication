@@ -1,3 +1,9 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,25 +37,35 @@
 
     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div class="navbar-nav">
-            <a href="/market-news" class="nav-item nav-link">News</a>
+            <a href="/market-news" class="nav-item nav-link">Market News</a>
             <a href="/company-overview" class="nav-item nav-link">Company Overview</a>
 
         </div>
 
         <div class="navbar-nav">
-            <a href="#" class="nav-item nav-link">Logout</a>
+            <a href="#" onclick="document.forms['logoutForm'].submit()" class="nav-item nav-link">Logout</a>
         </div>
     </div>
 </nav>
   <!----------------- END NAV ----------------->
 </header>
 
+<div class="container">
+<div class="row">
+<div class="col-xs-12">
+
+    <c:if test="${pageContext.request.userPrincipal.name != null}">
+        <form id="logoutForm" method="POST" action="${contextPath}/logout">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
+    </c:if>
 
 
 
-  <footer>
+</div>
+</div>
+</div><!-- /container -->
 
-  </footer>
 
 </body>
 
