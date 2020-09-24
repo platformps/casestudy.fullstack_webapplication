@@ -11,9 +11,6 @@ import authHeader from './auth-header';
 class EmployeeList extends Component {
   
   
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
-  };
 
   constructor(props) {
     super();
@@ -25,13 +22,13 @@ class EmployeeList extends Component {
 
   componentDidMount() {
     this.setState({isLoading: true});
-    fetch('../api/employee',{headers: authHeader() })
+    fetch('/api/employee',{headers: authHeader() })
       .then(response => response.json())
       .then(data => this.setState({employee: data, isLoading: false}))
   }
 
   async remove(id) {
-    await fetch(`../api/employee/${id}`, {
+    await fetch(`/api/employee/${id}`, {
       method: 'DELETE',
       headers: {
         'Authorization':authHeader(),
