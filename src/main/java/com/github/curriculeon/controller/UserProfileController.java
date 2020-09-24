@@ -13,7 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/user-profile-controller")
+@RequestMapping
 public class UserProfileController {
     private UserProfileService userService;
     private SecurityServiceImpl securityService;
@@ -60,8 +60,4 @@ public class UserProfileController {
         return "welcome";
     }
 
-    @PutMapping("/update/{username}")
-    public ResponseEntity<UserProfile> update(@PathVariable String user, @RequestBody UserProfile newbalance) {
-        return new ResponseEntity<>(userService.withdrawMoney(user, newbalance), HttpStatus.OK);
-    }
 }
