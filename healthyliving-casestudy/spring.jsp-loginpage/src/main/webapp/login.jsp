@@ -9,7 +9,9 @@
     <title>Log in with your account</title>
 
 <jsp:include page="head_files.jsp"/>
-
+      <div>
+      <img src="./assets/images/yoga_pose_gallery.jpg" alt=""><span class="Services"> </span>
+      </div>
 <div class="container">
 <div class="row">
 <div class="col-xs-12">

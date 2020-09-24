@@ -3,9 +3,13 @@ package com.casestudy.controller;
 import com.casestudy.model.Product;
 import com.casestudy.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,13 +26,13 @@ public class ProductController {
     }
 
     @PostMapping(value = "/")
-    public ResponseEntity<Product> create(Product employeeToBeCreated) {
-        return new ResponseEntity<>(service.create(employeeToBeCreated), HttpStatus.CREATED);
+    public ResponseEntity<Product> create(Product ProductToBeCreated) {
+        return new ResponseEntity<>(service.create(ProductToBeCreated), HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Product> readById(@PathVariable Long id) {
-        return new ResponseEntity<>(service.readById("id"), HttpStatus.OK);
+        return new ResponseEntity<>(service.readById(id), HttpStatus.OK);
     }
 
     @GetMapping(value = "/")

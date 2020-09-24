@@ -3,48 +3,90 @@ package com.casestudy.controller;
 import com.casestudy.model.Event;
 import com.casestudy.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
-@RestController
-@RequestMapping(value="/events")
+@Controller
 public class EventController {
-
-    private EventService service;
-
-    @Autowired
-    public EventController(EventService service) {
-        this.service = service;
+    private EventService EventService;
+@Autowired
+    public EventController(EventService eventService) {
+        EventService = eventService;
     }
 
-    @PostMapping(value = "/")
-    public ResponseEntity<Event> create(Event eventToBeCreated) {
-        return new ResponseEntity<>(service.create(eventToBeCreated), HttpStatus.CREATED);
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        // Date - dd/mm/yyyy
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        binder.registerCustomEditor(Date.class,
+                new CustomDateEditor(dateFormat,false));
+    }
+    @RequestMapping(value = "/list-Events", method = RequestMethod.GET)
+    public String showEvent(ModelMap model) {
+        String name = getLoggedInUserName(model);
+        model.put("Events",EventService.getEventByUser(name));
+        // model insert to do service
+        return "list-Events";
+    }
+    private String getLoggedInUserName(ModelMap model) {
+        Object principal = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+        if (principal instanceof UserDetails){
+            return ((UserDetails) principal).getUsername();
+        }
+        return principal.toString();
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Event> readById(@PathVariable Long id) {
-        return new ResponseEntity<>(service.readById(id), HttpStatus.OK);
+    @RequestMapping(value = "/add-Event", method =  RequestMethod.GET)
+    public String showAddEventPage(ModelMap model){
+        model.addAttribute("Events", new Event());
+        model.addAttribute("Event", new Event());
+        return "Event";
     }
 
-    @GetMapping(value = "/")
-    public ResponseEntity<List<Event>> readAll() {
-        return new ResponseEntity<>(service.readAll(), HttpStatus.OK);
+    @RequestMapping(value = "/delete-Event", method = RequestMethod.GET)
+    public String deleteEvent(@RequestParam long id){
+        EventService.deleteEvent(id);
+        return "redirect:/list-Events";
     }
 
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<Event> updateById(
-            @PathVariable Long id,
-            @RequestBody Event newData) {
-        return new ResponseEntity<>(service.updateById(id, newData), HttpStatus.OK);
+    @RequestMapping(value = "/update-Event", method = RequestMethod.GET)
+    public String showUpdateEventPage(@RequestParam long id, ModelMap model){
+        Event Event = EventService.getEventById(id).get();
+        model.put("Event", Event);
+        return "Event";
     }
-
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Event> deleteById(@PathVariable Long id) {
-        return new ResponseEntity<>(service.deleteById(id), HttpStatus.OK);
+    @RequestMapping(value = "/update-Event", method = RequestMethod.POST)
+    public String updateEvent(ModelMap model, @Valid Event Event, BindingResult result){
+        if (result.hasErrors()) {
+            return "Event";
+        }
+        Event.setName(getLoggedInUserName(model));
+        EventService.updateEvent(Event);
+        return "redirect:/list-Events";
+    }
+    @RequestMapping(value = "/add-Event", method = RequestMethod.POST)
+    public String addEvent(ModelMap model,  @Valid Event Event, BindingResult result){
+        if (result.hasErrors()){
+            return "Event";
+        }
+        Event.setName(getLoggedInUserName(model));
+        EventService.saveEvent(Event);
+        return "redirect:/list-Events";
     }
 }
-

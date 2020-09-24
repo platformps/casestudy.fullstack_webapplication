@@ -5,58 +5,57 @@ import com.casestudy.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Id;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
-
     private ProductRepository repository;
+
 
     @Autowired
     public ProductService(ProductRepository repository) {
         this.repository = repository;
     }
 
-    public ProductService() {
-
-    }
-
-
-    public Product create(Product productToBeCreated) {
-        Product persistedProduct = (Product) repository.save(productToBeCreated);
+    public Product create(Product ProductToBeCreated) {
+        Product persistedProduct = repository.save(ProductToBeCreated);
         return persistedProduct;
     }
 
     public List<Product> readAll() {
-        Iterable<Product> productIterable = repository.findAll();
-        List<Product> productList = new ArrayList<>();
-        productIterable.forEach(productList::add);
-        return productList;
+        Iterable<Product> ProductIterable = repository.findAll();
+        List<Product> ProductList = new ArrayList<>();
+        ProductIterable.forEach(ProductList::add);
+        return ProductList;
     }
 
-    public Product readById(String id) {
-        return (Product) repository.findById(id).get();
+    public Product readById(Long id) {
+        return repository.findById(id).get();
     }
 
     public Product updateById(Long id, Product updatedData) {
-        Product productInDb = readById("id");
-        productInDb.setName(updatedData.getName());
-        productInDb.setPrice(updatedData.getPrice());
-        productInDb.setPhoto(updatedData.getPhoto());
-        productInDb = (Product) repository.save(productInDb);
-        return productInDb;
+        Product ProductInDb = readById(id);
+        ProductInDb.setCart(updatedData.getCart());
+        ProductInDb.setName(updatedData.getName());
+        ProductInDb.setPrice(updatedData.getPrice());
+        ProductInDb.setQuantity(updatedData.getQuantity());
+        ProductInDb = repository.save(ProductInDb);
+        return ProductInDb;
     }
 
     public Product deleteById(Long id) {
-        Product productToBeDeleted = readById("id");
-        repository.delete(productToBeDeleted);
-        return productToBeDeleted;
+        Product ProductToBeDeleted = readById(id);
+        repository.delete(ProductToBeDeleted);
+        return ProductToBeDeleted;
     }
 
-    public Product updateName(Long id, String productName) {
-        Product productInDatabase = readById("id");
-        productInDatabase.setName(productName);
-        return updateById(id, productInDatabase);
+    public Product updateFirstName(Long id, String name) {
+        Product ProductInDatabase = readById(id);
+        ProductInDatabase.setName(name);
+        return updateById(id, ProductInDatabase);
     }
 }

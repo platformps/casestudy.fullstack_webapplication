@@ -1,35 +1,43 @@
 package com.casestudy.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javax.persistence.*;
+import java.awt.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name="product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
+
     private String name;
-    private double price;
-    private String photo;
+    private Double price;
+    private Integer quantity;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Cart Cart;
 
     public Product() {
     }
 
-    public Product(String id, String name, String photo, double price) {
-        this.id = id;
+    public Product(String name, Double price, Integer quantity, Cart cart) {
+
         this.name = name;
         this.price = price;
-        this.photo = photo;
+        this.quantity = quantity;
+        Cart = cart;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,45 +49,36 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public String getPhoto() {
-        return photo;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Product)) return false;
-        Product product = (Product) o;
-        return Double.compare(product.getPrice(), getPrice()) == 0 &&
-                Objects.equals(getId(), product.getId()) &&
-                getName().equals(product.getName()) &&
-                getPhoto().equals(product.getPhoto());
+    public com.casestudy.model.Cart getCart() {
+        return Cart;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getName(), getPrice(), getPhoto());
+    public void setCart(com.casestudy.model.Cart cart) {
+        Cart = cart;
     }
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", photo='" + photo + '\'' +
-                '}';
+        try {
+            return new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

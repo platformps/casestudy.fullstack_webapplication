@@ -8,4 +8,6 @@
     <meta name="author" content="akjavadev">
     <link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+	<link rel="shortcut icon" type="image/x-icon" href="https://pixabay.com/photos/yoga-stand-in-hands-silhouette-2149407/">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+

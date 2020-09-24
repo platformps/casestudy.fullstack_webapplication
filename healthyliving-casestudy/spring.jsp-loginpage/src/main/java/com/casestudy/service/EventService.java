@@ -6,49 +6,48 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class EventService {
-    private EventRepository repository;
+public class EventService implements EventInterfaceService {
 
     @Autowired
-    public EventService(EventRepository repository) {
+    private EventRepository repository;
 
-        this.repository = repository;
+    @Override
+    public List<Event> getEventByUser(String user){
+        return repository.findByName(user);
     }
 
-    public Event create(Event eventToBeCreated) {
-        Event persistedEvent = repository.save(eventToBeCreated);
-        return persistedEvent;
+    @Override
+    public Optional<Event> getEventById(long id){
+        return repository.findById(id);
     }
 
-    public List<Event> readAll() {
-        Iterable<Event> eventIterable = repository.findAll();
-        List<Event> eventList = new ArrayList<>();
-        eventIterable.forEach(eventList::add);
-        return eventList;
+    @Override
+    public void updateEvent(Event Event){
+        repository.save(Event);
     }
 
-    public Event readById(Long id) {
-        return repository.findById(id).get();
+    @Override
+    public void addEvent(String name, String location, Date targetDate, boolean isDone){
+        repository.save(new Event(name, location, targetDate, isDone));
     }
 
-    public Event updateById(Long id, Event updatedData) {
-        Event eventInDb = readById(id);
-        eventInDb.setLocation(updatedData.getLocation());
-        eventInDb.setDescription(updatedData.getDescription());
-        eventInDb.setDate(updatedData.getDate());
-        eventInDb = repository.save(eventInDb);
-        return eventInDb;
+    @Override
+    public void deleteEvent(long id){
+        Optional<Event> Event = repository.findById(id);
+        if (Event.isPresent()){
+            repository.delete(Event.get());
+        }
     }
 
-    public Event deleteById(Long id) {
-        Event eventToBeDeleted = readById(id);
-        repository.delete(eventToBeDeleted);
-        return eventToBeDeleted;
+    @Override
+    public void saveEvent(Event Event){
+        repository.save(Event);
     }
-
 
 }
 
