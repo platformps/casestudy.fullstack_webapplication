@@ -1,4 +1,35 @@
-# Full Stack Web Application
+# Full Stack Web Application:	SpringBootWebBankingApplication
+
+Deliverables:
+
+Link to repository: https://github.com/monicadeshmukh/SpringBootBankingApplication
+Link to Trello Board: https://trello.com/b/aFj8qeUp/case-study
+Link to GoogleDocs for the wireframe design: https://docs.google.com/document/d/1rhN0rD_q0U9aOYoAmlsE9Cf-W0FaWILXAKIvGKY0g5s/edit?usp=sharing
+
+Tech Stack: 
+
+Version Control: GitHub
+Wireframe: Pencil App
+Agile Methodology followed using: Trello Board
+Frontend: HTML, CSS, BootStrap4, JSP
+Business Logic: Java Spring Boot
+DataBase: MySQL (H2-Console used for testing) 
+App runs on : localhost:Port8080/ No password needed to connect to the database
+Tests: The App is tested by running the Main springBoot Application in IntelliJ IDE.
+Controllers tested using Postman. Sample queries run on H2Console.
+
+Description/ Page Navigation: This is a demo web banking application.
+
+1. The user starts with the index.jsp page to start the app. User can navigate to pages like contact about and loginRegister. 
+2. When 'Get Started' button is pressed on the index page, the loginRegister page opens.
+2. New user can register with his details. The page navigates back to login page after successful registration. At this time a new account is created for the user and 
+user is provided with a balance of $1000. In the H2-console run command 'select * from customer' and 'select * from accounts' to see the data populated in the database. 
+The registered user record is displayed in the customer table.
+3. On the loginRegistration page enter your username and password and press login. 
+4. After successful login, the account details are displayed on the Account page with account number and balance.
+5. From here user can go to billpay page. At this time dummy payees are displayed with payee name. User can input the withdrawal amount and description of transaction. And press confirm button to submit the payment.
+6. After successful bill payment the user is shown the transaction details.
+
 
 * **Objective** - to create an implementation of a web service
 * **Purpose** - to demonstrate the construction of a full-stacked web-application
