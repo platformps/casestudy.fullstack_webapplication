@@ -45,6 +45,17 @@ public class UserProfileService implements UserDetailsService {
         userRepository.save(user);
     }
 
+    public Long depositMoney(UserProfile user, Long deposit) {
+        return user.getBalance() + deposit;
+    }
+
+    public UserProfile withdrawMoney(String username, UserProfile newData) {
+        UserProfile personInDatabase = findByUsername(username);
+        personInDatabase.setBalance(personInDatabase.getBalance() - newData.getBalance());
+        userRepository.save(personInDatabase);
+        return personInDatabase;
+    }
+
     public UserProfile findByUsername(String username) {
         return userRepository.findByUsername(username);
     }

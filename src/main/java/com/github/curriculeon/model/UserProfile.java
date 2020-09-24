@@ -10,6 +10,7 @@ public class UserProfile {
     private Long id;
     private String username;
     private String password;
+    private Long balance;
 
     @Transient // don't persist; not a column
     private String passwordConfirm;
@@ -56,5 +57,13 @@ public class UserProfile {
 
     public void setUserRoles(List<UserProfileRole> userRoles) {
         this.userRoles = userRoles;
+    }
+
+    public Long getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Long balance) {
+        this.balance = balance;
     }
 }
