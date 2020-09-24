@@ -39,6 +39,7 @@
 .background .jumbotron {
     background-color: rgba(0, 0, 0, .6);
     color: white;
+    text-align: center;
     text-shadow: 2px 2px 3px black;
     font-size: 3em;
     font-weight: 700;
@@ -46,7 +47,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 0;
     width: 50%;
     }
 
@@ -75,9 +75,9 @@
 <div class="container">
 <div class="row jumbotron">
 <div class="col-xs-12">
-
+    <h1>Welcome!</h1>
     <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h2 class="form-heading" style="text-align: center;">Sign-in page</h2>
+        <h2 class="form-heading">Please Sign-in</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <span>${message}</span>

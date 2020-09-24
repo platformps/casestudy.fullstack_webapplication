@@ -26,8 +26,7 @@
 </head>
 
 
-
-<body id="market-news">
+<body id="market-news" class="dark">
   <header>
     <!----------------- BEGIN NAV ----------------->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

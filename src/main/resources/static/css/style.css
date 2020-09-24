@@ -8,11 +8,6 @@ html {
     background-color: rgba(0,0,0,.8)!important;
 }
 
-  .register-link {
-      font-size: medium;
-      padding: 1rem;
-  }
-
 .card {
   position: relative;
   left: 50%;
@@ -32,4 +27,12 @@ html {
 .img-thumbnail {
   width: 180px;
   height: 180px;
+}
+
+.dark {
+  background-color: #333333;
+}
+
+.light {
+    background-color: #bfbfbf;
 }
