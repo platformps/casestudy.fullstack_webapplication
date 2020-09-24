@@ -1,5 +1,8 @@
 package com.perscholas.casestudyecommerce.models;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -8,6 +11,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="product")
+
 public class Product {
 
     @Id
@@ -41,8 +45,11 @@ public class Product {
     @Column(name = "brand")
     private String brand;
 
-    public Product(Long id, ProductCategory category, String name, String description, BigDecimal unitPrice,
-                   String imageUrl, int unitsInStock, Date dateCreated, String brand) {
+    public Product() {
+    }
+
+    public Product(Long id, ProductCategory category, String name, String description,
+                   BigDecimal unitPrice, String imageUrl, int unitsInStock, Date dateCreated, String brand) {
         this.id = id;
         this.category = category;
         this.name = name;
@@ -58,108 +65,71 @@ public class Product {
         return id;
     }
 
-    public ProductCategory getCategory() {
-        return category;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public BigDecimal getUnitPrice() {
-        return unitPrice;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public int getUnitsInStock() {
-        return unitsInStock;
-    }
-
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public ProductCategory getCategory() {
+        return category;
     }
 
     public void setCategory(ProductCategory category) {
         this.category = category;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
+    }
+
     public void setUnitPrice(BigDecimal unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
+    public int getUnitsInStock() {
+        return unitsInStock;
+    }
+
     public void setUnitsInStock(int unitsInStock) {
         this.unitsInStock = unitsInStock;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
     }
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
     public void setBrand(String brand) {
         this.brand = brand;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Product)) return false;
-
-        Product product = (Product) o;
-
-        if (getUnitsInStock() != product.getUnitsInStock()) return false;
-        if (getId() != null ? !getId().equals(product.getId()) : product.getId() != null) return false;
-        if (getCategory() != null ? !getCategory().equals(product.getCategory()) : product.getCategory() != null)
-            return false;
-        if (getName() != null ? !getName().equals(product.getName()) : product.getName() != null) return false;
-        if (getDescription() != null ? !getDescription().equals(product.getDescription()) : product.getDescription() != null)
-            return false;
-        if (getUnitPrice() != null ? !getUnitPrice().equals(product.getUnitPrice()) : product.getUnitPrice() != null)
-            return false;
-        if (getImageUrl() != null ? !getImageUrl().equals(product.getImageUrl()) : product.getImageUrl() != null)
-            return false;
-        if (getDateCreated() != null ? !getDateCreated().equals(product.getDateCreated()) : product.getDateCreated() != null)
-            return false;
-        return getBrand() != null ? getBrand().equals(product.getBrand()) : product.getBrand() == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getCategory() != null ? getCategory().hashCode() : 0);
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + (getUnitPrice() != null ? getUnitPrice().hashCode() : 0);
-        result = 31 * result + (getImageUrl() != null ? getImageUrl().hashCode() : 0);
-        result = 31 * result + getUnitsInStock();
-        result = 31 * result + (getDateCreated() != null ? getDateCreated().hashCode() : 0);
-        result = 31 * result + (getBrand() != null ? getBrand().hashCode() : 0);
-        return result;
     }
 }
