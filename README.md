@@ -20,15 +20,15 @@ Controllers tested using Postman. Sample queries run on H2Console.
 
 Description/ Page Navigation: This is a demo web banking application.
 
-1. The user starts with the index.jsp page to start the app. User can navigate to pages like contact about and loginRegister. 
-2. When 'Get Started' button is pressed on the index page, the loginRegister page opens.
-2. New user can register with his details. The page navigates back to login page after successful registration. At this time a new account is created for the user and 
-user is provided with a balance of $1000. In the H2-console run command 'select * from customer' and 'select * from accounts' to see the data populated in the database. 
-The registered user record is displayed in the customer table.
+1. The user runs the MainApplication to start the app. The user lands on the index.jsp page. User can navigate to pages like contact, about, home and loginRegister. 
+2. When the 'Get Started' button is pressed on the index page, the loginRegister page opens.
+2. New user can register with his details by pressing the 'Register For Online Banking' button. The page navigates back to login page after successful registration. At this time a new account is created for the user and 
+the user is provided with a balance of $1000. In the H2-console run command 'select * from customer' and 'select * from accounts' to see the data populated in the database. 
+The registered user record is displayed in the customer table and the account details are shown in the accounts table.
 3. On the loginRegistration page enter your username and password and press login. 
 4. After successful login, the account details are displayed on the Account page with account number and balance.
 5. From here user can go to billpay page. At this time dummy payees are displayed with payee name. User can input the withdrawal amount and description of transaction. And press confirm button to submit the payment.
-6. After successful bill payment the user is shown the transaction details.
+6. After successful bill payment the transaction details are displayed on the transactions page.
 
 
 * **Objective** - to create an implementation of a web service
