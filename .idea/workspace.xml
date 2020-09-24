@@ -20,16 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="358f1261-261e-4bf0-ae2a-326bdcfe92b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shopping/Shopping.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shopping/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shopping/src/main/java/controllers/HelloWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,22 +108,26 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1600129206233">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="699" height="238" key="GridCell.Tab.0.bottom" timestamp="1600531338428">
+      <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1600129206233" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1600129206231">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="699" height="238" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1600531338428" />
+    <state width="699" height="238" key="GridCell.Tab.0.center" timestamp="1600531338426">
+      <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1600129206231" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1600129206229">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="699" height="238" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1600531338426" />
+    <state width="699" height="238" key="GridCell.Tab.0.left" timestamp="1600531338425">
+      <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1600129206229" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1600129206232">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="699" height="238" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1600531338425" />
+    <state width="699" height="238" key="GridCell.Tab.0.right" timestamp="1600531338427">
+      <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1600129206232" />
+    <state width="699" height="238" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1600531338427" />
     <state x="287" y="108" key="new project wizard" timestamp="1600128772802">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
