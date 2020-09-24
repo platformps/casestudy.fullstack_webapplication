@@ -22,7 +22,7 @@ class EmployeeList extends Component {
 
   componentDidMount() {
     this.setState({isLoading: true});
-    fetch('https://upkeep-assistant.herokuapp.com/api/employee',{headers: authHeader() })
+    fetch('http://localhost:8080/api/employee',{headers: authHeader() })
       .then(response => response.json())
       .then(data => this.setState({employee: data, isLoading: false}))
   }
