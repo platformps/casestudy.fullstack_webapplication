@@ -75,7 +75,7 @@ function getCompanyData() {
     }).then(
       setTimeout(() => { //needed to create the template before trying to draw the chart
         createChart(labelArray, dataArray);
-      }, 200)
+      }, 500)
     )
 
   //API call for company specific news

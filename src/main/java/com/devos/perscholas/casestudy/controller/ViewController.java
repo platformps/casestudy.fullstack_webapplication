@@ -9,15 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class ViewController {
-    @GetMapping
-    public String getLogin(Model model) {
-        return "login";
-    }
-
-    @GetMapping("user-register")
-    public String getView(Model model) {
-        return "register";
-    }
+//    @GetMapping
+//    public String getLogin(Model model) {
+//        return "login";
+//    }
 
 //    @GetMapping("user-profile/{id}")
 //    public String getView(Model model, @PathVariable Long id) {
