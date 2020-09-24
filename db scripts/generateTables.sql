@@ -48,15 +48,30 @@ INSERT INTO PRODUCT_CATEGORY(CATEGORY_NAME) VALUES ('TV');
 -- smartphone
 
 
-
-INSERT INTO PRODUCT (NAME, DESCRIPTION, IMAGE_URL, BRAND, UNITS_IN_STOCK,
-UNIT_PRICE, CATEGORY_ID, DATE_CREATED)
-
-VALUES ('BOOK-TECH-1000', 'JavaScript - The Fun Parts',
-'assets/images/products/placeholder.png','DD'
-,100,19.99,1, NOW());
+INSERT INTO PRODUCT (NAME, DESCRIPTION, UNIT_PRICE, IMAGE_URL, UNITS_IN_STOCK, BRAND, CATEGORY_ID, DATE_CREATED)
+VALUES ('iphone', 'iphone 11 64 Go', 799.99, 'assets/images/products/iphone1164Go.png', 50, 'iphone',1, NOW());
 
 INSERT INTO PRODUCT (NAME, DESCRIPTION, UNIT_PRICE, IMAGE_URL, UNITS_IN_STOCK, BRAND, CATEGORY_ID, DATE_CREATED)
-VALUES ('iphone', 'iphone 11 64 Go', 999.99, 'assets/images/products/iphone1164Go.png', 50, 'iphone',1, NOW());
+VALUES ('iphone', 'iphone 11 128 Go', 999.99, 'assets/images/products/iphone11128Go.png', 50, 'iphone',1, NOW());
 
+INSERT INTO PRODUCT (NAME, DESCRIPTION, UNIT_PRICE, IMAGE_URL, UNITS_IN_STOCK, BRAND, CATEGORY_ID, DATE_CREATED)
+VALUES ('samsung', 'Samsung - Galaxy Note20 5G 128GB (Unlocked) - Mystic Gray', 999.99, 'assets/images/products/Samsung-GalaxyNote205G128GB.png', 50, 'samsung',1, NOW());
+
+
+-- ---------------------
+--  cameras
+-- ---------------------
+
+
+INSERT INTO PRODUCT (NAME, DESCRIPTION, UNIT_PRICE, IMAGE_URL, UNITS_IN_STOCK, BRAND, CATEGORY_ID, DATE_CREATED)
+VALUES ('camera', 'Nikon - D3500 DSLR Video Two Lens Kit with AF-P DX NIKKOR 18-55mm f/3.5-5.6G VR & AF-P DX NIKKOR 70-300mm f/4.5-6.3G ED - Black',
+ 599.99, 'assets/images/products/NikonD3500.png', 50, 'nikon', 2, NOW());
+
+INSERT INTO PRODUCT (NAME, DESCRIPTION, UNIT_PRICE, IMAGE_URL, UNITS_IN_STOCK, BRAND, CATEGORY_ID, DATE_CREATED)
+VALUES ('camera', 'Canon - EOS Rebel T7 DSLR Video Two Lens Kit with EF-S 18-55mm and EF 75-300mm Lenses', 
+599.99, 'assets/images/products/Canon-EOSRebel.png', 50, 'canon',1, NOW());
+
+INSERT INTO PRODUCT (NAME, DESCRIPTION, UNIT_PRICE, IMAGE_URL, UNITS_IN_STOCK, BRAND, CATEGORY_ID, DATE_CREATED)
+VALUES ('camera', 'Sony - Alpha a6000 Mirrorless Camera Two Lens Kit with 16-50mm and 55-210mm Lenses - Black',
+ 999.99, 'assets/images/products/sony-alpha.jpg', 50, 'sony',1, NOW());
 
