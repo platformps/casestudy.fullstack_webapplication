@@ -22,7 +22,7 @@ class EmployeeList extends Component {
 
   componentDidMount() {
     this.setState({isLoading: true});
-    fetch('../api/emplopyee',{headers: authHeader() })
+    fetch('../api/employee',{headers: authHeader() })
       .then(response => response.json())
       .then(data => this.setState({employee: data, isLoading: false}))
   }
