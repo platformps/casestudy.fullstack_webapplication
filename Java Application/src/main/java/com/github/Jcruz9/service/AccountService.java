@@ -10,7 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -50,7 +51,7 @@ return accountRepository.findById(id).get();
 
 @Override
 @Transactional(readOnly=true)
-public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException{
+public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
         Account account= accountRepository.findByEmail(email);
         Set<GrantedAuthority> grantedAuthoritySet= new HashSet<>();
         grantedAuthoritySet.add(new SimpleGrantedAuthority(account.getEmail()));
