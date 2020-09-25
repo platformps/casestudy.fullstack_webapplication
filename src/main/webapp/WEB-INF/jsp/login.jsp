@@ -83,7 +83,7 @@
             <span style="font-size: medium;">${message}</span>
             <input name="username" type="text" class="form-control" placeholder="Username" autofocus="true"/>
             <input name="password" type="password" class="form-control" placeholder="Password"/>
-            <span>${error}</span>
+            <span style="font-size: medium;">${error}</span>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <button class="btn btn-primary btn-lg btn-block" type="submit">Log In</button>
