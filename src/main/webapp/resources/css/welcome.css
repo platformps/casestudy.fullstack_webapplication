@@ -1,0 +1,52 @@
+html {
+    font-family: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: midnightblue;
+    font-size: 15px;
+    padding: 0px;
+
+}
+body {
+    font-family: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 25px;
+    color: midnightblue;
+    padding: 0px;
+    background-size: cover;
+    background: center;
+}
+
+* {
+    background: plum;
+}
+
+
+img {
+    float: right;
+}
+.topNavBar {
+    background-color: grey;
+    overflow: hidden;
+}
+
+.topNavBar a {
+    float: left;
+    display: block;
+    color: midnightblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topNavBar a:hover {
+    background-color:whitesmoke;
+    color: blue;
+}
+
+.topNavBar a.active {
+    background-color:darkslategray;
+    color: white;
+}
+
+.topNavBar .icon {
+    display: none;
+}
