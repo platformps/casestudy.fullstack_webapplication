@@ -27,11 +27,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
-                    .antMatchers("/resources/**", "/registration").permitAll()
+                    .antMatchers("/resources/**", "/signup_form").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
-                    .loginPage("/login")
+                    .loginPage("/login_form")
                     .permitAll()
                     .and()
                     .logout()

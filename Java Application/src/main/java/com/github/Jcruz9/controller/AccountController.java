@@ -56,7 +56,7 @@ return "signup_form";
     {
         model.addAttribute("message","You have logged out successfully.");
     }
-    return  "login_form";
+    return "login_form";
 }
 @GetMapping(value = {"/","/homepage"})
         public  String welcome(Model model)

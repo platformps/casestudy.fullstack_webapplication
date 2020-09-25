@@ -5,7 +5,6 @@
 <%--This will be the welcome screen for the application--%>
 <html lang="en">
 <head>
-    <link href="/css/main.css" rel="stylesheet"/>
     <title>Home Page</title>
 
 </head>

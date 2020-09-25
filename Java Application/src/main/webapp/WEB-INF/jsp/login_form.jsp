@@ -5,25 +5,25 @@
   Time: 8:35 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <jsp:include page="head_common.jsp"/>
 
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
+
+<title>Login in with your account</title>
+
+<jsp:include page="head_files.jsp"/>
 
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
 
-            <form method="POST" action="${contextPath}/login" class="form-signin">
+            <form method="POST" action="${contextPath}/login_form" class="form-signin">
                 <h2 class="form-heading">Sign-in page</h2>
 
                 <div class="form-group ${error != null ? 'has-error' : ''}">
@@ -42,5 +42,3 @@
     </div>
 </div><!-- /container -->
 <jsp:include page="footer.jsp"/>
-</body>
-</html>
