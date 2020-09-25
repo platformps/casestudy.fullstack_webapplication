@@ -7,30 +7,15 @@
 <!-- ----------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------- -->
 <head> <!-- header begins here -->
-    <meta charset="utf-8">
-    <title>Party Time - Our Services</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Our Services">
-    <meta name="author" content="Julia Waclawek">
-
-    <link href="/resources/css/services.css" rel="stylesheet">
-    <script type="text/javascript" src="/js/utils.js"></script>
-    <script type="text/javascript" src="/js/services.js"></script>
-    <script type="text/javascript" src="/js/header-functions.js"></script>
+    <title>Our Services</title>
+    <jsp:include page="head.jsp"/>
+    <link href="${contextPath}/resources/css/services.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="${contextPath}/resources/js/services.js"></script>
 
 </head>
 <body>
 <header>
-    <h2>Party Time! We Bring Life to Your Party!</h2>
-    <div class="topNavBar" id="myTopnav">
-        <a href="index.jsp" >Home</a>
-        <a href="services.jsp" class="active">Our Services</a>
-        <a href="contact_us.jsp">Contact Us</a>
-        <a href="shopping_cart.jsp">Search</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
+    <jsp:include page="header.jsp"/>
 </header>
 <h1>Our Services</h1>
 <h3>We can make your event happen!</h3>
@@ -122,8 +107,7 @@
 </div>
 
 <footer>
-    <!-- footer of page begins here -->
-    <script type="text/javascript" src="/js/footer-functions.js"></script>
+    <jsp:include page="footer.jsp"/>
 </footer> <!-- footer of page ends here -->
 <!-- ====================================================== -->
 <!-- ====================================================== -->
@@ -134,7 +118,7 @@
 <!-- ---------------------------------------------------------------------------------- -->
 </html>
 
-<%--
+<%--template for dropdown menu
 <div align="center">
 <h2>Dynamic Drop Down List</h2>
 <form action="list" method="post">

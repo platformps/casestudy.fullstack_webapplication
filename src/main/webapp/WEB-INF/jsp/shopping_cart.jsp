@@ -2,39 +2,22 @@
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="en">
 <!-- ----------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------- -->
 <head> <!-- header begins here -->
-    <meta charset="utf-8">
-    <title>Party Time - Our Services</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Our Services">
-    <meta name="author" content="Julia Waclawek">
-
-    <c:url value="/resources/css/shopping_cart.css" var="jstlCss" />
-    <link href="${jstlCss}" rel="stylesheet" />
-    <script type="text/javascript" src="/js/utils.js"></script>
-    <script type="text/javascript" src="/js/home_page.js"></script>
-    <script type="text/javascript" src="/js/header-functions.js"></script>
-
+    <title>Shopping Cart</title>
+    <jsp:include page="head.jsp"/>
+    <link href="${contextPath}/resources/css/shopping_cart.css" rel="stylesheet" type="text/css">
 </head> <!-- header ends here -->
 <!-- ----------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------- -->
 <body>
 <header>
-    <h2>Party Time! We Bring Life to Your Party!</h2>
-    <div class="topNavBar" id="myTopnav">
-        <a href="index.jsp" >Home</a>
-        <a href="services.jsp" class="active">Our Services</a>
-        <a href="contact_us.jsp">Contact Us</a>
-        <a href="shopping_cart.jsp">Shopping Cart</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
+    <jsp:include page="header.jsp"/>
 </header>
 
 <div class="row">
@@ -83,8 +66,7 @@
     </div>
 
 <footer>
-    <!-- footer of page begins here -->
-    <script type="text/javascript" src="/js/footer-functions.js"></script>
+    <jsp:include page="footer.jsp"/>
 </footer> <!-- footer of page ends here -->
 <!-- ====================================================== -->
 <!-- ====================================================== -->

@@ -10,33 +10,16 @@
 <!-- ----------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------- -->
 <head> <!-- header begins here -->
-    <meta charset="utf-8">
     <title>Service</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Service">
-    <meta name="author" content="Julia Waclawek">
-
     <link href="${contextPath}/resources/css/service.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="/js/utils.js"></script>
-    <script type="text/javascript" src="/js/contact_us.js"></script>
-    <script type="text/javascript" src="/js/header-functions.js"></script>
-
+    <jsp:include page="head.jsp"/>
 </head> <!-- header ends here -->
 <!-- ----------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------- -->
 <body>
 <header>
-    <h2>Party Time! We Bring Life to Your Party!</h2>
-    <div class="topNavBar" id="myTopnav">
-        <a href="index.jsp">Home</a>
-        <a href="services.jsp">Our Services</a>
-        <a href="contact_us.jsp" class="active">Contact Us</a>
-        <a href="shopping_cart.jsp">Shopping Cart</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
+    <jsp:include page="header.jsp"/>
 </header>
 
 <p><strong>List of Services</strong></p>
@@ -518,8 +501,7 @@
 </table>
 <p> </p>
 <footer>
-    <!-- footer of page begins here -->
-    <script type="text/javascript" src="/js/footer-functions.js"></script>
+    <jsp:include page="footer.jsp"/>
 </footer>
 
 </body>

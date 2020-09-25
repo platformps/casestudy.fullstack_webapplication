@@ -1,20 +1,24 @@
 html {
-    font-family: Cambria, serif;
+    font-family: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: midnightblue;
-    font-size: 18px;
-}
-header {
-    background-color: plum;
+    font-size: 15px;
+    padding: 0px;
+
 }
 body {
-    background-color: plum;
-    background-position: center;
+    font-family: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 25px;
+    color: midnightblue;
+    padding: 0px;
     background-size: cover;
-    width: 980px;
-    margin-left: auto;
-    margin-right: 30px;
-    padding: 0px 10px 10px;
+    background: center;
 }
+
+* {
+    background: plum;
+}
+
+
 img {
     float: right;
 }
@@ -45,40 +49,4 @@ img {
 
 .topNavBar .icon {
     display: none;
-}
-
-.form-heading {
-    text-align: center;
-    text-transform: uppercase;
-}
-.form-signin {
-    max-width: 360px;
-    padding: 15px;
-    margin: 0 auto;
-}
-.form-signin .form-control {
-    position: relative;
-    height: auto;
-    padding: 10px;
-    font-size: 15px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-.form-signin .form-control:focus {
-    z-index: 3;
-}
-.form-signin input, .form-signin button {
-    margin-top: 10px;
-}
-.form-signin .form-signin-heading, .form-signin .checkbox {
-    margin-bottom: 10px;
-}
-.form-signin .checkbox {
-    font-weight: normal;
-}
-.has-error {
-    color: #ff0000;
-    line-height: 1;
-    font-size: 14px;
 }

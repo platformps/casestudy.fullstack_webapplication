@@ -1,30 +1,30 @@
-body {
-    font-family: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 15px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    background-color: plum;
-    color: midnightblue;
-}
 html {
     font-family: Cambria, serif;
     color: midnightblue;
     font-size: 15px;
+    background: #dda0dd;
 }
-header {
-    background-color: plum;
-}
-/*body {
-    background-color: plum;
-    background-position: center;
+body {
+    font-family: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 25px;
+    color: midnightblue;
+    padding-top: 50px;
+    padding-bottom: 50px;
     background-size: cover;
-    width: 980px;
-    margin-left: auto;
-    margin-right: 30px;
-    padding: 0px 10px 10px;
+    background: #dda0dd center;
 }
 
+header {
+    background: #dda0dd;
+}
+
+/*
+.container {
+    background: plum;
+}
  */
+
+
 img {
     float: right;
 }
@@ -56,6 +56,7 @@ img {
 .topNavBar .icon {
     display: none;
 }
+
 .form-heading {
     text-align: center;
     text-transform: uppercase;
