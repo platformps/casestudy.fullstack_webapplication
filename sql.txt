@@ -1,0 +1,6 @@
+select * from accounts
+select * from transactions where account_account_number=2
+insert into transactions (
+TRANSACTION_ID, account_account_number ,DEPOSIT, DESCRIPTION,  	TRANSACTION_DATE,  	WITHDRAWAL,  	payee_account  
+) values (1, 2, 100, 'received 100$ from account no. 5', TO_DATE('10/10/2020', 'DD/MM/YYYY'), 0, 4)
+select * from customer
