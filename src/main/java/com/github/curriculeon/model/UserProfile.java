@@ -7,9 +7,9 @@ import java.util.List;
 public class UserProfile {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
+    @Column(name = "user_id")
     private Long id;
 
-    @OneToOne
     private String username;
 
     private String password;

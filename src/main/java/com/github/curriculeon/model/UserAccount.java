@@ -2,23 +2,23 @@ package com.github.curriculeon.model;
 
 import org.springframework.lang.Nullable;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class UserAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private Long balance;
 
     @Nullable
     private Date nextPayment;
 
     @OneToOne
-    private String username;
+    @PrimaryKeyJoinColumn(name = "user_id")
+    private UserProfile userId;
 
     public Long getId() {
         return id;
@@ -45,11 +45,11 @@ public class UserAccount {
         this.nextPayment = nextPayment;
     }
 
-    public String getUsername() {
-        return username;
+    public UserProfile getUserId() {
+        return userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserid(UserProfile userId) {
+        this.userId = userId;
     }
 }
