@@ -12,6 +12,7 @@
   * Change the user to root
   * Put in your own password
   *Set server.ports to what you like
+  ![Alt Text](https://media.giphy.com/media/YrnExxa2632SRI56aN/giphy.gif)
 
 ### Problems
 * Project will not run on same database of two seperate deployments, will give errors: 'User name does not have a default' 
