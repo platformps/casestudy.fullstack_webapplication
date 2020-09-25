@@ -1,0 +1,121 @@
+
+
+ .App {
+ text-align: center;
+} 
+
+
+
+
+
+input{
+  color: white;
+  width: 250px;
+  height: 50px;
+  border: none;
+  background-color: #576a85;
+  border-radius: 15px;
+  font-size: calc(5px + 1vmin);
+}
+
+
+
+.App-header {
+  height: 100%;
+  /* background-color: #282c34;  */
+  color: white;
+  background-color: #1e1e2f;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(5px + 1vmin);
+  
+}
+
+img{
+  width:350px ;
+}
+
+#topB{
+  
+  height: 40px;
+  width: 150px;
+  
+}
+#topD{
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+ 
+}
+
+
+hr{
+  border: 2px solid red;
+  width: 400px;
+  margin-bottom: 50px;
+}
+
+#vl{
+  margin-top: 100px;
+  border: 2px solid red;
+  width: .5px;
+  height: 500px;
+}
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 10%;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 10%;
+  
+  
+}
+
+#hr2{
+  width: 100px;
+
+}
+
+.right{
+  right:0;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+
+
+.header{
+  float: left;
+  top: 0;
+  background: transparent;
+  height: 5%;
+  width: 600%;
+  position: fixed;
+  z-index: 1;
+  border-radius: 5px;
+ 
+}
+
+
+
+
+
+
