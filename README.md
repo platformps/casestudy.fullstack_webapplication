@@ -1,6 +1,7 @@
 # My Blog
 
 * **Description** - This is my blog that I got from https://nakov.com/blog/2016/08/05/creating-a-blog-system-with-spring-mvc-thymeleaf-jpa-and-mysql/ 
+* **Things Added** - The tutorial being old and largely unfinished, I added security, create/edit/index of posts along with controllers.
 * **Features**- This is a skeleton/vanilla blog system and it allows freedom of speech.
 
 
@@ -15,7 +16,7 @@
 ### Problems
 * Project will not run on same database of two seperate deployments, will give errors: 'User name does not have a default' 
   * Passwords are not set to be very secure, so it is up to you to make strong passwords
-  * Google will say 'Passwords for localhost:8080'
+  * Google will say 'Passwords for localhost:8080 have been breached.'
   * Put in your own password
   * Not set to delete users
   * Permissions are not set to anything but Admin, so anybody with access can delete other peoples posts
