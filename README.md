@@ -3,7 +3,7 @@
 * **Description** - This is my blog that I got from https://nakov.com/blog/2016/08/05/creating-a-blog-system-with-spring-mvc-thymeleaf-jpa-and-mysql/ 
 * **Things Added** - The tutorial being old and largely unfinished, I added security, create/edit/index of posts along with controllers.
 * **Features**- This is a skeleton/vanilla blog system and it allows freedom of speech.
-
+![Alt Text](https://media.giphy.com/media/abL0rXbqwWZgX383RH/giphy.gif)
 
 
 ### Project Configuration
