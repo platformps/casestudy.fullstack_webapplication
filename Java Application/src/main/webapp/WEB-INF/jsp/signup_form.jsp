@@ -14,12 +14,9 @@
 
 <jsp:include page="head_common.jsp"/>
 
-<html>
-<head>
+<title>Sign up</title>
+<jsp:include page="head_files.jsp"/>
 
-    <title>Sign up</title>
-</head>
-<body>
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -28,7 +25,7 @@
                 <h2 class="form-signin-heading">Create your account</h2>
                 <spring:bind path="email">
                     <div class="form-group ${status.error ? 'has-error' : ''}">
-                        <form:input type="text" path="email" class="form-control" placeholder="Username" autofocus="true"></form:input>
+                        <form:input type="text" path="email" class="form-control" placeholder="email" autofocus="true"></form:input>
                         <form:errors path="email"></form:errors>
                     </div>
                 </spring:bind>
@@ -54,6 +51,3 @@
     </div>
 </div><!-- /container -->
 <jsp:include page="footer.jsp"/>
-
-</body>
-</html>

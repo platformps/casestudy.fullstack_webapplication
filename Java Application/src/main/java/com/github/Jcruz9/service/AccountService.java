@@ -66,18 +66,18 @@ public class AccountService implements UserDetailsService {
         return accountRepository.findByEmail(email);
     }
 
-    public Account updateAccount(Long id, Account accountUpdate) {
-        Account accountInDb = readById(id);
-        accountInDb.setEmail(accountUpdate.getPassword());
-        accountInDb.setPassword(accountUpdate.getPassword());
-        accountInDb = accountRepository.save(accountInDb);
-        return accountInDb;
-    }
+//    public Account updateAccount(Long id, Account accountUpdate) {
+//        Account accountInDb = readById(id);
+//        accountInDb.setEmail(accountUpdate.getPassword());
+//        accountInDb.setPassword(accountUpdate.getPassword());
+//        accountInDb = accountRepository.save(accountInDb);
+//        return accountInDb;
+//    }
 
-    public Account deleteById(Long id) {
-        Account accountToDelete = readById(id);
-        accountRepository.delete(accountToDelete);
-        return accountToDelete;
-    }
+//    public Account deleteById(Long id) {
+//        Account accountToDelete = readById(id);
+//        accountRepository.delete(accountToDelete);
+//        return accountToDelete;
+//    }
 
 }

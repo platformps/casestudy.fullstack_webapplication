@@ -33,7 +33,7 @@ return "signup_form";
 }
 
 @PostMapping(value = "/signup_form")
-    public String registration(@ModelAttribute("@userForm") Account accounts, BindingResult bindingResult,Model model)
+    public String registration(@ModelAttribute("userForm") Account accounts, BindingResult bindingResult,Model model)
 {
     accountValidator.validate(accounts,bindingResult);
     if(bindingResult.hasErrors())
