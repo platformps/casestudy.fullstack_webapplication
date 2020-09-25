@@ -8,9 +8,11 @@ public class UserProfile {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
+
+    @OneToOne
     private String username;
+
     private String password;
-    private Long balance;
 
     @Transient // don't persist; not a column
     private String passwordConfirm;
