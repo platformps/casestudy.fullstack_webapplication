@@ -2,7 +2,7 @@
 
 * **My case study lives here: My Case Study lives here: https://github.com/PhillipKinney/casestudy.ddemployeemanagement**
 * **Application has been deployed to Heroku: https://dry-atoll-35480.herokuapp.com**
-* **Video Walkthough of how to use the application can be found here: https://youtu.be/MVr9_AnhBOc**
+* **Video Walk though of how to use the application can be found here: https://youtu.be/MVr9_AnhBOc**
 
 * **Objective** - to create an implementation of a web service
 * **Purpose** - to demonstrate the construction of a full-stacked web-application
@@ -30,11 +30,11 @@
 ## Features
 * Log in feature using Spring Security 
 * Passowrd encryption (BCrypt)
-* CRUD operations for posts and employees
-* Nav Bar Navigation at the top of each page
-
-
-
+* A Post Manger page to perform CRUD operations for posts.
+* An Employee Manager page to perform CRUD operations for employees.
+* Nav Bar Navigation at the top of each page.
+* Blogs post can be accessed without logging in.
+* Buttons througout site to allow for easy site navigation
 
 ## Developmental Notes
 
