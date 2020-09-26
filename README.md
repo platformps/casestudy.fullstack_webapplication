@@ -7,21 +7,31 @@
 * **Objective** - to create an implementation of a web service
 * **Purpose** - to demonstrate the construction of a full-stacked web-application
 * **Description**
-	* This Case Study is your first foray into building a full-stack application. You'll be building a Spring MVC based application, which means you'll learn about what it takes to build a functional application from the ground up yourself.
-	* This is exciting! It's a lot, but we've given you the tools to be able to build what you need, and you get to decide what you do with it. You also get to be creative in choosing what sort of application you want to build!
-	* You will be working individually to design your app. We hope you'll exercise creativity on this project, sketch some wireframes before you start, make sure you have time to run these ideas by your instructors to get their feedback before you dive too deep into coding! Remember to keep things small and focus on mastering the fundamentals.
+	* I decided to build an blog and employee management system for my blog.
+	* The system allows users to perform CRUD operations on employees and on blog posts.
+	* The system allow users to register and sign in to the application.
+	
 * **Additional Resources**
-	* [The Original Case Study Document](./case-study.pdf)
-	* [Case Study Outline](./case-study-outline.pdf)
-	* [Case Study Deliverables](./README_deliverables.md)
-	* [Identifying Plagiarism](./README_plagiarism.md)
-	* [Suggested Project Topics](./README_suggested-project-topics.md)
+	* [Custom Sign-in page tutorial that I used]https://www.youtube.com/watch?v=_5sAmaRJd2c
+	* [Management System Tutorital]https://www.youtube.com/watch?v=Hk70e7KR290 This is link is to the first video of an 8 part series that I followed. All otehr vidoes can be 		accessed from this one
+	
+* **How To Access/Use Program**
+	* Program can be accessed by navigating to https://dry-atoll-35480.herokuapp.com
+	* From here you can register to be come a user.
+	* After registering, click on "login" located below the registration screen to be taken to the login in screen.
+	* Use the credentials you just created to signin
+	* After signin you land at the main menu page 
+	* Here you can select which operation you would like to perfrom
+	*Please see video for full application walkthrough
+	https://youtu.be/MVr9_AnhBOc
 
 
 
-## Minimum Features
-* `RESTful` web service which consumes requests from a front-end web application and caches each request and the respective response to a database.
-* The application must support a login functionality.
+## Features
+* Log in feature using Spring Security 
+* Passowrd encryption (BCrypt)
+* CRUD operations for posts and employees
+* Nav Bar Navigation at the top of each page
 
 
 
@@ -32,44 +42,38 @@
 * Select at least 1 technology from each of the following categories:
   * **Version Control System**
     1. Github
-    2. Bitbucket
+    
     
   * **Wireframe**
-    1. Mockflow
-    2. Balsamiq
-    3. Lucidcharts
+    1. draw.io
 
   * **Frontend**
-    1. Angular
-    2. React
-    3. Vue.JS
+    1. Thymeleaf
+    2. HTML
+    3. CSS
     
   * **Business Logic**
     1. Java
-    2. TypeScript
+    
 
   * **WebServer Implementation**
     1. Spring Boot
-    2. At least 1 [backing service](https://12factor.net/backing-services) API
+    2. 
 
   * **Data Layer**
-    1. MySQL
-    2. PostgreSQL
-    3. MariaDB
+    1. MySQL (on my local machine)
+    2. Heroku in memory db (once deployed)
 
   * **Web Server Cloud Deployment**
     1. Heroku
-    2. AWS EC2 Instance
+    
+    ##Challenges
+    1. Wanted to set up author as type User in Posts class, but had issues figuring out how to pass that from the front end since controller was looking for entire User object 	and not just a the name of user. Tried to do user.firstName but it did not work so I changed type to String
+    2. Wanted to add department as a field of the Employee Class, but had issues similar to #1
+    3. Project actually started as blog, but had issues with tutorials I was loking into, so I changed it to an employee mangement system. After following the management system I 	realized I could much of the same logic to create an MVP for my blog.
+    4. I could not get dateCreated to auto generate for Post. Also had Date issues with hireDate in the Employee Class. It didn't even dawn on me at the time that I could have 	used Date methods to format the date. 
+    
+    ##Deferred to v2
+    1. Address Challenges mentioned above
+    2. Assign roles to users
   
-  * **Web Application Cloud Deployment**
-    1. Netlify
-    2. AWS EC2 Instance
-
-
-
-
-### Installation
-* It is advised that you make install each of the following technologies to ensure that are at least accessible
-  * Install [NodeJs](https://nodejs.org/en/).
-  * Install [Angular](http://angular.io/).
-  * Install [AngularCli](https://cli.angular.io/).
