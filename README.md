@@ -1,7 +1,7 @@
 # Full Stack Web Application
 
-*My case study lives here: My Case Study lives here: https://github.com/PhillipKinney/casestudy.ddemployeemanagement
-* Application has been deployed to Heroku: https://dry-atoll-35480.herokuapp.com
+* **My case study lives here: My Case Study lives here: https://github.com/PhillipKinney/casestudy.ddemployeemanagement**
+* **Application has been deployed to Heroku: https://dry-atoll-35480.herokuapp.com**
 
 
 * **Objective** - to create an implementation of a web service
