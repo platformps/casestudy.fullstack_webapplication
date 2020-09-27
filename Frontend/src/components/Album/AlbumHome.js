@@ -17,7 +17,7 @@ export default class AlbumHome extends Component {
       Albums: props.Albums,
       View: 'album',
       Posts: props.Posts,
-      currentAlbum: 'Please Select an Album'
+      currentAlbum: 'Your Albums'
     };
   }
 
@@ -32,7 +32,7 @@ export default class AlbumHome extends Component {
       Posts: this.props.Posts
     })
   }
-  }
+}
 
 
 
@@ -55,6 +55,7 @@ export default class AlbumHome extends Component {
     const allAlbums =  this.state.Albums === null ? <div>nothing</div> :
     this.state.Albums.map(function(Albums)   
     {
+      console.log(Albums.name);
       return  <div key={Albums.id}>
               <MediaCard postView={loadPosts} albumId={Albums.id} AlbumImage={Albums.imgurl} 
               Title={Albums.albumtitle} Description={Albums.albumdesc} Names={Albums.name} 

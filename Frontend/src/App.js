@@ -7,7 +7,7 @@ import Home from './components/Home'
 import history from "./utils/history";
 import PrivateRoute from "./components/PrivateRoute";
 import MenuAppBar from './components/Navigation';
-import AlbumHome from "./components/Album/AlbumHome";
+import Test from "./components/Test";
 
 
 function App() {
@@ -23,7 +23,8 @@ function App() {
         <Switch>
           <PrivateRoute path="/" exact component={Home} />
           <PrivateRoute path="/profile" component={Profile} />
-          <PrivateRoute path="/albumhome" component={AlbumHome} />
+          <PrivateRoute path="/test" component={Test} />
+          <PrivateRoute path="/feed" component={Test} />
         </Switch>
       </Router>
     </div>
