@@ -3,6 +3,7 @@ package com.github.Jcruz9.model;
 import sun.security.util.Password;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Account {
@@ -15,6 +16,12 @@ public class Account {
 
     @Transient
     private String passwordConfirm;
+
+    @ManyToMany
+    @ElementCollection
+    private List<UserProfileRole> userRoles;
+
+
 
 
     public String getEmail() {
@@ -47,5 +54,13 @@ public class Account {
 
     public String getPasswordConfirm() {
         return passwordConfirm;
+    }
+
+    public List<UserProfileRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<UserProfileRole> userRoles) {
+        this.userRoles = userRoles;
     }
 }
