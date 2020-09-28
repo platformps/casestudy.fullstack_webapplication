@@ -1,71 +1,75 @@
 # Full Stack Web Application
 
-* **Objective** - to create an implementation of a web service
-* **Purpose** - to demonstrate the construction of a full-stacked web-application
-* **Description**
-	* This Case Study is your first foray into building a full-stack application. You'll be building a Spring MVC based application, which means you'll learn about what it takes to build a functional application from the ground up yourself.
-	* This is exciting! It's a lot, but we've given you the tools to be able to build what you need, and you get to decide what you do with it. You also get to be creative in choosing what sort of application you want to build!
-	* You will be working individually to design your app. We hope you'll exercise creativity on this project, sketch some wireframes before you start, make sure you have time to run these ideas by your instructors to get their feedback before you dive too deep into coding! Remember to keep things small and focus on mastering the fundamentals.
-* **Additional Resources**
-	* [The Original Case Study Document](./case-study.pdf)
-	* [Case Study Outline](./case-study-outline.pdf)
-	* [Case Study Deliverables](./README_deliverables.md)
-	* [Identifying Plagiarism](./README_plagiarism.md)
-	* [Suggested Project Topics](./README_suggested-project-topics.md)
+* **Objective** - to create an implementation of a web service.
+
+* **Purpose** - to demonstrate the construction of a full-stacked web-application for Healthy Living website that offers variety of services for organization of special events and some retail.
+
+* **Description** 
+	* This Case Study demonstrates the process of building a functional, Spring MVC based full-stack application from ground up. 
+	* The Healthy living website offers its members health supplies and products. The members can login to attend events and also take part in a variety of offered services like Zumba classes and yoga.
+	* Healthy Living is an app for users that are planning to stay fit for a lifetime of healthful benefits. 
+    * The website includes six webpages: Welcome, Login, Registration, Members, Products, and Shopping Cart.
 
 
+*## Features
+* `RESTful` web service consumes requests from a front-end web application and caches each request and the respective response to a database.
+* The application supports a login functionality.
+* To access the services and view pages of the website a user will need to create their account, register and login with valid credentials.Thos portion is developed using the template
+https://github.com/curriculeon/spring.jsp-loginpage.
 
-## Minimum Features
-* `RESTful` web service which consumes requests from a front-end web application and caches each request and the respective response to a database.
-* The application must support a login functionality.
-
-
+* This app will allow a user to register for events and services and buy health foods and exercise gear and equipment.
+*  adding the product or service to shopping cart and view the total for purchased products and services. 
+* This app also keeps a tab of the loyalty points accrued for buying from us or being a registered member.
 
 
 ## Developmental Notes
-
-### Tech Stack Selection
-* Select at least 1 technology from each of the following categories:
+### Tech Stack
   * **Version Control System**
-    1. Github
-    2. Bitbucket
-    
-  * **Wireframe**
-    1. Mockflow
-    2. Balsamiq
-    3. Lucidcharts
+    1. Github used
+  
 
-  * **Frontend**
-    1. Angular
-    2. React
-    3. Vue.JS
-    
+
+  * **Wireframe**
+    1. Balsamiq
+    2. Lucidcharts
+    PNG files - images of the web pages
+
+
+  * **Frontend**                                ***ReactJS
+    1. Java Server Pages               	 	1.Axios 
+    2.Java Server Pages				            2.npm and yarn
+    3.Cascading Style Sheets(CSS)		      3.CSS
+    4.JavaScript         		            	4.JavaScript files
+
   * **Business Logic**
     1. Java
-    2. TypeScript
-
+   
   * **WebServer Implementation**
     1. Spring Boot
-    2. At least 1 [backing service](https://12factor.net/backing-services) API
+    2. At least 1 [backing service](https://12factor.net/backing-services) API   Microservices Architecture
 
-  * **Data Layer**
-    1. MySQL
-    2. PostgreSQL
-    3. MariaDB
+*****How to start/Navigate
 
-  * **Web Server Cloud Deployment**
-    1. Heroku
-    2. AWS EC2 Instance
-  
-  * **Web Application Cloud Deployment**
-    1. Netlify
-    2. AWS EC2 Instance
+1. Navigate to the folder casestudy.fullstack_webapplication\healthyliving-casestudy\member-service. Start IntelliJ by clicking on Pom.xml. Run the Mainapplication. Keep it running.
 
+2. Navigate to localhost:8080/h2-console  
+ 
+                        <img src="/h2-connect1.png">
+                        
+Follow the JDBC URL, userName = root and Password =password. The result is that the members table is displayed on clicking on MEMBERS tableName and selecting RUN button.
+                        <img src="/h2-connect2.png">
+ 
+3. Navigate to http://localhost:8080/api/members/     in order to see the following screen.
+                        
+                        <img src="/Api-members">      
 
+4 Start the react App by navigating to the folder /casestudy.fullstack_webapplication\healthyliving-casestudy\REACT-SPRINGBOOT_CRUD
+cd react-frontend
+npm install
+npm run
+npm start
+The display on localhost:3000 is the default Member List from the database.
+                    <img src="/members-api-react">
 
-
-### Installation
-* It is advised that you make install each of the following technologies to ensure that are at least accessible
-  * Install [NodeJs](https://nodejs.org/en/).
-  * Install [Angular](http://angular.io/).
-  * Install [AngularCli](https://cli.angular.io/).
+7. Still under contruction:  Adding buttons for Update and Delete.
+8. . Adding Login and registration to the react app from the spring-jsp-template. Planning to do this for all the microservices developed so far.
