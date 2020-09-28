@@ -1,4 +1,5 @@
 # Full Stack Web Application
+The repository for case study is redirected to [Case-Study](https://github.com/lyoumbi/Case-Study.git).
 
 * **Objective** - to create an implementation of a web service
 * **Purpose** - to demonstrate the construction of a full-stacked web-application
