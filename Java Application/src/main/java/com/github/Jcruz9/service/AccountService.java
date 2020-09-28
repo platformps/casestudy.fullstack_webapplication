@@ -2,6 +2,7 @@ package com.github.Jcruz9.service;
 
 import com.github.Jcruz9.model.Account;
 import com.github.Jcruz9.repository.AccountRepository;
+import com.github.Jcruz9.repository.UserProfileRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,11 +22,13 @@ import java.util.Set;
 @Service
 public class AccountService implements UserDetailsService {
     private AccountRepository accountRepository;
+    private UserProfileRoleRepository roleRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public AccountService(AccountRepository accountRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public AccountService(AccountRepository accountRepository, UserProfileRoleRepository roleRepository ,BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.accountRepository = accountRepository;
+        this.roleRepository=roleRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -49,16 +52,16 @@ public class AccountService implements UserDetailsService {
 
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Account account = accountRepository.findByEmail(email);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Account user = accountRepository.findByEmail(username);
         Set<GrantedAuthority> grantedAuthoritySet = new HashSet<>();
-        grantedAuthoritySet.add(new SimpleGrantedAuthority(account.getEmail()));
-        return new User(account.getEmail(), account.getPassword(), grantedAuthoritySet);
+        user.getUserRoles().forEach(role -> grantedAuthoritySet.add(new SimpleGrantedAuthority(role.getName())));
+        return new User(user.getEmail(), user.getPassword(), grantedAuthoritySet);
     }
 
     public void save(Account account) {
         account.setPassword(bCryptPasswordEncoder.encode(account.getPassword()));
-        account.setEmail(account.getEmail());
+        account.setUserRoles(roleRepository.findAll());
         accountRepository.save(account);
     }
 

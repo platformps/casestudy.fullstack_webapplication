@@ -59,7 +59,7 @@ return "signup_form";
     return "login_form";
 }
 @GetMapping(value = {"/","/homepage"})
-        public  String welcome(Model model)
+        public String welcome(Model model)
 {
     return "homepage";
 }

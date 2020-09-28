@@ -1,6 +1,5 @@
 package com.github.Jcruz9.model;
 
-import sun.security.util.Password;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,18 +9,16 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String email;
     private String Password;    // Look at spring security later for better verification.
-    private Long accountId;
 
-    @Transient
+    @Transient  // don't persist; not a column
     private String passwordConfirm;
 
     @ManyToMany
     @ElementCollection
     private List<UserProfileRole> userRoles;
-
-
 
 
     public String getEmail() {
@@ -41,11 +38,11 @@ public class Account {
     }
 
     public Long getAccountId() {
-        return accountId;
+        return id;
     }
 
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
+    public void setAccountId(Long id) {
+        this.id = id;
     }
 
     public void setPasswordConfirm(String passwordConfirm) {
