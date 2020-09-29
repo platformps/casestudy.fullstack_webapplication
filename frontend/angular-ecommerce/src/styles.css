@@ -378,7 +378,7 @@ input.au-input.au-input-xl{
 }
 
 .navbar-sidebar .navbar-list li a:hover{
-    color:#0da8e4
+    color:#87adf3
 }
 
 /* 
@@ -990,7 +990,7 @@ footer ul li{
         -webkit-border-radius:3px;
         -moz-border-radius:3px;
         border-radius:0;
-        background:#205b8d
+        background:rgb(255, 251, 1)
     }
     input.au-input.au-input-xl{
         border-radius:0!important;
