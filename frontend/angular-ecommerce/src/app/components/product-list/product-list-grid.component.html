@@ -1,36 +1,18 @@
-<div class="row main-page">
-    <div class="col-md-3 sidebar">
-        <label>Sort</label>
-        <form class="sort">
-            <input type="radio" id="lowest" name="radio"><label for="lowest">&nbsp;&nbsp;Lowest First</label><br>
-            <input type="radio" id="Highest" name="radio"><label for="Highest">&nbsp;&nbsp;Highest First</label><br>
-            <input type="radio" id="Newly" name="radio"><label for="Newly">&nbsp;&nbsp;Newly First</label><br>
-        </form>
-        <label>Price</label><br>
-        <form class="range">
-            <input type="text" class="form-control"><label>&nbsp;To $&nbsp;</label><input type="text" class="form-control">
-        </form>
-        <label>Brand</label><br>
-        <form class="brand">
-            <input type="checkbox" id="apple" name="brand"><label for="Apple">&nbsp;&nbsp;Apple</label><br>
-            <input type="checkbox" id="samsung" name="brand"><label for="samsung">&nbsp;&nbsp;Samsung</label><br>
-            <input type="checkbox" id="leonovo" name="brand"><label for="leonovo">&nbsp;&nbsp;Leonovo</label><br>
-            <input type="checkbox" id="sony" name="brand"><label for="sony">&nbsp;&nbsp;Sony</label><br>
-            <input type="checkbox" id="canon" name="brand"><label for="canon">&nbsp;&nbsp;Canon</label><br>
-            <input type="checkbox" id="nikon" name="brand"><label for="nikon">&nbsp;&nbsp;Nikon</label><br>
-            <input type="checkbox" id="lg" name="brand"><label for="lg">&nbsp;&nbsp;LG</label><br>
-        </form>
-    </div>
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
 
-    <div class="col-md-3"  *ngFor="let tempProduct of products">
-        <div class="feature-product">
-            <img src="{{ tempProduct.imageUrl }}">
-                <h1>{{ tempProduct.name }}</h1>
-                <div style="text-align: center;">
-                <p>{{ tempProduct.unitPrice | currency:'USD' }}</p>
-                <a href="cart.html" class="btn btn-primary">Add to cart</a>
+            <div class="row">
+                <div *ngFor="let tempProduct of products" class="col-md-3">
+                    <div class="product-box">
+                        <img src="{{ tempProduct.imageUrl }}" class="img-responsive">
+                        <h1>{{ tempProduct.name }}</h1>
+                        <div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>
+                        <a href="#" class="primary-btn">Add to cart</a>
+                    </div>
+                </div>
             </div>
+            
         </div>
     </div>
-    
 </div>

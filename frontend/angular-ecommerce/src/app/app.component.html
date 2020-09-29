@@ -1,44 +1,69 @@
-<div class="row">
-  <div class="col-md-4">
-      <a href="index.html"><img src="logo.png"></a>
-  </div>
-  <div class="col-md-4 s">
-      <div class="form-group has-search">
-          <span class="fa fa-search form-control-feedback"></span>
-          <input type="text" class="form-control search-input" placeholder="Search">
-          <span class="fa fa-microphone form-mic"></span>
+<div class="page-wrapper">
+
+  <!-- MENU      -->
+  <aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+      <a href="#">
+        <img src="assets/images/logo.png" alt="E-co" class="img-responsive">
+      </a>
+    </div>
+    <div class="menu-sidebar-content js-scrollbar1">
+      <nav class="navbar-sidebar">
+        <ul class="list-unstyled navbar-list">
+          <li>
+            <a href="#">Phones</a>
+          </li>
+          <li>
+            <a href="#">Cameras</a>
+          </li>
+          <li>
+            <a href="#">Computers</a>
+          </li>
+          <li>
+            <a href="#">TVs</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  <!-- END MENU -->
+
+  <div class="page-container">
+    <!-- HEADER DESKTOP-->
+    <header class="header-desktop">
+      <div class="section-content section-content-p30">
+        <div class="container-fluid">
+          <div class="header-wrap">
+            <form class="form-header" onsubmit="return false;" method="GET">
+              <input class="au-input au-input-xl" type="text" name="search" placeholder="Search for data ..." />
+              <button class="au-btn-submit" type="submit">
+                Search
+              </button>
+            </form>
+            <div class="cart-area d-n">
+              <a href="shopping-detail.html">
+                <div class="total">19.22 <span> 2</span> </div> <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="account-wrap"></div>
+        </div>
       </div>
-  </div>
-  <div class="col-md-4 top-cart">
-      <div><p>24.60<i href="#" class="fa fa-comment-alt"></i><i href="#" class="fa fa-shopping-cart"></i></p></div>
-  </div>
-</div>
+    </header>
+    <!-- END HEADER DESKTOP-->
 
+    <!-- MAIN CONTENT-->
+    <app-product-list></app-product-list>
 
-<div class="row menu">
-  <div class="col-md-12">
-      <ul>
-          <li><a href="main.html">Home</a></li>
-          <li>TV </li>
-          <li>Computer & Tablets</li>
-          <li>Camera</li>
-          <li>Cell Phone</li>
-          <li style="float: right; margin-top: -15px;"><a href="login.html">Login/</a><a href="signup.html">Sign Up</a></li>
-      </ul>
   </div>
 </div>
 
-<!-- main-->
-<app-product-list></app-product-list>
+<!-- ENDS PAGE CONTAINER -->
 
-
-<!-- Footer-->
-<div class="footer">
-  <div class="footer-items">
-      <ul>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Help</li>
-      </ul>
-  </div>
-</div>
+<footer>
+  <ul>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Contact Us</a></li>
+    <li><a href="#">Help</a></li>
+  </ul>
+</footer>
