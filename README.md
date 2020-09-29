@@ -16,6 +16,8 @@ Node/NPM/YARN, IntelliJ IDEA/Eclipse and Maven version 3.0 or higher
 
 ### Getting Up and Running
 
+![login](plantlogin.gif)
+
 #### Front End
 * In your terminal once in the base branch of the project navigate to the frontend folder and use yarn add to download the necessary dependencies to start the front end of the applicaiton, once loaded start the front end of the application by running yarn start in the terminal but make sure the backend is running first in order to properly load everything. Navigate to localhost:3000 in order to get started creating your albums and posts for your gardening journal 
 
