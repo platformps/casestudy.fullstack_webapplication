@@ -35,6 +35,7 @@ export default class Home extends Component {
             });
       }
 
+
       updateAlbums = (newAlbum) => {
         this.setState({
           Albums: [...this.state.Albums, newAlbum]
