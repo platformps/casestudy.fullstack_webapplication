@@ -5,8 +5,10 @@
 
 * Packaged project is located in Releases title **Submission**  without 404 bug.
 * To run: 
-	1. Download upkeep-assistant-0.0.1-SNAPSHOT.jar
-	2. Run this command in terminal: mysql -uadmin -ppassword -e  "create database upkeep_assistant"
-	3. Cd into directory
-	4. Run this command in terminal: java -jar upkeep-assistant-0.0.1-SNAPSHOT.jar
+	1. Download `upkeep-assistant-0.0.1-SNAPSHOT.jar`
+	2. Run this command in terminal:
+		* `mysql -uadmin -ppassword -e  "create database upkeep_assistant"`
+	3. cd into directory
+	4. Run this command in terminal:
+		* `java -jar upkeep-assistant-0.0.1-SNAPSHOT.jar`
 	5. Navigate to `http:localhost:8080`
