@@ -11,7 +11,7 @@ Description <input type="text" name="description" >
 <input type="submit" value="Submit">
 </form>
 
-<table cellpadding="2" cellspacing="2" border="1">
+<table  border="1">
 
     <tr>
         <th>Id</th>
@@ -35,4 +35,4 @@ Description <input type="text" name="description" >
 
 </body>
 </html>
-<% <img src="${pageContext.request.contextPath }/assets/images/${product.photo }" width="120">   %>
+

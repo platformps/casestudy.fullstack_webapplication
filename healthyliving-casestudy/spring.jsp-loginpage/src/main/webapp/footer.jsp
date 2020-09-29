@@ -7,7 +7,7 @@
 
     <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <p> Mondira Roy | Thanks to Leon  and Curriculeon</p>
+    <p> All Rights Reserved @Mondira Roy | Thanks to Curriculeon for template </p>
   </div>
   <!-- Copyright -->
 

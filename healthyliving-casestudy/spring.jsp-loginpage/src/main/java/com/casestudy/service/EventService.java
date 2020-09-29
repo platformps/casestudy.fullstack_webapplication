@@ -11,32 +11,32 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EventService implements EventInterfaceService {
-
+public class EventService //implements EventInterfaceService {
+{
     @Autowired
     private EventRepository repository;
 
-    @Override
+   // @Override
     public List<Event> getEventByUser(String user){
         return repository.findByName(user);
     }
 
-    @Override
+   // @Override
     public Optional<Event> getEventById(long id){
         return repository.findById(id);
     }
 
-    @Override
+   // @Override
     public void updateEvent(Event Event){
         repository.save(Event);
     }
 
-    @Override
-    public void addEvent(String name, String location, Date targetDate, boolean isDone){
-        repository.save(new Event(name, location, targetDate, isDone));
-    }
+//    @Override
+//    public void addEvent(String name, String location, Date targetDate){
+//        repository.save(new Event( name, location, targetDate));
+//    }
 
-    @Override
+   // @Override
     public void deleteEvent(long id){
         Optional<Event> Event = repository.findById(id);
         if (Event.isPresent()){
@@ -44,7 +44,7 @@ public class EventService implements EventInterfaceService {
         }
     }
 
-    @Override
+   // @Override
     public void saveEvent(Event Event){
         repository.save(Event);
     }

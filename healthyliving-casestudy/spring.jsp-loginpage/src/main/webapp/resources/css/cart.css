@@ -1,0 +1,96 @@
+html {
+    font-family: Cambria, serif;
+    color: midnightblue;
+    font-size: 20px;
+}
+header {
+    background-color: plum;
+}
+body {
+    background-color: plum;
+    background-position: center;
+    background-size: cover;
+    width: 980px;
+    margin-left: auto;
+    margin-right: 30px;
+    padding: 0px 10px 10px;
+}
+.topNavBar {
+    background-color: grey;
+    overflow: hidden;
+}
+
+.topNavBar a {
+    float: left;
+    display: block;
+    color: midnightblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topNavBar a:hover {
+    background-color:whitesmoke;
+    color: blue;
+}
+
+.topNavBar a.active {
+    background-color:darkslategray;
+    color: white;
+}
+
+.topNavBar .icon {
+    display: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid gainsboro;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: plum;
+    color: midnightblue;
+    padding: 12px 20px;
+    border: 1px solid gainsboro;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: gray;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: plum;
+    padding: 10px;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .column, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}

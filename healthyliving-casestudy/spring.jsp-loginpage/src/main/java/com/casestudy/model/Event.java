@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 @Entity
-@Table(name = "event_list")
+@Table(name = "event")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,22 +19,25 @@ public class Event {
     private String name;
     private Date targetDate;
 
-    public Event(String name,String location, Date targetDate) {
-    }
+
         public Event(){
             super();
         }
 
-    public Event(String userName,String location, Date targetDate, boolean isDone) {
-            super();
-            this.name = name;
-            this.location = location;
-            this.targetDate = targetDate;
-        }
-        public Long getId() {
+
+
+    public Long getId() {
             return id;
         }
-        public void setId(Long id) {
+
+    public Event(Long id, String location, String name, Date targetDate) {
+        this.id = id;
+        this.location = location;
+        this.name = name;
+        this.targetDate = targetDate;
+    }
+
+    public void setId(Long id) {
             this.id = id;
         }
         public String getName() {

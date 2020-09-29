@@ -14,11 +14,14 @@
     <title>Echoing HTML Request Parameters</title>
 </head>
 <body>
-<h3>Choose an event:</h3>
+<h3>Choose an event to attend and click on Submit to view your selection:</h3>
 <form method="get">
-    <input type="checkbox" name="event" value="Zumba with Zombies">Zumba with Zombies
-    <input type="checkbox" name="event" value="Meditation for mental peace">Meditation for mental peace
-    <input type="checkbox" name="event" value="Surya Namaskar for the soul">Surya Namaskar for the soul
+    <input type="checkbox" name="event" value="Zumba with Zombies"> Zumba with Zombies
+    <input type="checkbox" name="event" value="Meditation for mental peace"> Meditation for mental peace
+    <input type="checkbox" name="event" value="Surya Namaskar for the soul"> Surya Namaskar for the soul
+    <input type="checkbox" name="event" value="Cycling for fun and frolick"> Cycling for fun and frolick
+    <input type="checkbox" name="event" value="All about Yoga for healing">All about Yoga for healing
+    <input type="checkbox" name="event" value="Eating healthy for longevity">Eating healthy for longevity
     <input type="submit" value="Select">
 </form>
 

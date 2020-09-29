@@ -19,9 +19,9 @@
         </form>
 
         <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
-        <h2>Would you like to attend a healthy living event??  | <a href="/echo.jsp">Attend</a></h2>
-        <h2>Would you like to browse our health products??  | <a href="/product.jsp">View </a></h2>
-        <h2>Would you like to avail of our member Services??  | <a href="/home.jsp">Avail</a></h2>
+        <h2>Would you like to attend a healthy living event??  | <a href="/event.jsp">Attend</a></h2>
+        <h2>Would you like to browse our health products??  | <a href="/cart.jsp">View </a></h2>
+        <h2>Would you like to avail of our member Services??  | <a href="/services.jsp">Avail</a></h2>
         <br>   </br>
 
     </c:if>

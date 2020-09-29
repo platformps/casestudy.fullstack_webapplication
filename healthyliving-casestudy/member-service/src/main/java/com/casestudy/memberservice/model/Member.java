@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memberId;
+    private Long id;
 
     @Column(name="first-name")
     private String firstName;
@@ -18,22 +18,23 @@ public class Member {
     @Column(name="email")
     private  String email;
 
+//default constructor in order for hibernate tp use proxies
     public Member() {
     }
 
-    public Member( String firstName, String lastName, String emil) {
-
+    public Member( String firstName, String lastName, String email) {
+        super();
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = emil;
+        this.email = email;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public Long getId() {
+        return id;
     }
 
-    public void setMemberId(Long id) {
-        this.memberId = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -52,11 +53,11 @@ public class Member {
         this.lastName = lastName;
     }
 
-    public String getEmil() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmil(String emil) {
+    public void setEmail(String email) {
         this.email = email;
     }
 }

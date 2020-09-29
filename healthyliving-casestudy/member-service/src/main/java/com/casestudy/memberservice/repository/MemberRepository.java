@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
+    //could have used CRUD repository but JPA repository internally uses both PagingAndSorting Repository and CrudRepository
 }
