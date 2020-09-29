@@ -92,6 +92,7 @@ export default class AlbumHome extends Component {
 
         {this.state.View === 'post' && <h2 onClick={backButton}><ArrowBackIcon /> Go Back to Albums</h2> }
         <h1 color="primary">{this.state.currentAlbum}</h1>
+        { this.state.View === 'album' && <h3 color="primary">Press the plus button to create new Album</h3> }
         <Grid container justify="center" spacing={1} >
         <CustomizedSnackbars />
         { this.state.View ==='album' && <FabIntegrationSnackbar updateAlbums={updateAlbums} /> }

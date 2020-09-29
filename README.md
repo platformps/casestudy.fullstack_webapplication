@@ -14,7 +14,7 @@ Java, Spring, Spring Data JPA, Maven, MySQL, Auth0
 ### Front End
 React, Material UI, Auth0, CSS
 
-## WireFraming/Front-end Design
+### WireFraming/Front-end Design
 * **Mockflow Design** 
 ![login](login.png)
 ![Album Page Layout](Album_Page.png)
