@@ -4,7 +4,7 @@
 Plantagram is an online journal service to store albums and posts about your current garden operations so they can be accessed anywhere with an internet connection
 
 ## Requirements to run applicaiton locally
-Node/NPM/YARN, IntelliJ IDEA/Eclipse and a valid mysql databse to seed before beginning the operation for testing purposes 
+Node/NPM/YARN, IntelliJ IDEA/Eclipse and Maven version 3.0 or higher
 
 ## Developmental Notes
 
@@ -20,7 +20,8 @@ Node/NPM/YARN, IntelliJ IDEA/Eclipse and a valid mysql databse to seed before be
 * In your terminal once in the base branch of the project navigate to the frontend folder and use yarn add to download the necessary dependencies to start the front end of the applicaiton, once loaded start the front end of the application by running yarn start in the terminal but make sure the backend is running first in order to properly load everything. Navigate to localhost:3000 in order to get started creating your albums and posts for your gardening journal 
 
 #### Back End
-* In Intellij Make sure your project is set up correctly by opening it with the pom.xml file. Once dependencies have been installed cd to your project root folder in command line and type mvn spring-boot:run
+* In Intellij Make sure your project is set up correctly by opening it with the pom.xml file. Once dependencies have been installed cd to your project root folder in command line and type mvn spring-boot:run 
+Once application is running navigate to localhost:8080/albums or localhost:8080/posts to see the current albums and posts in the db 
 
 ## Technologies Used 
 
