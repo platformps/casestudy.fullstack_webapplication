@@ -1,15 +1,14 @@
 package com.github.Jcruz9.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Diet {
+public class Food {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long foodId;
+    private Long id;
     private String foodName;
     private Integer calories;
     private Integer carbs;
@@ -18,8 +17,9 @@ public class Diet {
     private Integer sodium;
     private Integer sugar;
 
-    public Diet() {
-    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private DietJournal dietJournal;
 
 
     public String getFoodName() {
@@ -78,11 +78,12 @@ public class Diet {
         this.sugar = sugar;
     }
 
-    public Long getFoodId() {
-        return foodId;
+    public Long getId() {
+        return id;
     }
 
-    public void setFoodId(Long foodId) {
-        this.foodId = foodId;
+    public void setId(Long id) {
+        this.id = id;
     }
+
 }

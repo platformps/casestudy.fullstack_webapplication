@@ -20,6 +20,10 @@ public class Account {
     @ElementCollection
     private List<UserProfileRole> userRoles;
 
+    @OneToMany
+    @ElementCollection
+    private List<DietJournal> dietJournals;
+
 
     public String getEmail() {
         return email;
