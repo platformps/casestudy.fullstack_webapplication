@@ -7,6 +7,9 @@ class MemberService {
   getMembers(){
     return axios.get(MEMBER_API_BASE_URL);
 }
+  createMember(member){
+    return axios.post(MEMBER_API_BASE_URL,member);
+  }
 }
 
 export default new MemberService()

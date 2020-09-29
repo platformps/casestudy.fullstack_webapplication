@@ -8,6 +8,11 @@ class ListMemberComponent extends Component {
         this.state = {
 members: []
         }
+        this.addMember= this.addMember.bind(this);
+        this.editMember=this.editMember.bind(this);
+    }
+    editMember(id){
+      this.props.history.push('/update-member/${id}');
     }
 
     componentDidMount(){
@@ -15,11 +20,17 @@ members: []
     this.setState({members: res.data});
 });
     }
+    addMember(){
+        this.props.history.push('/add-member');
+    }
 
     render() {
         return (
             <div>
-             <h2 className ="text-center"> Member List </h2>   
+             <h2 className ="text-center"> Member List </h2>  
+                <div className= "row" >
+                  <button className="btn btn-primary" onClick={this.addMember}>Add Member</button>  
+                </div> 
             <div className = "row" >
                 <table className = "table table-striped table-bordered">
                     <thead>
@@ -38,7 +49,9 @@ members: []
                                     <td> { member.firstName }</td>
                                     <td> { member.lastName } </td>
                                     <td> { member.email }   </td>
-
+                                    <td>
+                                       <button onClick ={ () => this.editMember(member.id)} className="btn btn-info">Update</button>
+                                    </td>
                                 </tr>
                             )
                         }
