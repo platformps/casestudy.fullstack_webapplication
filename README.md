@@ -2,11 +2,16 @@
 
 ### Deliverables:
 
-* Link to repository: https://github.com/monicadeshmukh/SpringBootBankingApplication
-* Link to Trello Board: https://trello.com/b/aFj8qeUp/case-study
-* Link to GoogleDocs for the wireframe design: https://docs.google.com/document/d/1rhN0rD_q0U9aOYoAmlsE9Cf-W0FaWILXAKIvGKY0g5s/edit?usp=sharing
-* Page Navigation Chart: https://app.lucidchart.com/invitations/accept/33021239-3c54-42e9-b05e-a73650ce4908
-* DataBase Schema: https://app.lucidchart.com/invitations/accept/33021239-3c54-42e9-b05e-a73650ce4908
+* Link to repository
+  * `https://github.com/monicadeshmukh/SpringBootBankingApplication`
+* Link to Trello Board
+  * `https://trello.com/b/aFj8qeUp/case-study`
+* Link to GoogleDocs for the wireframe design
+  * `https://docs.google.com/document/d/1rhN0rD_q0U9aOYoAmlsE9Cf-W0FaWILXAKIvGKY0g5s/edit?usp=sharing`
+* Page Navigation Chart
+  * `https://app.lucidchart.com/invitations/accept/33021239-3c54-42e9-b05e-a73650ce4908`
+* DataBase Schema
+  * `https://app.lucidchart.com/invitations/accept/33021239-3c54-42e9-b05e-a73650ce4908`
 
 ### Tech Stack: 
 
