@@ -42,9 +42,8 @@ class Test extends Component {
   };
   fetch('http://localhost:8080/storage/uploadFile', requestOptions)
   .then(async response => {
-      const data = await response.json();
+      const data = await response;
       console.log(data)
-
       
       // check for error response
       if (!response.ok) {
