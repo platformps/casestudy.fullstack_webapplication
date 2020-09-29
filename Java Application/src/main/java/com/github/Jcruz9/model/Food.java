@@ -18,6 +18,8 @@ public class Food {
     private Integer sugar;
 
 
+
+
     @ManyToOne(cascade = CascadeType.ALL)
     private DietJournal dietJournal;
 
@@ -84,6 +86,14 @@ public class Food {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public DietJournal getDietJournal() {
+        return dietJournal;
+    }
+
+    public void setDietJournal(DietJournal dietJournal) {
+        this.dietJournal = dietJournal;
     }
 
 }

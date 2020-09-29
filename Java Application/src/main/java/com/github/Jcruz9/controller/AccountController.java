@@ -63,4 +63,7 @@ return "signup_form";
 {
     return "homepage";
 }
+
+    public static class foodController {
+    }
 }
