@@ -1,7 +1,7 @@
 package com.example.backend.Controllers;
 
-import com.amazonaws.services.xray.model.Http;
 import com.example.backend.Services.AmazonClient;
+import com.example.backend.models.Bucket;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping("/storage/")
 public class BucketController {
@@ -23,8 +24,9 @@ public class BucketController {
 
     @PostMapping("/uploadFile")
     public ResponseEntity<String> uploadFile(@RequestPart(value = "file") MultipartFile file) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        return new ResponseEntity<String>(mapper.writeValueAsString(this.amazonClient.uploadFile(file)), HttpStatus.OK);
+//        Bucket newBuck = new Bucket(1, this.amazonClient.uploadFile(file));
+//        ObjectMapper mapper = new ObjectMapper();
+        return new ResponseEntity<String>(this.amazonClient.uploadFile(file), HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteFile")
