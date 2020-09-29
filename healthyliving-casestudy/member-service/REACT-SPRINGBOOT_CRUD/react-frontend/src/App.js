@@ -5,6 +5,9 @@ import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import ListMemberComponent from './components/ListMemberComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
+import CreateMemberComponent from './components/CreateMemberComponent';
+import UpdateMemberComponent from './components/UpdateMemberComponent';
+import ViewMemberComponent from './components/ViewMemberComponent';
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
               <Route path="/members" component={ListMemberComponent}></Route>
               <Route path="/add-member" component={CreateMemberComponent}></Route>
               <Route path="/update-member/:id" component={UpdateMemberComponent}></Route>
+              <Route path="/view-member/:id" component={ViewMemberComponent}></Route>
               
             </Switch>
           </div>

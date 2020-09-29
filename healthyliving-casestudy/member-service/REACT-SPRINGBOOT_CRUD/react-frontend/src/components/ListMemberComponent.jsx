@@ -6,11 +6,19 @@ class ListMemberComponent extends Component {
         super(props)
 
         this.state = {
-members: []
+           members: []
         }
         this.addMember= this.addMember.bind(this);
         this.editMember=this.editMember.bind(this);
+        this.deleteMember=this.deleteMember.bind(this);
     }
+     deleteMember(id){
+    MemberService.deleteMember(id).then(res => {
+     this.setState({members:this.state.members
+    .filter(member =>member.id !== id)});
+     });
+     }
+
     editMember(id){
       this.props.history.push('/update-member/${id}');
     }
@@ -51,6 +59,7 @@ members: []
                                     <td> { member.email }   </td>
                                     <td>
                                        <button onClick ={ () => this.editMember(member.id)} className="btn btn-info">Update</button>
+                                       <button style={{marginLeft:"10px"}} onClick = { () => this.deleteMember(member.id)} className="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
                             )
