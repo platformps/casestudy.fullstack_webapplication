@@ -15,6 +15,32 @@ public class DietJournal {
     @ElementCollection
     private List<Food> foodList;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getDietName() {
+        return dietName;
+    }
+
+    public void setDietName(String dietName) {
+        this.dietName = dietName;
+    }
+
+    public List<Food> getFoodList() {
+        return foodList;
+    }
+
+    public void setFoodList(List<Food> foodList) {
+        this.foodList = foodList;
+    }
+
+
+
 
 
 

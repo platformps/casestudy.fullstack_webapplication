@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FoodServices {
@@ -26,6 +27,21 @@ public class FoodServices {
     public Food readById(Long id)
     {
         return foodRepository.findById(id).get();
+    }
+
+
+    public Food addFood(String foodName,Integer calories,Integer carbs,Integer fat,Integer protein,Integer sodium,Integer sugar)
+    {
+        Food foodInDb=new Food();
+        foodInDb.setFoodName(foodName);
+        foodInDb.setCalories(calories);
+        foodInDb.setCarbs(carbs);
+        foodInDb.setFat(fat);
+        foodInDb.setProtein(protein);
+        foodInDb.setSodium(sodium);
+        foodInDb.setSugar(sugar);
+        foodInDb=foodRepository.save(foodInDb);
+        return foodInDb;
     }
 
 
@@ -51,5 +67,76 @@ public class FoodServices {
         foodIterable.forEach(foodList::add);
         return foodList;
     }
+    public Integer addCalories()
+    {
+        Integer calories=0;
+        List<Integer>totalCalories;
+        List<Food> calorieList=readAll();
+        for (int i=0;i<calorieList.size();i++)
+        {
+             calories += calorieList.get(i).getCalories();
+        }
+        return calories;
 
-}
+    }
+    public Integer addCarbs()
+    {
+        Integer carbs=0;
+        List<Integer>totalCalories;
+        List<Food> carbList=readAll();
+        for (int i=0;i<carbList.size();i++)
+        {
+            carbs += carbList.get(i).getCarbs();
+        }
+        return carbs;
+
+    }
+    public Integer addFat()
+    {
+        Integer fat=0;
+        List<Integer>totalCalories;
+        List<Food> fatList=readAll();
+        for (int i=0;i<fatList.size();i++)
+        {
+            fat += fatList.get(i).getFat();
+        }
+        return fat;
+
+    }
+    public Integer addProtein()
+    {
+        Integer protein=0;
+        List<Integer>totalCalories;
+        List<Food> proteinList=readAll();
+        for (int i=0;i<proteinList.size();i++)
+        {
+            protein += proteinList.get(i).getProtein();
+        }
+        return protein;
+
+    }
+    public Integer addSodium()
+    {
+        Integer sodium=0;
+        List<Integer>totalCalories;
+        List<Food> sodiumList=readAll();
+        for (int i=0;i<sodiumList.size();i++)
+        {
+            sodium += sodiumList.get(i).getSodium();
+        }
+        return sodium;
+
+    }
+    public Integer addSugar()
+    {
+        Integer sugar=0;
+        List<Integer>totalCalories;
+        List<Food> sugarList=readAll();
+        for (Food food : sugarList) {
+            sugar += food.getSugar();
+        }
+        return sugar;
+
+    }
+
+    }
