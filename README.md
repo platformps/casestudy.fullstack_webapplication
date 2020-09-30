@@ -19,7 +19,7 @@
     Balsamiq
     
   * **Frontend**
-    Angular Cascading Style Sheets(CSS)
+    Angular Cascading Style Sheets(CSS) HTML
     
   * **Business Logic**
     Java
