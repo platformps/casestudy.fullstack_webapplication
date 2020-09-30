@@ -37,7 +37,7 @@ public class FoodController {
     {
         return "foodForm";
     }
-    @RequestMapping(value = "/foodForm", method = RequestMethod.GET)
+    @RequestMapping(value = "/foodForm", method = RequestMethod.POST)
     public String populateList(ModelMap model,@RequestParam String foodName,@RequestParam Integer calories,@RequestParam Integer carbs,@RequestParam Integer fat,@RequestParam Integer protein,@RequestParam Integer sodium,@RequestParam Integer sugar)
     {
 
