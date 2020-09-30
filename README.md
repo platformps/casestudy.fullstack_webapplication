@@ -1,7 +1,7 @@
 # Full Stack Web Application: Calorie Counter 
 
 * **Objective** - to create an implementation of a web service
-* **Purpose** - to demonstrate the construction of a full-stacked web-application
+* **Purpose** - to demonstrate the construction of a full-stacked web-application for users who need to track the calories of the food they eat.
 * **Description**
 	* This is a **Restful application** that requests information from a user using the front end and presists information in a database
 	* The application supports login functionality
