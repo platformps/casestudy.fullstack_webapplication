@@ -46,8 +46,8 @@
 * run `generateTables.sql` in db scripts folder
 * run [`pom.xml`](./backend/case-study-ecommerce/pom.xml) file
 * update username and password of application.properties
-`spring.datasource.username=root
- spring.datasource.password=1234`
+`spring.datasource.username=your_mariaDB_username
+ spring.datasource.password=your_mariaDB_password`
  
 * Open command line and run this command:
     `mvn spring-boot:run`
