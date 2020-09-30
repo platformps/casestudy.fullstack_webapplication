@@ -22,9 +22,8 @@
     Angular Cascading Style Sheets(CSS)
     
   * **Business Logic**
-    1. Java
-    2. TypeScript
-
+    Java
+    
   * **WebServer Implementation**
     Spring Boot
  
