@@ -17,19 +17,13 @@
 <title>Diet name</title>
 <jsp:include page="head_files.jsp"/>
 
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
+<body>
+<h1>Diet Journal</h1>
+<form name="journalName" method="POST" action="{ContextPage}/JournalController">
+<p>
+    Enter Diet Name:
+    <input type="submit" name="journalName" value="continue">
+</p>
+</form>
 
-      <form action="journalName" method="post">
-
-          Diet name:<input type="text" name="dietName"/>
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
-      </form>
-
-
-
-        </div>
-    </div>
-</div><!-- /container -->
-<jsp:include page="footer.jsp"/>
+</body>
