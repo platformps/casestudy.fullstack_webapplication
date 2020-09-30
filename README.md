@@ -67,3 +67,12 @@
         * _For use in bat-file_:
             * `for /f "tokens=5" %%a in ('netstat -aon ^| find ":8080" ^| find "LISTENING"') do taskkill /f /pid %%a`
             * `for /f "tokens=5" %%a in ('netstat -aon ^| find ":4200" ^| find "LISTENING"') do taskkill /f /pid %%a` 
+	    
+#### Cloning _forked_ repository
+* Clone the repository from **your account** into the `~/dev` directory.
+  * if you do not have a `~/dev` directory, make one by executing the following command:
+    * `mkdir ~/dev`
+  * navigate to the `~/dev` directory by executing the following command:
+    * `cd ~/dev`
+  * clone the project by executing the following command:
+    * `git clone https://github.com/${MYUSERNAME}/${NAMEOFPROJECT}`
