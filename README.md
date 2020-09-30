@@ -1,4 +1,4 @@
-# Full Stack Web Application
+# Full Stack Web Application located https://github.com/LauraGodinez/blog front end located https://github.com/LauraGodinez/BlogFrontend. Trello board private but for those who have access can be located https://trello.com/b/gllHZ6mI/case-study
 
 * **Objective** - to create an implementation of a web service
 * **Purpose** - to demonstrate the construction of a full-stacked web-application
