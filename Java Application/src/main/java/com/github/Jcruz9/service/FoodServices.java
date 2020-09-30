@@ -1,6 +1,8 @@
 package com.github.Jcruz9.service;
 
+import com.github.Jcruz9.model.DietJournal;
 import com.github.Jcruz9.model.Food;
+import com.github.Jcruz9.repository.DietJournalRepository;
 import com.github.Jcruz9.repository.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import java.util.stream.Collectors;
 @Service
 public class FoodServices {
     private FoodRepository foodRepository;
+    private DietJournalRepository dietJournalRepository;
 
     @Autowired
     public FoodServices(FoodRepository foodRepository)
@@ -48,16 +51,14 @@ public class FoodServices {
     public Food updateById (Long id, Food updateData)
     {
         Food foodInDb= readById(id);
-        foodInDb.setDietJournal(updateData.getDietJournal());
         foodInDb.setFoodName(updateData.getFoodName());
-        foodInDb.setCalories(updateData.getCalories());
-        foodInDb.setFat(updateData.getFat());
-        foodInDb.setCarbs(updateData.getCarbs());
-        foodInDb.setSugar(updateData.getSugar());
-        foodInDb.setProtein(updateData.getProtein());
-        foodInDb.setSodium(updateData.getSodium());
         foodInDb=foodRepository.save(foodInDb);
         return foodInDb;
+    }
+    public boolean delete(Long id)
+    {
+        foodRepository.deleteById(id);
+        return true;
     }
 
     public List<Food> readAll()
@@ -82,7 +83,6 @@ public class FoodServices {
     public Integer addCarbs()
     {
         Integer carbs=0;
-        List<Integer>totalCalories;
         List<Food> carbList=readAll();
         for (int i=0;i<carbList.size();i++)
         {
@@ -94,7 +94,6 @@ public class FoodServices {
     public Integer addFat()
     {
         Integer fat=0;
-        List<Integer>totalCalories;
         List<Food> fatList=readAll();
         for (int i=0;i<fatList.size();i++)
         {
@@ -106,7 +105,6 @@ public class FoodServices {
     public Integer addProtein()
     {
         Integer protein=0;
-        List<Integer>totalCalories;
         List<Food> proteinList=readAll();
         for (int i=0;i<proteinList.size();i++)
         {
@@ -118,7 +116,6 @@ public class FoodServices {
     public Integer addSodium()
     {
         Integer sodium=0;
-        List<Integer>totalCalories;
         List<Food> sodiumList=readAll();
         for (int i=0;i<sodiumList.size();i++)
         {
@@ -130,7 +127,6 @@ public class FoodServices {
     public Integer addSugar()
     {
         Integer sugar=0;
-        List<Integer>totalCalories;
         List<Food> sugarList=readAll();
         for (Food food : sugarList) {
             sugar += food.getSugar();

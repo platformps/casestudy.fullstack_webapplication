@@ -16,18 +16,30 @@ public class Account {
     @Transient  // don't persist; not a column
     private String passwordConfirm;
 
+
+
+    @ManyToOne
+    private DietJournal dietJournals;
+
     @ManyToMany
     @ElementCollection
     private List<UserProfileRole> userRoles;
-
-    @OneToMany
-    @ElementCollection
-    private List<DietJournal> dietJournals;
 
 
     public String getEmail() {
         return email;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+
 
     public void setEmail(String email) {
         this.email = email;

@@ -58,12 +58,12 @@ return "signup_form";
     }
     return "login_form";
 }
-@GetMapping(value = {"/","/homepage"})
-        public String welcome(Model model)
-{
-    return "homepage";
-}
-
-    public static class foodController {
-    }
+//@GetMapping(value = {"/","/homepage"})
+//        public String welcome(Model model)
+//{
+//    return "homepage";
+//}
+//
+//    public static class foodController {
+//    }
 }

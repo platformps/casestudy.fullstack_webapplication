@@ -20,7 +20,7 @@ public class Food {
 
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private DietJournal dietJournal;
 
 

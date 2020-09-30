@@ -8,30 +8,51 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
+@RequestMapping(value = "/Food_Controller")
 public class FoodController {
     private FoodServices foodServices;
-    private DietJournalServices dietJournalServices;
 
     @Autowired
-    public FoodController(FoodServices foodServices, DietJournalServices dietJournalServices)
+    public FoodController(FoodServices foodServices)
     {
         this.foodServices=foodServices;
-        this.dietJournalServices=dietJournalServices;
     }
-    public ResponseEntity<Food> create(Food foodNutrients)
+    @PostMapping("/")
+    public ResponseEntity<Food> create(@RequestBody Food foodNutrients)
     {
         return new ResponseEntity<>(foodServices.createFoodInformation(foodNutrients), HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Food> updateById(Long id,Food newData)
+
+    @PostMapping("/{id}")
+    public ResponseEntity<Food> updateById(@PathVariable Long id,@RequestBody Food foodNutrients)
     {
-        return new ResponseEntity<>(foodServices.updateById(id,newData),HttpStatus.OK);
+        return new ResponseEntity<>(foodServices.updateById(id,foodNutrients),HttpStatus.OK);
     }
+
+    @GetMapping("/")
+    public ResponseEntity<Iterable<Food>> readAll() {
+        return new ResponseEntity<>(foodServices.readAll(),HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Food> show(@PathVariable Long id) {
+        return new ResponseEntity<>(foodServices.readById(id), HttpStatus.OK);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable Long id)
+    {
+        return new ResponseEntity<>(foodServices.delete(id),HttpStatus.OK);
+    }
+
+
+
+
     @RequestMapping(value = "/foodForm",method = RequestMethod.GET)
     public String showFoodPage(ModelMap model)
     {

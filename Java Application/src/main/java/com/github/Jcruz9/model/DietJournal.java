@@ -15,6 +15,11 @@ public class DietJournal {
     @ElementCollection
     private List<Food> foodList;
 
+    @OneToMany
+    @ElementCollection
+    private List<Account> userRoles;
+
+
     public long getId() {
         return id;
     }
