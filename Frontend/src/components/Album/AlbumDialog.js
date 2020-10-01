@@ -56,7 +56,6 @@ export default function AlbumDialog(props) {
         }
     })
     .catch(error => {
-        
         console.error('There was an error!', error);
         setOpen(false);
     });
