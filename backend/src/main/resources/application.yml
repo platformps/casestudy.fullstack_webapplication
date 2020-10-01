@@ -1,5 +1,5 @@
 amazonProperties:
   endpointUrl: https://s3.us-east-2.amazonaws.com
-  accessKey: AKIAI2RS22DOEXPK2SGA
-  secretKey: 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
+  accessKey: AKIAJI4QMDO5UNZI3UOQ
+  secretKey: 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
   bucketName: plantphoto
