@@ -52,6 +52,7 @@
 * Open command line and run this command:
     `mvn spring-boot:run`
 * From the root directory execute the following command:
+    * `npm install`
     * `ng serve --open`
 * Upon running, the application should be visible by navigating to       * `http://localhost:4200`
 
